@@ -1,0 +1,27 @@
+name: response-transformer
+config:
+  remove:
+    headers:
+      - x-toremove
+      - x-another-one
+  remove:
+    json:
+      - json-key-toremove
+      - another-json-key
+  add:
+    headers:
+      - x-new-header:value
+      - x-another-header:something
+  add:
+    json:
+      - new-json-key:some_value
+      - another-json-key:some_value
+  add:
+    json_types:
+      - new-json-key:string
+      - another-json-key:boolean
+      - another-json-key:number
+  append:
+    headers:
+      - x-existing-header:some_value
+      - x-another-header:some_value

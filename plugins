@@ -27,7 +27,7 @@ class Plugins < Thor
   end
 
   desc 'validate_examples', 'Validates an example against the schema'
-  option :version, aliases: '-v', type: :string, required: true,                         desc: 'Kong Version'
+  option :version, aliases: '-v', type: :string, required: true,  default: '_index',     desc: 'Kong Version'
   option :plugins, aliases: '-p', type: :array,  required: true,                         desc: 'List containing the name of the plugins'
   option :host,    aliases: '-d', type: :string,                  default: 'localhost',  desc: 'Hostname of the server running the API.'
   option :port,    aliases: '-h', type: :numeric,                 default: 8001,         desc: 'Port number'

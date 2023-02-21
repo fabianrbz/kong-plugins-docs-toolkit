@@ -2,4 +2,4 @@ name: opentelemetry
 config:
   endpoint: http://opentelemetry.collector:4318/v1/traces
   headers:
-  - X-Auth-Token:secret-token
+    X-Auth-Token: secret-token

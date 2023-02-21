@@ -4,7 +4,6 @@ config:
     headers:
       - x-toremove
       - x-another-one
-  remove:
     json:
       - json-key-toremove
       - another-json-key
@@ -12,15 +11,13 @@ config:
     headers:
       - x-new-header:value
       - x-another-header:something
-  add:
     json:
       - new-json-key:some_value
       - another-json-key:some_value
-  add:
     json_types:
-      - new-json-key:string
-      - another-json-key:boolean
-      - another-json-key:number
+      - string
+      - boolean
+      - number
   append:
     headers:
       - x-existing-header:some_value

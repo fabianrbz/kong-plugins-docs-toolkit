@@ -1,0 +1,1 @@
+{"fields":[{"consumer":{"type":"foreign","eq":null,"reference":"consumers"}},{"protocols":{"type":"set","required":true,"elements":{"type":"string","one_of":["grpc","grpcs","http","https"]},"default":["grpc","grpcs","http","https"]}},{"config":{"type":"record","required":true,"fields":[{"anonymous":{"type":"string"}},{"hide_credentials":{"type":"boolean","default":false}}]}}]}

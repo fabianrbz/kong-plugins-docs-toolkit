@@ -1,0 +1,1 @@
+{"fields":[{"config":{"type":"record","required":true,"fields":[{"proxy_host":{"required":true,"type":"string"}},{"proxy_port":{"between":[0,65535],"type":"integer","required":true}},{"proxy_scheme":{"default":"http","type":"string","one_of":["http"],"required":true}},{"https_verify":{"type":"boolean","default":false,"required":true}}]}}]}

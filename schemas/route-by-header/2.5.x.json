@@ -1,0 +1,1 @@
+{"fields":[{"config":{"required":true,"type":"record","fields":[{"rules":{"default":[],"type":"array","elements":{"type":"record","fields":[{"upstream_name":{"type":"string","required":true}},{"condition":{"keys":{"type":"string"},"len_min":1,"required":true,"type":"map","values":{"type":"string"}}}]}}}]}}]}

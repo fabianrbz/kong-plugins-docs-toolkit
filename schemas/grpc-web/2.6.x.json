@@ -1,0 +1,1 @@
+{"fields":[{"config":{"fields":[{"proto":{"required":false,"type":"string"}},{"pass_stripped_path":{"required":false,"type":"boolean"}},{"allow_origin_header":{"required":false,"default":"*","type":"string"}}],"required":true,"type":"record"}}]}

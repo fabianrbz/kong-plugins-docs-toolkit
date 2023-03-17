@@ -1,0 +1,1 @@
+{"fields":[{"config":{"fields":[{"functions":{"type":"array","required":true,"elements":{"type":"string"}}},{"handle_unknown":{"type":"boolean","default":false}},{"handle_unexpected":{"type":"boolean","default":false}}],"type":"record","required":true}}]}

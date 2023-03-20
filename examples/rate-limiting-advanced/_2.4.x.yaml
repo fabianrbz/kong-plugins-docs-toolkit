@@ -1,0 +1,11 @@
+name: rate-limiting-advanced
+config:
+  limit:
+    - 5
+  window_size:
+    - 30
+  identifier: consumer
+  namespace: example_namespace
+  strategy: cluster
+  sync_rate: 10
+  hide_client_headers: false

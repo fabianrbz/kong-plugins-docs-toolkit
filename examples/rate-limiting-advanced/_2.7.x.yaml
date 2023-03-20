@@ -1,0 +1,14 @@
+name: rate-limiting-advanced
+config:
+  limit:
+    - 5
+  window_size:
+    - 30
+  identifier: consumer
+  namespace: example_namespace
+  strategy: local
+  hide_client_headers: false
+  enforce_consumer_groups: true
+  consumer_groups:
+    - group1
+    - group2

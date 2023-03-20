@@ -1,0 +1,6 @@
+name: forward-proxy
+config:
+  proxy_host: example.com
+  proxy_port: 80
+  proxy_scheme: http
+  https_verify: false

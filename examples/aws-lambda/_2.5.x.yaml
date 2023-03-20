@@ -1,0 +1,6 @@
+name: aws-lambda
+config:
+  aws_key: <AWS_KEY>
+  aws_secret: <AWS_SECRET>
+  aws_region: <AWS_REGION>
+  function_name: <LAMBDA_FUNCTION_NAME>

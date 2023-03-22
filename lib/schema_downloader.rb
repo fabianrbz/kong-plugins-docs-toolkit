@@ -35,7 +35,7 @@ class SchemaDownloader < Action
   end
 
   def write_schema_to_file(schema)
-    File.write(file_path, JSON.dump(schema))
+    File.write(file_path, JSON.pretty_generate(schema))
   end
 
   def file_path

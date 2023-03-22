@@ -1,1 +1,253 @@
-{"fields":[{"protocols":{"default":["grpc","grpcs","http","https"],"elements":{"type":"string","one_of":["grpc","grpcs","http","https"]},"required":true,"type":"set"}},{"config":{"type":"record","fields":[{"bootstrap_servers":{"type":"set","elements":{"type":"record","fields":[{"host":{"required":true,"type":"string"}},{"port":{"type":"integer","required":true,"between":[0,65535]}}]}}},{"topic":{"type":"string","required":true}},{"timeout":{"type":"integer","default":10000}},{"keepalive":{"type":"integer","default":60000}},{"keepalive_enabled":{"type":"boolean","default":false}},{"authentication":{"fields":[{"strategy":{"one_of":["sasl"],"type":"string","required":false}},{"mechanism":{"one_of":["PLAIN","SCRAM-SHA-256"],"type":"string","required":false}},{"tokenauth":{"type":"boolean","required":false}},{"user":{"type":"string","required":false,"encrypted":true}},{"password":{"type":"string","required":false,"encrypted":true}}],"type":"record","required":true}},{"security":{"fields":[{"certificate_id":{"required":false,"type":"string","uuid":true}},{"ssl":{"type":"boolean","required":false}}],"type":"record","required":true}},{"forward_method":{"type":"boolean","default":false}},{"forward_uri":{"type":"boolean","default":false}},{"forward_headers":{"type":"boolean","default":false}},{"forward_body":{"type":"boolean","default":true}},{"producer_request_acks":{"one_of":[-1,0,1],"type":"integer","default":1}},{"producer_request_timeout":{"type":"integer","default":2000}},{"producer_request_limits_messages_per_request":{"type":"integer","default":200}},{"producer_request_limits_bytes_per_request":{"type":"integer","default":1048576}},{"producer_request_retries_max_attempts":{"type":"integer","default":10}},{"producer_request_retries_backoff_timeout":{"type":"integer","default":100}},{"producer_async":{"type":"boolean","default":true}},{"producer_async_flush_timeout":{"type":"integer","default":1000}},{"producer_async_buffering_limits_messages_in_memory":{"type":"integer","default":50000}}],"entity_checks":[{"custom_entity_check":{"field_sources":["forward_method","forward_uri","forward_headers","forward_body"]}},{"custom_entity_check":{"field_sources":["authentication"]}}],"required":true}}]}
+{
+  "fields": [
+    {
+      "protocols": {
+        "default": [
+          "grpc",
+          "grpcs",
+          "http",
+          "https"
+        ],
+        "elements": {
+          "type": "string",
+          "one_of": [
+            "grpc",
+            "grpcs",
+            "http",
+            "https"
+          ]
+        },
+        "required": true,
+        "type": "set"
+      }
+    },
+    {
+      "config": {
+        "type": "record",
+        "fields": [
+          {
+            "bootstrap_servers": {
+              "type": "set",
+              "elements": {
+                "type": "record",
+                "fields": [
+                  {
+                    "host": {
+                      "required": true,
+                      "type": "string"
+                    }
+                  },
+                  {
+                    "port": {
+                      "type": "integer",
+                      "required": true,
+                      "between": [
+                        0,
+                        65535
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "topic": {
+              "type": "string",
+              "required": true
+            }
+          },
+          {
+            "timeout": {
+              "type": "integer",
+              "default": 10000
+            }
+          },
+          {
+            "keepalive": {
+              "type": "integer",
+              "default": 60000
+            }
+          },
+          {
+            "keepalive_enabled": {
+              "type": "boolean",
+              "default": false
+            }
+          },
+          {
+            "authentication": {
+              "fields": [
+                {
+                  "strategy": {
+                    "one_of": [
+                      "sasl"
+                    ],
+                    "type": "string",
+                    "required": false
+                  }
+                },
+                {
+                  "mechanism": {
+                    "one_of": [
+                      "PLAIN",
+                      "SCRAM-SHA-256"
+                    ],
+                    "type": "string",
+                    "required": false
+                  }
+                },
+                {
+                  "tokenauth": {
+                    "type": "boolean",
+                    "required": false
+                  }
+                },
+                {
+                  "user": {
+                    "type": "string",
+                    "required": false,
+                    "encrypted": true
+                  }
+                },
+                {
+                  "password": {
+                    "type": "string",
+                    "required": false,
+                    "encrypted": true
+                  }
+                }
+              ],
+              "type": "record",
+              "required": true
+            }
+          },
+          {
+            "security": {
+              "fields": [
+                {
+                  "certificate_id": {
+                    "required": false,
+                    "type": "string",
+                    "uuid": true
+                  }
+                },
+                {
+                  "ssl": {
+                    "type": "boolean",
+                    "required": false
+                  }
+                }
+              ],
+              "type": "record",
+              "required": true
+            }
+          },
+          {
+            "forward_method": {
+              "type": "boolean",
+              "default": false
+            }
+          },
+          {
+            "forward_uri": {
+              "type": "boolean",
+              "default": false
+            }
+          },
+          {
+            "forward_headers": {
+              "type": "boolean",
+              "default": false
+            }
+          },
+          {
+            "forward_body": {
+              "type": "boolean",
+              "default": true
+            }
+          },
+          {
+            "producer_request_acks": {
+              "one_of": [
+                -1,
+                0,
+                1
+              ],
+              "type": "integer",
+              "default": 1
+            }
+          },
+          {
+            "producer_request_timeout": {
+              "type": "integer",
+              "default": 2000
+            }
+          },
+          {
+            "producer_request_limits_messages_per_request": {
+              "type": "integer",
+              "default": 200
+            }
+          },
+          {
+            "producer_request_limits_bytes_per_request": {
+              "type": "integer",
+              "default": 1048576
+            }
+          },
+          {
+            "producer_request_retries_max_attempts": {
+              "type": "integer",
+              "default": 10
+            }
+          },
+          {
+            "producer_request_retries_backoff_timeout": {
+              "type": "integer",
+              "default": 100
+            }
+          },
+          {
+            "producer_async": {
+              "type": "boolean",
+              "default": true
+            }
+          },
+          {
+            "producer_async_flush_timeout": {
+              "type": "integer",
+              "default": 1000
+            }
+          },
+          {
+            "producer_async_buffering_limits_messages_in_memory": {
+              "type": "integer",
+              "default": 50000
+            }
+          }
+        ],
+        "entity_checks": [
+          {
+            "custom_entity_check": {
+              "field_sources": [
+                "forward_method",
+                "forward_uri",
+                "forward_headers",
+                "forward_body"
+              ]
+            }
+          },
+          {
+            "custom_entity_check": {
+              "field_sources": [
+                "authentication"
+              ]
+            }
+          }
+        ],
+        "required": true
+      }
+    }
+  ]
+}

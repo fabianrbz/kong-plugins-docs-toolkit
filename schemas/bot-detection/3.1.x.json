@@ -1,1 +1,64 @@
-{"fields":[{"consumer":{"type":"foreign","reference":"consumers","eq":null}},{"protocols":{"type":"set","elements":{"type":"string","one_of":["grpc","grpcs","http","https"]},"default":["grpc","grpcs","http","https"],"required":true}},{"config":{"type":"record","fields":[{"allow":{"type":"array","default":[],"elements":{"is_regex":true,"type":"string"}}},{"deny":{"type":"array","default":[],"elements":{"is_regex":true,"type":"string"}}}],"required":true}}]}
+{
+  "fields": [
+    {
+      "consumer": {
+        "type": "foreign",
+        "reference": "consumers",
+        "eq": null
+      }
+    },
+    {
+      "protocols": {
+        "type": "set",
+        "elements": {
+          "type": "string",
+          "one_of": [
+            "grpc",
+            "grpcs",
+            "http",
+            "https"
+          ]
+        },
+        "default": [
+          "grpc",
+          "grpcs",
+          "http",
+          "https"
+        ],
+        "required": true
+      }
+    },
+    {
+      "config": {
+        "type": "record",
+        "fields": [
+          {
+            "allow": {
+              "type": "array",
+              "default": [
+
+              ],
+              "elements": {
+                "is_regex": true,
+                "type": "string"
+              }
+            }
+          },
+          {
+            "deny": {
+              "type": "array",
+              "default": [
+
+              ],
+              "elements": {
+                "is_regex": true,
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "required": true
+      }
+    }
+  ]
+}

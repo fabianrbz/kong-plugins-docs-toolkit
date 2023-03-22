@@ -1,1 +1,123 @@
-{"fields":[{"config":{"fields":[{"response_code":{"elements":{"between":[100,900],"type":"integer"},"required":true,"len_min":1,"default":[200,301,404],"type":"array"}},{"request_method":{"elements":{"one_of":["HEAD","GET","POST","PATCH","PUT"],"type":"string"},"required":true,"default":["GET","HEAD"],"type":"array"}},{"content_type":{"elements":{"type":"string"},"required":true,"default":["text/plain","application/json"],"type":"array"}},{"cache_ttl":{"gt":0,"default":300,"type":"integer"}},{"strategy":{"required":true,"type":"string","one_of":["memory"]}},{"cache_control":{"required":true,"default":false,"type":"boolean"}},{"storage_ttl":{"type":"integer"}},{"memory":{"fields":[{"dictionary_name":{"required":true,"default":"kong_db_cache","type":"string"}}],"required":true,"type":"record"}},{"vary_query_params":{"elements":{"type":"string"},"type":"array"}},{"vary_headers":{"elements":{"type":"string"},"type":"array"}}],"required":true,"type":"record"}}]}
+{
+  "fields": [
+    {
+      "config": {
+        "fields": [
+          {
+            "response_code": {
+              "elements": {
+                "between": [
+                  100,
+                  900
+                ],
+                "type": "integer"
+              },
+              "required": true,
+              "len_min": 1,
+              "default": [
+                200,
+                301,
+                404
+              ],
+              "type": "array"
+            }
+          },
+          {
+            "request_method": {
+              "elements": {
+                "one_of": [
+                  "HEAD",
+                  "GET",
+                  "POST",
+                  "PATCH",
+                  "PUT"
+                ],
+                "type": "string"
+              },
+              "required": true,
+              "default": [
+                "GET",
+                "HEAD"
+              ],
+              "type": "array"
+            }
+          },
+          {
+            "content_type": {
+              "elements": {
+                "type": "string"
+              },
+              "required": true,
+              "default": [
+                "text/plain",
+                "application/json"
+              ],
+              "type": "array"
+            }
+          },
+          {
+            "cache_ttl": {
+              "gt": 0,
+              "default": 300,
+              "type": "integer"
+            }
+          },
+          {
+            "strategy": {
+              "required": true,
+              "type": "string",
+              "one_of": [
+                "memory"
+              ]
+            }
+          },
+          {
+            "cache_control": {
+              "required": true,
+              "default": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "storage_ttl": {
+              "type": "integer"
+            }
+          },
+          {
+            "memory": {
+              "fields": [
+                {
+                  "dictionary_name": {
+                    "required": true,
+                    "default": "kong_db_cache",
+                    "type": "string"
+                  }
+                }
+              ],
+              "required": true,
+              "type": "record"
+            }
+          },
+          {
+            "vary_query_params": {
+              "elements": {
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          {
+            "vary_headers": {
+              "elements": {
+                "type": "string"
+              },
+              "type": "array"
+            }
+          }
+        ],
+        "required": true,
+        "type": "record"
+      }
+    }
+  ]
+}

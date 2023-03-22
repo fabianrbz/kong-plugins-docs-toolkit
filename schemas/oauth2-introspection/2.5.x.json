@@ -1,1 +1,118 @@
-{"fields":[{"consumer":{"reference":"consumers","eq":null,"type":"foreign"}},{"config":{"required":true,"type":"record","fields":[{"introspection_url":{"required":true,"type":"string"}},{"ttl":{"type":"number","default":30}},{"token_type_hint":{"type":"string"}},{"authorization_value":{"type":"string","required":true}},{"timeout":{"type":"integer","default":10000}},{"keepalive":{"type":"integer","default":60000}},{"introspect_request":{"default":false,"type":"boolean","required":true}},{"hide_credentials":{"type":"boolean","default":false}},{"run_on_preflight":{"type":"boolean","default":true}},{"anonymous":{"default":"","type":"string","len_min":0}},{"consumer_by":{"default":"username","one_of":["username","client_id"],"type":"string","required":true}},{"custom_introspection_headers":{"keys":{"type":"string"},"required":true,"values":{"type":"string"},"type":"map","default":[]}},{"custom_claims_forward":{"default":[],"required":true,"type":"set","elements":{"type":"string"}}}]}}]}
+{
+  "fields": [
+    {
+      "consumer": {
+        "reference": "consumers",
+        "eq": null,
+        "type": "foreign"
+      }
+    },
+    {
+      "config": {
+        "required": true,
+        "type": "record",
+        "fields": [
+          {
+            "introspection_url": {
+              "required": true,
+              "type": "string"
+            }
+          },
+          {
+            "ttl": {
+              "type": "number",
+              "default": 30
+            }
+          },
+          {
+            "token_type_hint": {
+              "type": "string"
+            }
+          },
+          {
+            "authorization_value": {
+              "type": "string",
+              "required": true
+            }
+          },
+          {
+            "timeout": {
+              "type": "integer",
+              "default": 10000
+            }
+          },
+          {
+            "keepalive": {
+              "type": "integer",
+              "default": 60000
+            }
+          },
+          {
+            "introspect_request": {
+              "default": false,
+              "type": "boolean",
+              "required": true
+            }
+          },
+          {
+            "hide_credentials": {
+              "type": "boolean",
+              "default": false
+            }
+          },
+          {
+            "run_on_preflight": {
+              "type": "boolean",
+              "default": true
+            }
+          },
+          {
+            "anonymous": {
+              "default": "",
+              "type": "string",
+              "len_min": 0
+            }
+          },
+          {
+            "consumer_by": {
+              "default": "username",
+              "one_of": [
+                "username",
+                "client_id"
+              ],
+              "type": "string",
+              "required": true
+            }
+          },
+          {
+            "custom_introspection_headers": {
+              "keys": {
+                "type": "string"
+              },
+              "required": true,
+              "values": {
+                "type": "string"
+              },
+              "type": "map",
+              "default": [
+
+              ]
+            }
+          },
+          {
+            "custom_claims_forward": {
+              "default": [
+
+              ],
+              "required": true,
+              "type": "set",
+              "elements": {
+                "type": "string"
+              }
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

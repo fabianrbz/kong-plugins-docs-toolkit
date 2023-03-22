@@ -1,1 +1,70 @@
-{"fields":[{"protocols":{"required":true,"elements":{"one_of":["grpc","grpcs","http","https"],"type":"string"},"default":["grpc","grpcs","http","https"],"type":"set"}},{"config":{"required":true,"fields":[{"status_code":{"between":[100,599],"default":503,"type":"integer"}},{"message":{"type":"string"}},{"content_type":{"type":"string"}},{"body":{"type":"string"}},{"echo":{"required":true,"default":false,"type":"boolean"}},{"trigger":{"type":"string"}}],"type":"record"}}]}
+{
+  "fields": [
+    {
+      "protocols": {
+        "required": true,
+        "elements": {
+          "one_of": [
+            "grpc",
+            "grpcs",
+            "http",
+            "https"
+          ],
+          "type": "string"
+        },
+        "default": [
+          "grpc",
+          "grpcs",
+          "http",
+          "https"
+        ],
+        "type": "set"
+      }
+    },
+    {
+      "config": {
+        "required": true,
+        "fields": [
+          {
+            "status_code": {
+              "between": [
+                100,
+                599
+              ],
+              "default": 503,
+              "type": "integer"
+            }
+          },
+          {
+            "message": {
+              "type": "string"
+            }
+          },
+          {
+            "content_type": {
+              "type": "string"
+            }
+          },
+          {
+            "body": {
+              "type": "string"
+            }
+          },
+          {
+            "echo": {
+              "required": true,
+              "default": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "trigger": {
+              "type": "string"
+            }
+          }
+        ],
+        "type": "record"
+      }
+    }
+  ]
+}

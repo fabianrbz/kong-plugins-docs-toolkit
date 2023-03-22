@@ -1,1 +1,92 @@
-{"fields":[{"consumer":{"reference":"consumers","eq":null,"type":"foreign"}},{"protocols":{"required":true,"default":["grpc","grpcs","http","https"],"type":"set","elements":{"type":"string","one_of":["grpc","grpcs","http","https"]}}},{"config":{"required":true,"type":"record","fields":[{"key_names":{"required":true,"default":["apikey"],"type":"array","elements":{"type":"string"}}},{"hide_credentials":{"required":true,"type":"boolean","default":false}},{"anonymous":{"type":"string"}},{"key_in_header":{"required":true,"type":"boolean","default":true}},{"key_in_query":{"required":true,"type":"boolean","default":true}},{"key_in_body":{"required":true,"type":"boolean","default":false}},{"run_on_preflight":{"required":true,"type":"boolean","default":true}}]}}]}
+{
+  "fields": [
+    {
+      "consumer": {
+        "reference": "consumers",
+        "eq": null,
+        "type": "foreign"
+      }
+    },
+    {
+      "protocols": {
+        "required": true,
+        "default": [
+          "grpc",
+          "grpcs",
+          "http",
+          "https"
+        ],
+        "type": "set",
+        "elements": {
+          "type": "string",
+          "one_of": [
+            "grpc",
+            "grpcs",
+            "http",
+            "https"
+          ]
+        }
+      }
+    },
+    {
+      "config": {
+        "required": true,
+        "type": "record",
+        "fields": [
+          {
+            "key_names": {
+              "required": true,
+              "default": [
+                "apikey"
+              ],
+              "type": "array",
+              "elements": {
+                "type": "string"
+              }
+            }
+          },
+          {
+            "hide_credentials": {
+              "required": true,
+              "type": "boolean",
+              "default": false
+            }
+          },
+          {
+            "anonymous": {
+              "type": "string"
+            }
+          },
+          {
+            "key_in_header": {
+              "required": true,
+              "type": "boolean",
+              "default": true
+            }
+          },
+          {
+            "key_in_query": {
+              "required": true,
+              "type": "boolean",
+              "default": true
+            }
+          },
+          {
+            "key_in_body": {
+              "required": true,
+              "type": "boolean",
+              "default": false
+            }
+          },
+          {
+            "run_on_preflight": {
+              "required": true,
+              "type": "boolean",
+              "default": true
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

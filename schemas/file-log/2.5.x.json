@@ -1,1 +1,64 @@
-{"fields":[{"protocols":{"required":true,"default":["grpc","grpcs","http","https"],"type":"set","elements":{"type":"string","one_of":["grpc","grpcs","http","https","tcp","tls","udp"]}}},{"config":{"required":true,"type":"record","fields":[{"path":{"required":true,"err":"not a valid filename","match":"^[^*&%%\\`]+$","type":"string"}},{"reopen":{"required":true,"type":"boolean","default":false}},{"custom_fields_by_lua":{"keys":{"type":"string","len_min":1},"type":"map","values":{"type":"string","len_min":1}}}]}}]}
+{
+  "fields": [
+    {
+      "protocols": {
+        "required": true,
+        "default": [
+          "grpc",
+          "grpcs",
+          "http",
+          "https"
+        ],
+        "type": "set",
+        "elements": {
+          "type": "string",
+          "one_of": [
+            "grpc",
+            "grpcs",
+            "http",
+            "https",
+            "tcp",
+            "tls",
+            "udp"
+          ]
+        }
+      }
+    },
+    {
+      "config": {
+        "required": true,
+        "type": "record",
+        "fields": [
+          {
+            "path": {
+              "required": true,
+              "err": "not a valid filename",
+              "match": "^[^*&%%\\`]+$",
+              "type": "string"
+            }
+          },
+          {
+            "reopen": {
+              "required": true,
+              "type": "boolean",
+              "default": false
+            }
+          },
+          {
+            "custom_fields_by_lua": {
+              "keys": {
+                "type": "string",
+                "len_min": 1
+              },
+              "type": "map",
+              "values": {
+                "type": "string",
+                "len_min": 1
+              }
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

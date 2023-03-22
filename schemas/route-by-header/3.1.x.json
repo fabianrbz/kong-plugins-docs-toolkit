@@ -1,1 +1,65 @@
-{"fields":[{"protocols":{"type":"set","elements":{"type":"string","one_of":["grpc","grpcs","http","https"]},"default":["grpc","grpcs","http","https"],"required":true}},{"config":{"type":"record","fields":[{"rules":{"type":"array","elements":{"type":"record","fields":[{"upstream_name":{"type":"string","required":true}},{"condition":{"required":true,"len_min":1,"type":"map","keys":{"type":"string"},"values":{"type":"string"}}}]},"default":[]}}],"required":true}}]}
+{
+  "fields": [
+    {
+      "protocols": {
+        "type": "set",
+        "elements": {
+          "type": "string",
+          "one_of": [
+            "grpc",
+            "grpcs",
+            "http",
+            "https"
+          ]
+        },
+        "default": [
+          "grpc",
+          "grpcs",
+          "http",
+          "https"
+        ],
+        "required": true
+      }
+    },
+    {
+      "config": {
+        "type": "record",
+        "fields": [
+          {
+            "rules": {
+              "type": "array",
+              "elements": {
+                "type": "record",
+                "fields": [
+                  {
+                    "upstream_name": {
+                      "type": "string",
+                      "required": true
+                    }
+                  },
+                  {
+                    "condition": {
+                      "required": true,
+                      "len_min": 1,
+                      "type": "map",
+                      "keys": {
+                        "type": "string"
+                      },
+                      "values": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                ]
+              },
+              "default": [
+
+              ]
+            }
+          }
+        ],
+        "required": true
+      }
+    }
+  ]
+}

@@ -1,1 +1,18 @@
-{"fields":[{"config":{"required":true,"fields":[{"proto":{"required":false,"type":"string"}}],"type":"record"}}]}
+{
+  "fields": [
+    {
+      "config": {
+        "required": true,
+        "fields": [
+          {
+            "proto": {
+              "required": false,
+              "type": "string"
+            }
+          }
+        ],
+        "type": "record"
+      }
+    }
+  ]
+}

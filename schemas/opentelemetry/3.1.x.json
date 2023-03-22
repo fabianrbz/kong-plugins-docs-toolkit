@@ -1,1 +1,129 @@
-{"fields":[{"consumer":{"type":"foreign","reference":"consumers","eq":null}},{"service":{"type":"foreign","reference":"services","eq":null}},{"route":{"type":"foreign","reference":"routes","eq":null}},{"protocols":{"type":"set","elements":{"type":"string","one_of":["grpc","grpcs","http","https"]},"default":["grpc","grpcs","http","https"],"required":true}},{"config":{"type":"record","fields":[{"endpoint":{"required":true,"type":"string"}},{"headers":{"type":"map","keys":{"type":"string"},"values":{"type":"string","referenceable":true}}},{"resource_attributes":{"type":"map","keys":{"type":"string","required":true},"values":{"type":"string","required":true}}},{"batch_span_count":{"required":true,"type":"integer","default":200}},{"batch_flush_delay":{"required":true,"type":"integer","default":3}},{"connect_timeout":{"default":1000,"between":[0,2147483646],"type":"integer"}},{"send_timeout":{"default":5000,"between":[0,2147483646],"type":"integer"}},{"read_timeout":{"default":5000,"between":[0,2147483646],"type":"integer"}}],"required":true}}]}
+{
+  "fields": [
+    {
+      "consumer": {
+        "type": "foreign",
+        "reference": "consumers",
+        "eq": null
+      }
+    },
+    {
+      "service": {
+        "type": "foreign",
+        "reference": "services",
+        "eq": null
+      }
+    },
+    {
+      "route": {
+        "type": "foreign",
+        "reference": "routes",
+        "eq": null
+      }
+    },
+    {
+      "protocols": {
+        "type": "set",
+        "elements": {
+          "type": "string",
+          "one_of": [
+            "grpc",
+            "grpcs",
+            "http",
+            "https"
+          ]
+        },
+        "default": [
+          "grpc",
+          "grpcs",
+          "http",
+          "https"
+        ],
+        "required": true
+      }
+    },
+    {
+      "config": {
+        "type": "record",
+        "fields": [
+          {
+            "endpoint": {
+              "required": true,
+              "type": "string"
+            }
+          },
+          {
+            "headers": {
+              "type": "map",
+              "keys": {
+                "type": "string"
+              },
+              "values": {
+                "type": "string",
+                "referenceable": true
+              }
+            }
+          },
+          {
+            "resource_attributes": {
+              "type": "map",
+              "keys": {
+                "type": "string",
+                "required": true
+              },
+              "values": {
+                "type": "string",
+                "required": true
+              }
+            }
+          },
+          {
+            "batch_span_count": {
+              "required": true,
+              "type": "integer",
+              "default": 200
+            }
+          },
+          {
+            "batch_flush_delay": {
+              "required": true,
+              "type": "integer",
+              "default": 3
+            }
+          },
+          {
+            "connect_timeout": {
+              "default": 1000,
+              "between": [
+                0,
+                2147483646
+              ],
+              "type": "integer"
+            }
+          },
+          {
+            "send_timeout": {
+              "default": 5000,
+              "between": [
+                0,
+                2147483646
+              ],
+              "type": "integer"
+            }
+          },
+          {
+            "read_timeout": {
+              "default": 5000,
+              "between": [
+                0,
+                2147483646
+              ],
+              "type": "integer"
+            }
+          }
+        ],
+        "required": true
+      }
+    }
+  ]
+}

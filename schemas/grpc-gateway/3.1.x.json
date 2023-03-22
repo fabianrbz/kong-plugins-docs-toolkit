@@ -1,1 +1,45 @@
-{"fields":[{"protocols":{"type":"set","elements":{"type":"string","one_of":["grpc","grpcs","http","https","tcp","tls","tls_passthrough","udp","ws","wss"]},"default":["grpc","grpcs","http","https"],"required":true}},{"config":{"type":"record","fields":[{"proto":{"required":false,"type":"string"}}],"required":true}}]}
+{
+  "fields": [
+    {
+      "protocols": {
+        "type": "set",
+        "elements": {
+          "type": "string",
+          "one_of": [
+            "grpc",
+            "grpcs",
+            "http",
+            "https",
+            "tcp",
+            "tls",
+            "tls_passthrough",
+            "udp",
+            "ws",
+            "wss"
+          ]
+        },
+        "default": [
+          "grpc",
+          "grpcs",
+          "http",
+          "https"
+        ],
+        "required": true
+      }
+    },
+    {
+      "config": {
+        "type": "record",
+        "fields": [
+          {
+            "proto": {
+              "required": false,
+              "type": "string"
+            }
+          }
+        ],
+        "required": true
+      }
+    }
+  ]
+}

@@ -1,1 +1,135 @@
-{"fields":[{"protocols":{"default":["grpc","grpcs","http","https"],"elements":{"type":"string","one_of":["grpc","grpcs","http","https","tcp","tls","tls_passthrough","udp"]},"required":true,"type":"set"}},{"config":{"fields":[{"http_endpoint":{"encrypted":true,"type":"string","required":true}},{"method":{"one_of":["POST","PUT","PATCH"],"type":"string","default":"POST"}},{"content_type":{"one_of":["application/json"],"type":"string","default":"application/json"}},{"timeout":{"type":"number","default":10000}},{"keepalive":{"type":"number","default":60000}},{"retry_count":{"type":"integer","default":10}},{"queue_size":{"type":"integer","default":1}},{"flush_timeout":{"type":"number","default":2}},{"headers":{"keys":{"type":"string","match_none":[{"pattern":"^[Hh][Oo][Ss][Tt]$","err":"cannot contain 'Host' header"},{"pattern":"^[Cc][Oo][Nn][Tt][Ee][Nn][Tt]%-[Ll][Ee][nn][Gg][Tt][Hh]$","err":"cannot contain 'Content-Length' header"},{"pattern":"^[Cc][Oo][Nn][Tt][Ee][Nn][Tt]%-[Tt][Yy][Pp][Ee]$","err":"cannot contain 'Content-Type' header"}]},"type":"map","values":{"type":"array","elements":{"type":"string"}}}},{"custom_fields_by_lua":{"keys":{"type":"string","len_min":1},"type":"map","values":{"type":"string","len_min":1}}}],"type":"record","required":true}}]}
+{
+  "fields": [
+    {
+      "protocols": {
+        "default": [
+          "grpc",
+          "grpcs",
+          "http",
+          "https"
+        ],
+        "elements": {
+          "type": "string",
+          "one_of": [
+            "grpc",
+            "grpcs",
+            "http",
+            "https",
+            "tcp",
+            "tls",
+            "tls_passthrough",
+            "udp"
+          ]
+        },
+        "required": true,
+        "type": "set"
+      }
+    },
+    {
+      "config": {
+        "fields": [
+          {
+            "http_endpoint": {
+              "encrypted": true,
+              "type": "string",
+              "required": true
+            }
+          },
+          {
+            "method": {
+              "one_of": [
+                "POST",
+                "PUT",
+                "PATCH"
+              ],
+              "type": "string",
+              "default": "POST"
+            }
+          },
+          {
+            "content_type": {
+              "one_of": [
+                "application/json"
+              ],
+              "type": "string",
+              "default": "application/json"
+            }
+          },
+          {
+            "timeout": {
+              "type": "number",
+              "default": 10000
+            }
+          },
+          {
+            "keepalive": {
+              "type": "number",
+              "default": 60000
+            }
+          },
+          {
+            "retry_count": {
+              "type": "integer",
+              "default": 10
+            }
+          },
+          {
+            "queue_size": {
+              "type": "integer",
+              "default": 1
+            }
+          },
+          {
+            "flush_timeout": {
+              "type": "number",
+              "default": 2
+            }
+          },
+          {
+            "headers": {
+              "keys": {
+                "type": "string",
+                "match_none": [
+                  {
+                    "pattern": "^[Hh][Oo][Ss][Tt]$",
+                    "err": "cannot contain 'Host' header"
+                  },
+                  {
+                    "pattern": "^[Cc][Oo][Nn][Tt][Ee][Nn][Tt]%-[Ll][Ee][nn][Gg][Tt][Hh]$",
+                    "err": "cannot contain 'Content-Length' header"
+                  },
+                  {
+                    "pattern": "^[Cc][Oo][Nn][Tt][Ee][Nn][Tt]%-[Tt][Yy][Pp][Ee]$",
+                    "err": "cannot contain 'Content-Type' header"
+                  }
+                ]
+              },
+              "type": "map",
+              "values": {
+                "type": "array",
+                "elements": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          {
+            "custom_fields_by_lua": {
+              "keys": {
+                "type": "string",
+                "len_min": 1
+              },
+              "type": "map",
+              "values": {
+                "type": "string",
+                "len_min": 1
+              }
+            }
+          }
+        ],
+        "type": "record",
+        "required": true
+      }
+    }
+  ]
+}

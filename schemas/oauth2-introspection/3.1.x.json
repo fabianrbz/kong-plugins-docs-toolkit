@@ -1,1 +1,139 @@
-{"fields":[{"consumer":{"type":"foreign","reference":"consumers","eq":null}},{"protocols":{"type":"set","elements":{"type":"string","one_of":["grpc","grpcs","http","https"]},"default":["grpc","grpcs","http","https"],"required":true}},{"config":{"type":"record","fields":[{"introspection_url":{"required":true,"type":"string"}},{"ttl":{"default":30,"type":"number"}},{"token_type_hint":{"type":"string"}},{"authorization_value":{"required":true,"type":"string"}},{"timeout":{"default":10000,"type":"integer"}},{"keepalive":{"default":60000,"type":"integer"}},{"introspect_request":{"required":true,"type":"boolean","default":false}},{"hide_credentials":{"default":false,"type":"boolean"}},{"run_on_preflight":{"default":true,"type":"boolean"}},{"anonymous":{"default":"","len_min":0,"type":"string"}},{"consumer_by":{"required":true,"one_of":["username","client_id"],"default":"username","type":"string"}},{"custom_introspection_headers":{"required":true,"values":{"type":"string"},"type":"map","keys":{"type":"string"},"default":[]}},{"custom_claims_forward":{"required":true,"default":[],"elements":{"type":"string"},"type":"set"}}],"required":true}}]}
+{
+  "fields": [
+    {
+      "consumer": {
+        "type": "foreign",
+        "reference": "consumers",
+        "eq": null
+      }
+    },
+    {
+      "protocols": {
+        "type": "set",
+        "elements": {
+          "type": "string",
+          "one_of": [
+            "grpc",
+            "grpcs",
+            "http",
+            "https"
+          ]
+        },
+        "default": [
+          "grpc",
+          "grpcs",
+          "http",
+          "https"
+        ],
+        "required": true
+      }
+    },
+    {
+      "config": {
+        "type": "record",
+        "fields": [
+          {
+            "introspection_url": {
+              "required": true,
+              "type": "string"
+            }
+          },
+          {
+            "ttl": {
+              "default": 30,
+              "type": "number"
+            }
+          },
+          {
+            "token_type_hint": {
+              "type": "string"
+            }
+          },
+          {
+            "authorization_value": {
+              "required": true,
+              "type": "string"
+            }
+          },
+          {
+            "timeout": {
+              "default": 10000,
+              "type": "integer"
+            }
+          },
+          {
+            "keepalive": {
+              "default": 60000,
+              "type": "integer"
+            }
+          },
+          {
+            "introspect_request": {
+              "required": true,
+              "type": "boolean",
+              "default": false
+            }
+          },
+          {
+            "hide_credentials": {
+              "default": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "run_on_preflight": {
+              "default": true,
+              "type": "boolean"
+            }
+          },
+          {
+            "anonymous": {
+              "default": "",
+              "len_min": 0,
+              "type": "string"
+            }
+          },
+          {
+            "consumer_by": {
+              "required": true,
+              "one_of": [
+                "username",
+                "client_id"
+              ],
+              "default": "username",
+              "type": "string"
+            }
+          },
+          {
+            "custom_introspection_headers": {
+              "required": true,
+              "values": {
+                "type": "string"
+              },
+              "type": "map",
+              "keys": {
+                "type": "string"
+              },
+              "default": [
+
+              ]
+            }
+          },
+          {
+            "custom_claims_forward": {
+              "required": true,
+              "default": [
+
+              ],
+              "elements": {
+                "type": "string"
+              },
+              "type": "set"
+            }
+          }
+        ],
+        "required": true
+      }
+    }
+  ]
+}

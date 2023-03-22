@@ -1,1 +1,74 @@
-{"fields":[{"protocols":{"elements":{"one_of":["grpc","grpcs","http","https","tcp","tls","tls_passthrough","udp","ws","wss"],"type":"string"},"required":true,"type":"set","default":["grpc","grpcs","http","https"]}},{"config":{"fields":[{"host":{"type":"string","required":true}},{"port":{"required":true,"between":[0,65535],"type":"integer"}},{"timeout":{"default":10000,"type":"number"}},{"custom_fields_by_lua":{"keys":{"len_min":1,"type":"string"},"type":"map","values":{"type":"string","len_min":1}}}],"type":"record","required":true}}]}
+{
+  "fields": [
+    {
+      "protocols": {
+        "elements": {
+          "one_of": [
+            "grpc",
+            "grpcs",
+            "http",
+            "https",
+            "tcp",
+            "tls",
+            "tls_passthrough",
+            "udp",
+            "ws",
+            "wss"
+          ],
+          "type": "string"
+        },
+        "required": true,
+        "type": "set",
+        "default": [
+          "grpc",
+          "grpcs",
+          "http",
+          "https"
+        ]
+      }
+    },
+    {
+      "config": {
+        "fields": [
+          {
+            "host": {
+              "type": "string",
+              "required": true
+            }
+          },
+          {
+            "port": {
+              "required": true,
+              "between": [
+                0,
+                65535
+              ],
+              "type": "integer"
+            }
+          },
+          {
+            "timeout": {
+              "default": 10000,
+              "type": "number"
+            }
+          },
+          {
+            "custom_fields_by_lua": {
+              "keys": {
+                "len_min": 1,
+                "type": "string"
+              },
+              "type": "map",
+              "values": {
+                "type": "string",
+                "len_min": 1
+              }
+            }
+          }
+        ],
+        "type": "record",
+        "required": true
+      }
+    }
+  ]
+}

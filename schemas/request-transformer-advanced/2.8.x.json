@@ -1,1 +1,248 @@
-{"fields":[{"config":{"required":true,"fields":[{"http_method":{"match":"^%u+$","type":"string"}},{"remove":{"required":true,"fields":[{"body":{"elements":{"type":"string"},"default":[],"type":"array"}},{"headers":{"elements":{"type":"string"},"default":[],"type":"array"}},{"querystring":{"elements":{"type":"string"},"default":[],"type":"array"}}],"type":"record"}},{"rename":{"required":true,"fields":[{"body":{"elements":{"type":"string"},"default":[],"type":"array"}},{"headers":{"elements":{"type":"string"},"default":[],"type":"array"}},{"querystring":{"elements":{"type":"string"},"default":[],"type":"array"}}],"type":"record"}},{"replace":{"required":true,"fields":[{"body":{"elements":{"type":"string"},"default":[],"type":"array"}},{"headers":{"elements":{"type":"string"},"default":[],"type":"array"}},{"querystring":{"elements":{"type":"string"},"default":[],"type":"array"}},{"uri":{"type":"string"}}],"type":"record"}},{"add":{"required":true,"fields":[{"body":{"elements":{"type":"string"},"default":[],"type":"array"}},{"headers":{"elements":{"type":"string"},"default":[],"type":"array"}},{"querystring":{"elements":{"type":"string"},"default":[],"type":"array"}}],"type":"record"}},{"append":{"required":true,"fields":[{"body":{"elements":{"type":"string"},"default":[],"type":"array"}},{"headers":{"elements":{"type":"string"},"default":[],"type":"array"}},{"querystring":{"elements":{"type":"string"},"default":[],"type":"array"}}],"type":"record"}},{"allow":{"required":true,"fields":[{"body":{"elements":{"type":"string"},"type":"set"}}],"type":"record"}}],"shorthands":[{}],"type":"record"}}]}
+{
+  "fields": [
+    {
+      "config": {
+        "required": true,
+        "fields": [
+          {
+            "http_method": {
+              "match": "^%u+$",
+              "type": "string"
+            }
+          },
+          {
+            "remove": {
+              "required": true,
+              "fields": [
+                {
+                  "body": {
+                    "elements": {
+                      "type": "string"
+                    },
+                    "default": [
+
+                    ],
+                    "type": "array"
+                  }
+                },
+                {
+                  "headers": {
+                    "elements": {
+                      "type": "string"
+                    },
+                    "default": [
+
+                    ],
+                    "type": "array"
+                  }
+                },
+                {
+                  "querystring": {
+                    "elements": {
+                      "type": "string"
+                    },
+                    "default": [
+
+                    ],
+                    "type": "array"
+                  }
+                }
+              ],
+              "type": "record"
+            }
+          },
+          {
+            "rename": {
+              "required": true,
+              "fields": [
+                {
+                  "body": {
+                    "elements": {
+                      "type": "string"
+                    },
+                    "default": [
+
+                    ],
+                    "type": "array"
+                  }
+                },
+                {
+                  "headers": {
+                    "elements": {
+                      "type": "string"
+                    },
+                    "default": [
+
+                    ],
+                    "type": "array"
+                  }
+                },
+                {
+                  "querystring": {
+                    "elements": {
+                      "type": "string"
+                    },
+                    "default": [
+
+                    ],
+                    "type": "array"
+                  }
+                }
+              ],
+              "type": "record"
+            }
+          },
+          {
+            "replace": {
+              "required": true,
+              "fields": [
+                {
+                  "body": {
+                    "elements": {
+                      "type": "string"
+                    },
+                    "default": [
+
+                    ],
+                    "type": "array"
+                  }
+                },
+                {
+                  "headers": {
+                    "elements": {
+                      "type": "string"
+                    },
+                    "default": [
+
+                    ],
+                    "type": "array"
+                  }
+                },
+                {
+                  "querystring": {
+                    "elements": {
+                      "type": "string"
+                    },
+                    "default": [
+
+                    ],
+                    "type": "array"
+                  }
+                },
+                {
+                  "uri": {
+                    "type": "string"
+                  }
+                }
+              ],
+              "type": "record"
+            }
+          },
+          {
+            "add": {
+              "required": true,
+              "fields": [
+                {
+                  "body": {
+                    "elements": {
+                      "type": "string"
+                    },
+                    "default": [
+
+                    ],
+                    "type": "array"
+                  }
+                },
+                {
+                  "headers": {
+                    "elements": {
+                      "type": "string"
+                    },
+                    "default": [
+
+                    ],
+                    "type": "array"
+                  }
+                },
+                {
+                  "querystring": {
+                    "elements": {
+                      "type": "string"
+                    },
+                    "default": [
+
+                    ],
+                    "type": "array"
+                  }
+                }
+              ],
+              "type": "record"
+            }
+          },
+          {
+            "append": {
+              "required": true,
+              "fields": [
+                {
+                  "body": {
+                    "elements": {
+                      "type": "string"
+                    },
+                    "default": [
+
+                    ],
+                    "type": "array"
+                  }
+                },
+                {
+                  "headers": {
+                    "elements": {
+                      "type": "string"
+                    },
+                    "default": [
+
+                    ],
+                    "type": "array"
+                  }
+                },
+                {
+                  "querystring": {
+                    "elements": {
+                      "type": "string"
+                    },
+                    "default": [
+
+                    ],
+                    "type": "array"
+                  }
+                }
+              ],
+              "type": "record"
+            }
+          },
+          {
+            "allow": {
+              "required": true,
+              "fields": [
+                {
+                  "body": {
+                    "elements": {
+                      "type": "string"
+                    },
+                    "type": "set"
+                  }
+                }
+              ],
+              "type": "record"
+            }
+          }
+        ],
+        "shorthands": [
+          {
+          }
+        ],
+        "type": "record"
+      }
+    }
+  ]
+}

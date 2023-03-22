@@ -1,1 +1,179 @@
-{"fields":[{"protocols":{"elements":{"one_of":["grpc","grpcs","http","https"],"type":"string"},"required":true,"default":["grpc","grpcs","http","https"],"type":"set"}},{"config":{"fields":[{"header_name":{"default":"x-kong-limit","type":"string"}},{"limit_by":{"one_of":["consumer","credential","ip"],"default":"consumer","type":"string"}},{"policy":{"one_of":["local","cluster","redis"],"default":"cluster","type":"string"}},{"fault_tolerant":{"required":true,"default":true,"type":"boolean"}},{"redis_host":{"type":"string"}},{"redis_port":{"between":[0,65535],"default":6379,"type":"integer"}},{"redis_password":{"len_min":0,"type":"string"}},{"redis_timeout":{"default":2000,"type":"number"}},{"redis_database":{"default":0,"type":"number"}},{"block_on_first_violation":{"required":true,"default":false,"type":"boolean"}},{"hide_client_headers":{"required":true,"default":false,"type":"boolean"}},{"limits":{"keys":{"type":"string"},"values":{"entity_checks":[{"at_least_one_of":["second","minute","hour","day","month","year"]}],"fields":[{"second":{"gt":0,"type":"number"}},{"minute":{"gt":0,"type":"number"}},{"hour":{"gt":0,"type":"number"}},{"day":{"gt":0,"type":"number"}},{"month":{"gt":0,"type":"number"}},{"year":{"gt":0,"type":"number"}}],"required":true,"type":"record"},"required":true,"len_min":1,"type":"map"}}],"required":true,"type":"record"}}]}
+{
+  "fields": [
+    {
+      "protocols": {
+        "elements": {
+          "one_of": [
+            "grpc",
+            "grpcs",
+            "http",
+            "https"
+          ],
+          "type": "string"
+        },
+        "required": true,
+        "default": [
+          "grpc",
+          "grpcs",
+          "http",
+          "https"
+        ],
+        "type": "set"
+      }
+    },
+    {
+      "config": {
+        "fields": [
+          {
+            "header_name": {
+              "default": "x-kong-limit",
+              "type": "string"
+            }
+          },
+          {
+            "limit_by": {
+              "one_of": [
+                "consumer",
+                "credential",
+                "ip"
+              ],
+              "default": "consumer",
+              "type": "string"
+            }
+          },
+          {
+            "policy": {
+              "one_of": [
+                "local",
+                "cluster",
+                "redis"
+              ],
+              "default": "cluster",
+              "type": "string"
+            }
+          },
+          {
+            "fault_tolerant": {
+              "required": true,
+              "default": true,
+              "type": "boolean"
+            }
+          },
+          {
+            "redis_host": {
+              "type": "string"
+            }
+          },
+          {
+            "redis_port": {
+              "between": [
+                0,
+                65535
+              ],
+              "default": 6379,
+              "type": "integer"
+            }
+          },
+          {
+            "redis_password": {
+              "len_min": 0,
+              "type": "string"
+            }
+          },
+          {
+            "redis_timeout": {
+              "default": 2000,
+              "type": "number"
+            }
+          },
+          {
+            "redis_database": {
+              "default": 0,
+              "type": "number"
+            }
+          },
+          {
+            "block_on_first_violation": {
+              "required": true,
+              "default": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "hide_client_headers": {
+              "required": true,
+              "default": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "limits": {
+              "keys": {
+                "type": "string"
+              },
+              "values": {
+                "entity_checks": [
+                  {
+                    "at_least_one_of": [
+                      "second",
+                      "minute",
+                      "hour",
+                      "day",
+                      "month",
+                      "year"
+                    ]
+                  }
+                ],
+                "fields": [
+                  {
+                    "second": {
+                      "gt": 0,
+                      "type": "number"
+                    }
+                  },
+                  {
+                    "minute": {
+                      "gt": 0,
+                      "type": "number"
+                    }
+                  },
+                  {
+                    "hour": {
+                      "gt": 0,
+                      "type": "number"
+                    }
+                  },
+                  {
+                    "day": {
+                      "gt": 0,
+                      "type": "number"
+                    }
+                  },
+                  {
+                    "month": {
+                      "gt": 0,
+                      "type": "number"
+                    }
+                  },
+                  {
+                    "year": {
+                      "gt": 0,
+                      "type": "number"
+                    }
+                  }
+                ],
+                "required": true,
+                "type": "record"
+              },
+              "required": true,
+              "len_min": 1,
+              "type": "map"
+            }
+          }
+        ],
+        "required": true,
+        "type": "record"
+      }
+    }
+  ]
+}

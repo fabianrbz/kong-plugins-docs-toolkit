@@ -1,1 +1,382 @@
-{"fields":[{"consumer":{"eq":null,"type":"foreign","reference":"consumers"}},{"service":{"eq":null,"type":"foreign","reference":"services"}},{"route":{"eq":null,"type":"foreign","reference":"routes"}},{"protocols":{"elements":{"one_of":["grpc","grpcs","http","https"],"type":"string"},"required":true,"type":"set","default":["grpc","grpcs","http","https"]}},{"config":{"fields":[{"account_email":{"referenceable":true,"match":"%w*%p*@+%w*%.?%w*","type":"string","encrypted":true,"required":true}},{"api_uri":{"default":"https://acme-v02.api.letsencrypt.org/directory","type":"string"}},{"tos_accepted":{"type":"boolean","default":false}},{"eab_kid":{"type":"string","encrypted":true,"referenceable":true}},{"eab_hmac_key":{"type":"string","encrypted":true,"referenceable":true}},{"cert_type":{"type":"string","one_of":["rsa","ecc"],"default":"rsa"}},{"rsa_key_size":{"type":"number","one_of":[2048,3072,4096],"default":4096}},{"renew_threshold_days":{"type":"number","default":14}},{"domains":{"elements":{"type":"string","match_all":[{"err":"invalid wildcard: must have at most one wildcard","pattern":"^[^*]*%*?[^*]*$"}],"match_any":{"err":"invalid wildcard: must be placed at leftmost or rightmost label","patterns":["^%*%.","%.%*$","^[^*]*$"]}},"type":"array"}},{"allow_any_domain":{"type":"boolean","default":false}},{"fail_backoff_minutes":{"type":"number","default":5}},{"storage":{"type":"string","one_of":["kong","shm","redis","consul","vault"],"default":"shm"}},{"storage_config":{"fields":[{"shm":{"fields":[{"shm_name":{"default":"kong","type":"string"}}],"type":"record","required":true}},{"kong":{"fields":[],"type":"record","required":true}},{"redis":{"fields":[{"host":{"type":"string"}},{"port":{"between":[0,65535],"type":"integer"}},{"database":{"type":"number"}},{"auth":{"type":"string","referenceable":true}},{"ssl":{"type":"boolean","required":true,"default":false}},{"ssl_verify":{"type":"boolean","required":true,"default":false}},{"ssl_server_name":{"type":"string","required":false}}],"type":"record","required":true}},{"consul":{"fields":[{"https":{"type":"boolean","default":false}},{"host":{"type":"string"}},{"port":{"between":[0,65535],"type":"integer"}},{"kv_path":{"type":"string"}},{"timeout":{"type":"number"}},{"token":{"type":"string","referenceable":true}}],"type":"record","required":true}},{"vault":{"fields":[{"https":{"type":"boolean","default":false}},{"host":{"type":"string"}},{"port":{"between":[0,65535],"type":"integer"}},{"kv_path":{"type":"string"}},{"timeout":{"type":"number"}},{"token":{"type":"string","referenceable":true}},{"tls_verify":{"type":"boolean","default":true}},{"tls_server_name":{"type":"string"}},{"auth_method":{"type":"string","one_of":["token","kubernetes"],"default":"token"}},{"auth_path":{"type":"string"}},{"auth_role":{"type":"string"}},{"jwt_path":{"type":"string"}}],"type":"record","required":true}}],"type":"record","required":true}},{"preferred_chain":{"type":"string"}},{"enable_ipv4_common_name":{"type":"boolean","default":true}}],"type":"record","required":true}}]}
+{
+  "fields": [
+    {
+      "consumer": {
+        "eq": null,
+        "type": "foreign",
+        "reference": "consumers"
+      }
+    },
+    {
+      "service": {
+        "eq": null,
+        "type": "foreign",
+        "reference": "services"
+      }
+    },
+    {
+      "route": {
+        "eq": null,
+        "type": "foreign",
+        "reference": "routes"
+      }
+    },
+    {
+      "protocols": {
+        "elements": {
+          "one_of": [
+            "grpc",
+            "grpcs",
+            "http",
+            "https"
+          ],
+          "type": "string"
+        },
+        "required": true,
+        "type": "set",
+        "default": [
+          "grpc",
+          "grpcs",
+          "http",
+          "https"
+        ]
+      }
+    },
+    {
+      "config": {
+        "fields": [
+          {
+            "account_email": {
+              "referenceable": true,
+              "match": "%w*%p*@+%w*%.?%w*",
+              "type": "string",
+              "encrypted": true,
+              "required": true
+            }
+          },
+          {
+            "api_uri": {
+              "default": "https://acme-v02.api.letsencrypt.org/directory",
+              "type": "string"
+            }
+          },
+          {
+            "tos_accepted": {
+              "type": "boolean",
+              "default": false
+            }
+          },
+          {
+            "eab_kid": {
+              "type": "string",
+              "encrypted": true,
+              "referenceable": true
+            }
+          },
+          {
+            "eab_hmac_key": {
+              "type": "string",
+              "encrypted": true,
+              "referenceable": true
+            }
+          },
+          {
+            "cert_type": {
+              "type": "string",
+              "one_of": [
+                "rsa",
+                "ecc"
+              ],
+              "default": "rsa"
+            }
+          },
+          {
+            "rsa_key_size": {
+              "type": "number",
+              "one_of": [
+                2048,
+                3072,
+                4096
+              ],
+              "default": 4096
+            }
+          },
+          {
+            "renew_threshold_days": {
+              "type": "number",
+              "default": 14
+            }
+          },
+          {
+            "domains": {
+              "elements": {
+                "type": "string",
+                "match_all": [
+                  {
+                    "err": "invalid wildcard: must have at most one wildcard",
+                    "pattern": "^[^*]*%*?[^*]*$"
+                  }
+                ],
+                "match_any": {
+                  "err": "invalid wildcard: must be placed at leftmost or rightmost label",
+                  "patterns": [
+                    "^%*%.",
+                    "%.%*$",
+                    "^[^*]*$"
+                  ]
+                }
+              },
+              "type": "array"
+            }
+          },
+          {
+            "allow_any_domain": {
+              "type": "boolean",
+              "default": false
+            }
+          },
+          {
+            "fail_backoff_minutes": {
+              "type": "number",
+              "default": 5
+            }
+          },
+          {
+            "storage": {
+              "type": "string",
+              "one_of": [
+                "kong",
+                "shm",
+                "redis",
+                "consul",
+                "vault"
+              ],
+              "default": "shm"
+            }
+          },
+          {
+            "storage_config": {
+              "fields": [
+                {
+                  "shm": {
+                    "fields": [
+                      {
+                        "shm_name": {
+                          "default": "kong",
+                          "type": "string"
+                        }
+                      }
+                    ],
+                    "type": "record",
+                    "required": true
+                  }
+                },
+                {
+                  "kong": {
+                    "fields": [
+
+                    ],
+                    "type": "record",
+                    "required": true
+                  }
+                },
+                {
+                  "redis": {
+                    "fields": [
+                      {
+                        "host": {
+                          "type": "string"
+                        }
+                      },
+                      {
+                        "port": {
+                          "between": [
+                            0,
+                            65535
+                          ],
+                          "type": "integer"
+                        }
+                      },
+                      {
+                        "database": {
+                          "type": "number"
+                        }
+                      },
+                      {
+                        "auth": {
+                          "type": "string",
+                          "referenceable": true
+                        }
+                      },
+                      {
+                        "ssl": {
+                          "type": "boolean",
+                          "required": true,
+                          "default": false
+                        }
+                      },
+                      {
+                        "ssl_verify": {
+                          "type": "boolean",
+                          "required": true,
+                          "default": false
+                        }
+                      },
+                      {
+                        "ssl_server_name": {
+                          "type": "string",
+                          "required": false
+                        }
+                      }
+                    ],
+                    "type": "record",
+                    "required": true
+                  }
+                },
+                {
+                  "consul": {
+                    "fields": [
+                      {
+                        "https": {
+                          "type": "boolean",
+                          "default": false
+                        }
+                      },
+                      {
+                        "host": {
+                          "type": "string"
+                        }
+                      },
+                      {
+                        "port": {
+                          "between": [
+                            0,
+                            65535
+                          ],
+                          "type": "integer"
+                        }
+                      },
+                      {
+                        "kv_path": {
+                          "type": "string"
+                        }
+                      },
+                      {
+                        "timeout": {
+                          "type": "number"
+                        }
+                      },
+                      {
+                        "token": {
+                          "type": "string",
+                          "referenceable": true
+                        }
+                      }
+                    ],
+                    "type": "record",
+                    "required": true
+                  }
+                },
+                {
+                  "vault": {
+                    "fields": [
+                      {
+                        "https": {
+                          "type": "boolean",
+                          "default": false
+                        }
+                      },
+                      {
+                        "host": {
+                          "type": "string"
+                        }
+                      },
+                      {
+                        "port": {
+                          "between": [
+                            0,
+                            65535
+                          ],
+                          "type": "integer"
+                        }
+                      },
+                      {
+                        "kv_path": {
+                          "type": "string"
+                        }
+                      },
+                      {
+                        "timeout": {
+                          "type": "number"
+                        }
+                      },
+                      {
+                        "token": {
+                          "type": "string",
+                          "referenceable": true
+                        }
+                      },
+                      {
+                        "tls_verify": {
+                          "type": "boolean",
+                          "default": true
+                        }
+                      },
+                      {
+                        "tls_server_name": {
+                          "type": "string"
+                        }
+                      },
+                      {
+                        "auth_method": {
+                          "type": "string",
+                          "one_of": [
+                            "token",
+                            "kubernetes"
+                          ],
+                          "default": "token"
+                        }
+                      },
+                      {
+                        "auth_path": {
+                          "type": "string"
+                        }
+                      },
+                      {
+                        "auth_role": {
+                          "type": "string"
+                        }
+                      },
+                      {
+                        "jwt_path": {
+                          "type": "string"
+                        }
+                      }
+                    ],
+                    "type": "record",
+                    "required": true
+                  }
+                }
+              ],
+              "type": "record",
+              "required": true
+            }
+          },
+          {
+            "preferred_chain": {
+              "type": "string"
+            }
+          },
+          {
+            "enable_ipv4_common_name": {
+              "type": "boolean",
+              "default": true
+            }
+          }
+        ],
+        "type": "record",
+        "required": true
+      }
+    }
+  ]
+}

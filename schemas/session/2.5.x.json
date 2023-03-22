@@ -1,1 +1,132 @@
-{"fields":[{"consumer":{"reference":"consumers","eq":null,"type":"foreign"}},{"config":{"required":true,"type":"record","fields":[{"secret":{"required":false,"type":"string","default":"tEnCAsG74jP7HZMGiMJewKaQd6cLCK9pyYoqu3pygMIy"}},{"cookie_name":{"type":"string","default":"session"}},{"cookie_lifetime":{"type":"number","default":3600}},{"cookie_idletime":{"type":"number"}},{"cookie_renew":{"type":"number","default":600}},{"cookie_path":{"type":"string","default":"/"}},{"cookie_domain":{"type":"string"}},{"cookie_samesite":{"default":"Strict","one_of":["Strict","Lax","None","off"],"type":"string"}},{"cookie_httponly":{"type":"boolean","default":true}},{"cookie_secure":{"type":"boolean","default":true}},{"cookie_discard":{"type":"number","default":10}},{"storage":{"required":false,"one_of":["cookie","kong"],"type":"string","default":"cookie"}},{"logout_methods":{"default":["POST","DELETE"],"type":"array","elements":{"type":"string","one_of":["GET","POST","DELETE"]}}},{"logout_query_arg":{"required":false,"type":"string","default":"session_logout"}},{"logout_post_arg":{"required":false,"type":"string","default":"session_logout"}}]}}]}
+{
+  "fields": [
+    {
+      "consumer": {
+        "reference": "consumers",
+        "eq": null,
+        "type": "foreign"
+      }
+    },
+    {
+      "config": {
+        "required": true,
+        "type": "record",
+        "fields": [
+          {
+            "secret": {
+              "required": false,
+              "type": "string",
+              "default": "tEnCAsG74jP7HZMGiMJewKaQd6cLCK9pyYoqu3pygMIy"
+            }
+          },
+          {
+            "cookie_name": {
+              "type": "string",
+              "default": "session"
+            }
+          },
+          {
+            "cookie_lifetime": {
+              "type": "number",
+              "default": 3600
+            }
+          },
+          {
+            "cookie_idletime": {
+              "type": "number"
+            }
+          },
+          {
+            "cookie_renew": {
+              "type": "number",
+              "default": 600
+            }
+          },
+          {
+            "cookie_path": {
+              "type": "string",
+              "default": "/"
+            }
+          },
+          {
+            "cookie_domain": {
+              "type": "string"
+            }
+          },
+          {
+            "cookie_samesite": {
+              "default": "Strict",
+              "one_of": [
+                "Strict",
+                "Lax",
+                "None",
+                "off"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "cookie_httponly": {
+              "type": "boolean",
+              "default": true
+            }
+          },
+          {
+            "cookie_secure": {
+              "type": "boolean",
+              "default": true
+            }
+          },
+          {
+            "cookie_discard": {
+              "type": "number",
+              "default": 10
+            }
+          },
+          {
+            "storage": {
+              "required": false,
+              "one_of": [
+                "cookie",
+                "kong"
+              ],
+              "type": "string",
+              "default": "cookie"
+            }
+          },
+          {
+            "logout_methods": {
+              "default": [
+                "POST",
+                "DELETE"
+              ],
+              "type": "array",
+              "elements": {
+                "type": "string",
+                "one_of": [
+                  "GET",
+                  "POST",
+                  "DELETE"
+                ]
+              }
+            }
+          },
+          {
+            "logout_query_arg": {
+              "required": false,
+              "type": "string",
+              "default": "session_logout"
+            }
+          },
+          {
+            "logout_post_arg": {
+              "required": false,
+              "type": "string",
+              "default": "session_logout"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

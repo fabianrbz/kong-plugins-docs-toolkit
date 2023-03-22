@@ -1,1 +1,84 @@
-{"fields":[{"consumer":{"type":"foreign","eq":null,"reference":"consumers"}},{"protocols":{"elements":{"one_of":["grpc","grpcs","http","https"],"type":"string"},"required":true,"default":["grpc","grpcs","http","https"],"type":"set"}},{"config":{"shorthand_fields":[{"blacklist":{"elements":{"is_regex":true,"type":"string"},"type":"array"}},{"whitelist":{"elements":{"is_regex":true,"type":"string"},"type":"array"}}],"fields":[{"allow":{"default":[],"elements":{"is_regex":true,"type":"string"},"type":"array"}},{"deny":{"default":[],"elements":{"is_regex":true,"type":"string"},"type":"array"}}],"required":true,"type":"record"}}]}
+{
+  "fields": [
+    {
+      "consumer": {
+        "type": "foreign",
+        "eq": null,
+        "reference": "consumers"
+      }
+    },
+    {
+      "protocols": {
+        "elements": {
+          "one_of": [
+            "grpc",
+            "grpcs",
+            "http",
+            "https"
+          ],
+          "type": "string"
+        },
+        "required": true,
+        "default": [
+          "grpc",
+          "grpcs",
+          "http",
+          "https"
+        ],
+        "type": "set"
+      }
+    },
+    {
+      "config": {
+        "shorthand_fields": [
+          {
+            "blacklist": {
+              "elements": {
+                "is_regex": true,
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          {
+            "whitelist": {
+              "elements": {
+                "is_regex": true,
+                "type": "string"
+              },
+              "type": "array"
+            }
+          }
+        ],
+        "fields": [
+          {
+            "allow": {
+              "default": [
+
+              ],
+              "elements": {
+                "is_regex": true,
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          {
+            "deny": {
+              "default": [
+
+              ],
+              "elements": {
+                "is_regex": true,
+                "type": "string"
+              },
+              "type": "array"
+            }
+          }
+        ],
+        "required": true,
+        "type": "record"
+      }
+    }
+  ]
+}

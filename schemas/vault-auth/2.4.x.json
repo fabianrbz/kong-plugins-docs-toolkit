@@ -1,1 +1,71 @@
-{"fields":[{"consumer":{"type":"foreign","reference":"consumers","eq":null}},{"config":{"type":"record","required":true,"fields":[{"access_token_name":{"elements":{"type":"string"},"type":"string","default":"access_token","required":true}},{"secret_token_name":{"elements":{"type":"string"},"type":"string","default":"secret_token","required":true}},{"vault":{"type":"foreign","reference":"vaults","required":true}},{"hide_credentials":{"default":false,"type":"boolean"}},{"anonymous":{"type":"string","legacy":true,"uuid":true}},{"tokens_in_body":{"default":false,"type":"boolean"}},{"run_on_preflight":{"default":true,"type":"boolean"}}]}}]}
+{
+  "fields": [
+    {
+      "consumer": {
+        "type": "foreign",
+        "reference": "consumers",
+        "eq": null
+      }
+    },
+    {
+      "config": {
+        "type": "record",
+        "required": true,
+        "fields": [
+          {
+            "access_token_name": {
+              "elements": {
+                "type": "string"
+              },
+              "type": "string",
+              "default": "access_token",
+              "required": true
+            }
+          },
+          {
+            "secret_token_name": {
+              "elements": {
+                "type": "string"
+              },
+              "type": "string",
+              "default": "secret_token",
+              "required": true
+            }
+          },
+          {
+            "vault": {
+              "type": "foreign",
+              "reference": "vaults",
+              "required": true
+            }
+          },
+          {
+            "hide_credentials": {
+              "default": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "anonymous": {
+              "type": "string",
+              "legacy": true,
+              "uuid": true
+            }
+          },
+          {
+            "tokens_in_body": {
+              "default": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "run_on_preflight": {
+              "default": true,
+              "type": "boolean"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

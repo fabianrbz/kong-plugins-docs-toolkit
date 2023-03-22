@@ -1,1 +1,123 @@
-{"fields":[{"config":{"type":"record","required":true,"fields":[{"http_endpoint":{"type":"string"}},{"sample_ratio":{"between":[0,1],"type":"number","default":0.001}},{"default_service_name":{"type":"string"}},{"include_credential":{"type":"boolean","default":true,"required":true}},{"traceid_byte_count":{"default":16,"type":"integer","one_of":[8,16],"required":true}},{"header_type":{"default":"preserve","type":"string","one_of":["preserve","b3","b3-single","w3c","jaeger","ot"],"required":true}},{"default_header_type":{"default":"b3","type":"string","one_of":["b3","b3-single","w3c","jaeger","ot"],"required":true}},{"tags_header":{"type":"string","default":"Zipkin-Tags","required":true}},{"static_tags":{"elements":{"fields":[{"name":{"type":"string","not_one_of":["error","http.method","http.path","http.status_code","kong.balancer.state","kong.balancer.try","kong.consumer","kong.credential","kong.node.id","kong.route","kong.service","lc","peer.hostname"],"required":true}},{"value":{"required":true,"type":"string"}}],"type":"record"},"type":"array"}}]}}]}
+{
+  "fields": [
+    {
+      "config": {
+        "type": "record",
+        "required": true,
+        "fields": [
+          {
+            "http_endpoint": {
+              "type": "string"
+            }
+          },
+          {
+            "sample_ratio": {
+              "between": [
+                0,
+                1
+              ],
+              "type": "number",
+              "default": 0.001
+            }
+          },
+          {
+            "default_service_name": {
+              "type": "string"
+            }
+          },
+          {
+            "include_credential": {
+              "type": "boolean",
+              "default": true,
+              "required": true
+            }
+          },
+          {
+            "traceid_byte_count": {
+              "default": 16,
+              "type": "integer",
+              "one_of": [
+                8,
+                16
+              ],
+              "required": true
+            }
+          },
+          {
+            "header_type": {
+              "default": "preserve",
+              "type": "string",
+              "one_of": [
+                "preserve",
+                "b3",
+                "b3-single",
+                "w3c",
+                "jaeger",
+                "ot"
+              ],
+              "required": true
+            }
+          },
+          {
+            "default_header_type": {
+              "default": "b3",
+              "type": "string",
+              "one_of": [
+                "b3",
+                "b3-single",
+                "w3c",
+                "jaeger",
+                "ot"
+              ],
+              "required": true
+            }
+          },
+          {
+            "tags_header": {
+              "type": "string",
+              "default": "Zipkin-Tags",
+              "required": true
+            }
+          },
+          {
+            "static_tags": {
+              "elements": {
+                "fields": [
+                  {
+                    "name": {
+                      "type": "string",
+                      "not_one_of": [
+                        "error",
+                        "http.method",
+                        "http.path",
+                        "http.status_code",
+                        "kong.balancer.state",
+                        "kong.balancer.try",
+                        "kong.consumer",
+                        "kong.credential",
+                        "kong.node.id",
+                        "kong.route",
+                        "kong.service",
+                        "lc",
+                        "peer.hostname"
+                      ],
+                      "required": true
+                    }
+                  },
+                  {
+                    "value": {
+                      "required": true,
+                      "type": "string"
+                    }
+                  }
+                ],
+                "type": "record"
+              },
+              "type": "array"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

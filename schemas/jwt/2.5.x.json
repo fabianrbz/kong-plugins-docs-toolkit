@@ -1,1 +1,120 @@
-{"fields":[{"consumer":{"reference":"consumers","eq":null,"type":"foreign"}},{"protocols":{"required":true,"default":["grpc","grpcs","http","https"],"type":"set","elements":{"type":"string","one_of":["grpc","grpcs","http","https"]}}},{"config":{"required":true,"type":"record","fields":[{"uri_param_names":{"default":["jwt"],"type":"set","elements":{"type":"string"}}},{"cookie_names":{"default":[],"type":"set","elements":{"type":"string"}}},{"key_claim_name":{"type":"string","default":"iss"}},{"secret_is_base64":{"required":true,"type":"boolean","default":false}},{"claims_to_verify":{"type":"set","elements":{"type":"string","one_of":["exp","nbf"]}}},{"anonymous":{"type":"string"}},{"run_on_preflight":{"required":true,"type":"boolean","default":true}},{"maximum_expiration":{"default":0,"type":"number","between":[0,31536000]}},{"header_names":{"default":["authorization"],"type":"set","elements":{"type":"string"}}}]}}]}
+{
+  "fields": [
+    {
+      "consumer": {
+        "reference": "consumers",
+        "eq": null,
+        "type": "foreign"
+      }
+    },
+    {
+      "protocols": {
+        "required": true,
+        "default": [
+          "grpc",
+          "grpcs",
+          "http",
+          "https"
+        ],
+        "type": "set",
+        "elements": {
+          "type": "string",
+          "one_of": [
+            "grpc",
+            "grpcs",
+            "http",
+            "https"
+          ]
+        }
+      }
+    },
+    {
+      "config": {
+        "required": true,
+        "type": "record",
+        "fields": [
+          {
+            "uri_param_names": {
+              "default": [
+                "jwt"
+              ],
+              "type": "set",
+              "elements": {
+                "type": "string"
+              }
+            }
+          },
+          {
+            "cookie_names": {
+              "default": [
+
+              ],
+              "type": "set",
+              "elements": {
+                "type": "string"
+              }
+            }
+          },
+          {
+            "key_claim_name": {
+              "type": "string",
+              "default": "iss"
+            }
+          },
+          {
+            "secret_is_base64": {
+              "required": true,
+              "type": "boolean",
+              "default": false
+            }
+          },
+          {
+            "claims_to_verify": {
+              "type": "set",
+              "elements": {
+                "type": "string",
+                "one_of": [
+                  "exp",
+                  "nbf"
+                ]
+              }
+            }
+          },
+          {
+            "anonymous": {
+              "type": "string"
+            }
+          },
+          {
+            "run_on_preflight": {
+              "required": true,
+              "type": "boolean",
+              "default": true
+            }
+          },
+          {
+            "maximum_expiration": {
+              "default": 0,
+              "type": "number",
+              "between": [
+                0,
+                31536000
+              ]
+            }
+          },
+          {
+            "header_names": {
+              "default": [
+                "authorization"
+              ],
+              "type": "set",
+              "elements": {
+                "type": "string"
+              }
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,1 +1,155 @@
-{"fields":[{"protocols":{"required":true,"elements":{"one_of":["grpc","grpcs","http","https","tcp","tls","tls_passthrough","udp"],"type":"string"},"default":["grpc","grpcs","http","https"],"type":"set"}},{"config":{"required":true,"fields":[{"host":{"default":"logs-01.loggly.com","type":"string"}},{"port":{"between":[0,65535],"default":514,"type":"integer"}},{"key":{"required":true,"referenceable":true,"encrypted":true,"type":"string"}},{"tags":{"elements":{"type":"string"},"default":["kong"],"type":"set"}},{"log_level":{"one_of":["debug","info","notice","warning","err","crit","alert","emerg"],"default":"info","type":"string"}},{"successful_severity":{"one_of":["debug","info","notice","warning","err","crit","alert","emerg"],"default":"info","type":"string"}},{"client_errors_severity":{"one_of":["debug","info","notice","warning","err","crit","alert","emerg"],"default":"info","type":"string"}},{"server_errors_severity":{"one_of":["debug","info","notice","warning","err","crit","alert","emerg"],"default":"info","type":"string"}},{"timeout":{"default":10000,"type":"number"}},{"custom_fields_by_lua":{"keys":{"len_min":1,"type":"string"},"values":{"len_min":1,"type":"string"},"type":"map"}}],"type":"record"}}]}
+{
+  "fields": [
+    {
+      "protocols": {
+        "required": true,
+        "elements": {
+          "one_of": [
+            "grpc",
+            "grpcs",
+            "http",
+            "https",
+            "tcp",
+            "tls",
+            "tls_passthrough",
+            "udp"
+          ],
+          "type": "string"
+        },
+        "default": [
+          "grpc",
+          "grpcs",
+          "http",
+          "https"
+        ],
+        "type": "set"
+      }
+    },
+    {
+      "config": {
+        "required": true,
+        "fields": [
+          {
+            "host": {
+              "default": "logs-01.loggly.com",
+              "type": "string"
+            }
+          },
+          {
+            "port": {
+              "between": [
+                0,
+                65535
+              ],
+              "default": 514,
+              "type": "integer"
+            }
+          },
+          {
+            "key": {
+              "required": true,
+              "referenceable": true,
+              "encrypted": true,
+              "type": "string"
+            }
+          },
+          {
+            "tags": {
+              "elements": {
+                "type": "string"
+              },
+              "default": [
+                "kong"
+              ],
+              "type": "set"
+            }
+          },
+          {
+            "log_level": {
+              "one_of": [
+                "debug",
+                "info",
+                "notice",
+                "warning",
+                "err",
+                "crit",
+                "alert",
+                "emerg"
+              ],
+              "default": "info",
+              "type": "string"
+            }
+          },
+          {
+            "successful_severity": {
+              "one_of": [
+                "debug",
+                "info",
+                "notice",
+                "warning",
+                "err",
+                "crit",
+                "alert",
+                "emerg"
+              ],
+              "default": "info",
+              "type": "string"
+            }
+          },
+          {
+            "client_errors_severity": {
+              "one_of": [
+                "debug",
+                "info",
+                "notice",
+                "warning",
+                "err",
+                "crit",
+                "alert",
+                "emerg"
+              ],
+              "default": "info",
+              "type": "string"
+            }
+          },
+          {
+            "server_errors_severity": {
+              "one_of": [
+                "debug",
+                "info",
+                "notice",
+                "warning",
+                "err",
+                "crit",
+                "alert",
+                "emerg"
+              ],
+              "default": "info",
+              "type": "string"
+            }
+          },
+          {
+            "timeout": {
+              "default": 10000,
+              "type": "number"
+            }
+          },
+          {
+            "custom_fields_by_lua": {
+              "keys": {
+                "len_min": 1,
+                "type": "string"
+              },
+              "values": {
+                "len_min": 1,
+                "type": "string"
+              },
+              "type": "map"
+            }
+          }
+        ],
+        "type": "record"
+      }
+    }
+  ]
+}

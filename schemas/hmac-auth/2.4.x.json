@@ -1,1 +1,97 @@
-{"fields":[{"consumer":{"type":"foreign","reference":"consumers","eq":null}},{"protocols":{"elements":{"one_of":["grpc","grpcs","http","https"],"type":"string"},"type":"set","default":["grpc","grpcs","http","https"],"required":true}},{"config":{"type":"record","required":true,"fields":[{"hide_credentials":{"type":"boolean","default":false,"required":true}},{"clock_skew":{"type":"number","gt":0,"default":300}},{"anonymous":{"type":"string"}},{"validate_request_body":{"type":"boolean","default":false,"required":true}},{"enforce_headers":{"elements":{"type":"string"},"type":"array","default":[]}},{"algorithms":{"elements":{"one_of":["hmac-sha1","hmac-sha256","hmac-sha384","hmac-sha512"],"type":"string"},"type":"array","default":["hmac-sha1","hmac-sha256","hmac-sha384","hmac-sha512"]}}]}}]}
+{
+  "fields": [
+    {
+      "consumer": {
+        "type": "foreign",
+        "reference": "consumers",
+        "eq": null
+      }
+    },
+    {
+      "protocols": {
+        "elements": {
+          "one_of": [
+            "grpc",
+            "grpcs",
+            "http",
+            "https"
+          ],
+          "type": "string"
+        },
+        "type": "set",
+        "default": [
+          "grpc",
+          "grpcs",
+          "http",
+          "https"
+        ],
+        "required": true
+      }
+    },
+    {
+      "config": {
+        "type": "record",
+        "required": true,
+        "fields": [
+          {
+            "hide_credentials": {
+              "type": "boolean",
+              "default": false,
+              "required": true
+            }
+          },
+          {
+            "clock_skew": {
+              "type": "number",
+              "gt": 0,
+              "default": 300
+            }
+          },
+          {
+            "anonymous": {
+              "type": "string"
+            }
+          },
+          {
+            "validate_request_body": {
+              "type": "boolean",
+              "default": false,
+              "required": true
+            }
+          },
+          {
+            "enforce_headers": {
+              "elements": {
+                "type": "string"
+              },
+              "type": "array",
+              "default": [
+
+              ]
+            }
+          },
+          {
+            "algorithms": {
+              "elements": {
+                "one_of": [
+                  "hmac-sha1",
+                  "hmac-sha256",
+                  "hmac-sha384",
+                  "hmac-sha512"
+                ],
+                "type": "string"
+              },
+              "type": "array",
+              "default": [
+                "hmac-sha1",
+                "hmac-sha256",
+                "hmac-sha384",
+                "hmac-sha512"
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,1 +1,372 @@
-{"fields":[{"protocols":{"type":"set","elements":{"type":"string","one_of":["grpc","grpcs","http","https"]},"default":["grpc","grpcs","http","https"],"required":true}},{"config":{"type":"record","fields":[{"response_code":{"required":true,"len_min":1,"default":[200,301,404],"type":"array","elements":{"type":"integer","between":[100,900]}}},{"request_method":{"required":true,"elements":{"type":"string","one_of":["HEAD","GET","POST","PATCH","PUT"]},"default":["GET","HEAD"],"type":"array"}},{"content_type":{"required":true,"elements":{"type":"string"},"default":["text/plain","application/json"],"type":"array"}},{"cache_ttl":{"type":"integer","default":300,"gt":0}},{"strategy":{"type":"string","one_of":["memory","redis"],"required":true}},{"cache_control":{"required":true,"default":false,"type":"boolean"}},{"storage_ttl":{"type":"integer"}},{"memory":{"type":"record","fields":[{"dictionary_name":{"type":"string","default":"kong_db_cache","required":true}}],"required":true}},{"vary_query_params":{"type":"array","elements":{"type":"string"}}},{"vary_headers":{"type":"array","elements":{"type":"string"}}},{"redis":{"type":"record","fields":[{"host":{"type":"string"}},{"port":{"type":"integer","between":[0,65535]}},{"timeout":{"default":2000,"between":[0,2147483646],"type":"integer"}},{"connect_timeout":{"type":"integer","between":[0,2147483646]}},{"send_timeout":{"type":"integer","between":[0,2147483646]}},{"read_timeout":{"type":"integer","between":[0,2147483646]}},{"username":{"type":"string","referenceable":true}},{"password":{"type":"string","referenceable":true,"encrypted":true}},{"sentinel_username":{"type":"string","referenceable":true}},{"sentinel_password":{"type":"string","referenceable":true,"encrypted":true}},{"database":{"type":"integer","default":0}},{"keepalive_pool_size":{"default":30,"between":[1,2147483646],"type":"integer"}},{"keepalive_backlog":{"type":"integer","between":[0,2147483646]}},{"sentinel_master":{"type":"string"}},{"sentinel_role":{"type":"string","one_of":["master","slave","any"]}},{"sentinel_addresses":{"type":"array","len_min":1,"elements":{"type":"string"}}},{"cluster_addresses":{"type":"array","len_min":1,"elements":{"type":"string"}}},{"ssl":{"default":false,"type":"boolean","required":false}},{"ssl_verify":{"default":false,"type":"boolean","required":false}},{"server_name":{"required":false,"type":"string"}}],"required":true,"entity_checks":[{"mutually_exclusive_sets":{"set2":["host","port"],"set1":["sentinel_master","sentinel_role","sentinel_addresses"]}},{"mutually_exclusive_sets":{"set2":["cluster_addresses"],"set1":["sentinel_master","sentinel_role","sentinel_addresses"]}},{"mutually_exclusive_sets":{"set2":["host","port"],"set1":["cluster_addresses"]}},{"mutually_required":["sentinel_master","sentinel_role","sentinel_addresses"]},{"mutually_required":["host","port"]},{"mutually_required":["connect_timeout","send_timeout","read_timeout"]}]}},{"bypass_on_err":{"type":"boolean","default":false}}],"required":true}}]}
+{
+  "fields": [
+    {
+      "protocols": {
+        "type": "set",
+        "elements": {
+          "type": "string",
+          "one_of": [
+            "grpc",
+            "grpcs",
+            "http",
+            "https"
+          ]
+        },
+        "default": [
+          "grpc",
+          "grpcs",
+          "http",
+          "https"
+        ],
+        "required": true
+      }
+    },
+    {
+      "config": {
+        "type": "record",
+        "fields": [
+          {
+            "response_code": {
+              "required": true,
+              "len_min": 1,
+              "default": [
+                200,
+                301,
+                404
+              ],
+              "type": "array",
+              "elements": {
+                "type": "integer",
+                "between": [
+                  100,
+                  900
+                ]
+              }
+            }
+          },
+          {
+            "request_method": {
+              "required": true,
+              "elements": {
+                "type": "string",
+                "one_of": [
+                  "HEAD",
+                  "GET",
+                  "POST",
+                  "PATCH",
+                  "PUT"
+                ]
+              },
+              "default": [
+                "GET",
+                "HEAD"
+              ],
+              "type": "array"
+            }
+          },
+          {
+            "content_type": {
+              "required": true,
+              "elements": {
+                "type": "string"
+              },
+              "default": [
+                "text/plain",
+                "application/json"
+              ],
+              "type": "array"
+            }
+          },
+          {
+            "cache_ttl": {
+              "type": "integer",
+              "default": 300,
+              "gt": 0
+            }
+          },
+          {
+            "strategy": {
+              "type": "string",
+              "one_of": [
+                "memory",
+                "redis"
+              ],
+              "required": true
+            }
+          },
+          {
+            "cache_control": {
+              "required": true,
+              "default": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "storage_ttl": {
+              "type": "integer"
+            }
+          },
+          {
+            "memory": {
+              "type": "record",
+              "fields": [
+                {
+                  "dictionary_name": {
+                    "type": "string",
+                    "default": "kong_db_cache",
+                    "required": true
+                  }
+                }
+              ],
+              "required": true
+            }
+          },
+          {
+            "vary_query_params": {
+              "type": "array",
+              "elements": {
+                "type": "string"
+              }
+            }
+          },
+          {
+            "vary_headers": {
+              "type": "array",
+              "elements": {
+                "type": "string"
+              }
+            }
+          },
+          {
+            "redis": {
+              "type": "record",
+              "fields": [
+                {
+                  "host": {
+                    "type": "string"
+                  }
+                },
+                {
+                  "port": {
+                    "type": "integer",
+                    "between": [
+                      0,
+                      65535
+                    ]
+                  }
+                },
+                {
+                  "timeout": {
+                    "default": 2000,
+                    "between": [
+                      0,
+                      2147483646
+                    ],
+                    "type": "integer"
+                  }
+                },
+                {
+                  "connect_timeout": {
+                    "type": "integer",
+                    "between": [
+                      0,
+                      2147483646
+                    ]
+                  }
+                },
+                {
+                  "send_timeout": {
+                    "type": "integer",
+                    "between": [
+                      0,
+                      2147483646
+                    ]
+                  }
+                },
+                {
+                  "read_timeout": {
+                    "type": "integer",
+                    "between": [
+                      0,
+                      2147483646
+                    ]
+                  }
+                },
+                {
+                  "username": {
+                    "type": "string",
+                    "referenceable": true
+                  }
+                },
+                {
+                  "password": {
+                    "type": "string",
+                    "referenceable": true,
+                    "encrypted": true
+                  }
+                },
+                {
+                  "sentinel_username": {
+                    "type": "string",
+                    "referenceable": true
+                  }
+                },
+                {
+                  "sentinel_password": {
+                    "type": "string",
+                    "referenceable": true,
+                    "encrypted": true
+                  }
+                },
+                {
+                  "database": {
+                    "type": "integer",
+                    "default": 0
+                  }
+                },
+                {
+                  "keepalive_pool_size": {
+                    "default": 30,
+                    "between": [
+                      1,
+                      2147483646
+                    ],
+                    "type": "integer"
+                  }
+                },
+                {
+                  "keepalive_backlog": {
+                    "type": "integer",
+                    "between": [
+                      0,
+                      2147483646
+                    ]
+                  }
+                },
+                {
+                  "sentinel_master": {
+                    "type": "string"
+                  }
+                },
+                {
+                  "sentinel_role": {
+                    "type": "string",
+                    "one_of": [
+                      "master",
+                      "slave",
+                      "any"
+                    ]
+                  }
+                },
+                {
+                  "sentinel_addresses": {
+                    "type": "array",
+                    "len_min": 1,
+                    "elements": {
+                      "type": "string"
+                    }
+                  }
+                },
+                {
+                  "cluster_addresses": {
+                    "type": "array",
+                    "len_min": 1,
+                    "elements": {
+                      "type": "string"
+                    }
+                  }
+                },
+                {
+                  "ssl": {
+                    "default": false,
+                    "type": "boolean",
+                    "required": false
+                  }
+                },
+                {
+                  "ssl_verify": {
+                    "default": false,
+                    "type": "boolean",
+                    "required": false
+                  }
+                },
+                {
+                  "server_name": {
+                    "required": false,
+                    "type": "string"
+                  }
+                }
+              ],
+              "required": true,
+              "entity_checks": [
+                {
+                  "mutually_exclusive_sets": {
+                    "set2": [
+                      "host",
+                      "port"
+                    ],
+                    "set1": [
+                      "sentinel_master",
+                      "sentinel_role",
+                      "sentinel_addresses"
+                    ]
+                  }
+                },
+                {
+                  "mutually_exclusive_sets": {
+                    "set2": [
+                      "cluster_addresses"
+                    ],
+                    "set1": [
+                      "sentinel_master",
+                      "sentinel_role",
+                      "sentinel_addresses"
+                    ]
+                  }
+                },
+                {
+                  "mutually_exclusive_sets": {
+                    "set2": [
+                      "host",
+                      "port"
+                    ],
+                    "set1": [
+                      "cluster_addresses"
+                    ]
+                  }
+                },
+                {
+                  "mutually_required": [
+                    "sentinel_master",
+                    "sentinel_role",
+                    "sentinel_addresses"
+                  ]
+                },
+                {
+                  "mutually_required": [
+                    "host",
+                    "port"
+                  ]
+                },
+                {
+                  "mutually_required": [
+                    "connect_timeout",
+                    "send_timeout",
+                    "read_timeout"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "bypass_on_err": {
+              "type": "boolean",
+              "default": false
+            }
+          }
+        ],
+        "required": true
+      }
+    }
+  ]
+}

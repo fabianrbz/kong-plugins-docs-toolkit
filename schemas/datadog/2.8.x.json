@@ -1,1 +1,213 @@
-{"fields":[{"protocols":{"required":true,"elements":{"one_of":["grpc","grpcs","http","https","tcp","tls","tls_passthrough","udp"],"type":"string"},"default":["grpc","grpcs","http","https"],"type":"set"}},{"config":{"required":true,"fields":[{"host":{"default":"localhost","type":"string"}},{"port":{"between":[0,65535],"default":8125,"type":"integer"}},{"prefix":{"default":"kong","type":"string"}},{"service_name_tag":{"default":"name","type":"string"}},{"status_tag":{"default":"status","type":"string"}},{"consumer_tag":{"default":"consumer","type":"string"}},{"metrics":{"required":true,"elements":{"fields":[{"name":{"required":true,"one_of":["kong_latency","latency","request_count","request_size","response_size","upstream_latency"],"type":"string"}},{"stat_type":{"required":true,"one_of":["counter","gauge","histogram","meter","set","timer","distribution"],"type":"string"}},{"tags":{"elements":{"match":"^.*[^:]$","type":"string"},"type":"array"}},{"sample_rate":{"between":[0,1],"type":"number"}},{"consumer_identifier":{"one_of":["consumer_id","custom_id","username"],"type":"string"}}],"entity_checks":[{"conditional":{"then_field":"sample_rate","if_field":"stat_type","then_match":{"required":true},"if_match":{"one_of":["counter","gauge"]}}}],"type":"record"},"default":[{"tags":["app:kong"],"stat_type":"counter","sample_rate":1,"name":"request_count","consumer_identifier":"custom_id"},{"consumer_identifier":"custom_id","tags":["app:kong"],"stat_type":"timer","name":"latency"},{"consumer_identifier":"custom_id","tags":["app:kong"],"stat_type":"timer","name":"request_size"},{"consumer_identifier":"custom_id","tags":["app:kong"],"stat_type":"timer","name":"response_size"},{"consumer_identifier":"custom_id","tags":["app:kong"],"stat_type":"timer","name":"upstream_latency"},{"consumer_identifier":"custom_id","tags":["app:kong"],"stat_type":"timer","name":"kong_latency"}],"type":"array"}}],"type":"record"}}]}
+{
+  "fields": [
+    {
+      "protocols": {
+        "required": true,
+        "elements": {
+          "one_of": [
+            "grpc",
+            "grpcs",
+            "http",
+            "https",
+            "tcp",
+            "tls",
+            "tls_passthrough",
+            "udp"
+          ],
+          "type": "string"
+        },
+        "default": [
+          "grpc",
+          "grpcs",
+          "http",
+          "https"
+        ],
+        "type": "set"
+      }
+    },
+    {
+      "config": {
+        "required": true,
+        "fields": [
+          {
+            "host": {
+              "default": "localhost",
+              "type": "string"
+            }
+          },
+          {
+            "port": {
+              "between": [
+                0,
+                65535
+              ],
+              "default": 8125,
+              "type": "integer"
+            }
+          },
+          {
+            "prefix": {
+              "default": "kong",
+              "type": "string"
+            }
+          },
+          {
+            "service_name_tag": {
+              "default": "name",
+              "type": "string"
+            }
+          },
+          {
+            "status_tag": {
+              "default": "status",
+              "type": "string"
+            }
+          },
+          {
+            "consumer_tag": {
+              "default": "consumer",
+              "type": "string"
+            }
+          },
+          {
+            "metrics": {
+              "required": true,
+              "elements": {
+                "fields": [
+                  {
+                    "name": {
+                      "required": true,
+                      "one_of": [
+                        "kong_latency",
+                        "latency",
+                        "request_count",
+                        "request_size",
+                        "response_size",
+                        "upstream_latency"
+                      ],
+                      "type": "string"
+                    }
+                  },
+                  {
+                    "stat_type": {
+                      "required": true,
+                      "one_of": [
+                        "counter",
+                        "gauge",
+                        "histogram",
+                        "meter",
+                        "set",
+                        "timer",
+                        "distribution"
+                      ],
+                      "type": "string"
+                    }
+                  },
+                  {
+                    "tags": {
+                      "elements": {
+                        "match": "^.*[^:]$",
+                        "type": "string"
+                      },
+                      "type": "array"
+                    }
+                  },
+                  {
+                    "sample_rate": {
+                      "between": [
+                        0,
+                        1
+                      ],
+                      "type": "number"
+                    }
+                  },
+                  {
+                    "consumer_identifier": {
+                      "one_of": [
+                        "consumer_id",
+                        "custom_id",
+                        "username"
+                      ],
+                      "type": "string"
+                    }
+                  }
+                ],
+                "entity_checks": [
+                  {
+                    "conditional": {
+                      "then_field": "sample_rate",
+                      "if_field": "stat_type",
+                      "then_match": {
+                        "required": true
+                      },
+                      "if_match": {
+                        "one_of": [
+                          "counter",
+                          "gauge"
+                        ]
+                      }
+                    }
+                  }
+                ],
+                "type": "record"
+              },
+              "default": [
+                {
+                  "tags": [
+                    "app:kong"
+                  ],
+                  "stat_type": "counter",
+                  "sample_rate": 1,
+                  "name": "request_count",
+                  "consumer_identifier": "custom_id"
+                },
+                {
+                  "consumer_identifier": "custom_id",
+                  "tags": [
+                    "app:kong"
+                  ],
+                  "stat_type": "timer",
+                  "name": "latency"
+                },
+                {
+                  "consumer_identifier": "custom_id",
+                  "tags": [
+                    "app:kong"
+                  ],
+                  "stat_type": "timer",
+                  "name": "request_size"
+                },
+                {
+                  "consumer_identifier": "custom_id",
+                  "tags": [
+                    "app:kong"
+                  ],
+                  "stat_type": "timer",
+                  "name": "response_size"
+                },
+                {
+                  "consumer_identifier": "custom_id",
+                  "tags": [
+                    "app:kong"
+                  ],
+                  "stat_type": "timer",
+                  "name": "upstream_latency"
+                },
+                {
+                  "consumer_identifier": "custom_id",
+                  "tags": [
+                    "app:kong"
+                  ],
+                  "stat_type": "timer",
+                  "name": "kong_latency"
+                }
+              ],
+              "type": "array"
+            }
+          }
+        ],
+        "type": "record"
+      }
+    }
+  ]
+}

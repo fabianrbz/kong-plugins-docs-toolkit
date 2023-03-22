@@ -1,1 +1,132 @@
-{"fields":[{"consumer":{"type":"foreign","reference":"consumers","eq":null}},{"config":{"type":"record","required":true,"fields":[{"secret":{"type":"string","default":"KhV9cHuXFQn2XoKnkdW467hGtpW73TvBs9ddNPYUGyMj","required":false}},{"cookie_name":{"default":"session","type":"string"}},{"cookie_lifetime":{"default":3600,"type":"number"}},{"cookie_idletime":{"type":"number"}},{"cookie_renew":{"default":600,"type":"number"}},{"cookie_path":{"default":"/","type":"string"}},{"cookie_domain":{"type":"string"}},{"cookie_samesite":{"type":"string","one_of":["Strict","Lax","None","off"],"default":"Strict"}},{"cookie_httponly":{"default":true,"type":"boolean"}},{"cookie_secure":{"default":true,"type":"boolean"}},{"cookie_discard":{"default":10,"type":"number"}},{"storage":{"default":"cookie","type":"string","one_of":["cookie","kong"],"required":false}},{"logout_methods":{"elements":{"one_of":["GET","POST","DELETE"],"type":"string"},"type":"array","default":["POST","DELETE"]}},{"logout_query_arg":{"type":"string","default":"session_logout","required":false}},{"logout_post_arg":{"type":"string","default":"session_logout","required":false}}]}}]}
+{
+  "fields": [
+    {
+      "consumer": {
+        "type": "foreign",
+        "reference": "consumers",
+        "eq": null
+      }
+    },
+    {
+      "config": {
+        "type": "record",
+        "required": true,
+        "fields": [
+          {
+            "secret": {
+              "type": "string",
+              "default": "KhV9cHuXFQn2XoKnkdW467hGtpW73TvBs9ddNPYUGyMj",
+              "required": false
+            }
+          },
+          {
+            "cookie_name": {
+              "default": "session",
+              "type": "string"
+            }
+          },
+          {
+            "cookie_lifetime": {
+              "default": 3600,
+              "type": "number"
+            }
+          },
+          {
+            "cookie_idletime": {
+              "type": "number"
+            }
+          },
+          {
+            "cookie_renew": {
+              "default": 600,
+              "type": "number"
+            }
+          },
+          {
+            "cookie_path": {
+              "default": "/",
+              "type": "string"
+            }
+          },
+          {
+            "cookie_domain": {
+              "type": "string"
+            }
+          },
+          {
+            "cookie_samesite": {
+              "type": "string",
+              "one_of": [
+                "Strict",
+                "Lax",
+                "None",
+                "off"
+              ],
+              "default": "Strict"
+            }
+          },
+          {
+            "cookie_httponly": {
+              "default": true,
+              "type": "boolean"
+            }
+          },
+          {
+            "cookie_secure": {
+              "default": true,
+              "type": "boolean"
+            }
+          },
+          {
+            "cookie_discard": {
+              "default": 10,
+              "type": "number"
+            }
+          },
+          {
+            "storage": {
+              "default": "cookie",
+              "type": "string",
+              "one_of": [
+                "cookie",
+                "kong"
+              ],
+              "required": false
+            }
+          },
+          {
+            "logout_methods": {
+              "elements": {
+                "one_of": [
+                  "GET",
+                  "POST",
+                  "DELETE"
+                ],
+                "type": "string"
+              },
+              "type": "array",
+              "default": [
+                "POST",
+                "DELETE"
+              ]
+            }
+          },
+          {
+            "logout_query_arg": {
+              "type": "string",
+              "default": "session_logout",
+              "required": false
+            }
+          },
+          {
+            "logout_post_arg": {
+              "type": "string",
+              "default": "session_logout",
+              "required": false
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

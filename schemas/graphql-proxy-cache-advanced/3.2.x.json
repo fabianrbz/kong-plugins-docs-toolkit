@@ -1,1 +1,73 @@
-{"fields":[{"protocols":{"elements":{"one_of":["grpc","grpcs","http","https"],"type":"string"},"required":true,"type":"set","default":["grpc","grpcs","http","https"]}},{"config":{"fields":[{"strategy":{"one_of":["memory"],"type":"string","required":true,"default":"memory"}},{"cache_ttl":{"type":"integer","gt":0,"default":300}},{"memory":{"fields":[{"dictionary_name":{"type":"string","required":true,"default":"kong_db_cache"}}],"type":"record","required":true}},{"vary_headers":{"elements":{"type":"string"},"type":"array"}}],"type":"record","required":true}}]}
+{
+  "fields": [
+    {
+      "protocols": {
+        "elements": {
+          "one_of": [
+            "grpc",
+            "grpcs",
+            "http",
+            "https"
+          ],
+          "type": "string"
+        },
+        "required": true,
+        "type": "set",
+        "default": [
+          "grpc",
+          "grpcs",
+          "http",
+          "https"
+        ]
+      }
+    },
+    {
+      "config": {
+        "fields": [
+          {
+            "strategy": {
+              "one_of": [
+                "memory"
+              ],
+              "type": "string",
+              "required": true,
+              "default": "memory"
+            }
+          },
+          {
+            "cache_ttl": {
+              "type": "integer",
+              "gt": 0,
+              "default": 300
+            }
+          },
+          {
+            "memory": {
+              "fields": [
+                {
+                  "dictionary_name": {
+                    "type": "string",
+                    "required": true,
+                    "default": "kong_db_cache"
+                  }
+                }
+              ],
+              "type": "record",
+              "required": true
+            }
+          },
+          {
+            "vary_headers": {
+              "elements": {
+                "type": "string"
+              },
+              "type": "array"
+            }
+          }
+        ],
+        "type": "record",
+        "required": true
+      }
+    }
+  ]
+}

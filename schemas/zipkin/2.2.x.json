@@ -1,1 +1,64 @@
-{"fields":[{"config":{"type":"record","required":true,"fields":[{"http_endpoint":{"type":"string","required":true}},{"sample_ratio":{"type":"number","between":[0,1],"default":0.001}},{"default_service_name":{"type":"string"}},{"include_credential":{"type":"boolean","required":true,"default":true}},{"traceid_byte_count":{"type":"integer","required":true,"one_of":[8,16],"default":16}},{"header_type":{"type":"string","required":true,"one_of":["preserve","b3","b3-single","w3c"],"default":"preserve"}}]}}]}
+{
+  "fields": [
+    {
+      "config": {
+        "type": "record",
+        "required": true,
+        "fields": [
+          {
+            "http_endpoint": {
+              "type": "string",
+              "required": true
+            }
+          },
+          {
+            "sample_ratio": {
+              "type": "number",
+              "between": [
+                0,
+                1
+              ],
+              "default": 0.001
+            }
+          },
+          {
+            "default_service_name": {
+              "type": "string"
+            }
+          },
+          {
+            "include_credential": {
+              "type": "boolean",
+              "required": true,
+              "default": true
+            }
+          },
+          {
+            "traceid_byte_count": {
+              "type": "integer",
+              "required": true,
+              "one_of": [
+                8,
+                16
+              ],
+              "default": 16
+            }
+          },
+          {
+            "header_type": {
+              "type": "string",
+              "required": true,
+              "one_of": [
+                "preserve",
+                "b3",
+                "b3-single",
+                "w3c"
+              ],
+              "default": "preserve"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

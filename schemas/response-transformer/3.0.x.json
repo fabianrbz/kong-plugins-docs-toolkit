@@ -1,1 +1,239 @@
-{"fields":[{"protocols":{"type":"set","elements":{"type":"string","one_of":["grpc","grpcs","http","https"]},"required":true,"default":["grpc","grpcs","http","https"]}},{"config":{"type":"record","fields":[{"remove":{"type":"record","fields":[{"json":{"type":"array","elements":{"type":"string"},"required":true,"default":[]}},{"headers":{"type":"array","elements":{"type":"string"},"required":true,"default":[]}}],"required":true}},{"rename":{"type":"record","fields":[{"headers":{"type":"array","elements":{"match":"^[^:]+:.*$","type":"string"},"required":true,"default":[]}}],"required":true}},{"replace":{"type":"record","fields":[{"json":{"type":"array","elements":{"type":"string","match":"^[^:]+:.*$"},"required":true,"default":[]}},{"json_types":{"type":"array","elements":{"type":"string","one_of":["boolean","number","string"]},"required":true,"default":[]}},{"headers":{"type":"array","elements":{"type":"string","match":"^[^:]+:.*$"},"required":true,"default":[]}}],"required":true}},{"add":{"type":"record","fields":[{"json":{"type":"array","elements":{"type":"string","match":"^[^:]+:.*$"},"required":true,"default":[]}},{"json_types":{"type":"array","elements":{"type":"string","one_of":["boolean","number","string"]},"required":true,"default":[]}},{"headers":{"type":"array","elements":{"type":"string","match":"^[^:]+:.*$"},"required":true,"default":[]}}],"required":true}},{"append":{"type":"record","fields":[{"json":{"type":"array","elements":{"type":"string","match":"^[^:]+:.*$"},"required":true,"default":[]}},{"json_types":{"type":"array","elements":{"type":"string","one_of":["boolean","number","string"]},"required":true,"default":[]}},{"headers":{"type":"array","elements":{"type":"string","match":"^[^:]+:.*$"},"required":true,"default":[]}}],"required":true}}],"required":true}}]}
+{
+  "fields": [
+    {
+      "protocols": {
+        "type": "set",
+        "elements": {
+          "type": "string",
+          "one_of": [
+            "grpc",
+            "grpcs",
+            "http",
+            "https"
+          ]
+        },
+        "required": true,
+        "default": [
+          "grpc",
+          "grpcs",
+          "http",
+          "https"
+        ]
+      }
+    },
+    {
+      "config": {
+        "type": "record",
+        "fields": [
+          {
+            "remove": {
+              "type": "record",
+              "fields": [
+                {
+                  "json": {
+                    "type": "array",
+                    "elements": {
+                      "type": "string"
+                    },
+                    "required": true,
+                    "default": [
+
+                    ]
+                  }
+                },
+                {
+                  "headers": {
+                    "type": "array",
+                    "elements": {
+                      "type": "string"
+                    },
+                    "required": true,
+                    "default": [
+
+                    ]
+                  }
+                }
+              ],
+              "required": true
+            }
+          },
+          {
+            "rename": {
+              "type": "record",
+              "fields": [
+                {
+                  "headers": {
+                    "type": "array",
+                    "elements": {
+                      "match": "^[^:]+:.*$",
+                      "type": "string"
+                    },
+                    "required": true,
+                    "default": [
+
+                    ]
+                  }
+                }
+              ],
+              "required": true
+            }
+          },
+          {
+            "replace": {
+              "type": "record",
+              "fields": [
+                {
+                  "json": {
+                    "type": "array",
+                    "elements": {
+                      "type": "string",
+                      "match": "^[^:]+:.*$"
+                    },
+                    "required": true,
+                    "default": [
+
+                    ]
+                  }
+                },
+                {
+                  "json_types": {
+                    "type": "array",
+                    "elements": {
+                      "type": "string",
+                      "one_of": [
+                        "boolean",
+                        "number",
+                        "string"
+                      ]
+                    },
+                    "required": true,
+                    "default": [
+
+                    ]
+                  }
+                },
+                {
+                  "headers": {
+                    "type": "array",
+                    "elements": {
+                      "type": "string",
+                      "match": "^[^:]+:.*$"
+                    },
+                    "required": true,
+                    "default": [
+
+                    ]
+                  }
+                }
+              ],
+              "required": true
+            }
+          },
+          {
+            "add": {
+              "type": "record",
+              "fields": [
+                {
+                  "json": {
+                    "type": "array",
+                    "elements": {
+                      "type": "string",
+                      "match": "^[^:]+:.*$"
+                    },
+                    "required": true,
+                    "default": [
+
+                    ]
+                  }
+                },
+                {
+                  "json_types": {
+                    "type": "array",
+                    "elements": {
+                      "type": "string",
+                      "one_of": [
+                        "boolean",
+                        "number",
+                        "string"
+                      ]
+                    },
+                    "required": true,
+                    "default": [
+
+                    ]
+                  }
+                },
+                {
+                  "headers": {
+                    "type": "array",
+                    "elements": {
+                      "type": "string",
+                      "match": "^[^:]+:.*$"
+                    },
+                    "required": true,
+                    "default": [
+
+                    ]
+                  }
+                }
+              ],
+              "required": true
+            }
+          },
+          {
+            "append": {
+              "type": "record",
+              "fields": [
+                {
+                  "json": {
+                    "type": "array",
+                    "elements": {
+                      "type": "string",
+                      "match": "^[^:]+:.*$"
+                    },
+                    "required": true,
+                    "default": [
+
+                    ]
+                  }
+                },
+                {
+                  "json_types": {
+                    "type": "array",
+                    "elements": {
+                      "type": "string",
+                      "one_of": [
+                        "boolean",
+                        "number",
+                        "string"
+                      ]
+                    },
+                    "required": true,
+                    "default": [
+
+                    ]
+                  }
+                },
+                {
+                  "headers": {
+                    "type": "array",
+                    "elements": {
+                      "type": "string",
+                      "match": "^[^:]+:.*$"
+                    },
+                    "required": true,
+                    "default": [
+
+                    ]
+                  }
+                }
+              ],
+              "required": true
+            }
+          }
+        ],
+        "required": true
+      }
+    }
+  ]
+}

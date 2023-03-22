@@ -1,1 +1,176 @@
-{"fields":[{"consumer":{"type":"foreign","reference":"consumers","eq":null}},{"protocols":{"type":"set","elements":{"type":"string","one_of":["grpc","grpcs","http","https"]},"default":["grpc","grpcs","http","https"],"required":true}},{"config":{"type":"record","fields":[{"anonymous":{"type":"string"}},{"consumer_by":{"type":"array","default":["username","custom_id"],"elements":{"type":"string","one_of":["username","custom_id"]},"required":false}},{"ca_certificates":{"type":"array","elements":{"type":"string","uuid":true},"required":true}},{"cache_ttl":{"type":"number","default":60,"required":true}},{"skip_consumer_lookup":{"type":"boolean","default":false,"required":true}},{"allow_partial_chain":{"type":"boolean","default":false,"required":true}},{"authenticated_group_by":{"type":"string","one_of":["CN","DN"],"default":"CN","required":false}},{"revocation_check_mode":{"type":"string","one_of":["SKIP","IGNORE_CA_ERROR","STRICT"],"default":"IGNORE_CA_ERROR","required":false}},{"http_timeout":{"type":"number","default":30000}},{"cert_cache_ttl":{"type":"number","default":60000}},{"send_ca_dn":{"type":"boolean","default":false}},{"http_proxy_host":{"type":"string"}},{"http_proxy_port":{"type":"integer","between":[0,65535]}},{"https_proxy_host":{"type":"string"}},{"https_proxy_port":{"type":"integer","between":[0,65535]}}],"required":true,"entity_checks":[{"mutually_required":["http_proxy_host","http_proxy_port"]},{"mutually_required":["https_proxy_host","https_proxy_port"]}]}}]}
+{
+  "fields": [
+    {
+      "consumer": {
+        "type": "foreign",
+        "reference": "consumers",
+        "eq": null
+      }
+    },
+    {
+      "protocols": {
+        "type": "set",
+        "elements": {
+          "type": "string",
+          "one_of": [
+            "grpc",
+            "grpcs",
+            "http",
+            "https"
+          ]
+        },
+        "default": [
+          "grpc",
+          "grpcs",
+          "http",
+          "https"
+        ],
+        "required": true
+      }
+    },
+    {
+      "config": {
+        "type": "record",
+        "fields": [
+          {
+            "anonymous": {
+              "type": "string"
+            }
+          },
+          {
+            "consumer_by": {
+              "type": "array",
+              "default": [
+                "username",
+                "custom_id"
+              ],
+              "elements": {
+                "type": "string",
+                "one_of": [
+                  "username",
+                  "custom_id"
+                ]
+              },
+              "required": false
+            }
+          },
+          {
+            "ca_certificates": {
+              "type": "array",
+              "elements": {
+                "type": "string",
+                "uuid": true
+              },
+              "required": true
+            }
+          },
+          {
+            "cache_ttl": {
+              "type": "number",
+              "default": 60,
+              "required": true
+            }
+          },
+          {
+            "skip_consumer_lookup": {
+              "type": "boolean",
+              "default": false,
+              "required": true
+            }
+          },
+          {
+            "allow_partial_chain": {
+              "type": "boolean",
+              "default": false,
+              "required": true
+            }
+          },
+          {
+            "authenticated_group_by": {
+              "type": "string",
+              "one_of": [
+                "CN",
+                "DN"
+              ],
+              "default": "CN",
+              "required": false
+            }
+          },
+          {
+            "revocation_check_mode": {
+              "type": "string",
+              "one_of": [
+                "SKIP",
+                "IGNORE_CA_ERROR",
+                "STRICT"
+              ],
+              "default": "IGNORE_CA_ERROR",
+              "required": false
+            }
+          },
+          {
+            "http_timeout": {
+              "type": "number",
+              "default": 30000
+            }
+          },
+          {
+            "cert_cache_ttl": {
+              "type": "number",
+              "default": 60000
+            }
+          },
+          {
+            "send_ca_dn": {
+              "type": "boolean",
+              "default": false
+            }
+          },
+          {
+            "http_proxy_host": {
+              "type": "string"
+            }
+          },
+          {
+            "http_proxy_port": {
+              "type": "integer",
+              "between": [
+                0,
+                65535
+              ]
+            }
+          },
+          {
+            "https_proxy_host": {
+              "type": "string"
+            }
+          },
+          {
+            "https_proxy_port": {
+              "type": "integer",
+              "between": [
+                0,
+                65535
+              ]
+            }
+          }
+        ],
+        "required": true,
+        "entity_checks": [
+          {
+            "mutually_required": [
+              "http_proxy_host",
+              "http_proxy_port"
+            ]
+          },
+          {
+            "mutually_required": [
+              "https_proxy_host",
+              "https_proxy_port"
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

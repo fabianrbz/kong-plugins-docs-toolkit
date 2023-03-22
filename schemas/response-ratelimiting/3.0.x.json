@@ -1,1 +1,186 @@
-{"fields":[{"protocols":{"type":"set","elements":{"type":"string","one_of":["grpc","grpcs","http","https"]},"required":true,"default":["grpc","grpcs","http","https"]}},{"config":{"type":"record","fields":[{"header_name":{"type":"string","default":"x-kong-limit"}},{"limit_by":{"one_of":["consumer","credential","ip"],"type":"string","default":"consumer"}},{"policy":{"one_of":["local","cluster","redis"],"type":"string","default":"local"}},{"fault_tolerant":{"type":"boolean","required":true,"default":true}},{"redis_host":{"type":"string"}},{"redis_port":{"between":[0,65535],"type":"integer","default":6379}},{"redis_password":{"len_min":0,"type":"string","referenceable":true}},{"redis_username":{"type":"string","referenceable":true}},{"redis_timeout":{"type":"number","default":2000}},{"redis_database":{"type":"number","default":0}},{"block_on_first_violation":{"type":"boolean","required":true,"default":false}},{"hide_client_headers":{"type":"boolean","required":true,"default":false}},{"limits":{"keys":{"type":"string"},"len_min":1,"values":{"required":true,"entity_checks":[{"at_least_one_of":["second","minute","hour","day","month","year"]}],"fields":[{"second":{"type":"number","gt":0}},{"minute":{"type":"number","gt":0}},{"hour":{"type":"number","gt":0}},{"day":{"type":"number","gt":0}},{"month":{"type":"number","gt":0}},{"year":{"type":"number","gt":0}}],"type":"record"},"required":true,"type":"map"}}],"required":true}}]}
+{
+  "fields": [
+    {
+      "protocols": {
+        "type": "set",
+        "elements": {
+          "type": "string",
+          "one_of": [
+            "grpc",
+            "grpcs",
+            "http",
+            "https"
+          ]
+        },
+        "required": true,
+        "default": [
+          "grpc",
+          "grpcs",
+          "http",
+          "https"
+        ]
+      }
+    },
+    {
+      "config": {
+        "type": "record",
+        "fields": [
+          {
+            "header_name": {
+              "type": "string",
+              "default": "x-kong-limit"
+            }
+          },
+          {
+            "limit_by": {
+              "one_of": [
+                "consumer",
+                "credential",
+                "ip"
+              ],
+              "type": "string",
+              "default": "consumer"
+            }
+          },
+          {
+            "policy": {
+              "one_of": [
+                "local",
+                "cluster",
+                "redis"
+              ],
+              "type": "string",
+              "default": "local"
+            }
+          },
+          {
+            "fault_tolerant": {
+              "type": "boolean",
+              "required": true,
+              "default": true
+            }
+          },
+          {
+            "redis_host": {
+              "type": "string"
+            }
+          },
+          {
+            "redis_port": {
+              "between": [
+                0,
+                65535
+              ],
+              "type": "integer",
+              "default": 6379
+            }
+          },
+          {
+            "redis_password": {
+              "len_min": 0,
+              "type": "string",
+              "referenceable": true
+            }
+          },
+          {
+            "redis_username": {
+              "type": "string",
+              "referenceable": true
+            }
+          },
+          {
+            "redis_timeout": {
+              "type": "number",
+              "default": 2000
+            }
+          },
+          {
+            "redis_database": {
+              "type": "number",
+              "default": 0
+            }
+          },
+          {
+            "block_on_first_violation": {
+              "type": "boolean",
+              "required": true,
+              "default": false
+            }
+          },
+          {
+            "hide_client_headers": {
+              "type": "boolean",
+              "required": true,
+              "default": false
+            }
+          },
+          {
+            "limits": {
+              "keys": {
+                "type": "string"
+              },
+              "len_min": 1,
+              "values": {
+                "required": true,
+                "entity_checks": [
+                  {
+                    "at_least_one_of": [
+                      "second",
+                      "minute",
+                      "hour",
+                      "day",
+                      "month",
+                      "year"
+                    ]
+                  }
+                ],
+                "fields": [
+                  {
+                    "second": {
+                      "type": "number",
+                      "gt": 0
+                    }
+                  },
+                  {
+                    "minute": {
+                      "type": "number",
+                      "gt": 0
+                    }
+                  },
+                  {
+                    "hour": {
+                      "type": "number",
+                      "gt": 0
+                    }
+                  },
+                  {
+                    "day": {
+                      "type": "number",
+                      "gt": 0
+                    }
+                  },
+                  {
+                    "month": {
+                      "type": "number",
+                      "gt": 0
+                    }
+                  },
+                  {
+                    "year": {
+                      "type": "number",
+                      "gt": 0
+                    }
+                  }
+                ],
+                "type": "record"
+              },
+              "required": true,
+              "type": "map"
+            }
+          }
+        ],
+        "required": true
+      }
+    }
+  ]
+}

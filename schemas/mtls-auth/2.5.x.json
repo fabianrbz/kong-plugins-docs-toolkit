@@ -1,1 +1,123 @@
-{"fields":[{"consumer":{"reference":"consumers","eq":null,"type":"foreign"}},{"protocols":{"required":true,"default":["grpc","grpcs","http","https"],"type":"set","elements":{"type":"string","one_of":["grpc","grpcs","http","https"]}}},{"config":{"required":true,"type":"record","fields":[{"anonymous":{"legacy":true,"uuid":true,"type":"string"}},{"consumer_by":{"required":false,"default":["username","custom_id"],"type":"array","elements":{"type":"string","one_of":["username","custom_id"]}}},{"ca_certificates":{"required":true,"type":"array","elements":{"type":"string","uuid":true}}},{"cache_ttl":{"required":true,"type":"number","default":60}},{"skip_consumer_lookup":{"required":true,"type":"boolean","default":false}},{"authenticated_group_by":{"required":false,"one_of":["CN","DN"],"type":"string","default":"CN"}},{"revocation_check_mode":{"required":false,"one_of":["SKIP","IGNORE_CA_ERROR","STRICT"],"type":"string","default":"IGNORE_CA_ERROR"}},{"http_timeout":{"type":"number","default":30000}},{"cert_cache_ttl":{"type":"number","default":60000}}]}}]}
+{
+  "fields": [
+    {
+      "consumer": {
+        "reference": "consumers",
+        "eq": null,
+        "type": "foreign"
+      }
+    },
+    {
+      "protocols": {
+        "required": true,
+        "default": [
+          "grpc",
+          "grpcs",
+          "http",
+          "https"
+        ],
+        "type": "set",
+        "elements": {
+          "type": "string",
+          "one_of": [
+            "grpc",
+            "grpcs",
+            "http",
+            "https"
+          ]
+        }
+      }
+    },
+    {
+      "config": {
+        "required": true,
+        "type": "record",
+        "fields": [
+          {
+            "anonymous": {
+              "legacy": true,
+              "uuid": true,
+              "type": "string"
+            }
+          },
+          {
+            "consumer_by": {
+              "required": false,
+              "default": [
+                "username",
+                "custom_id"
+              ],
+              "type": "array",
+              "elements": {
+                "type": "string",
+                "one_of": [
+                  "username",
+                  "custom_id"
+                ]
+              }
+            }
+          },
+          {
+            "ca_certificates": {
+              "required": true,
+              "type": "array",
+              "elements": {
+                "type": "string",
+                "uuid": true
+              }
+            }
+          },
+          {
+            "cache_ttl": {
+              "required": true,
+              "type": "number",
+              "default": 60
+            }
+          },
+          {
+            "skip_consumer_lookup": {
+              "required": true,
+              "type": "boolean",
+              "default": false
+            }
+          },
+          {
+            "authenticated_group_by": {
+              "required": false,
+              "one_of": [
+                "CN",
+                "DN"
+              ],
+              "type": "string",
+              "default": "CN"
+            }
+          },
+          {
+            "revocation_check_mode": {
+              "required": false,
+              "one_of": [
+                "SKIP",
+                "IGNORE_CA_ERROR",
+                "STRICT"
+              ],
+              "type": "string",
+              "default": "IGNORE_CA_ERROR"
+            }
+          },
+          {
+            "http_timeout": {
+              "type": "number",
+              "default": 30000
+            }
+          },
+          {
+            "cert_cache_ttl": {
+              "type": "number",
+              "default": 60000
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

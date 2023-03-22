@@ -1,1 +1,102 @@
-{"fields":[{"protocols":{"elements":{"one_of":["grpc","grpcs","http","https","tcp","tls","tls_passthrough","udp","ws","wss"],"type":"string"},"required":true,"type":"set","default":["grpc","grpcs","http","https"]}},{"config":{"fields":[{"timeout":{"default":600000,"type":"number"}},{"keepalive":{"default":60000,"type":"number"}},{"https":{"default":true,"type":"boolean"}},{"https_verify":{"default":false,"type":"boolean"}},{"apikey":{"encrypted":true,"type":"string","referenceable":true}},{"clientid":{"encrypted":true,"type":"string","referenceable":true}},{"appname":{"required":true,"type":"string"}},{"hostdomain":{"type":"string","required":true,"default":"azurewebsites.net"}},{"routeprefix":{"default":"api","type":"string"}},{"functionname":{"required":true,"type":"string"}}],"type":"record","required":true}}]}
+{
+  "fields": [
+    {
+      "protocols": {
+        "elements": {
+          "one_of": [
+            "grpc",
+            "grpcs",
+            "http",
+            "https",
+            "tcp",
+            "tls",
+            "tls_passthrough",
+            "udp",
+            "ws",
+            "wss"
+          ],
+          "type": "string"
+        },
+        "required": true,
+        "type": "set",
+        "default": [
+          "grpc",
+          "grpcs",
+          "http",
+          "https"
+        ]
+      }
+    },
+    {
+      "config": {
+        "fields": [
+          {
+            "timeout": {
+              "default": 600000,
+              "type": "number"
+            }
+          },
+          {
+            "keepalive": {
+              "default": 60000,
+              "type": "number"
+            }
+          },
+          {
+            "https": {
+              "default": true,
+              "type": "boolean"
+            }
+          },
+          {
+            "https_verify": {
+              "default": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "apikey": {
+              "encrypted": true,
+              "type": "string",
+              "referenceable": true
+            }
+          },
+          {
+            "clientid": {
+              "encrypted": true,
+              "type": "string",
+              "referenceable": true
+            }
+          },
+          {
+            "appname": {
+              "required": true,
+              "type": "string"
+            }
+          },
+          {
+            "hostdomain": {
+              "type": "string",
+              "required": true,
+              "default": "azurewebsites.net"
+            }
+          },
+          {
+            "routeprefix": {
+              "default": "api",
+              "type": "string"
+            }
+          },
+          {
+            "functionname": {
+              "required": true,
+              "type": "string"
+            }
+          }
+        ],
+        "type": "record",
+        "required": true
+      }
+    }
+  ]
+}

@@ -1,1 +1,52 @@
-{"fields":[{"consumer":{"reference":"consumers","eq":null,"type":"foreign"}},{"protocols":{"required":true,"default":["grpc","grpcs","http","https"],"type":"set","elements":{"type":"string","one_of":["grpc","grpcs","http","https"]}}},{"config":{"required":true,"type":"record","fields":[{"anonymous":{"type":"string"}},{"hide_credentials":{"required":true,"type":"boolean","default":false}}]}}]}
+{
+  "fields": [
+    {
+      "consumer": {
+        "reference": "consumers",
+        "eq": null,
+        "type": "foreign"
+      }
+    },
+    {
+      "protocols": {
+        "required": true,
+        "default": [
+          "grpc",
+          "grpcs",
+          "http",
+          "https"
+        ],
+        "type": "set",
+        "elements": {
+          "type": "string",
+          "one_of": [
+            "grpc",
+            "grpcs",
+            "http",
+            "https"
+          ]
+        }
+      }
+    },
+    {
+      "config": {
+        "required": true,
+        "type": "record",
+        "fields": [
+          {
+            "anonymous": {
+              "type": "string"
+            }
+          },
+          {
+            "hide_credentials": {
+              "required": true,
+              "type": "boolean",
+              "default": false
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

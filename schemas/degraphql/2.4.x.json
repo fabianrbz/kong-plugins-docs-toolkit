@@ -1,1 +1,13 @@
-{"fields":[{"config":{"type":"record","fields":[],"required":true}}]}
+{
+  "fields": [
+    {
+      "config": {
+        "type": "record",
+        "fields": [
+
+        ],
+        "required": true
+      }
+    }
+  ]
+}

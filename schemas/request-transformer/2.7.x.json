@@ -1,1 +1,247 @@
-{"fields":[{"config":{"fields":[{"http_method":{"type":"string","match":"^%u+$"}},{"remove":{"fields":[{"body":{"required":true,"elements":{"type":"string"},"default":[],"type":"array"}},{"headers":{"required":true,"elements":{"type":"string"},"default":[],"type":"array"}},{"querystring":{"required":true,"elements":{"type":"string"},"default":[],"type":"array"}}],"type":"record","required":true}},{"rename":{"fields":[{"body":{"required":true,"elements":{"type":"string"},"default":[],"type":"array"}},{"headers":{"required":true,"elements":{"type":"string","match":"^[^:]+:.*$"},"default":[],"type":"array"}},{"querystring":{"required":true,"elements":{"type":"string"},"default":[],"type":"array"}}],"type":"record","required":true}},{"replace":{"fields":[{"body":{"type":"array","default":[],"required":true,"elements":{"type":"string"}}},{"headers":{"type":"array","default":[],"required":true,"elements":{"match":"^[^:]+:.*$","type":"string"}}},{"querystring":{"type":"array","default":[],"required":true,"elements":{"type":"string"}}},{"uri":{"type":"string"}}],"type":"record","required":true}},{"add":{"fields":[{"body":{"required":true,"elements":{"type":"string"},"default":[],"type":"array"}},{"headers":{"required":true,"elements":{"type":"string","match":"^[^:]+:.*$"},"default":[],"type":"array"}},{"querystring":{"required":true,"elements":{"type":"string"},"default":[],"type":"array"}}],"type":"record","required":true}},{"append":{"fields":[{"body":{"required":true,"elements":{"type":"string"},"default":[],"type":"array"}},{"headers":{"required":true,"elements":{"type":"string","match":"^[^:]+:.*$"},"default":[],"type":"array"}},{"querystring":{"required":true,"elements":{"type":"string"},"default":[],"type":"array"}}],"type":"record","required":true}}],"type":"record","required":true}}]}
+{
+  "fields": [
+    {
+      "config": {
+        "fields": [
+          {
+            "http_method": {
+              "type": "string",
+              "match": "^%u+$"
+            }
+          },
+          {
+            "remove": {
+              "fields": [
+                {
+                  "body": {
+                    "required": true,
+                    "elements": {
+                      "type": "string"
+                    },
+                    "default": [
+
+                    ],
+                    "type": "array"
+                  }
+                },
+                {
+                  "headers": {
+                    "required": true,
+                    "elements": {
+                      "type": "string"
+                    },
+                    "default": [
+
+                    ],
+                    "type": "array"
+                  }
+                },
+                {
+                  "querystring": {
+                    "required": true,
+                    "elements": {
+                      "type": "string"
+                    },
+                    "default": [
+
+                    ],
+                    "type": "array"
+                  }
+                }
+              ],
+              "type": "record",
+              "required": true
+            }
+          },
+          {
+            "rename": {
+              "fields": [
+                {
+                  "body": {
+                    "required": true,
+                    "elements": {
+                      "type": "string"
+                    },
+                    "default": [
+
+                    ],
+                    "type": "array"
+                  }
+                },
+                {
+                  "headers": {
+                    "required": true,
+                    "elements": {
+                      "type": "string",
+                      "match": "^[^:]+:.*$"
+                    },
+                    "default": [
+
+                    ],
+                    "type": "array"
+                  }
+                },
+                {
+                  "querystring": {
+                    "required": true,
+                    "elements": {
+                      "type": "string"
+                    },
+                    "default": [
+
+                    ],
+                    "type": "array"
+                  }
+                }
+              ],
+              "type": "record",
+              "required": true
+            }
+          },
+          {
+            "replace": {
+              "fields": [
+                {
+                  "body": {
+                    "type": "array",
+                    "default": [
+
+                    ],
+                    "required": true,
+                    "elements": {
+                      "type": "string"
+                    }
+                  }
+                },
+                {
+                  "headers": {
+                    "type": "array",
+                    "default": [
+
+                    ],
+                    "required": true,
+                    "elements": {
+                      "match": "^[^:]+:.*$",
+                      "type": "string"
+                    }
+                  }
+                },
+                {
+                  "querystring": {
+                    "type": "array",
+                    "default": [
+
+                    ],
+                    "required": true,
+                    "elements": {
+                      "type": "string"
+                    }
+                  }
+                },
+                {
+                  "uri": {
+                    "type": "string"
+                  }
+                }
+              ],
+              "type": "record",
+              "required": true
+            }
+          },
+          {
+            "add": {
+              "fields": [
+                {
+                  "body": {
+                    "required": true,
+                    "elements": {
+                      "type": "string"
+                    },
+                    "default": [
+
+                    ],
+                    "type": "array"
+                  }
+                },
+                {
+                  "headers": {
+                    "required": true,
+                    "elements": {
+                      "type": "string",
+                      "match": "^[^:]+:.*$"
+                    },
+                    "default": [
+
+                    ],
+                    "type": "array"
+                  }
+                },
+                {
+                  "querystring": {
+                    "required": true,
+                    "elements": {
+                      "type": "string"
+                    },
+                    "default": [
+
+                    ],
+                    "type": "array"
+                  }
+                }
+              ],
+              "type": "record",
+              "required": true
+            }
+          },
+          {
+            "append": {
+              "fields": [
+                {
+                  "body": {
+                    "required": true,
+                    "elements": {
+                      "type": "string"
+                    },
+                    "default": [
+
+                    ],
+                    "type": "array"
+                  }
+                },
+                {
+                  "headers": {
+                    "required": true,
+                    "elements": {
+                      "type": "string",
+                      "match": "^[^:]+:.*$"
+                    },
+                    "default": [
+
+                    ],
+                    "type": "array"
+                  }
+                },
+                {
+                  "querystring": {
+                    "required": true,
+                    "elements": {
+                      "type": "string"
+                    },
+                    "default": [
+
+                    ],
+                    "type": "array"
+                  }
+                }
+              ],
+              "type": "record",
+              "required": true
+            }
+          }
+        ],
+        "type": "record",
+        "required": true
+      }
+    }
+  ]
+}

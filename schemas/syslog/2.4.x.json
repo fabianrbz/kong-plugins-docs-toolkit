@@ -1,1 +1,113 @@
-{"fields":[{"protocols":{"elements":{"one_of":["grpc","grpcs","http","https","tcp","tls","udp"],"type":"string"},"type":"set","default":["grpc","grpcs","http","https"],"required":true}},{"config":{"type":"record","required":true,"fields":[{"log_level":{"type":"string","one_of":["debug","info","notice","warning","err","crit","alert","emerg"],"default":"info"}},{"successful_severity":{"type":"string","one_of":["debug","info","notice","warning","err","crit","alert","emerg"],"default":"info"}},{"client_errors_severity":{"type":"string","one_of":["debug","info","notice","warning","err","crit","alert","emerg"],"default":"info"}},{"server_errors_severity":{"type":"string","one_of":["debug","info","notice","warning","err","crit","alert","emerg"],"default":"info"}},{"custom_fields_by_lua":{"keys":{"len_min":1,"type":"string"},"type":"map","values":{"len_min":1,"type":"string"}}}]}}]}
+{
+  "fields": [
+    {
+      "protocols": {
+        "elements": {
+          "one_of": [
+            "grpc",
+            "grpcs",
+            "http",
+            "https",
+            "tcp",
+            "tls",
+            "udp"
+          ],
+          "type": "string"
+        },
+        "type": "set",
+        "default": [
+          "grpc",
+          "grpcs",
+          "http",
+          "https"
+        ],
+        "required": true
+      }
+    },
+    {
+      "config": {
+        "type": "record",
+        "required": true,
+        "fields": [
+          {
+            "log_level": {
+              "type": "string",
+              "one_of": [
+                "debug",
+                "info",
+                "notice",
+                "warning",
+                "err",
+                "crit",
+                "alert",
+                "emerg"
+              ],
+              "default": "info"
+            }
+          },
+          {
+            "successful_severity": {
+              "type": "string",
+              "one_of": [
+                "debug",
+                "info",
+                "notice",
+                "warning",
+                "err",
+                "crit",
+                "alert",
+                "emerg"
+              ],
+              "default": "info"
+            }
+          },
+          {
+            "client_errors_severity": {
+              "type": "string",
+              "one_of": [
+                "debug",
+                "info",
+                "notice",
+                "warning",
+                "err",
+                "crit",
+                "alert",
+                "emerg"
+              ],
+              "default": "info"
+            }
+          },
+          {
+            "server_errors_severity": {
+              "type": "string",
+              "one_of": [
+                "debug",
+                "info",
+                "notice",
+                "warning",
+                "err",
+                "crit",
+                "alert",
+                "emerg"
+              ],
+              "default": "info"
+            }
+          },
+          {
+            "custom_fields_by_lua": {
+              "keys": {
+                "len_min": 1,
+                "type": "string"
+              },
+              "type": "map",
+              "values": {
+                "len_min": 1,
+                "type": "string"
+              }
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

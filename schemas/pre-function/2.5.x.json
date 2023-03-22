@@ -1,1 +1,110 @@
-{"fields":[{"consumer":{"reference":"consumers","eq":null,"type":"foreign"}},{"config":{"required":true,"type":"record","fields":[{"functions":{"default":[],"required":true,"type":"array","elements":{"required":false,"type":"string"}}},{"certificate":{"required":true,"default":[],"type":"array","elements":{"required":false,"type":"string"}}},{"rewrite":{"required":true,"default":[],"type":"array","elements":{"required":false,"type":"string"}}},{"access":{"required":true,"default":[],"type":"array","elements":{"required":false,"type":"string"}}},{"header_filter":{"required":true,"default":[],"type":"array","elements":{"required":false,"type":"string"}}},{"body_filter":{"required":true,"default":[],"type":"array","elements":{"required":false,"type":"string"}}},{"log":{"required":true,"default":[],"type":"array","elements":{"required":false,"type":"string"}}}]}}]}
+{
+  "fields": [
+    {
+      "consumer": {
+        "reference": "consumers",
+        "eq": null,
+        "type": "foreign"
+      }
+    },
+    {
+      "config": {
+        "required": true,
+        "type": "record",
+        "fields": [
+          {
+            "functions": {
+              "default": [
+
+              ],
+              "required": true,
+              "type": "array",
+              "elements": {
+                "required": false,
+                "type": "string"
+              }
+            }
+          },
+          {
+            "certificate": {
+              "required": true,
+              "default": [
+
+              ],
+              "type": "array",
+              "elements": {
+                "required": false,
+                "type": "string"
+              }
+            }
+          },
+          {
+            "rewrite": {
+              "required": true,
+              "default": [
+
+              ],
+              "type": "array",
+              "elements": {
+                "required": false,
+                "type": "string"
+              }
+            }
+          },
+          {
+            "access": {
+              "required": true,
+              "default": [
+
+              ],
+              "type": "array",
+              "elements": {
+                "required": false,
+                "type": "string"
+              }
+            }
+          },
+          {
+            "header_filter": {
+              "required": true,
+              "default": [
+
+              ],
+              "type": "array",
+              "elements": {
+                "required": false,
+                "type": "string"
+              }
+            }
+          },
+          {
+            "body_filter": {
+              "required": true,
+              "default": [
+
+              ],
+              "type": "array",
+              "elements": {
+                "required": false,
+                "type": "string"
+              }
+            }
+          },
+          {
+            "log": {
+              "required": true,
+              "default": [
+
+              ],
+              "type": "array",
+              "elements": {
+                "required": false,
+                "type": "string"
+              }
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,1 +1,57 @@
-{"fields":[{"config":{"fields":[{"proxy_host":{"required":true,"type":"string"}},{"proxy_port":{"type":"integer","required":true,"between":[0,65535]}},{"proxy_scheme":{"type":"string","one_of":["http"],"required":true,"default":"http"}},{"auth_username":{"type":"string","required":false}},{"auth_password":{"type":"string","required":false}},{"https_verify":{"type":"boolean","required":true,"default":false}}],"type":"record","required":true}}]}
+{
+  "fields": [
+    {
+      "config": {
+        "fields": [
+          {
+            "proxy_host": {
+              "required": true,
+              "type": "string"
+            }
+          },
+          {
+            "proxy_port": {
+              "type": "integer",
+              "required": true,
+              "between": [
+                0,
+                65535
+              ]
+            }
+          },
+          {
+            "proxy_scheme": {
+              "type": "string",
+              "one_of": [
+                "http"
+              ],
+              "required": true,
+              "default": "http"
+            }
+          },
+          {
+            "auth_username": {
+              "type": "string",
+              "required": false
+            }
+          },
+          {
+            "auth_password": {
+              "type": "string",
+              "required": false
+            }
+          },
+          {
+            "https_verify": {
+              "type": "boolean",
+              "required": true,
+              "default": false
+            }
+          }
+        ],
+        "type": "record",
+        "required": true
+      }
+    }
+  ]
+}

@@ -1,1 +1,333 @@
-{"fields":[{"config":{"type":"record","required":true,"fields":[{"host":{"default":"localhost","type":"string"}},{"port":{"between":[0,65535],"type":"integer","default":8125}},{"prefix":{"default":"kong","type":"string"}},{"metrics":{"elements":{"type":"record","entity_checks":[{"conditional":{"then_match":{"eq":"set"},"if_match":{"one_of":["unique_users"]},"then_field":"stat_type","if_field":"name"}},{"conditional":{"then_match":{"eq":"counter"},"if_match":{"one_of":["request_count","status_count","request_per_user","status_count_per_user","status_count_per_workspace","status_count_per_user_per_route","cache_datastore_hits_total","cache_datastore_misses_total"]},"then_field":"stat_type","if_field":"name"}},{"conditional":{"then_match":{"eq":"gauge"},"if_match":{"one_of":["shdict_usage"]},"then_field":"stat_type","if_field":"name"}},{"conditional":{"then_match":{"required":true},"if_match":{"one_of":["counter","gauge"]},"then_field":"sample_rate","if_field":"stat_type"}},{"conditional":{"then_match":{"required":true},"if_match":{"one_of":["unique_users","request_per_user","status_count_per_user","status_count_per_user_per_route"]},"then_field":"consumer_identifier","if_field":"name"}},{"conditional":{"then_match":{"required":true},"if_match":{"one_of":["status_count_per_workspace"]},"then_field":"workspace_identifier","if_field":"name"}}],"fields":[{"name":{"type":"string","one_of":["kong_latency","latency","request_count","request_per_user","request_size","response_size","status_count","status_count_per_user","unique_users","upstream_latency","status_count_per_workspace","status_count_per_user_per_route","shdict_usage","cache_datastore_hits_total","cache_datastore_misses_total"],"required":true}},{"stat_type":{"type":"string","one_of":["counter","gauge","histogram","meter","set","timer"],"required":true}},{"sample_rate":{"gt":0,"type":"number"}},{"consumer_identifier":{"one_of":["consumer_id","custom_id","username"],"type":"string"}},{"service_identifier":{"one_of":["service_id","service_name","service_host","service_name_or_host"],"type":"string"}},{"workspace_identifier":{"one_of":["workspace_id","workspace_name"],"type":"string"}}]},"type":"array","default":[{"sample_rate":1,"service_identifier":"service_name_or_host","stat_type":"counter","name":"request_count"},{"service_identifier":"service_name_or_host","stat_type":"timer","name":"latency"},{"service_identifier":"service_name_or_host","stat_type":"timer","name":"request_size"},{"sample_rate":1,"service_identifier":"service_name_or_host","stat_type":"counter","name":"status_count"},{"service_identifier":"service_name_or_host","stat_type":"timer","name":"response_size"},{"service_identifier":"service_name_or_host","consumer_identifier":"custom_id","stat_type":"set","name":"unique_users"},{"stat_type":"counter","name":"request_per_user","sample_rate":1,"consumer_identifier":"custom_id","service_identifier":"service_name_or_host"},{"service_identifier":"service_name_or_host","stat_type":"timer","name":"upstream_latency"},{"service_identifier":"service_name_or_host","stat_type":"timer","name":"kong_latency"},{"stat_type":"counter","name":"status_count_per_user","sample_rate":1,"consumer_identifier":"custom_id","service_identifier":"service_name_or_host"},{"sample_rate":1,"workspace_identifier":"workspace_id","stat_type":"counter","name":"status_count_per_workspace"},{"stat_type":"counter","name":"status_count_per_user_per_route","sample_rate":1,"consumer_identifier":"custom_id","service_identifier":"service_name_or_host"},{"sample_rate":1,"service_identifier":"service_name_or_host","stat_type":"gauge","name":"shdict_usage"},{"sample_rate":1,"stat_type":"counter","name":"cache_datastore_hits_total"},{"sample_rate":1,"stat_type":"counter","name":"cache_datastore_misses_total"}]}},{"allow_status_codes":{"elements":{"match":"^[0-9]+-[0-9]+$","type":"string"},"type":"array"}},{"udp_packet_size":{"between":[0,65507],"type":"number","default":0}},{"use_tcp":{"default":false,"type":"boolean"}},{"hostname_in_prefix":{"default":false,"type":"boolean"}}]}}]}
+{
+  "fields": [
+    {
+      "config": {
+        "type": "record",
+        "required": true,
+        "fields": [
+          {
+            "host": {
+              "default": "localhost",
+              "type": "string"
+            }
+          },
+          {
+            "port": {
+              "between": [
+                0,
+                65535
+              ],
+              "type": "integer",
+              "default": 8125
+            }
+          },
+          {
+            "prefix": {
+              "default": "kong",
+              "type": "string"
+            }
+          },
+          {
+            "metrics": {
+              "elements": {
+                "type": "record",
+                "entity_checks": [
+                  {
+                    "conditional": {
+                      "then_match": {
+                        "eq": "set"
+                      },
+                      "if_match": {
+                        "one_of": [
+                          "unique_users"
+                        ]
+                      },
+                      "then_field": "stat_type",
+                      "if_field": "name"
+                    }
+                  },
+                  {
+                    "conditional": {
+                      "then_match": {
+                        "eq": "counter"
+                      },
+                      "if_match": {
+                        "one_of": [
+                          "request_count",
+                          "status_count",
+                          "request_per_user",
+                          "status_count_per_user",
+                          "status_count_per_workspace",
+                          "status_count_per_user_per_route",
+                          "cache_datastore_hits_total",
+                          "cache_datastore_misses_total"
+                        ]
+                      },
+                      "then_field": "stat_type",
+                      "if_field": "name"
+                    }
+                  },
+                  {
+                    "conditional": {
+                      "then_match": {
+                        "eq": "gauge"
+                      },
+                      "if_match": {
+                        "one_of": [
+                          "shdict_usage"
+                        ]
+                      },
+                      "then_field": "stat_type",
+                      "if_field": "name"
+                    }
+                  },
+                  {
+                    "conditional": {
+                      "then_match": {
+                        "required": true
+                      },
+                      "if_match": {
+                        "one_of": [
+                          "counter",
+                          "gauge"
+                        ]
+                      },
+                      "then_field": "sample_rate",
+                      "if_field": "stat_type"
+                    }
+                  },
+                  {
+                    "conditional": {
+                      "then_match": {
+                        "required": true
+                      },
+                      "if_match": {
+                        "one_of": [
+                          "unique_users",
+                          "request_per_user",
+                          "status_count_per_user",
+                          "status_count_per_user_per_route"
+                        ]
+                      },
+                      "then_field": "consumer_identifier",
+                      "if_field": "name"
+                    }
+                  },
+                  {
+                    "conditional": {
+                      "then_match": {
+                        "required": true
+                      },
+                      "if_match": {
+                        "one_of": [
+                          "status_count_per_workspace"
+                        ]
+                      },
+                      "then_field": "workspace_identifier",
+                      "if_field": "name"
+                    }
+                  }
+                ],
+                "fields": [
+                  {
+                    "name": {
+                      "type": "string",
+                      "one_of": [
+                        "kong_latency",
+                        "latency",
+                        "request_count",
+                        "request_per_user",
+                        "request_size",
+                        "response_size",
+                        "status_count",
+                        "status_count_per_user",
+                        "unique_users",
+                        "upstream_latency",
+                        "status_count_per_workspace",
+                        "status_count_per_user_per_route",
+                        "shdict_usage",
+                        "cache_datastore_hits_total",
+                        "cache_datastore_misses_total"
+                      ],
+                      "required": true
+                    }
+                  },
+                  {
+                    "stat_type": {
+                      "type": "string",
+                      "one_of": [
+                        "counter",
+                        "gauge",
+                        "histogram",
+                        "meter",
+                        "set",
+                        "timer"
+                      ],
+                      "required": true
+                    }
+                  },
+                  {
+                    "sample_rate": {
+                      "gt": 0,
+                      "type": "number"
+                    }
+                  },
+                  {
+                    "consumer_identifier": {
+                      "one_of": [
+                        "consumer_id",
+                        "custom_id",
+                        "username"
+                      ],
+                      "type": "string"
+                    }
+                  },
+                  {
+                    "service_identifier": {
+                      "one_of": [
+                        "service_id",
+                        "service_name",
+                        "service_host",
+                        "service_name_or_host"
+                      ],
+                      "type": "string"
+                    }
+                  },
+                  {
+                    "workspace_identifier": {
+                      "one_of": [
+                        "workspace_id",
+                        "workspace_name"
+                      ],
+                      "type": "string"
+                    }
+                  }
+                ]
+              },
+              "type": "array",
+              "default": [
+                {
+                  "sample_rate": 1,
+                  "service_identifier": "service_name_or_host",
+                  "stat_type": "counter",
+                  "name": "request_count"
+                },
+                {
+                  "service_identifier": "service_name_or_host",
+                  "stat_type": "timer",
+                  "name": "latency"
+                },
+                {
+                  "service_identifier": "service_name_or_host",
+                  "stat_type": "timer",
+                  "name": "request_size"
+                },
+                {
+                  "sample_rate": 1,
+                  "service_identifier": "service_name_or_host",
+                  "stat_type": "counter",
+                  "name": "status_count"
+                },
+                {
+                  "service_identifier": "service_name_or_host",
+                  "stat_type": "timer",
+                  "name": "response_size"
+                },
+                {
+                  "service_identifier": "service_name_or_host",
+                  "consumer_identifier": "custom_id",
+                  "stat_type": "set",
+                  "name": "unique_users"
+                },
+                {
+                  "stat_type": "counter",
+                  "name": "request_per_user",
+                  "sample_rate": 1,
+                  "consumer_identifier": "custom_id",
+                  "service_identifier": "service_name_or_host"
+                },
+                {
+                  "service_identifier": "service_name_or_host",
+                  "stat_type": "timer",
+                  "name": "upstream_latency"
+                },
+                {
+                  "service_identifier": "service_name_or_host",
+                  "stat_type": "timer",
+                  "name": "kong_latency"
+                },
+                {
+                  "stat_type": "counter",
+                  "name": "status_count_per_user",
+                  "sample_rate": 1,
+                  "consumer_identifier": "custom_id",
+                  "service_identifier": "service_name_or_host"
+                },
+                {
+                  "sample_rate": 1,
+                  "workspace_identifier": "workspace_id",
+                  "stat_type": "counter",
+                  "name": "status_count_per_workspace"
+                },
+                {
+                  "stat_type": "counter",
+                  "name": "status_count_per_user_per_route",
+                  "sample_rate": 1,
+                  "consumer_identifier": "custom_id",
+                  "service_identifier": "service_name_or_host"
+                },
+                {
+                  "sample_rate": 1,
+                  "service_identifier": "service_name_or_host",
+                  "stat_type": "gauge",
+                  "name": "shdict_usage"
+                },
+                {
+                  "sample_rate": 1,
+                  "stat_type": "counter",
+                  "name": "cache_datastore_hits_total"
+                },
+                {
+                  "sample_rate": 1,
+                  "stat_type": "counter",
+                  "name": "cache_datastore_misses_total"
+                }
+              ]
+            }
+          },
+          {
+            "allow_status_codes": {
+              "elements": {
+                "match": "^[0-9]+-[0-9]+$",
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          {
+            "udp_packet_size": {
+              "between": [
+                0,
+                65507
+              ],
+              "type": "number",
+              "default": 0
+            }
+          },
+          {
+            "use_tcp": {
+              "default": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "hostname_in_prefix": {
+              "default": false,
+              "type": "boolean"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

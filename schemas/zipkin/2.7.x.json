@@ -1,1 +1,131 @@
-{"fields":[{"config":{"fields":[{"local_service_name":{"type":"string","required":true,"default":"kong"}},{"http_endpoint":{"type":"string"}},{"sample_ratio":{"default":0.001,"type":"number","between":[0,1]}},{"default_service_name":{"type":"string"}},{"include_credential":{"type":"boolean","required":true,"default":true}},{"traceid_byte_count":{"type":"integer","one_of":[8,16],"required":true,"default":16}},{"header_type":{"type":"string","one_of":["preserve","ignore","b3","b3-single","w3c","jaeger","ot"],"required":true,"default":"preserve"}},{"default_header_type":{"type":"string","one_of":["b3","b3-single","w3c","jaeger","ot"],"required":true,"default":"b3"}},{"tags_header":{"type":"string","required":true,"default":"Zipkin-Tags"}},{"static_tags":{"type":"array","elements":{"type":"record","fields":[{"name":{"type":"string","required":true,"not_one_of":["error","http.method","http.path","http.status_code","kong.balancer.state","kong.balancer.try","kong.consumer","kong.credential","kong.node.id","kong.route","kong.service","lc","peer.hostname"]}},{"value":{"type":"string","required":true}}]}}}],"type":"record","required":true}}]}
+{
+  "fields": [
+    {
+      "config": {
+        "fields": [
+          {
+            "local_service_name": {
+              "type": "string",
+              "required": true,
+              "default": "kong"
+            }
+          },
+          {
+            "http_endpoint": {
+              "type": "string"
+            }
+          },
+          {
+            "sample_ratio": {
+              "default": 0.001,
+              "type": "number",
+              "between": [
+                0,
+                1
+              ]
+            }
+          },
+          {
+            "default_service_name": {
+              "type": "string"
+            }
+          },
+          {
+            "include_credential": {
+              "type": "boolean",
+              "required": true,
+              "default": true
+            }
+          },
+          {
+            "traceid_byte_count": {
+              "type": "integer",
+              "one_of": [
+                8,
+                16
+              ],
+              "required": true,
+              "default": 16
+            }
+          },
+          {
+            "header_type": {
+              "type": "string",
+              "one_of": [
+                "preserve",
+                "ignore",
+                "b3",
+                "b3-single",
+                "w3c",
+                "jaeger",
+                "ot"
+              ],
+              "required": true,
+              "default": "preserve"
+            }
+          },
+          {
+            "default_header_type": {
+              "type": "string",
+              "one_of": [
+                "b3",
+                "b3-single",
+                "w3c",
+                "jaeger",
+                "ot"
+              ],
+              "required": true,
+              "default": "b3"
+            }
+          },
+          {
+            "tags_header": {
+              "type": "string",
+              "required": true,
+              "default": "Zipkin-Tags"
+            }
+          },
+          {
+            "static_tags": {
+              "type": "array",
+              "elements": {
+                "type": "record",
+                "fields": [
+                  {
+                    "name": {
+                      "type": "string",
+                      "required": true,
+                      "not_one_of": [
+                        "error",
+                        "http.method",
+                        "http.path",
+                        "http.status_code",
+                        "kong.balancer.state",
+                        "kong.balancer.try",
+                        "kong.consumer",
+                        "kong.credential",
+                        "kong.node.id",
+                        "kong.route",
+                        "kong.service",
+                        "lc",
+                        "peer.hostname"
+                      ]
+                    }
+                  },
+                  {
+                    "value": {
+                      "type": "string",
+                      "required": true
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        ],
+        "type": "record",
+        "required": true
+      }
+    }
+  ]
+}

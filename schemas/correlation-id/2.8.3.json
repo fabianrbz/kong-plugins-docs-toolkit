@@ -1,1 +1,59 @@
-{"fields":[{"protocols":{"type":"set","required":true,"elements":{"type":"string","len_min":1,"one_of":["grpc","grpcs","http","https"],"required":true},"default":["grpc","grpcs","http","https"]}},{"config":{"type":"record","required":true,"fields":[{"header_name":{"type":"string","default":"Kong-Request-ID"}},{"generator":{"type":"string","one_of":["uuid","uuid#counter","tracker"],"default":"uuid#counter"}},{"echo_downstream":{"default":false,"required":true,"type":"boolean"}}]}}]}
+{
+  "fields": [
+    {
+      "protocols": {
+        "type": "set",
+        "required": true,
+        "elements": {
+          "type": "string",
+          "len_min": 1,
+          "one_of": [
+            "grpc",
+            "grpcs",
+            "http",
+            "https"
+          ],
+          "required": true
+        },
+        "default": [
+          "grpc",
+          "grpcs",
+          "http",
+          "https"
+        ]
+      }
+    },
+    {
+      "config": {
+        "type": "record",
+        "required": true,
+        "fields": [
+          {
+            "header_name": {
+              "type": "string",
+              "default": "Kong-Request-ID"
+            }
+          },
+          {
+            "generator": {
+              "type": "string",
+              "one_of": [
+                "uuid",
+                "uuid#counter",
+                "tracker"
+              ],
+              "default": "uuid#counter"
+            }
+          },
+          {
+            "echo_downstream": {
+              "default": false,
+              "required": true,
+              "type": "boolean"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

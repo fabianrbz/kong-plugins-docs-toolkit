@@ -1,1 +1,112 @@
-{"fields":[{"config":{"type":"record","required":true,"fields":[{"http_endpoint":{"type":"string"}},{"sample_ratio":{"type":"number","between":[0,1],"default":0.001}},{"default_service_name":{"type":"string"}},{"include_credential":{"type":"boolean","required":true,"default":true}},{"traceid_byte_count":{"type":"integer","required":true,"one_of":[8,16],"default":16}},{"header_type":{"type":"string","required":true,"one_of":["preserve","b3","b3-single","w3c"],"default":"preserve"}},{"default_header_type":{"type":"string","required":true,"one_of":["b3","b3-single","w3c"],"default":"b3"}},{"static_tags":{"type":"array","elements":{"type":"record","fields":[{"name":{"type":"string","required":true,"not_one_of":["error","http.method","http.path","http.status_code","kong.balancer.state","kong.balancer.try","kong.consumer","kong.credential","kong.node.id","kong.route","kong.service","lc","peer.hostname"]}},{"value":{"type":"string","required":true}}]}}}]}}]}
+{
+  "fields": [
+    {
+      "config": {
+        "type": "record",
+        "required": true,
+        "fields": [
+          {
+            "http_endpoint": {
+              "type": "string"
+            }
+          },
+          {
+            "sample_ratio": {
+              "type": "number",
+              "between": [
+                0,
+                1
+              ],
+              "default": 0.001
+            }
+          },
+          {
+            "default_service_name": {
+              "type": "string"
+            }
+          },
+          {
+            "include_credential": {
+              "type": "boolean",
+              "required": true,
+              "default": true
+            }
+          },
+          {
+            "traceid_byte_count": {
+              "type": "integer",
+              "required": true,
+              "one_of": [
+                8,
+                16
+              ],
+              "default": 16
+            }
+          },
+          {
+            "header_type": {
+              "type": "string",
+              "required": true,
+              "one_of": [
+                "preserve",
+                "b3",
+                "b3-single",
+                "w3c"
+              ],
+              "default": "preserve"
+            }
+          },
+          {
+            "default_header_type": {
+              "type": "string",
+              "required": true,
+              "one_of": [
+                "b3",
+                "b3-single",
+                "w3c"
+              ],
+              "default": "b3"
+            }
+          },
+          {
+            "static_tags": {
+              "type": "array",
+              "elements": {
+                "type": "record",
+                "fields": [
+                  {
+                    "name": {
+                      "type": "string",
+                      "required": true,
+                      "not_one_of": [
+                        "error",
+                        "http.method",
+                        "http.path",
+                        "http.status_code",
+                        "kong.balancer.state",
+                        "kong.balancer.try",
+                        "kong.consumer",
+                        "kong.credential",
+                        "kong.node.id",
+                        "kong.route",
+                        "kong.service",
+                        "lc",
+                        "peer.hostname"
+                      ]
+                    }
+                  },
+                  {
+                    "value": {
+                      "type": "string",
+                      "required": true
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

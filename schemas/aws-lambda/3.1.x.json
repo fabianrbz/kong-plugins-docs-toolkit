@@ -1,1 +1,190 @@
-{"fields":[{"protocols":{"type":"set","elements":{"type":"string","one_of":["grpc","grpcs","http","https"]},"default":["grpc","grpcs","http","https"],"required":true}},{"config":{"type":"record","fields":[{"timeout":{"type":"number","required":true,"default":60000}},{"keepalive":{"type":"number","required":true,"default":60000}},{"aws_key":{"type":"string","referenceable":true,"encrypted":true}},{"aws_secret":{"type":"string","referenceable":true,"encrypted":true}},{"aws_assume_role_arn":{"type":"string","referenceable":true,"encrypted":true}},{"aws_role_session_name":{"type":"string","default":"kong"}},{"aws_region":{"type":"string"}},{"function_name":{"type":"string","required":false}},{"qualifier":{"type":"string"}},{"invocation_type":{"type":"string","one_of":["RequestResponse","Event","DryRun"],"required":true,"default":"RequestResponse"}},{"log_type":{"type":"string","one_of":["Tail","None"],"required":true,"default":"Tail"}},{"host":{"type":"string"}},{"port":{"default":443,"between":[0,65535],"type":"integer"}},{"unhandled_status":{"type":"integer","between":[100,999]}},{"forward_request_method":{"type":"boolean","default":false}},{"forward_request_uri":{"type":"boolean","default":false}},{"forward_request_headers":{"type":"boolean","default":false}},{"forward_request_body":{"type":"boolean","default":false}},{"is_proxy_integration":{"type":"boolean","default":false}},{"awsgateway_compatible":{"type":"boolean","default":false}},{"proxy_url":{"type":"string"}},{"skip_large_bodies":{"type":"boolean","default":true}},{"base64_encode_body":{"type":"boolean","default":true}}],"required":true}}]}
+{
+  "fields": [
+    {
+      "protocols": {
+        "type": "set",
+        "elements": {
+          "type": "string",
+          "one_of": [
+            "grpc",
+            "grpcs",
+            "http",
+            "https"
+          ]
+        },
+        "default": [
+          "grpc",
+          "grpcs",
+          "http",
+          "https"
+        ],
+        "required": true
+      }
+    },
+    {
+      "config": {
+        "type": "record",
+        "fields": [
+          {
+            "timeout": {
+              "type": "number",
+              "required": true,
+              "default": 60000
+            }
+          },
+          {
+            "keepalive": {
+              "type": "number",
+              "required": true,
+              "default": 60000
+            }
+          },
+          {
+            "aws_key": {
+              "type": "string",
+              "referenceable": true,
+              "encrypted": true
+            }
+          },
+          {
+            "aws_secret": {
+              "type": "string",
+              "referenceable": true,
+              "encrypted": true
+            }
+          },
+          {
+            "aws_assume_role_arn": {
+              "type": "string",
+              "referenceable": true,
+              "encrypted": true
+            }
+          },
+          {
+            "aws_role_session_name": {
+              "type": "string",
+              "default": "kong"
+            }
+          },
+          {
+            "aws_region": {
+              "type": "string"
+            }
+          },
+          {
+            "function_name": {
+              "type": "string",
+              "required": false
+            }
+          },
+          {
+            "qualifier": {
+              "type": "string"
+            }
+          },
+          {
+            "invocation_type": {
+              "type": "string",
+              "one_of": [
+                "RequestResponse",
+                "Event",
+                "DryRun"
+              ],
+              "required": true,
+              "default": "RequestResponse"
+            }
+          },
+          {
+            "log_type": {
+              "type": "string",
+              "one_of": [
+                "Tail",
+                "None"
+              ],
+              "required": true,
+              "default": "Tail"
+            }
+          },
+          {
+            "host": {
+              "type": "string"
+            }
+          },
+          {
+            "port": {
+              "default": 443,
+              "between": [
+                0,
+                65535
+              ],
+              "type": "integer"
+            }
+          },
+          {
+            "unhandled_status": {
+              "type": "integer",
+              "between": [
+                100,
+                999
+              ]
+            }
+          },
+          {
+            "forward_request_method": {
+              "type": "boolean",
+              "default": false
+            }
+          },
+          {
+            "forward_request_uri": {
+              "type": "boolean",
+              "default": false
+            }
+          },
+          {
+            "forward_request_headers": {
+              "type": "boolean",
+              "default": false
+            }
+          },
+          {
+            "forward_request_body": {
+              "type": "boolean",
+              "default": false
+            }
+          },
+          {
+            "is_proxy_integration": {
+              "type": "boolean",
+              "default": false
+            }
+          },
+          {
+            "awsgateway_compatible": {
+              "type": "boolean",
+              "default": false
+            }
+          },
+          {
+            "proxy_url": {
+              "type": "string"
+            }
+          },
+          {
+            "skip_large_bodies": {
+              "type": "boolean",
+              "default": true
+            }
+          },
+          {
+            "base64_encode_body": {
+              "type": "boolean",
+              "default": true
+            }
+          }
+        ],
+        "required": true
+      }
+    }
+  ]
+}

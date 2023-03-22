@@ -1,1 +1,48 @@
-{"fields":[{"consumer":{"eq":null,"type":"foreign","reference":"consumers"}},{"config":{"fields":[{"lookup_header_name":{"required":true,"type":"string","default":"Authorization"}},{"forward_header_name":{"required":true,"type":"string","default":"Authorization"}},{"key_sets":{"required":true,"type":"array","elements":{"type":"string"}}},{"strict":{"type":"boolean","default":true}}],"type":"record","required":true}}]}
+{
+  "fields": [
+    {
+      "consumer": {
+        "eq": null,
+        "type": "foreign",
+        "reference": "consumers"
+      }
+    },
+    {
+      "config": {
+        "fields": [
+          {
+            "lookup_header_name": {
+              "required": true,
+              "type": "string",
+              "default": "Authorization"
+            }
+          },
+          {
+            "forward_header_name": {
+              "required": true,
+              "type": "string",
+              "default": "Authorization"
+            }
+          },
+          {
+            "key_sets": {
+              "required": true,
+              "type": "array",
+              "elements": {
+                "type": "string"
+              }
+            }
+          },
+          {
+            "strict": {
+              "type": "boolean",
+              "default": true
+            }
+          }
+        ],
+        "type": "record",
+        "required": true
+      }
+    }
+  ]
+}

@@ -1,1 +1,18 @@
-{"fields":[{"config":{"type":"record","required":true,"fields":[{"per_consumer":{"default":false,"type":"boolean"}}]}}]}
+{
+  "fields": [
+    {
+      "config": {
+        "type": "record",
+        "required": true,
+        "fields": [
+          {
+            "per_consumer": {
+              "default": false,
+              "type": "boolean"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,1 +1,51 @@
-{"fields":[{"protocols":{"type":"set","required":true,"elements":{"type":"string","one_of":["grpc","grpcs","http","https"]},"default":["grpc","grpcs","http","https"]}},{"config":{"type":"record","required":true,"fields":[{"allowed_payload_size":{"type":"integer","default":128}},{"size_unit":{"type":"string","required":true,"one_of":["megabytes","kilobytes","bytes"],"default":"megabytes"}}]}}]}
+{
+  "fields": [
+    {
+      "protocols": {
+        "type": "set",
+        "required": true,
+        "elements": {
+          "type": "string",
+          "one_of": [
+            "grpc",
+            "grpcs",
+            "http",
+            "https"
+          ]
+        },
+        "default": [
+          "grpc",
+          "grpcs",
+          "http",
+          "https"
+        ]
+      }
+    },
+    {
+      "config": {
+        "type": "record",
+        "required": true,
+        "fields": [
+          {
+            "allowed_payload_size": {
+              "type": "integer",
+              "default": 128
+            }
+          },
+          {
+            "size_unit": {
+              "type": "string",
+              "required": true,
+              "one_of": [
+                "megabytes",
+                "kilobytes",
+                "bytes"
+              ],
+              "default": "megabytes"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

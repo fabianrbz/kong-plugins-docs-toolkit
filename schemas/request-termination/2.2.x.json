@@ -1,1 +1,58 @@
-{"fields":[{"protocols":{"type":"set","required":true,"elements":{"type":"string","one_of":["grpc","grpcs","http","https"]},"default":["grpc","grpcs","http","https"]}},{"config":{"type":"record","required":true,"fields":[{"status_code":{"type":"integer","between":[100,599],"default":503}},{"message":{"type":"string"}},{"content_type":{"type":"string"}},{"body":{"type":"string"}}]}}]}
+{
+  "fields": [
+    {
+      "protocols": {
+        "type": "set",
+        "required": true,
+        "elements": {
+          "type": "string",
+          "one_of": [
+            "grpc",
+            "grpcs",
+            "http",
+            "https"
+          ]
+        },
+        "default": [
+          "grpc",
+          "grpcs",
+          "http",
+          "https"
+        ]
+      }
+    },
+    {
+      "config": {
+        "type": "record",
+        "required": true,
+        "fields": [
+          {
+            "status_code": {
+              "type": "integer",
+              "between": [
+                100,
+                599
+              ],
+              "default": 503
+            }
+          },
+          {
+            "message": {
+              "type": "string"
+            }
+          },
+          {
+            "content_type": {
+              "type": "string"
+            }
+          },
+          {
+            "body": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

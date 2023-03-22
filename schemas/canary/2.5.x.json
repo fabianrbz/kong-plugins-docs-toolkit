@@ -1,1 +1,102 @@
-{"fields":[{"consumer":{"reference":"consumers","eq":null,"type":"foreign"}},{"config":{"required":true,"shorthand_fields":[{"hash":{"type":"string"}}],"type":"record","fields":[{"start":{"type":"number"}},{"hash":{"default":"consumer","one_of":["consumer","ip","none","allow","deny"],"type":"string"}},{"duration":{"default":3600,"type":"number","gt":0}},{"steps":{"default":1000,"type":"number","gt":1}},{"percentage":{"type":"number","between":[0,100]}},{"upstream_host":{"type":"string"}},{"upstream_port":{"type":"integer","between":[0,65535]}},{"upstream_uri":{"type":"string","len_min":1}},{"upstream_fallback":{"default":false,"type":"boolean","required":true}},{"groups":{"type":"array","elements":{"type":"string"}}}]}}]}
+{
+  "fields": [
+    {
+      "consumer": {
+        "reference": "consumers",
+        "eq": null,
+        "type": "foreign"
+      }
+    },
+    {
+      "config": {
+        "required": true,
+        "shorthand_fields": [
+          {
+            "hash": {
+              "type": "string"
+            }
+          }
+        ],
+        "type": "record",
+        "fields": [
+          {
+            "start": {
+              "type": "number"
+            }
+          },
+          {
+            "hash": {
+              "default": "consumer",
+              "one_of": [
+                "consumer",
+                "ip",
+                "none",
+                "allow",
+                "deny"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "duration": {
+              "default": 3600,
+              "type": "number",
+              "gt": 0
+            }
+          },
+          {
+            "steps": {
+              "default": 1000,
+              "type": "number",
+              "gt": 1
+            }
+          },
+          {
+            "percentage": {
+              "type": "number",
+              "between": [
+                0,
+                100
+              ]
+            }
+          },
+          {
+            "upstream_host": {
+              "type": "string"
+            }
+          },
+          {
+            "upstream_port": {
+              "type": "integer",
+              "between": [
+                0,
+                65535
+              ]
+            }
+          },
+          {
+            "upstream_uri": {
+              "type": "string",
+              "len_min": 1
+            }
+          },
+          {
+            "upstream_fallback": {
+              "default": false,
+              "type": "boolean",
+              "required": true
+            }
+          },
+          {
+            "groups": {
+              "type": "array",
+              "elements": {
+                "type": "string"
+              }
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

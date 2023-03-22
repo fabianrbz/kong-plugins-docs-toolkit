@@ -1,1 +1,50 @@
-{"fields":[{"protocols":{"type":"set","required":true,"elements":{"type":"string","one_of":["grpc","grpcs","http","https","tcp","tls","udp"]},"default":["grpc","grpcs","http","https"]}},{"config":{"type":"record","required":true,"fields":[{"path":{"type":"string","required":true,"match":"^[^*&%%\\`]+$","err":"not a valid filename"}},{"reopen":{"type":"boolean","default":false}}]}}]}
+{
+  "fields": [
+    {
+      "protocols": {
+        "type": "set",
+        "required": true,
+        "elements": {
+          "type": "string",
+          "one_of": [
+            "grpc",
+            "grpcs",
+            "http",
+            "https",
+            "tcp",
+            "tls",
+            "udp"
+          ]
+        },
+        "default": [
+          "grpc",
+          "grpcs",
+          "http",
+          "https"
+        ]
+      }
+    },
+    {
+      "config": {
+        "type": "record",
+        "required": true,
+        "fields": [
+          {
+            "path": {
+              "type": "string",
+              "required": true,
+              "match": "^[^*&%%\\`]+$",
+              "err": "not a valid filename"
+            }
+          },
+          {
+            "reopen": {
+              "type": "boolean",
+              "default": false
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

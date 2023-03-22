@@ -1,1 +1,83 @@
-{"fields":[{"consumer":{"reference":"consumers","eq":null,"type":"foreign"}},{"protocols":{"default":["grpc","grpcs","http","https"],"elements":{"type":"string","one_of":["grpc","grpcs","http","https"]},"required":true,"type":"set"}},{"config":{"required":true,"fields":[{"allow":{"type":"array","elements":{"type":"string"}}},{"deny":{"type":"array","elements":{"type":"string"}}},{"hide_groups_header":{"type":"boolean","required":true,"default":false}}],"type":"record","shorthand_fields":[{"blacklist":{"type":"array","elements":{"type":"string","is_regex":true}}},{"whitelist":{"type":"array","elements":{"type":"string","is_regex":true}}}]}}]}
+{
+  "fields": [
+    {
+      "consumer": {
+        "reference": "consumers",
+        "eq": null,
+        "type": "foreign"
+      }
+    },
+    {
+      "protocols": {
+        "default": [
+          "grpc",
+          "grpcs",
+          "http",
+          "https"
+        ],
+        "elements": {
+          "type": "string",
+          "one_of": [
+            "grpc",
+            "grpcs",
+            "http",
+            "https"
+          ]
+        },
+        "required": true,
+        "type": "set"
+      }
+    },
+    {
+      "config": {
+        "required": true,
+        "fields": [
+          {
+            "allow": {
+              "type": "array",
+              "elements": {
+                "type": "string"
+              }
+            }
+          },
+          {
+            "deny": {
+              "type": "array",
+              "elements": {
+                "type": "string"
+              }
+            }
+          },
+          {
+            "hide_groups_header": {
+              "type": "boolean",
+              "required": true,
+              "default": false
+            }
+          }
+        ],
+        "type": "record",
+        "shorthand_fields": [
+          {
+            "blacklist": {
+              "type": "array",
+              "elements": {
+                "type": "string",
+                "is_regex": true
+              }
+            }
+          },
+          {
+            "whitelist": {
+              "type": "array",
+              "elements": {
+                "type": "string",
+                "is_regex": true
+              }
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

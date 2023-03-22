@@ -1,1 +1,120 @@
-{"fields":[{"protocols":{"type":"set","required":true,"elements":{"type":"string","one_of":["grpc","grpcs","http","https","tcp","tls","udp"]},"default":["grpc","grpcs","http","https"]}},{"config":{"type":"record","required":true,"fields":[{"http_endpoint":{"type":"string","required":true}},{"method":{"type":"string","one_of":["POST","PUT","PATCH"],"default":"POST"}},{"content_type":{"type":"string","one_of":["application/json"],"default":"application/json"}},{"timeout":{"type":"number","default":10000}},{"keepalive":{"type":"number","default":60000}},{"retry_count":{"type":"integer","default":10}},{"queue_size":{"type":"integer","default":1}},{"flush_timeout":{"type":"number","default":2}},{"headers":{"type":"map","keys":{"type":"string","match_none":[{"err":"cannot contain 'Host' header","pattern":"^[Hh][Oo][Ss][Tt]$"},{"err":"cannot contain 'Content-Length' header","pattern":"^[Cc][Oo][Nn][Tt][Ee][Nn][Tt]%-[Ll][Ee][nn][Gg][Tt][Hh]$"},{"err":"cannot contain 'Content-Type' header","pattern":"^[Cc][Oo][Nn][Tt][Ee][Nn][Tt]%-[Tt][Yy][Pp][Ee]$"}]},"values":{"type":"array","elements":{"type":"string"}}}}]}}]}
+{
+  "fields": [
+    {
+      "protocols": {
+        "type": "set",
+        "required": true,
+        "elements": {
+          "type": "string",
+          "one_of": [
+            "grpc",
+            "grpcs",
+            "http",
+            "https",
+            "tcp",
+            "tls",
+            "udp"
+          ]
+        },
+        "default": [
+          "grpc",
+          "grpcs",
+          "http",
+          "https"
+        ]
+      }
+    },
+    {
+      "config": {
+        "type": "record",
+        "required": true,
+        "fields": [
+          {
+            "http_endpoint": {
+              "type": "string",
+              "required": true
+            }
+          },
+          {
+            "method": {
+              "type": "string",
+              "one_of": [
+                "POST",
+                "PUT",
+                "PATCH"
+              ],
+              "default": "POST"
+            }
+          },
+          {
+            "content_type": {
+              "type": "string",
+              "one_of": [
+                "application/json"
+              ],
+              "default": "application/json"
+            }
+          },
+          {
+            "timeout": {
+              "type": "number",
+              "default": 10000
+            }
+          },
+          {
+            "keepalive": {
+              "type": "number",
+              "default": 60000
+            }
+          },
+          {
+            "retry_count": {
+              "type": "integer",
+              "default": 10
+            }
+          },
+          {
+            "queue_size": {
+              "type": "integer",
+              "default": 1
+            }
+          },
+          {
+            "flush_timeout": {
+              "type": "number",
+              "default": 2
+            }
+          },
+          {
+            "headers": {
+              "type": "map",
+              "keys": {
+                "type": "string",
+                "match_none": [
+                  {
+                    "err": "cannot contain 'Host' header",
+                    "pattern": "^[Hh][Oo][Ss][Tt]$"
+                  },
+                  {
+                    "err": "cannot contain 'Content-Length' header",
+                    "pattern": "^[Cc][Oo][Nn][Tt][Ee][Nn][Tt]%-[Ll][Ee][nn][Gg][Tt][Hh]$"
+                  },
+                  {
+                    "err": "cannot contain 'Content-Type' header",
+                    "pattern": "^[Cc][Oo][Nn][Tt][Ee][Nn][Tt]%-[Tt][Yy][Pp][Ee]$"
+                  }
+                ]
+              },
+              "values": {
+                "type": "array",
+                "elements": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

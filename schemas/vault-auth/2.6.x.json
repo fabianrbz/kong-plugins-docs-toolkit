@@ -1,1 +1,71 @@
-{"fields":[{"consumer":{"type":"foreign","eq":null,"reference":"consumers"}},{"config":{"fields":[{"access_token_name":{"default":"access_token","required":true,"elements":{"type":"string"},"type":"string"}},{"secret_token_name":{"default":"secret_token","required":true,"elements":{"type":"string"},"type":"string"}},{"vault":{"required":true,"type":"foreign","reference":"vaults"}},{"hide_credentials":{"default":false,"type":"boolean"}},{"anonymous":{"uuid":true,"legacy":true,"type":"string"}},{"tokens_in_body":{"default":false,"type":"boolean"}},{"run_on_preflight":{"default":true,"type":"boolean"}}],"required":true,"type":"record"}}]}
+{
+  "fields": [
+    {
+      "consumer": {
+        "type": "foreign",
+        "eq": null,
+        "reference": "consumers"
+      }
+    },
+    {
+      "config": {
+        "fields": [
+          {
+            "access_token_name": {
+              "default": "access_token",
+              "required": true,
+              "elements": {
+                "type": "string"
+              },
+              "type": "string"
+            }
+          },
+          {
+            "secret_token_name": {
+              "default": "secret_token",
+              "required": true,
+              "elements": {
+                "type": "string"
+              },
+              "type": "string"
+            }
+          },
+          {
+            "vault": {
+              "required": true,
+              "type": "foreign",
+              "reference": "vaults"
+            }
+          },
+          {
+            "hide_credentials": {
+              "default": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "anonymous": {
+              "uuid": true,
+              "legacy": true,
+              "type": "string"
+            }
+          },
+          {
+            "tokens_in_body": {
+              "default": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "run_on_preflight": {
+              "default": true,
+              "type": "boolean"
+            }
+          }
+        ],
+        "required": true,
+        "type": "record"
+      }
+    }
+  ]
+}

@@ -1,1 +1,47 @@
-{"fields":[{"consumer":{"type":"foreign","reference":"consumers","eq":null}},{"protocols":{"type":"set","elements":{"type":"string","one_of":["https","grpcs","tls"]},"default":["https","grpcs"],"required":true}},{"config":{"type":"record","fields":[{"tls_client_certificate":{"default":"REQUEST","one_of":["REQUEST"],"required":false,"type":"string"}}],"required":true}}]}
+{
+  "fields": [
+    {
+      "consumer": {
+        "type": "foreign",
+        "reference": "consumers",
+        "eq": null
+      }
+    },
+    {
+      "protocols": {
+        "type": "set",
+        "elements": {
+          "type": "string",
+          "one_of": [
+            "https",
+            "grpcs",
+            "tls"
+          ]
+        },
+        "default": [
+          "https",
+          "grpcs"
+        ],
+        "required": true
+      }
+    },
+    {
+      "config": {
+        "type": "record",
+        "fields": [
+          {
+            "tls_client_certificate": {
+              "default": "REQUEST",
+              "one_of": [
+                "REQUEST"
+              ],
+              "required": false,
+              "type": "string"
+            }
+          }
+        ],
+        "required": true
+      }
+    }
+  ]
+}

@@ -1,1 +1,69 @@
-{"fields":[{"protocols":{"type":"set","required":true,"elements":{"type":"string","one_of":["grpc","grpcs","http","https"]},"default":["grpc","grpcs","http","https"]}},{"config":{"type":"record","required":true,"fields":[{"allow":{"type":"array","elements":{"type":"string"}}},{"deny":{"type":"array","elements":{"type":"string"}}}],"shorthand_fields":[{"blacklist":{"type":"array","elements":{"type":"string","is_regex":true}}},{"whitelist":{"type":"array","elements":{"type":"string","is_regex":true}}}]}}]}
+{
+  "fields": [
+    {
+      "protocols": {
+        "type": "set",
+        "required": true,
+        "elements": {
+          "type": "string",
+          "one_of": [
+            "grpc",
+            "grpcs",
+            "http",
+            "https"
+          ]
+        },
+        "default": [
+          "grpc",
+          "grpcs",
+          "http",
+          "https"
+        ]
+      }
+    },
+    {
+      "config": {
+        "type": "record",
+        "required": true,
+        "fields": [
+          {
+            "allow": {
+              "type": "array",
+              "elements": {
+                "type": "string"
+              }
+            }
+          },
+          {
+            "deny": {
+              "type": "array",
+              "elements": {
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "shorthand_fields": [
+          {
+            "blacklist": {
+              "type": "array",
+              "elements": {
+                "type": "string",
+                "is_regex": true
+              }
+            }
+          },
+          {
+            "whitelist": {
+              "type": "array",
+              "elements": {
+                "type": "string",
+                "is_regex": true
+              }
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

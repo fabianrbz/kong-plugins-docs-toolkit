@@ -1,1 +1,178 @@
-{"fields":[{"consumer":{"eq":null,"reference":"consumers","type":"foreign"}},{"protocols":{"required":true,"elements":{"one_of":["grpc","grpcs","http","https"],"type":"string"},"default":["grpc","grpcs","http","https"],"type":"set"}},{"config":{"required":true,"entity_checks":[{"conditional":{"then_field":"scopes","if_field":"mandatory_scope","then_match":{"required":true},"if_match":{"eq":true}}}],"fields":[{"scopes":{"elements":{"type":"string"},"type":"array"}},{"mandatory_scope":{"required":true,"default":false,"type":"boolean"}},{"provision_key":{"unique":true,"required":true,"auto":true,"encrypted":true,"type":"string"}},{"token_expiration":{"required":true,"default":7200,"type":"number"}},{"enable_authorization_code":{"required":true,"default":false,"type":"boolean"}},{"enable_implicit_grant":{"required":true,"default":false,"type":"boolean"}},{"enable_client_credentials":{"required":true,"default":false,"type":"boolean"}},{"enable_password_grant":{"required":true,"default":false,"type":"boolean"}},{"hide_credentials":{"required":true,"default":false,"type":"boolean"}},{"accept_http_if_already_terminated":{"required":true,"default":false,"type":"boolean"}},{"anonymous":{"type":"string"}},{"global_credentials":{"required":true,"default":false,"type":"boolean"}},{"auth_header_name":{"default":"authorization","type":"string"}},{"refresh_token_ttl":{"required":true,"default":1209600,"type":"number"}},{"reuse_refresh_token":{"required":true,"default":false,"type":"boolean"}},{"persistent_refresh_token":{"required":true,"default":false,"type":"boolean"}},{"pkce":{"required":false,"one_of":["none","lax","strict"],"default":"lax","type":"string"}}],"type":"record"}}]}
+{
+  "fields": [
+    {
+      "consumer": {
+        "eq": null,
+        "reference": "consumers",
+        "type": "foreign"
+      }
+    },
+    {
+      "protocols": {
+        "required": true,
+        "elements": {
+          "one_of": [
+            "grpc",
+            "grpcs",
+            "http",
+            "https"
+          ],
+          "type": "string"
+        },
+        "default": [
+          "grpc",
+          "grpcs",
+          "http",
+          "https"
+        ],
+        "type": "set"
+      }
+    },
+    {
+      "config": {
+        "required": true,
+        "entity_checks": [
+          {
+            "conditional": {
+              "then_field": "scopes",
+              "if_field": "mandatory_scope",
+              "then_match": {
+                "required": true
+              },
+              "if_match": {
+                "eq": true
+              }
+            }
+          }
+        ],
+        "fields": [
+          {
+            "scopes": {
+              "elements": {
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          {
+            "mandatory_scope": {
+              "required": true,
+              "default": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "provision_key": {
+              "unique": true,
+              "required": true,
+              "auto": true,
+              "encrypted": true,
+              "type": "string"
+            }
+          },
+          {
+            "token_expiration": {
+              "required": true,
+              "default": 7200,
+              "type": "number"
+            }
+          },
+          {
+            "enable_authorization_code": {
+              "required": true,
+              "default": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "enable_implicit_grant": {
+              "required": true,
+              "default": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "enable_client_credentials": {
+              "required": true,
+              "default": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "enable_password_grant": {
+              "required": true,
+              "default": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "hide_credentials": {
+              "required": true,
+              "default": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "accept_http_if_already_terminated": {
+              "required": true,
+              "default": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "anonymous": {
+              "type": "string"
+            }
+          },
+          {
+            "global_credentials": {
+              "required": true,
+              "default": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "auth_header_name": {
+              "default": "authorization",
+              "type": "string"
+            }
+          },
+          {
+            "refresh_token_ttl": {
+              "required": true,
+              "default": 1209600,
+              "type": "number"
+            }
+          },
+          {
+            "reuse_refresh_token": {
+              "required": true,
+              "default": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "persistent_refresh_token": {
+              "required": true,
+              "default": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "pkce": {
+              "required": false,
+              "one_of": [
+                "none",
+                "lax",
+                "strict"
+              ],
+              "default": "lax",
+              "type": "string"
+            }
+          }
+        ],
+        "type": "record"
+      }
+    }
+  ]
+}

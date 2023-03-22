@@ -1,1 +1,97 @@
-{"fields":[{"consumer":{"type":"foreign","eq":null,"reference":"consumers"}},{"protocols":{"elements":{"one_of":["grpc","grpcs","http","https"],"type":"string"},"required":true,"default":["grpc","grpcs","http","https"],"type":"set"}},{"config":{"fields":[{"hide_credentials":{"required":true,"default":false,"type":"boolean"}},{"clock_skew":{"gt":0,"default":300,"type":"number"}},{"anonymous":{"type":"string"}},{"validate_request_body":{"required":true,"default":false,"type":"boolean"}},{"enforce_headers":{"default":[],"elements":{"type":"string"},"type":"array"}},{"algorithms":{"default":["hmac-sha1","hmac-sha256","hmac-sha384","hmac-sha512"],"elements":{"one_of":["hmac-sha1","hmac-sha256","hmac-sha384","hmac-sha512"],"type":"string"},"type":"array"}}],"required":true,"type":"record"}}]}
+{
+  "fields": [
+    {
+      "consumer": {
+        "type": "foreign",
+        "eq": null,
+        "reference": "consumers"
+      }
+    },
+    {
+      "protocols": {
+        "elements": {
+          "one_of": [
+            "grpc",
+            "grpcs",
+            "http",
+            "https"
+          ],
+          "type": "string"
+        },
+        "required": true,
+        "default": [
+          "grpc",
+          "grpcs",
+          "http",
+          "https"
+        ],
+        "type": "set"
+      }
+    },
+    {
+      "config": {
+        "fields": [
+          {
+            "hide_credentials": {
+              "required": true,
+              "default": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "clock_skew": {
+              "gt": 0,
+              "default": 300,
+              "type": "number"
+            }
+          },
+          {
+            "anonymous": {
+              "type": "string"
+            }
+          },
+          {
+            "validate_request_body": {
+              "required": true,
+              "default": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "enforce_headers": {
+              "default": [
+
+              ],
+              "elements": {
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          {
+            "algorithms": {
+              "default": [
+                "hmac-sha1",
+                "hmac-sha256",
+                "hmac-sha384",
+                "hmac-sha512"
+              ],
+              "elements": {
+                "one_of": [
+                  "hmac-sha1",
+                  "hmac-sha256",
+                  "hmac-sha384",
+                  "hmac-sha512"
+                ],
+                "type": "string"
+              },
+              "type": "array"
+            }
+          }
+        ],
+        "required": true,
+        "type": "record"
+      }
+    }
+  ]
+}

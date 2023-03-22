@@ -1,1 +1,124 @@
-{"fields":[{"consumer":{"type":"foreign","reference":"consumers","eq":null}},{"protocols":{"type":"set","elements":{"type":"string","one_of":["grpc","grpcs","http","https"]},"default":["grpc","grpcs","http","https"],"required":true}},{"config":{"type":"record","fields":[{"opa_protocol":{"type":"string","one_of":["http","https"],"default":"http"}},{"opa_host":{"required":true,"type":"string","default":"localhost"}},{"opa_port":{"required":true,"type":"integer","between":[0,65535],"default":8181}},{"opa_path":{"required":true,"match_none":[{"pattern":"//","err":"must not have empty segments"}],"type":"string","starts_with":"/"}},{"include_service_in_opa_input":{"type":"boolean","default":false}},{"include_route_in_opa_input":{"type":"boolean","default":false}},{"include_consumer_in_opa_input":{"type":"boolean","default":false}},{"include_body_in_opa_input":{"type":"boolean","default":false}},{"include_parsed_json_body_in_opa_input":{"type":"boolean","default":false}},{"include_uri_captures_in_opa_input":{"type":"boolean","default":false}},{"ssl_verify":{"required":true,"type":"boolean","default":true}}],"required":true}}]}
+{
+  "fields": [
+    {
+      "consumer": {
+        "type": "foreign",
+        "reference": "consumers",
+        "eq": null
+      }
+    },
+    {
+      "protocols": {
+        "type": "set",
+        "elements": {
+          "type": "string",
+          "one_of": [
+            "grpc",
+            "grpcs",
+            "http",
+            "https"
+          ]
+        },
+        "default": [
+          "grpc",
+          "grpcs",
+          "http",
+          "https"
+        ],
+        "required": true
+      }
+    },
+    {
+      "config": {
+        "type": "record",
+        "fields": [
+          {
+            "opa_protocol": {
+              "type": "string",
+              "one_of": [
+                "http",
+                "https"
+              ],
+              "default": "http"
+            }
+          },
+          {
+            "opa_host": {
+              "required": true,
+              "type": "string",
+              "default": "localhost"
+            }
+          },
+          {
+            "opa_port": {
+              "required": true,
+              "type": "integer",
+              "between": [
+                0,
+                65535
+              ],
+              "default": 8181
+            }
+          },
+          {
+            "opa_path": {
+              "required": true,
+              "match_none": [
+                {
+                  "pattern": "//",
+                  "err": "must not have empty segments"
+                }
+              ],
+              "type": "string",
+              "starts_with": "/"
+            }
+          },
+          {
+            "include_service_in_opa_input": {
+              "type": "boolean",
+              "default": false
+            }
+          },
+          {
+            "include_route_in_opa_input": {
+              "type": "boolean",
+              "default": false
+            }
+          },
+          {
+            "include_consumer_in_opa_input": {
+              "type": "boolean",
+              "default": false
+            }
+          },
+          {
+            "include_body_in_opa_input": {
+              "type": "boolean",
+              "default": false
+            }
+          },
+          {
+            "include_parsed_json_body_in_opa_input": {
+              "type": "boolean",
+              "default": false
+            }
+          },
+          {
+            "include_uri_captures_in_opa_input": {
+              "type": "boolean",
+              "default": false
+            }
+          },
+          {
+            "ssl_verify": {
+              "required": true,
+              "type": "boolean",
+              "default": true
+            }
+          }
+        ],
+        "required": true
+      }
+    }
+  ]
+}

@@ -1,1 +1,73 @@
-{"fields":[{"protocols":{"type":"set","elements":{"type":"string","one_of":["grpc","grpcs","http","https"]},"default":["grpc","grpcs","http","https"],"required":true}},{"config":{"type":"record","fields":[{"strategy":{"type":"string","one_of":["memory"],"required":true,"default":"memory"}},{"cache_ttl":{"type":"integer","default":300,"gt":0}},{"memory":{"type":"record","fields":[{"dictionary_name":{"required":true,"default":"kong_db_cache","type":"string"}}],"required":true}},{"vary_headers":{"type":"array","elements":{"type":"string"}}}],"required":true}}]}
+{
+  "fields": [
+    {
+      "protocols": {
+        "type": "set",
+        "elements": {
+          "type": "string",
+          "one_of": [
+            "grpc",
+            "grpcs",
+            "http",
+            "https"
+          ]
+        },
+        "default": [
+          "grpc",
+          "grpcs",
+          "http",
+          "https"
+        ],
+        "required": true
+      }
+    },
+    {
+      "config": {
+        "type": "record",
+        "fields": [
+          {
+            "strategy": {
+              "type": "string",
+              "one_of": [
+                "memory"
+              ],
+              "required": true,
+              "default": "memory"
+            }
+          },
+          {
+            "cache_ttl": {
+              "type": "integer",
+              "default": 300,
+              "gt": 0
+            }
+          },
+          {
+            "memory": {
+              "type": "record",
+              "fields": [
+                {
+                  "dictionary_name": {
+                    "required": true,
+                    "default": "kong_db_cache",
+                    "type": "string"
+                  }
+                }
+              ],
+              "required": true
+            }
+          },
+          {
+            "vary_headers": {
+              "type": "array",
+              "elements": {
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "required": true
+      }
+    }
+  ]
+}

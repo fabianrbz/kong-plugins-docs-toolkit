@@ -1,1 +1,42 @@
-{"fields":[{"config":{"type":"record","required":true,"fields":[{"api_specification_filename":{"required":false,"type":"string"}},{"api_specification":{"required":false,"type":"string"}},{"random_delay":{"default":false,"type":"boolean"}},{"max_delay_time":{"default":1,"type":"number"}},{"min_delay_time":{"default":0.001,"type":"number"}}]}}]}
+{
+  "fields": [
+    {
+      "config": {
+        "type": "record",
+        "required": true,
+        "fields": [
+          {
+            "api_specification_filename": {
+              "required": false,
+              "type": "string"
+            }
+          },
+          {
+            "api_specification": {
+              "required": false,
+              "type": "string"
+            }
+          },
+          {
+            "random_delay": {
+              "default": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "max_delay_time": {
+              "default": 1,
+              "type": "number"
+            }
+          },
+          {
+            "min_delay_time": {
+              "default": 0.001,
+              "type": "number"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

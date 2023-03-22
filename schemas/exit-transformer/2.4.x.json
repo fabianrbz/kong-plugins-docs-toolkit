@@ -1,1 +1,33 @@
-{"fields":[{"config":{"type":"record","required":true,"fields":[{"functions":{"elements":{"type":"string"},"type":"array","required":true}},{"handle_unknown":{"default":false,"type":"boolean"}},{"handle_unexpected":{"default":false,"type":"boolean"}}]}}]}
+{
+  "fields": [
+    {
+      "config": {
+        "type": "record",
+        "required": true,
+        "fields": [
+          {
+            "functions": {
+              "elements": {
+                "type": "string"
+              },
+              "type": "array",
+              "required": true
+            }
+          },
+          {
+            "handle_unknown": {
+              "default": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "handle_unexpected": {
+              "default": false,
+              "type": "boolean"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

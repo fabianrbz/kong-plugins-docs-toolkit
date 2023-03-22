@@ -1,1 +1,58 @@
-{"fields":[{"protocols":{"required":true,"elements":{"one_of":["grpc","grpcs","http","https"],"type":"string"},"default":["grpc","grpcs","http","https"],"type":"set"}},{"config":{"required":true,"fields":[{"allowed_payload_size":{"default":128,"type":"integer"}},{"size_unit":{"required":true,"one_of":["megabytes","kilobytes","bytes"],"default":"megabytes","type":"string"}},{"require_content_length":{"required":true,"default":false,"type":"boolean"}}],"type":"record"}}]}
+{
+  "fields": [
+    {
+      "protocols": {
+        "required": true,
+        "elements": {
+          "one_of": [
+            "grpc",
+            "grpcs",
+            "http",
+            "https"
+          ],
+          "type": "string"
+        },
+        "default": [
+          "grpc",
+          "grpcs",
+          "http",
+          "https"
+        ],
+        "type": "set"
+      }
+    },
+    {
+      "config": {
+        "required": true,
+        "fields": [
+          {
+            "allowed_payload_size": {
+              "default": 128,
+              "type": "integer"
+            }
+          },
+          {
+            "size_unit": {
+              "required": true,
+              "one_of": [
+                "megabytes",
+                "kilobytes",
+                "bytes"
+              ],
+              "default": "megabytes",
+              "type": "string"
+            }
+          },
+          {
+            "require_content_length": {
+              "required": true,
+              "default": false,
+              "type": "boolean"
+            }
+          }
+        ],
+        "type": "record"
+      }
+    }
+  ]
+}

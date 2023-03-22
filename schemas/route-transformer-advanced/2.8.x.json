@@ -1,1 +1,42 @@
-{"fields":[{"config":{"required":true,"fields":[{"path":{"type":"string"}},{"port":{"type":"string"}},{"host":{"type":"string"}},{"escape_path":{"default":false,"type":"boolean"}}],"entity_checks":[{"at_least_one_of":["path","port","host"]}],"type":"record"}}]}
+{
+  "fields": [
+    {
+      "config": {
+        "required": true,
+        "fields": [
+          {
+            "path": {
+              "type": "string"
+            }
+          },
+          {
+            "port": {
+              "type": "string"
+            }
+          },
+          {
+            "host": {
+              "type": "string"
+            }
+          },
+          {
+            "escape_path": {
+              "default": false,
+              "type": "boolean"
+            }
+          }
+        ],
+        "entity_checks": [
+          {
+            "at_least_one_of": [
+              "path",
+              "port",
+              "host"
+            ]
+          }
+        ],
+        "type": "record"
+      }
+    }
+  ]
+}

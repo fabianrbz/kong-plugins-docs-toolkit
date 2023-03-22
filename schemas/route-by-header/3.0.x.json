@@ -1,1 +1,44 @@
-{"fields":[{"config":{"type":"record","fields":[{"rules":{"elements":{"type":"record","fields":[{"upstream_name":{"required":true,"type":"string"}},{"condition":{"keys":{"type":"string"},"len_min":1,"values":{"type":"string"},"required":true,"type":"map"}}]},"type":"array","default":[]}}],"required":true}}]}
+{
+  "fields": [
+    {
+      "config": {
+        "type": "record",
+        "fields": [
+          {
+            "rules": {
+              "elements": {
+                "type": "record",
+                "fields": [
+                  {
+                    "upstream_name": {
+                      "required": true,
+                      "type": "string"
+                    }
+                  },
+                  {
+                    "condition": {
+                      "keys": {
+                        "type": "string"
+                      },
+                      "len_min": 1,
+                      "values": {
+                        "type": "string"
+                      },
+                      "required": true,
+                      "type": "map"
+                    }
+                  }
+                ]
+              },
+              "type": "array",
+              "default": [
+
+              ]
+            }
+          }
+        ],
+        "required": true
+      }
+    }
+  ]
+}

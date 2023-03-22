@@ -1,1 +1,351 @@
-{"fields":[{"config":{"required":true,"fields":[{"response_code":{"elements":{"between":[100,900],"type":"integer"},"len_min":1,"required":true,"default":[200,301,404],"type":"array"}},{"request_method":{"elements":{"one_of":["HEAD","GET","POST","PATCH","PUT"],"type":"string"},"required":true,"default":["GET","HEAD"],"type":"array"}},{"content_type":{"elements":{"type":"string"},"required":true,"default":["text/plain","application/json"],"type":"array"}},{"cache_ttl":{"gt":0,"default":300,"type":"integer"}},{"strategy":{"one_of":["memory","redis"],"required":true,"type":"string"}},{"cache_control":{"required":true,"default":false,"type":"boolean"}},{"storage_ttl":{"type":"integer"}},{"memory":{"required":true,"fields":[{"dictionary_name":{"required":true,"default":"kong_db_cache","type":"string"}}],"type":"record"}},{"vary_query_params":{"elements":{"type":"string"},"type":"array"}},{"vary_headers":{"elements":{"type":"string"},"type":"array"}},{"redis":{"required":true,"fields":[{"host":{"type":"string"}},{"port":{"between":[0,65535],"type":"integer"}},{"timeout":{"between":[0,2147483646],"default":2000,"type":"integer"}},{"connect_timeout":{"between":[0,2147483646],"type":"integer"}},{"send_timeout":{"between":[0,2147483646],"type":"integer"}},{"read_timeout":{"between":[0,2147483646],"type":"integer"}},{"username":{"referenceable":true,"type":"string"}},{"password":{"encrypted":true,"referenceable":true,"type":"string"}},{"sentinel_username":{"referenceable":true,"type":"string"}},{"sentinel_password":{"encrypted":true,"referenceable":true,"type":"string"}},{"database":{"default":0,"type":"integer"}},{"keepalive_pool_size":{"between":[1,2147483646],"default":30,"type":"integer"}},{"keepalive_backlog":{"between":[0,2147483646],"type":"integer"}},{"sentinel_master":{"type":"string"}},{"sentinel_role":{"one_of":["master","slave","any"],"type":"string"}},{"sentinel_addresses":{"elements":{"type":"string"},"len_min":1,"type":"array"}},{"cluster_addresses":{"elements":{"type":"string"},"len_min":1,"type":"array"}},{"ssl":{"required":false,"default":false,"type":"boolean"}},{"ssl_verify":{"required":false,"default":false,"type":"boolean"}},{"server_name":{"required":false,"type":"string"}}],"entity_checks":[{"mutually_exclusive_sets":{"set1":["sentinel_master","sentinel_role","sentinel_addresses"],"set2":["host","port"]}},{"mutually_exclusive_sets":{"set1":["sentinel_master","sentinel_role","sentinel_addresses"],"set2":["cluster_addresses"]}},{"mutually_exclusive_sets":{"set1":["cluster_addresses"],"set2":["host","port"]}},{"mutually_required":["sentinel_master","sentinel_role","sentinel_addresses"]},{"mutually_required":["host","port"]},{"mutually_required":["connect_timeout","send_timeout","read_timeout"]}],"type":"record"}},{"bypass_on_err":{"default":false,"type":"boolean"}}],"type":"record"}}]}
+{
+  "fields": [
+    {
+      "config": {
+        "required": true,
+        "fields": [
+          {
+            "response_code": {
+              "elements": {
+                "between": [
+                  100,
+                  900
+                ],
+                "type": "integer"
+              },
+              "len_min": 1,
+              "required": true,
+              "default": [
+                200,
+                301,
+                404
+              ],
+              "type": "array"
+            }
+          },
+          {
+            "request_method": {
+              "elements": {
+                "one_of": [
+                  "HEAD",
+                  "GET",
+                  "POST",
+                  "PATCH",
+                  "PUT"
+                ],
+                "type": "string"
+              },
+              "required": true,
+              "default": [
+                "GET",
+                "HEAD"
+              ],
+              "type": "array"
+            }
+          },
+          {
+            "content_type": {
+              "elements": {
+                "type": "string"
+              },
+              "required": true,
+              "default": [
+                "text/plain",
+                "application/json"
+              ],
+              "type": "array"
+            }
+          },
+          {
+            "cache_ttl": {
+              "gt": 0,
+              "default": 300,
+              "type": "integer"
+            }
+          },
+          {
+            "strategy": {
+              "one_of": [
+                "memory",
+                "redis"
+              ],
+              "required": true,
+              "type": "string"
+            }
+          },
+          {
+            "cache_control": {
+              "required": true,
+              "default": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "storage_ttl": {
+              "type": "integer"
+            }
+          },
+          {
+            "memory": {
+              "required": true,
+              "fields": [
+                {
+                  "dictionary_name": {
+                    "required": true,
+                    "default": "kong_db_cache",
+                    "type": "string"
+                  }
+                }
+              ],
+              "type": "record"
+            }
+          },
+          {
+            "vary_query_params": {
+              "elements": {
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          {
+            "vary_headers": {
+              "elements": {
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          {
+            "redis": {
+              "required": true,
+              "fields": [
+                {
+                  "host": {
+                    "type": "string"
+                  }
+                },
+                {
+                  "port": {
+                    "between": [
+                      0,
+                      65535
+                    ],
+                    "type": "integer"
+                  }
+                },
+                {
+                  "timeout": {
+                    "between": [
+                      0,
+                      2147483646
+                    ],
+                    "default": 2000,
+                    "type": "integer"
+                  }
+                },
+                {
+                  "connect_timeout": {
+                    "between": [
+                      0,
+                      2147483646
+                    ],
+                    "type": "integer"
+                  }
+                },
+                {
+                  "send_timeout": {
+                    "between": [
+                      0,
+                      2147483646
+                    ],
+                    "type": "integer"
+                  }
+                },
+                {
+                  "read_timeout": {
+                    "between": [
+                      0,
+                      2147483646
+                    ],
+                    "type": "integer"
+                  }
+                },
+                {
+                  "username": {
+                    "referenceable": true,
+                    "type": "string"
+                  }
+                },
+                {
+                  "password": {
+                    "encrypted": true,
+                    "referenceable": true,
+                    "type": "string"
+                  }
+                },
+                {
+                  "sentinel_username": {
+                    "referenceable": true,
+                    "type": "string"
+                  }
+                },
+                {
+                  "sentinel_password": {
+                    "encrypted": true,
+                    "referenceable": true,
+                    "type": "string"
+                  }
+                },
+                {
+                  "database": {
+                    "default": 0,
+                    "type": "integer"
+                  }
+                },
+                {
+                  "keepalive_pool_size": {
+                    "between": [
+                      1,
+                      2147483646
+                    ],
+                    "default": 30,
+                    "type": "integer"
+                  }
+                },
+                {
+                  "keepalive_backlog": {
+                    "between": [
+                      0,
+                      2147483646
+                    ],
+                    "type": "integer"
+                  }
+                },
+                {
+                  "sentinel_master": {
+                    "type": "string"
+                  }
+                },
+                {
+                  "sentinel_role": {
+                    "one_of": [
+                      "master",
+                      "slave",
+                      "any"
+                    ],
+                    "type": "string"
+                  }
+                },
+                {
+                  "sentinel_addresses": {
+                    "elements": {
+                      "type": "string"
+                    },
+                    "len_min": 1,
+                    "type": "array"
+                  }
+                },
+                {
+                  "cluster_addresses": {
+                    "elements": {
+                      "type": "string"
+                    },
+                    "len_min": 1,
+                    "type": "array"
+                  }
+                },
+                {
+                  "ssl": {
+                    "required": false,
+                    "default": false,
+                    "type": "boolean"
+                  }
+                },
+                {
+                  "ssl_verify": {
+                    "required": false,
+                    "default": false,
+                    "type": "boolean"
+                  }
+                },
+                {
+                  "server_name": {
+                    "required": false,
+                    "type": "string"
+                  }
+                }
+              ],
+              "entity_checks": [
+                {
+                  "mutually_exclusive_sets": {
+                    "set1": [
+                      "sentinel_master",
+                      "sentinel_role",
+                      "sentinel_addresses"
+                    ],
+                    "set2": [
+                      "host",
+                      "port"
+                    ]
+                  }
+                },
+                {
+                  "mutually_exclusive_sets": {
+                    "set1": [
+                      "sentinel_master",
+                      "sentinel_role",
+                      "sentinel_addresses"
+                    ],
+                    "set2": [
+                      "cluster_addresses"
+                    ]
+                  }
+                },
+                {
+                  "mutually_exclusive_sets": {
+                    "set1": [
+                      "cluster_addresses"
+                    ],
+                    "set2": [
+                      "host",
+                      "port"
+                    ]
+                  }
+                },
+                {
+                  "mutually_required": [
+                    "sentinel_master",
+                    "sentinel_role",
+                    "sentinel_addresses"
+                  ]
+                },
+                {
+                  "mutually_required": [
+                    "host",
+                    "port"
+                  ]
+                },
+                {
+                  "mutually_required": [
+                    "connect_timeout",
+                    "send_timeout",
+                    "read_timeout"
+                  ]
+                }
+              ],
+              "type": "record"
+            }
+          },
+          {
+            "bypass_on_err": {
+              "default": false,
+              "type": "boolean"
+            }
+          }
+        ],
+        "type": "record"
+      }
+    }
+  ]
+}

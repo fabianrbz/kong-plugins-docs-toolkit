@@ -1,1 +1,45 @@
-{"fields":[{"config":{"required":true,"type":"record","fields":[{"proxy_host":{"required":true,"type":"string"}},{"proxy_port":{"required":true,"type":"integer","between":[0,65535]}},{"proxy_scheme":{"required":true,"one_of":["http"],"type":"string","default":"http"}},{"https_verify":{"required":true,"type":"boolean","default":false}}]}}]}
+{
+  "fields": [
+    {
+      "config": {
+        "required": true,
+        "type": "record",
+        "fields": [
+          {
+            "proxy_host": {
+              "required": true,
+              "type": "string"
+            }
+          },
+          {
+            "proxy_port": {
+              "required": true,
+              "type": "integer",
+              "between": [
+                0,
+                65535
+              ]
+            }
+          },
+          {
+            "proxy_scheme": {
+              "required": true,
+              "one_of": [
+                "http"
+              ],
+              "type": "string",
+              "default": "http"
+            }
+          },
+          {
+            "https_verify": {
+              "required": true,
+              "type": "boolean",
+              "default": false
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,1 +1,131 @@
-{"fields":[{"config":{"required":true,"fields":[{"body_schema":{"required":false,"type":"string"}},{"allowed_content_types":{"elements":{"required":true,"type":"string"},"default":["application/json"],"type":"set"}},{"version":{"one_of":["kong","draft4"],"required":true,"default":"kong","type":"string"}},{"parameter_schema":{"required":false,"elements":{"fields":[{"in":{"one_of":["query","header","path"],"required":true,"type":"string"}},{"name":{"required":true,"type":"string"}},{"required":{"required":true,"type":"boolean"}},{"style":{"one_of":["label","form","matrix","simple","spaceDelimited","pipeDelimited","deepObject"],"type":"string"}},{"explode":{"type":"boolean"}},{"schema":{"type":"string"}}],"entity_checks":[{"mutually_required":["style","explode","schema"]},{"custom_entity_check":{"field_sources":["style","in"]}}],"type":"record"},"type":"array"}},{"verbose_response":{"required":true,"default":false,"type":"boolean"}}],"entity_checks":[{"at_least_one_of":["body_schema","parameter_schema"]}],"type":"record"}}]}
+{
+  "fields": [
+    {
+      "config": {
+        "required": true,
+        "fields": [
+          {
+            "body_schema": {
+              "required": false,
+              "type": "string"
+            }
+          },
+          {
+            "allowed_content_types": {
+              "elements": {
+                "required": true,
+                "type": "string"
+              },
+              "default": [
+                "application/json"
+              ],
+              "type": "set"
+            }
+          },
+          {
+            "version": {
+              "one_of": [
+                "kong",
+                "draft4"
+              ],
+              "required": true,
+              "default": "kong",
+              "type": "string"
+            }
+          },
+          {
+            "parameter_schema": {
+              "required": false,
+              "elements": {
+                "fields": [
+                  {
+                    "in": {
+                      "one_of": [
+                        "query",
+                        "header",
+                        "path"
+                      ],
+                      "required": true,
+                      "type": "string"
+                    }
+                  },
+                  {
+                    "name": {
+                      "required": true,
+                      "type": "string"
+                    }
+                  },
+                  {
+                    "required": {
+                      "required": true,
+                      "type": "boolean"
+                    }
+                  },
+                  {
+                    "style": {
+                      "one_of": [
+                        "label",
+                        "form",
+                        "matrix",
+                        "simple",
+                        "spaceDelimited",
+                        "pipeDelimited",
+                        "deepObject"
+                      ],
+                      "type": "string"
+                    }
+                  },
+                  {
+                    "explode": {
+                      "type": "boolean"
+                    }
+                  },
+                  {
+                    "schema": {
+                      "type": "string"
+                    }
+                  }
+                ],
+                "entity_checks": [
+                  {
+                    "mutually_required": [
+                      "style",
+                      "explode",
+                      "schema"
+                    ]
+                  },
+                  {
+                    "custom_entity_check": {
+                      "field_sources": [
+                        "style",
+                        "in"
+                      ]
+                    }
+                  }
+                ],
+                "type": "record"
+              },
+              "type": "array"
+            }
+          },
+          {
+            "verbose_response": {
+              "required": true,
+              "default": false,
+              "type": "boolean"
+            }
+          }
+        ],
+        "entity_checks": [
+          {
+            "at_least_one_of": [
+              "body_schema",
+              "parameter_schema"
+            ]
+          }
+        ],
+        "type": "record"
+      }
+    }
+  ]
+}

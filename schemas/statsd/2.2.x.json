@@ -1,1 +1,226 @@
-{"fields":[{"protocols":{"type":"set","required":true,"elements":{"type":"string","one_of":["grpc","grpcs","http","https","tcp","tls","udp"]},"default":["grpc","grpcs","http","https"]}},{"config":{"type":"record","required":true,"fields":[{"host":{"type":"string","default":"localhost"}},{"port":{"type":"integer","between":[0,65535],"default":8125}},{"prefix":{"type":"string","default":"kong"}},{"metrics":{"type":"array","elements":{"type":"record","entity_checks":[{"conditional":{"then_field":"stat_type","then_match":{"eq":"set"},"if_field":"name","if_match":{"eq":"unique_users"}}},{"conditional":{"then_field":"sample_rate","then_match":{"required":true},"if_field":"stat_type","if_match":{"one_of":["counter","gauge"]}}},{"conditional":{"then_field":"consumer_identifier","then_match":{"required":true},"if_field":"name","if_match":{"one_of":["status_count_per_user","request_per_user","unique_users"]}}},{"conditional":{"then_field":"stat_type","then_match":{"eq":"counter"},"if_field":"name","if_match":{"one_of":["status_count","status_count_per_user","request_per_user"]}}}],"fields":[{"name":{"type":"string","required":true,"one_of":["kong_latency","latency","request_count","request_per_user","request_size","response_size","status_count","status_count_per_user","unique_users","upstream_latency"]}},{"stat_type":{"type":"string","required":true,"one_of":["counter","gauge","histogram","meter","set","timer"]}},{"sample_rate":{"type":"number","gt":0}},{"consumer_identifier":{"type":"string","one_of":["consumer_id","custom_id","username"]}}]},"default":[{"sample_rate":1,"stat_type":"counter","name":"request_count"},{"name":"latency","stat_type":"timer"},{"name":"request_size","stat_type":"timer"},{"sample_rate":1,"stat_type":"counter","name":"status_count"},{"name":"response_size","stat_type":"timer"},{"stat_type":"set","name":"unique_users","consumer_identifier":"custom_id"},{"sample_rate":1,"stat_type":"counter","name":"request_per_user","consumer_identifier":"custom_id"},{"name":"upstream_latency","stat_type":"timer"},{"name":"kong_latency","stat_type":"timer"},{"sample_rate":1,"stat_type":"counter","name":"status_count_per_user","consumer_identifier":"custom_id"}]}}]}}]}
+{
+  "fields": [
+    {
+      "protocols": {
+        "type": "set",
+        "required": true,
+        "elements": {
+          "type": "string",
+          "one_of": [
+            "grpc",
+            "grpcs",
+            "http",
+            "https",
+            "tcp",
+            "tls",
+            "udp"
+          ]
+        },
+        "default": [
+          "grpc",
+          "grpcs",
+          "http",
+          "https"
+        ]
+      }
+    },
+    {
+      "config": {
+        "type": "record",
+        "required": true,
+        "fields": [
+          {
+            "host": {
+              "type": "string",
+              "default": "localhost"
+            }
+          },
+          {
+            "port": {
+              "type": "integer",
+              "between": [
+                0,
+                65535
+              ],
+              "default": 8125
+            }
+          },
+          {
+            "prefix": {
+              "type": "string",
+              "default": "kong"
+            }
+          },
+          {
+            "metrics": {
+              "type": "array",
+              "elements": {
+                "type": "record",
+                "entity_checks": [
+                  {
+                    "conditional": {
+                      "then_field": "stat_type",
+                      "then_match": {
+                        "eq": "set"
+                      },
+                      "if_field": "name",
+                      "if_match": {
+                        "eq": "unique_users"
+                      }
+                    }
+                  },
+                  {
+                    "conditional": {
+                      "then_field": "sample_rate",
+                      "then_match": {
+                        "required": true
+                      },
+                      "if_field": "stat_type",
+                      "if_match": {
+                        "one_of": [
+                          "counter",
+                          "gauge"
+                        ]
+                      }
+                    }
+                  },
+                  {
+                    "conditional": {
+                      "then_field": "consumer_identifier",
+                      "then_match": {
+                        "required": true
+                      },
+                      "if_field": "name",
+                      "if_match": {
+                        "one_of": [
+                          "status_count_per_user",
+                          "request_per_user",
+                          "unique_users"
+                        ]
+                      }
+                    }
+                  },
+                  {
+                    "conditional": {
+                      "then_field": "stat_type",
+                      "then_match": {
+                        "eq": "counter"
+                      },
+                      "if_field": "name",
+                      "if_match": {
+                        "one_of": [
+                          "status_count",
+                          "status_count_per_user",
+                          "request_per_user"
+                        ]
+                      }
+                    }
+                  }
+                ],
+                "fields": [
+                  {
+                    "name": {
+                      "type": "string",
+                      "required": true,
+                      "one_of": [
+                        "kong_latency",
+                        "latency",
+                        "request_count",
+                        "request_per_user",
+                        "request_size",
+                        "response_size",
+                        "status_count",
+                        "status_count_per_user",
+                        "unique_users",
+                        "upstream_latency"
+                      ]
+                    }
+                  },
+                  {
+                    "stat_type": {
+                      "type": "string",
+                      "required": true,
+                      "one_of": [
+                        "counter",
+                        "gauge",
+                        "histogram",
+                        "meter",
+                        "set",
+                        "timer"
+                      ]
+                    }
+                  },
+                  {
+                    "sample_rate": {
+                      "type": "number",
+                      "gt": 0
+                    }
+                  },
+                  {
+                    "consumer_identifier": {
+                      "type": "string",
+                      "one_of": [
+                        "consumer_id",
+                        "custom_id",
+                        "username"
+                      ]
+                    }
+                  }
+                ]
+              },
+              "default": [
+                {
+                  "sample_rate": 1,
+                  "stat_type": "counter",
+                  "name": "request_count"
+                },
+                {
+                  "name": "latency",
+                  "stat_type": "timer"
+                },
+                {
+                  "name": "request_size",
+                  "stat_type": "timer"
+                },
+                {
+                  "sample_rate": 1,
+                  "stat_type": "counter",
+                  "name": "status_count"
+                },
+                {
+                  "name": "response_size",
+                  "stat_type": "timer"
+                },
+                {
+                  "stat_type": "set",
+                  "name": "unique_users",
+                  "consumer_identifier": "custom_id"
+                },
+                {
+                  "sample_rate": 1,
+                  "stat_type": "counter",
+                  "name": "request_per_user",
+                  "consumer_identifier": "custom_id"
+                },
+                {
+                  "name": "upstream_latency",
+                  "stat_type": "timer"
+                },
+                {
+                  "name": "kong_latency",
+                  "stat_type": "timer"
+                },
+                {
+                  "sample_rate": 1,
+                  "stat_type": "counter",
+                  "name": "status_count_per_user",
+                  "consumer_identifier": "custom_id"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

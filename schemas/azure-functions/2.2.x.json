@@ -1,1 +1,71 @@
-{"fields":[{"config":{"type":"record","required":true,"fields":[{"timeout":{"type":"number","default":600000}},{"keepalive":{"type":"number","default":60000}},{"https":{"type":"boolean","default":true}},{"https_verify":{"type":"boolean","default":false}},{"apikey":{"type":"string"}},{"clientid":{"type":"string"}},{"appname":{"type":"string","required":true}},{"hostdomain":{"type":"string","required":true,"default":"azurewebsites.net"}},{"routeprefix":{"type":"string","default":"api"}},{"functionname":{"type":"string","required":true}}]}}]}
+{
+  "fields": [
+    {
+      "config": {
+        "type": "record",
+        "required": true,
+        "fields": [
+          {
+            "timeout": {
+              "type": "number",
+              "default": 600000
+            }
+          },
+          {
+            "keepalive": {
+              "type": "number",
+              "default": 60000
+            }
+          },
+          {
+            "https": {
+              "type": "boolean",
+              "default": true
+            }
+          },
+          {
+            "https_verify": {
+              "type": "boolean",
+              "default": false
+            }
+          },
+          {
+            "apikey": {
+              "type": "string"
+            }
+          },
+          {
+            "clientid": {
+              "type": "string"
+            }
+          },
+          {
+            "appname": {
+              "type": "string",
+              "required": true
+            }
+          },
+          {
+            "hostdomain": {
+              "type": "string",
+              "required": true,
+              "default": "azurewebsites.net"
+            }
+          },
+          {
+            "routeprefix": {
+              "type": "string",
+              "default": "api"
+            }
+          },
+          {
+            "functionname": {
+              "type": "string",
+              "required": true
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

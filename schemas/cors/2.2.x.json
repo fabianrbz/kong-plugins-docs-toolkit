@@ -1,1 +1,111 @@
-{"fields":[{"consumer":{"type":"foreign","eq":null,"reference":"consumers"}},{"protocols":{"type":"set","required":true,"elements":{"type":"string","one_of":["grpc","grpcs","http","https"]},"default":["grpc","grpcs","http","https"]}},{"config":{"type":"record","required":true,"fields":[{"origins":{"type":"array","elements":{"type":"string"}}},{"headers":{"type":"array","elements":{"type":"string"}}},{"exposed_headers":{"type":"array","elements":{"type":"string"}}},{"methods":{"type":"array","elements":{"type":"string","one_of":["GET","HEAD","PUT","PATCH","POST","DELETE","OPTIONS","TRACE","CONNECT"]},"default":["GET","HEAD","PUT","PATCH","POST","DELETE","OPTIONS","TRACE","CONNECT"]}},{"max_age":{"type":"number"}},{"credentials":{"type":"boolean","default":false}},{"preflight_continue":{"type":"boolean","default":false}}]}}]}
+{
+  "fields": [
+    {
+      "consumer": {
+        "type": "foreign",
+        "eq": null,
+        "reference": "consumers"
+      }
+    },
+    {
+      "protocols": {
+        "type": "set",
+        "required": true,
+        "elements": {
+          "type": "string",
+          "one_of": [
+            "grpc",
+            "grpcs",
+            "http",
+            "https"
+          ]
+        },
+        "default": [
+          "grpc",
+          "grpcs",
+          "http",
+          "https"
+        ]
+      }
+    },
+    {
+      "config": {
+        "type": "record",
+        "required": true,
+        "fields": [
+          {
+            "origins": {
+              "type": "array",
+              "elements": {
+                "type": "string"
+              }
+            }
+          },
+          {
+            "headers": {
+              "type": "array",
+              "elements": {
+                "type": "string"
+              }
+            }
+          },
+          {
+            "exposed_headers": {
+              "type": "array",
+              "elements": {
+                "type": "string"
+              }
+            }
+          },
+          {
+            "methods": {
+              "type": "array",
+              "elements": {
+                "type": "string",
+                "one_of": [
+                  "GET",
+                  "HEAD",
+                  "PUT",
+                  "PATCH",
+                  "POST",
+                  "DELETE",
+                  "OPTIONS",
+                  "TRACE",
+                  "CONNECT"
+                ]
+              },
+              "default": [
+                "GET",
+                "HEAD",
+                "PUT",
+                "PATCH",
+                "POST",
+                "DELETE",
+                "OPTIONS",
+                "TRACE",
+                "CONNECT"
+              ]
+            }
+          },
+          {
+            "max_age": {
+              "type": "number"
+            }
+          },
+          {
+            "credentials": {
+              "type": "boolean",
+              "default": false
+            }
+          },
+          {
+            "preflight_continue": {
+              "type": "boolean",
+              "default": false
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

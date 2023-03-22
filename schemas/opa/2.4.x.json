@@ -1,1 +1,99 @@
-{"fields":[{"consumer":{"type":"foreign","reference":"consumers","eq":null}},{"protocols":{"elements":{"one_of":["grpc","grpcs","http","https"],"type":"string"},"type":"set","default":["grpc","grpcs","http","https"],"required":true}},{"config":{"type":"record","required":true,"fields":[{"opa_protocol":{"type":"string","one_of":["http","https"],"default":"http"}},{"opa_host":{"type":"string","required":true,"default":"localhost"}},{"opa_port":{"between":[0,65535],"type":"integer","required":true,"default":8181}},{"opa_path":{"starts_with":"/","type":"string","match_none":[{"pattern":"//","err":"must not have empty segments"}],"required":true}},{"include_service_in_opa_input":{"default":false,"type":"boolean"}},{"include_route_in_opa_input":{"default":false,"type":"boolean"}},{"include_consumer_in_opa_input":{"default":false,"type":"boolean"}}]}}]}
+{
+  "fields": [
+    {
+      "consumer": {
+        "type": "foreign",
+        "reference": "consumers",
+        "eq": null
+      }
+    },
+    {
+      "protocols": {
+        "elements": {
+          "one_of": [
+            "grpc",
+            "grpcs",
+            "http",
+            "https"
+          ],
+          "type": "string"
+        },
+        "type": "set",
+        "default": [
+          "grpc",
+          "grpcs",
+          "http",
+          "https"
+        ],
+        "required": true
+      }
+    },
+    {
+      "config": {
+        "type": "record",
+        "required": true,
+        "fields": [
+          {
+            "opa_protocol": {
+              "type": "string",
+              "one_of": [
+                "http",
+                "https"
+              ],
+              "default": "http"
+            }
+          },
+          {
+            "opa_host": {
+              "type": "string",
+              "required": true,
+              "default": "localhost"
+            }
+          },
+          {
+            "opa_port": {
+              "between": [
+                0,
+                65535
+              ],
+              "type": "integer",
+              "required": true,
+              "default": 8181
+            }
+          },
+          {
+            "opa_path": {
+              "starts_with": "/",
+              "type": "string",
+              "match_none": [
+                {
+                  "pattern": "//",
+                  "err": "must not have empty segments"
+                }
+              ],
+              "required": true
+            }
+          },
+          {
+            "include_service_in_opa_input": {
+              "default": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "include_route_in_opa_input": {
+              "default": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "include_consumer_in_opa_input": {
+              "default": false,
+              "type": "boolean"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

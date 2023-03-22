@@ -1,1 +1,274 @@
-{"fields":[{"protocols":{"elements":{"one_of":["grpc","grpcs","http","https","tcp","tls","tls_passthrough","udp","ws","wss"],"type":"string"},"required":true,"type":"set","default":["grpc","grpcs","http","https"]}},{"config":{"fields":[{"http_method":{"match":"^%u+$","type":"string"}},{"remove":{"fields":[{"body":{"elements":{"type":"string"},"type":"array","required":true,"default":[]}},{"headers":{"elements":{"type":"string"},"type":"array","required":true,"default":[]}},{"querystring":{"elements":{"type":"string"},"type":"array","required":true,"default":[]}}],"type":"record","required":true}},{"rename":{"fields":[{"body":{"elements":{"type":"string"},"type":"array","required":true,"default":[]}},{"headers":{"elements":{"match":"^[^:]+:.*$","type":"string"},"type":"array","required":true,"default":[]}},{"querystring":{"elements":{"type":"string"},"type":"array","required":true,"default":[]}}],"type":"record","required":true}},{"replace":{"fields":[{"body":{"elements":{"type":"string"},"type":"array","required":true,"default":[]}},{"headers":{"elements":{"match":"^[^:]+:.*$","type":"string"},"type":"array","required":true,"default":[]}},{"querystring":{"elements":{"type":"string"},"type":"array","required":true,"default":[]}},{"uri":{"type":"string"}}],"type":"record","required":true}},{"add":{"fields":[{"body":{"elements":{"type":"string"},"type":"array","required":true,"default":[]}},{"headers":{"elements":{"match":"^[^:]+:.*$","type":"string"},"type":"array","required":true,"default":[]}},{"querystring":{"elements":{"type":"string"},"type":"array","required":true,"default":[]}}],"type":"record","required":true}},{"append":{"fields":[{"body":{"elements":{"type":"string"},"type":"array","required":true,"default":[]}},{"headers":{"elements":{"match":"^[^:]+:.*$","type":"string"},"type":"array","required":true,"default":[]}},{"querystring":{"elements":{"type":"string"},"type":"array","required":true,"default":[]}}],"type":"record","required":true}}],"type":"record","required":true}}]}
+{
+  "fields": [
+    {
+      "protocols": {
+        "elements": {
+          "one_of": [
+            "grpc",
+            "grpcs",
+            "http",
+            "https",
+            "tcp",
+            "tls",
+            "tls_passthrough",
+            "udp",
+            "ws",
+            "wss"
+          ],
+          "type": "string"
+        },
+        "required": true,
+        "type": "set",
+        "default": [
+          "grpc",
+          "grpcs",
+          "http",
+          "https"
+        ]
+      }
+    },
+    {
+      "config": {
+        "fields": [
+          {
+            "http_method": {
+              "match": "^%u+$",
+              "type": "string"
+            }
+          },
+          {
+            "remove": {
+              "fields": [
+                {
+                  "body": {
+                    "elements": {
+                      "type": "string"
+                    },
+                    "type": "array",
+                    "required": true,
+                    "default": [
+
+                    ]
+                  }
+                },
+                {
+                  "headers": {
+                    "elements": {
+                      "type": "string"
+                    },
+                    "type": "array",
+                    "required": true,
+                    "default": [
+
+                    ]
+                  }
+                },
+                {
+                  "querystring": {
+                    "elements": {
+                      "type": "string"
+                    },
+                    "type": "array",
+                    "required": true,
+                    "default": [
+
+                    ]
+                  }
+                }
+              ],
+              "type": "record",
+              "required": true
+            }
+          },
+          {
+            "rename": {
+              "fields": [
+                {
+                  "body": {
+                    "elements": {
+                      "type": "string"
+                    },
+                    "type": "array",
+                    "required": true,
+                    "default": [
+
+                    ]
+                  }
+                },
+                {
+                  "headers": {
+                    "elements": {
+                      "match": "^[^:]+:.*$",
+                      "type": "string"
+                    },
+                    "type": "array",
+                    "required": true,
+                    "default": [
+
+                    ]
+                  }
+                },
+                {
+                  "querystring": {
+                    "elements": {
+                      "type": "string"
+                    },
+                    "type": "array",
+                    "required": true,
+                    "default": [
+
+                    ]
+                  }
+                }
+              ],
+              "type": "record",
+              "required": true
+            }
+          },
+          {
+            "replace": {
+              "fields": [
+                {
+                  "body": {
+                    "elements": {
+                      "type": "string"
+                    },
+                    "type": "array",
+                    "required": true,
+                    "default": [
+
+                    ]
+                  }
+                },
+                {
+                  "headers": {
+                    "elements": {
+                      "match": "^[^:]+:.*$",
+                      "type": "string"
+                    },
+                    "type": "array",
+                    "required": true,
+                    "default": [
+
+                    ]
+                  }
+                },
+                {
+                  "querystring": {
+                    "elements": {
+                      "type": "string"
+                    },
+                    "type": "array",
+                    "required": true,
+                    "default": [
+
+                    ]
+                  }
+                },
+                {
+                  "uri": {
+                    "type": "string"
+                  }
+                }
+              ],
+              "type": "record",
+              "required": true
+            }
+          },
+          {
+            "add": {
+              "fields": [
+                {
+                  "body": {
+                    "elements": {
+                      "type": "string"
+                    },
+                    "type": "array",
+                    "required": true,
+                    "default": [
+
+                    ]
+                  }
+                },
+                {
+                  "headers": {
+                    "elements": {
+                      "match": "^[^:]+:.*$",
+                      "type": "string"
+                    },
+                    "type": "array",
+                    "required": true,
+                    "default": [
+
+                    ]
+                  }
+                },
+                {
+                  "querystring": {
+                    "elements": {
+                      "type": "string"
+                    },
+                    "type": "array",
+                    "required": true,
+                    "default": [
+
+                    ]
+                  }
+                }
+              ],
+              "type": "record",
+              "required": true
+            }
+          },
+          {
+            "append": {
+              "fields": [
+                {
+                  "body": {
+                    "elements": {
+                      "type": "string"
+                    },
+                    "type": "array",
+                    "required": true,
+                    "default": [
+
+                    ]
+                  }
+                },
+                {
+                  "headers": {
+                    "elements": {
+                      "match": "^[^:]+:.*$",
+                      "type": "string"
+                    },
+                    "type": "array",
+                    "required": true,
+                    "default": [
+
+                    ]
+                  }
+                },
+                {
+                  "querystring": {
+                    "elements": {
+                      "type": "string"
+                    },
+                    "type": "array",
+                    "required": true,
+                    "default": [
+
+                    ]
+                  }
+                }
+              ],
+              "type": "record",
+              "required": true
+            }
+          }
+        ],
+        "type": "record",
+        "required": true
+      }
+    }
+  ]
+}

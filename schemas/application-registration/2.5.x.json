@@ -1,1 +1,82 @@
-{"fields":[{"consumer":{"reference":"consumers","eq":null,"type":"foreign"}},{"service":{"on_delete":"cascade","reference":"services","type":"foreign","ne":null}},{"route":{"reference":"routes","eq":null,"type":"foreign"}},{"protocols":{"required":true,"default":["grpc","grpcs","http","https"],"type":"set","elements":{"type":"string","one_of":["grpc","grpcs","http","https"]}}},{"config":{"required":true,"type":"record","fields":[{"display_name":{"required":true,"type":"string","unique":true}},{"description":{"type":"string","unique":true}},{"auto_approve":{"required":true,"type":"boolean","default":false}},{"show_issuer":{"required":true,"type":"boolean","default":false}}]}}]}
+{
+  "fields": [
+    {
+      "consumer": {
+        "reference": "consumers",
+        "eq": null,
+        "type": "foreign"
+      }
+    },
+    {
+      "service": {
+        "on_delete": "cascade",
+        "reference": "services",
+        "type": "foreign",
+        "ne": null
+      }
+    },
+    {
+      "route": {
+        "reference": "routes",
+        "eq": null,
+        "type": "foreign"
+      }
+    },
+    {
+      "protocols": {
+        "required": true,
+        "default": [
+          "grpc",
+          "grpcs",
+          "http",
+          "https"
+        ],
+        "type": "set",
+        "elements": {
+          "type": "string",
+          "one_of": [
+            "grpc",
+            "grpcs",
+            "http",
+            "https"
+          ]
+        }
+      }
+    },
+    {
+      "config": {
+        "required": true,
+        "type": "record",
+        "fields": [
+          {
+            "display_name": {
+              "required": true,
+              "type": "string",
+              "unique": true
+            }
+          },
+          {
+            "description": {
+              "type": "string",
+              "unique": true
+            }
+          },
+          {
+            "auto_approve": {
+              "required": true,
+              "type": "boolean",
+              "default": false
+            }
+          },
+          {
+            "show_issuer": {
+              "required": true,
+              "type": "boolean",
+              "default": false
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,1 +1,80 @@
-{"fields":[{"consumer":{"eq":null,"type":"foreign","reference":"consumers"}},{"route":{"eq":null,"type":"foreign","reference":"routes"}},{"protocols":{"elements":{"one_of":["grpc","grpcs","http","https"],"type":"string"},"required":true,"type":"set","default":["grpc","grpcs","http","https"]}},{"config":{"fields":[{"key_names":{"type":"array","required":true,"elements":{"type":"string"},"default":["apikey"]}},{"auth_type":{"one_of":["openid-connect","key-auth"],"required":true,"type":"string","default":"openid-connect"}},{"scope":{"unique":true,"required":true,"type":"string"}}],"type":"record","entity_checks":[],"required":true}}]}
+{
+  "fields": [
+    {
+      "consumer": {
+        "eq": null,
+        "type": "foreign",
+        "reference": "consumers"
+      }
+    },
+    {
+      "route": {
+        "eq": null,
+        "type": "foreign",
+        "reference": "routes"
+      }
+    },
+    {
+      "protocols": {
+        "elements": {
+          "one_of": [
+            "grpc",
+            "grpcs",
+            "http",
+            "https"
+          ],
+          "type": "string"
+        },
+        "required": true,
+        "type": "set",
+        "default": [
+          "grpc",
+          "grpcs",
+          "http",
+          "https"
+        ]
+      }
+    },
+    {
+      "config": {
+        "fields": [
+          {
+            "key_names": {
+              "type": "array",
+              "required": true,
+              "elements": {
+                "type": "string"
+              },
+              "default": [
+                "apikey"
+              ]
+            }
+          },
+          {
+            "auth_type": {
+              "one_of": [
+                "openid-connect",
+                "key-auth"
+              ],
+              "required": true,
+              "type": "string",
+              "default": "openid-connect"
+            }
+          },
+          {
+            "scope": {
+              "unique": true,
+              "required": true,
+              "type": "string"
+            }
+          }
+        ],
+        "type": "record",
+        "entity_checks": [
+
+        ],
+        "required": true
+      }
+    }
+  ]
+}

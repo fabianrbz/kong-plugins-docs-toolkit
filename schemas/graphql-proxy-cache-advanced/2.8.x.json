@@ -1,1 +1,52 @@
-{"fields":[{"config":{"required":true,"fields":[{"strategy":{"one_of":["memory"],"required":true,"default":"memory","type":"string"}},{"cache_ttl":{"gt":0,"default":300,"type":"integer"}},{"memory":{"required":true,"fields":[{"dictionary_name":{"required":true,"default":"kong_db_cache","type":"string"}}],"type":"record"}},{"vary_headers":{"elements":{"type":"string"},"type":"array"}}],"type":"record"}}]}
+{
+  "fields": [
+    {
+      "config": {
+        "required": true,
+        "fields": [
+          {
+            "strategy": {
+              "one_of": [
+                "memory"
+              ],
+              "required": true,
+              "default": "memory",
+              "type": "string"
+            }
+          },
+          {
+            "cache_ttl": {
+              "gt": 0,
+              "default": 300,
+              "type": "integer"
+            }
+          },
+          {
+            "memory": {
+              "required": true,
+              "fields": [
+                {
+                  "dictionary_name": {
+                    "required": true,
+                    "default": "kong_db_cache",
+                    "type": "string"
+                  }
+                }
+              ],
+              "type": "record"
+            }
+          },
+          {
+            "vary_headers": {
+              "elements": {
+                "type": "string"
+              },
+              "type": "array"
+            }
+          }
+        ],
+        "type": "record"
+      }
+    }
+  ]
+}

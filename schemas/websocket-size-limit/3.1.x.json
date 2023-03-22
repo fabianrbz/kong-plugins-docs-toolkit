@@ -1,1 +1,57 @@
-{"fields":[{"protocols":{"type":"set","elements":{"type":"string","one_of":["ws","wss"]},"default":["ws","wss"],"required":true}},{"config":{"type":"record","fields":[{"client_max_payload":{"required":false,"between":[1,33554432],"type":"integer"}},{"upstream_max_payload":{"required":false,"between":[1,33554432],"type":"integer"}}],"required":true,"entity_checks":[{"at_least_one_of":["client_max_payload","upstream_max_payload"]}]}}]}
+{
+  "fields": [
+    {
+      "protocols": {
+        "type": "set",
+        "elements": {
+          "type": "string",
+          "one_of": [
+            "ws",
+            "wss"
+          ]
+        },
+        "default": [
+          "ws",
+          "wss"
+        ],
+        "required": true
+      }
+    },
+    {
+      "config": {
+        "type": "record",
+        "fields": [
+          {
+            "client_max_payload": {
+              "required": false,
+              "between": [
+                1,
+                33554432
+              ],
+              "type": "integer"
+            }
+          },
+          {
+            "upstream_max_payload": {
+              "required": false,
+              "between": [
+                1,
+                33554432
+              ],
+              "type": "integer"
+            }
+          }
+        ],
+        "required": true,
+        "entity_checks": [
+          {
+            "at_least_one_of": [
+              "client_max_payload",
+              "upstream_max_payload"
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

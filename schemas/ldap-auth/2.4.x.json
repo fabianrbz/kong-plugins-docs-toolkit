@@ -1,1 +1,141 @@
-{"fields":[{"consumer":{"type":"foreign","reference":"consumers","eq":null}},{"protocols":{"elements":{"one_of":["grpc","grpcs","http","https"],"type":"string"},"type":"set","default":["grpc","grpcs","http","https"],"required":true}},{"config":{"required":true,"type":"record","entity_checks":[{"conditional":{"then_err":"'ldaps' and 'start_tls' cannot be enabled simultaneously","if_field":"ldaps","if_match":{"eq":true},"then_field":"start_tls","then_match":{"eq":false}}}],"fields":[{"ldap_host":{"required":true,"type":"string"}},{"ldap_port":{"between":[0,65535],"type":"integer","required":true}},{"ldaps":{"type":"boolean","default":false,"required":true}},{"start_tls":{"type":"boolean","default":false,"required":true}},{"verify_ldap_host":{"type":"boolean","default":false,"required":true}},{"base_dn":{"required":true,"type":"string"}},{"attribute":{"required":true,"type":"string"}},{"cache_ttl":{"type":"number","default":60,"required":true}},{"hide_credentials":{"type":"boolean","default":false,"required":true}},{"timeout":{"default":10000,"type":"number"}},{"keepalive":{"default":60000,"type":"number"}},{"anonymous":{"type":"string"}},{"header_type":{"default":"ldap","type":"string"}}]}}]}
+{
+  "fields": [
+    {
+      "consumer": {
+        "type": "foreign",
+        "reference": "consumers",
+        "eq": null
+      }
+    },
+    {
+      "protocols": {
+        "elements": {
+          "one_of": [
+            "grpc",
+            "grpcs",
+            "http",
+            "https"
+          ],
+          "type": "string"
+        },
+        "type": "set",
+        "default": [
+          "grpc",
+          "grpcs",
+          "http",
+          "https"
+        ],
+        "required": true
+      }
+    },
+    {
+      "config": {
+        "required": true,
+        "type": "record",
+        "entity_checks": [
+          {
+            "conditional": {
+              "then_err": "'ldaps' and 'start_tls' cannot be enabled simultaneously",
+              "if_field": "ldaps",
+              "if_match": {
+                "eq": true
+              },
+              "then_field": "start_tls",
+              "then_match": {
+                "eq": false
+              }
+            }
+          }
+        ],
+        "fields": [
+          {
+            "ldap_host": {
+              "required": true,
+              "type": "string"
+            }
+          },
+          {
+            "ldap_port": {
+              "between": [
+                0,
+                65535
+              ],
+              "type": "integer",
+              "required": true
+            }
+          },
+          {
+            "ldaps": {
+              "type": "boolean",
+              "default": false,
+              "required": true
+            }
+          },
+          {
+            "start_tls": {
+              "type": "boolean",
+              "default": false,
+              "required": true
+            }
+          },
+          {
+            "verify_ldap_host": {
+              "type": "boolean",
+              "default": false,
+              "required": true
+            }
+          },
+          {
+            "base_dn": {
+              "required": true,
+              "type": "string"
+            }
+          },
+          {
+            "attribute": {
+              "required": true,
+              "type": "string"
+            }
+          },
+          {
+            "cache_ttl": {
+              "type": "number",
+              "default": 60,
+              "required": true
+            }
+          },
+          {
+            "hide_credentials": {
+              "type": "boolean",
+              "default": false,
+              "required": true
+            }
+          },
+          {
+            "timeout": {
+              "default": 10000,
+              "type": "number"
+            }
+          },
+          {
+            "keepalive": {
+              "default": 60000,
+              "type": "number"
+            }
+          },
+          {
+            "anonymous": {
+              "type": "string"
+            }
+          },
+          {
+            "header_type": {
+              "default": "ldap",
+              "type": "string"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

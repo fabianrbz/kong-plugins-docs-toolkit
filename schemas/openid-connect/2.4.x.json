@@ -1,1 +1,1810 @@
-{"fields":[{"consumer":{"type":"foreign","reference":"consumers","eq":null}},{"protocols":{"elements":{"one_of":["grpc","grpcs","http","https"],"type":"string"},"type":"set","default":["grpc","grpcs","http","https"],"required":true}},{"config":{"type":"record","required":true,"fields":[{"issuer":{"required":true,"type":"string"}},{"discovery_headers_names":{"elements":{"type":"string"},"type":"array","required":false}},{"discovery_headers_values":{"elements":{"type":"string"},"type":"array","required":false}},{"extra_jwks_uris":{"elements":{"type":"string"},"type":"set","required":false}},{"rediscovery_lifetime":{"type":"number","default":30,"required":false}},{"auth_methods":{"elements":{"one_of":["password","client_credentials","authorization_code","bearer","introspection","kong_oauth2","refresh_token","session"],"type":"string"},"type":"array","default":["password","client_credentials","authorization_code","bearer","introspection","kong_oauth2","refresh_token","session"],"required":false}},{"client_id":{"elements":{"type":"string"},"type":"array","required":false}},{"client_secret":{"elements":{"type":"string"},"type":"array","required":false}},{"client_auth":{"elements":{"one_of":["client_secret_basic","client_secret_post","client_secret_jwt","private_key_jwt","none"],"type":"string"},"type":"array","required":false}},{"client_jwk":{"elements":{"type":"record","fields":[{"issuer":{"required":false,"type":"string"}},{"kty":{"required":false,"type":"string"}},{"use":{"required":false,"type":"string"}},{"key_ops":{"elements":{"required":false,"type":"string"},"type":"array","required":false}},{"alg":{"required":false,"type":"string"}},{"kid":{"required":false,"type":"string"}},{"x5u":{"required":false,"type":"string"}},{"x5c":{"elements":{"required":false,"type":"string"},"type":"array","required":false}},{"x5t":{"required":false,"type":"string"}},{"x5t#S256":{"required":false,"type":"string"}},{"k":{"required":false,"type":"string"}},{"x":{"required":false,"type":"string"}},{"y":{"required":false,"type":"string"}},{"crv":{"required":false,"type":"string"}},{"n":{"required":false,"type":"string"}},{"e":{"required":false,"type":"string"}},{"d":{"required":false,"type":"string"}},{"p":{"required":false,"type":"string"}},{"q":{"required":false,"type":"string"}},{"dp":{"required":false,"type":"string"}},{"dq":{"required":false,"type":"string"}},{"qi":{"required":false,"type":"string"}}],"required":false},"type":"array","required":false}},{"client_alg":{"elements":{"one_of":["HS256","HS384","HS512","RS256","RS512","ES256","ES384","ES512","PS256","PS384","PS512","EdDSA"],"type":"string"},"type":"array","required":false}},{"client_arg":{"type":"string","default":"client_id","required":false}},{"redirect_uri":{"elements":{"type":"string"},"type":"array","required":false}},{"login_redirect_uri":{"elements":{"type":"string"},"type":"array","required":false}},{"logout_redirect_uri":{"elements":{"type":"string"},"type":"array","required":false}},{"forbidden_redirect_uri":{"elements":{"type":"string"},"type":"array","required":false}},{"forbidden_error_message":{"type":"string","default":"Forbidden","required":false}},{"forbidden_destroy_session":{"type":"boolean","default":true,"required":false}},{"unauthorized_redirect_uri":{"elements":{"type":"string"},"type":"array","required":false}},{"unauthorized_error_message":{"type":"string","default":"Unauthorized","required":false}},{"unexpected_redirect_uri":{"elements":{"type":"string"},"type":"array","required":false}},{"response_mode":{"default":"query","type":"string","one_of":["query","form_post","fragment"],"required":false}},{"response_type":{"elements":{"type":"string"},"type":"array","default":["code"],"required":false}},{"scopes":{"elements":{"type":"string"},"type":"array","default":["openid"],"required":false}},{"audience":{"elements":{"type":"string"},"type":"array","required":false}},{"issuers_allowed":{"elements":{"type":"string"},"type":"array","required":false}},{"scopes_required":{"elements":{"type":"string"},"type":"array","required":false}},{"scopes_claim":{"elements":{"type":"string"},"type":"array","default":["scope"],"required":false}},{"audience_required":{"elements":{"type":"string"},"type":"array","required":false}},{"audience_claim":{"elements":{"type":"string"},"type":"array","default":["aud"],"required":false}},{"groups_required":{"elements":{"type":"string"},"type":"array","required":false}},{"groups_claim":{"elements":{"type":"string"},"type":"array","default":["groups"],"required":false}},{"roles_required":{"elements":{"type":"string"},"type":"array","required":false}},{"roles_claim":{"elements":{"type":"string"},"type":"array","default":["roles"],"required":false}},{"domains":{"elements":{"type":"string"},"type":"array","required":false}},{"max_age":{"type":"number","required":false}},{"authenticated_groups_claim":{"elements":{"type":"string"},"type":"array","required":false}},{"authorization_endpoint":{"required":false,"type":"string"}},{"authorization_query_args_names":{"elements":{"type":"string"},"type":"array","required":false}},{"authorization_query_args_values":{"elements":{"type":"string"},"type":"array","required":false}},{"authorization_query_args_client":{"elements":{"type":"string"},"type":"array","required":false}},{"authorization_cookie_name":{"type":"string","default":"authorization","required":false}},{"authorization_cookie_lifetime":{"type":"number","default":600,"required":false}},{"authorization_cookie_path":{"type":"string","match_none":[{"pattern":"//","err":"must not have empty segments"}],"required":false,"starts_with":"/","default":"/"}},{"authorization_cookie_domain":{"type":"string","required":false}},{"authorization_cookie_samesite":{"default":"off","type":"string","one_of":["Strict","Lax","None","off"],"required":false}},{"authorization_cookie_httponly":{"type":"boolean","default":true,"required":false}},{"authorization_cookie_secure":{"type":"boolean","required":false}},{"preserve_query_args":{"type":"boolean","default":false,"required":false}},{"token_endpoint":{"required":false,"type":"string"}},{"token_endpoint_auth_method":{"type":"string","one_of":["client_secret_basic","client_secret_post","client_secret_jwt","private_key_jwt","none"],"required":false}},{"token_headers_names":{"elements":{"type":"string"},"type":"array","required":false}},{"token_headers_values":{"elements":{"type":"string"},"type":"array","required":false}},{"token_headers_client":{"elements":{"type":"string"},"type":"array","required":false}},{"token_headers_replay":{"elements":{"type":"string"},"type":"array","required":false}},{"token_headers_prefix":{"type":"string","required":false}},{"token_headers_grants":{"elements":{"one_of":["password","client_credentials","authorization_code"],"type":"string"},"type":"array","required":false}},{"token_post_args_names":{"elements":{"type":"string"},"type":"array","required":false}},{"token_post_args_values":{"elements":{"type":"string"},"type":"array","required":false}},{"token_post_args_client":{"elements":{"type":"string"},"type":"array","required":false}},{"introspection_endpoint":{"required":false,"type":"string"}},{"introspection_endpoint_auth_method":{"type":"string","one_of":["client_secret_basic","client_secret_post","client_secret_jwt","private_key_jwt","none"],"required":false}},{"introspection_hint":{"type":"string","default":"access_token","required":false}},{"introspection_headers_names":{"elements":{"type":"string"},"type":"array","required":false}},{"introspection_headers_values":{"elements":{"type":"string"},"type":"array","required":false}},{"introspection_headers_client":{"elements":{"type":"string"},"type":"array","required":false}},{"introspection_post_args_names":{"elements":{"type":"string"},"type":"array","required":false}},{"introspection_post_args_values":{"elements":{"type":"string"},"type":"array","required":false}},{"introspection_post_args_client":{"elements":{"type":"string"},"type":"array","required":false}},{"introspect_jwt_tokens":{"type":"boolean","default":false,"required":false}},{"revocation_endpoint":{"required":false,"type":"string"}},{"revocation_endpoint_auth_method":{"type":"string","one_of":["client_secret_basic","client_secret_post","client_secret_jwt","private_key_jwt","none"],"required":false}},{"end_session_endpoint":{"required":false,"type":"string"}},{"userinfo_endpoint":{"required":false,"type":"string"}},{"token_exchange_endpoint":{"required":false,"type":"string"}},{"session_secret":{"type":"string","required":false}},{"session_cookie_name":{"type":"string","default":"session","required":false}},{"session_cookie_lifetime":{"type":"number","default":3600,"required":false}},{"session_cookie_idletime":{"type":"number","required":false}},{"session_cookie_renew":{"type":"number","default":600,"required":false}},{"session_cookie_path":{"type":"string","match_none":[{"pattern":"//","err":"must not have empty segments"}],"required":false,"starts_with":"/","default":"/"}},{"session_cookie_domain":{"type":"string","required":false}},{"session_cookie_samesite":{"default":"Lax","type":"string","one_of":["Strict","Lax","None","off"],"required":false}},{"session_cookie_httponly":{"type":"boolean","default":true,"required":false}},{"session_cookie_secure":{"type":"boolean","required":false}},{"session_cookie_maxsize":{"type":"integer","default":4000,"required":false}},{"session_strategy":{"default":"default","type":"string","one_of":["default","regenerate"],"required":false}},{"session_compressor":{"default":"none","type":"string","one_of":["none","zlib"],"required":false}},{"session_storage":{"default":"cookie","type":"string","one_of":["cookie","memcache","redis"],"required":false}},{"session_memcache_prefix":{"type":"string","default":"sessions","required":false}},{"session_memcache_socket":{"type":"string","required":false}},{"session_memcache_host":{"type":"string","default":"127.0.0.1","required":false}},{"session_memcache_port":{"between":[0,65535],"type":"integer","required":false,"default":11211}},{"session_redis_prefix":{"type":"string","default":"sessions","required":false}},{"session_redis_socket":{"type":"string","required":false}},{"session_redis_host":{"type":"string","default":"127.0.0.1","required":false}},{"session_redis_port":{"between":[0,65535],"type":"integer","required":false,"default":6379}},{"session_redis_auth":{"type":"string","required":false}},{"session_redis_connect_timeout":{"type":"integer","required":false}},{"session_redis_read_timeout":{"type":"integer","required":false}},{"session_redis_send_timeout":{"type":"integer","required":false}},{"session_redis_ssl":{"type":"boolean","default":false,"required":false}},{"session_redis_ssl_verify":{"type":"boolean","default":false,"required":false}},{"session_redis_server_name":{"type":"string","required":false}},{"session_redis_cluster_nodes":{"elements":{"fields":[{"ip":{"type":"string","required":true,"default":"127.0.0.1"}},{"port":{"between":[0,65535],"type":"integer","default":6379}}],"type":"record"},"type":"array","required":false}},{"session_redis_cluster_maxredirections":{"type":"integer","required":false}},{"reverify":{"type":"boolean","default":false,"required":false}},{"jwt_session_claim":{"type":"string","default":"sid","required":false}},{"jwt_session_cookie":{"type":"string","required":false}},{"bearer_token_param_type":{"elements":{"one_of":["header","cookie","query","body"],"type":"string"},"type":"array","default":["header","query","body"],"required":false}},{"bearer_token_cookie_name":{"type":"string","required":false}},{"client_credentials_param_type":{"elements":{"one_of":["header","query","body"],"type":"string"},"type":"array","default":["header","query","body"],"required":false}},{"password_param_type":{"elements":{"one_of":["header","query","body"],"type":"string"},"type":"array","default":["header","query","body"],"required":false}},{"id_token_param_type":{"elements":{"one_of":["header","query","body"],"type":"string"},"type":"array","default":["header","query","body"],"required":false}},{"id_token_param_name":{"type":"string","required":false}},{"refresh_token_param_type":{"elements":{"one_of":["header","query","body"],"type":"string"},"type":"array","default":["header","query","body"],"required":false}},{"refresh_token_param_name":{"type":"string","required":false}},{"refresh_tokens":{"type":"boolean","default":true,"required":false}},{"upstream_headers_claims":{"elements":{"type":"string"},"type":"array","required":false}},{"upstream_headers_names":{"elements":{"type":"string"},"type":"array","required":false}},{"upstream_access_token_header":{"type":"string","default":"authorization:bearer","required":false}},{"upstream_access_token_jwk_header":{"type":"string","required":false}},{"upstream_id_token_header":{"type":"string","required":false}},{"upstream_id_token_jwk_header":{"type":"string","required":false}},{"upstream_refresh_token_header":{"type":"string","required":false}},{"upstream_user_info_header":{"type":"string","required":false}},{"upstream_introspection_header":{"type":"string","required":false}},{"upstream_session_id_header":{"type":"string","required":false}},{"downstream_headers_claims":{"elements":{"type":"string"},"type":"array","required":false}},{"downstream_headers_names":{"elements":{"type":"string"},"type":"array","required":false}},{"downstream_access_token_header":{"type":"string","required":false}},{"downstream_access_token_jwk_header":{"type":"string","required":false}},{"downstream_id_token_header":{"type":"string","required":false}},{"downstream_id_token_jwk_header":{"type":"string","required":false}},{"downstream_refresh_token_header":{"type":"string","required":false}},{"downstream_user_info_header":{"type":"string","required":false}},{"downstream_introspection_header":{"type":"string","required":false}},{"downstream_session_id_header":{"type":"string","required":false}},{"login_methods":{"elements":{"one_of":["password","client_credentials","authorization_code","bearer","introspection","kong_oauth2","refresh_token","session"],"type":"string"},"type":"array","default":["authorization_code"],"required":false}},{"login_action":{"default":"upstream","type":"string","one_of":["upstream","response","redirect"],"required":false}},{"login_tokens":{"elements":{"one_of":["id_token","access_token","refresh_token","tokens","introspection"],"type":"string"},"type":"array","default":["id_token"],"required":false}},{"login_redirect_mode":{"default":"fragment","type":"string","one_of":["query","fragment"],"required":false}},{"logout_query_arg":{"type":"string","required":false}},{"logout_post_arg":{"type":"string","required":false}},{"logout_uri_suffix":{"type":"string","required":false}},{"logout_methods":{"elements":{"one_of":["POST","GET","DELETE"],"type":"string"},"type":"array","default":["POST","DELETE"],"required":false}},{"logout_revoke":{"type":"boolean","default":false,"required":false}},{"logout_revoke_access_token":{"type":"boolean","default":true,"required":false}},{"logout_revoke_refresh_token":{"type":"boolean","default":true,"required":false}},{"consumer_claim":{"elements":{"type":"string"},"type":"array","required":false}},{"consumer_by":{"elements":{"one_of":["id","username","custom_id"],"type":"string"},"type":"array","default":["username","custom_id"],"required":false}},{"consumer_optional":{"type":"boolean","default":false,"required":false}},{"credential_claim":{"elements":{"type":"string"},"type":"array","default":["sub"],"required":false}},{"anonymous":{"uuid":true,"type":"string","legacy":true,"required":false}},{"run_on_preflight":{"type":"boolean","default":true,"required":false}},{"leeway":{"type":"number","default":0,"required":false}},{"verify_parameters":{"type":"boolean","default":false,"required":false}},{"verify_nonce":{"type":"boolean","default":true,"required":false}},{"verify_claims":{"type":"boolean","default":true,"required":false}},{"verify_signature":{"type":"boolean","default":true,"required":false}},{"ignore_signature":{"elements":{"one_of":["password","client_credentials","authorization_code","refresh_token","session"],"type":"string"},"type":"array","default":[],"required":false}},{"enable_hs_signatures":{"type":"boolean","default":false,"required":false}},{"cache_ttl":{"type":"number","default":3600,"required":false}},{"cache_ttl_max":{"type":"number","required":false}},{"cache_ttl_min":{"type":"number","required":false}},{"cache_ttl_neg":{"type":"number","required":false}},{"cache_ttl_resurrect":{"type":"number","required":false}},{"cache_tokens":{"type":"boolean","default":true,"required":false}},{"cache_tokens_salt":{"type":"string","auto":true,"required":false}},{"cache_introspection":{"type":"boolean","default":true,"required":false}},{"cache_token_exchange":{"type":"boolean","default":true,"required":false}},{"cache_user_info":{"type":"boolean","default":true,"required":false}},{"search_user_info":{"type":"boolean","default":false,"required":false}},{"hide_credentials":{"type":"boolean","default":false,"required":false}},{"http_version":{"type":"number","default":1.1,"required":false}},{"http_proxy":{"required":false,"type":"string"}},{"http_proxy_authorization":{"type":"string","required":false}},{"https_proxy":{"required":false,"type":"string"}},{"https_proxy_authorization":{"type":"string","required":false}},{"no_proxy":{"type":"string","required":false}},{"keepalive":{"type":"boolean","default":true,"required":false}},{"ssl_verify":{"type":"boolean","default":false,"required":false}},{"timeout":{"type":"number","default":10000,"required":false}},{"display_errors":{"type":"boolean","default":false,"required":false}}]}}]}
+{
+  "fields": [
+    {
+      "consumer": {
+        "type": "foreign",
+        "reference": "consumers",
+        "eq": null
+      }
+    },
+    {
+      "protocols": {
+        "elements": {
+          "one_of": [
+            "grpc",
+            "grpcs",
+            "http",
+            "https"
+          ],
+          "type": "string"
+        },
+        "type": "set",
+        "default": [
+          "grpc",
+          "grpcs",
+          "http",
+          "https"
+        ],
+        "required": true
+      }
+    },
+    {
+      "config": {
+        "type": "record",
+        "required": true,
+        "fields": [
+          {
+            "issuer": {
+              "required": true,
+              "type": "string"
+            }
+          },
+          {
+            "discovery_headers_names": {
+              "elements": {
+                "type": "string"
+              },
+              "type": "array",
+              "required": false
+            }
+          },
+          {
+            "discovery_headers_values": {
+              "elements": {
+                "type": "string"
+              },
+              "type": "array",
+              "required": false
+            }
+          },
+          {
+            "extra_jwks_uris": {
+              "elements": {
+                "type": "string"
+              },
+              "type": "set",
+              "required": false
+            }
+          },
+          {
+            "rediscovery_lifetime": {
+              "type": "number",
+              "default": 30,
+              "required": false
+            }
+          },
+          {
+            "auth_methods": {
+              "elements": {
+                "one_of": [
+                  "password",
+                  "client_credentials",
+                  "authorization_code",
+                  "bearer",
+                  "introspection",
+                  "kong_oauth2",
+                  "refresh_token",
+                  "session"
+                ],
+                "type": "string"
+              },
+              "type": "array",
+              "default": [
+                "password",
+                "client_credentials",
+                "authorization_code",
+                "bearer",
+                "introspection",
+                "kong_oauth2",
+                "refresh_token",
+                "session"
+              ],
+              "required": false
+            }
+          },
+          {
+            "client_id": {
+              "elements": {
+                "type": "string"
+              },
+              "type": "array",
+              "required": false
+            }
+          },
+          {
+            "client_secret": {
+              "elements": {
+                "type": "string"
+              },
+              "type": "array",
+              "required": false
+            }
+          },
+          {
+            "client_auth": {
+              "elements": {
+                "one_of": [
+                  "client_secret_basic",
+                  "client_secret_post",
+                  "client_secret_jwt",
+                  "private_key_jwt",
+                  "none"
+                ],
+                "type": "string"
+              },
+              "type": "array",
+              "required": false
+            }
+          },
+          {
+            "client_jwk": {
+              "elements": {
+                "type": "record",
+                "fields": [
+                  {
+                    "issuer": {
+                      "required": false,
+                      "type": "string"
+                    }
+                  },
+                  {
+                    "kty": {
+                      "required": false,
+                      "type": "string"
+                    }
+                  },
+                  {
+                    "use": {
+                      "required": false,
+                      "type": "string"
+                    }
+                  },
+                  {
+                    "key_ops": {
+                      "elements": {
+                        "required": false,
+                        "type": "string"
+                      },
+                      "type": "array",
+                      "required": false
+                    }
+                  },
+                  {
+                    "alg": {
+                      "required": false,
+                      "type": "string"
+                    }
+                  },
+                  {
+                    "kid": {
+                      "required": false,
+                      "type": "string"
+                    }
+                  },
+                  {
+                    "x5u": {
+                      "required": false,
+                      "type": "string"
+                    }
+                  },
+                  {
+                    "x5c": {
+                      "elements": {
+                        "required": false,
+                        "type": "string"
+                      },
+                      "type": "array",
+                      "required": false
+                    }
+                  },
+                  {
+                    "x5t": {
+                      "required": false,
+                      "type": "string"
+                    }
+                  },
+                  {
+                    "x5t#S256": {
+                      "required": false,
+                      "type": "string"
+                    }
+                  },
+                  {
+                    "k": {
+                      "required": false,
+                      "type": "string"
+                    }
+                  },
+                  {
+                    "x": {
+                      "required": false,
+                      "type": "string"
+                    }
+                  },
+                  {
+                    "y": {
+                      "required": false,
+                      "type": "string"
+                    }
+                  },
+                  {
+                    "crv": {
+                      "required": false,
+                      "type": "string"
+                    }
+                  },
+                  {
+                    "n": {
+                      "required": false,
+                      "type": "string"
+                    }
+                  },
+                  {
+                    "e": {
+                      "required": false,
+                      "type": "string"
+                    }
+                  },
+                  {
+                    "d": {
+                      "required": false,
+                      "type": "string"
+                    }
+                  },
+                  {
+                    "p": {
+                      "required": false,
+                      "type": "string"
+                    }
+                  },
+                  {
+                    "q": {
+                      "required": false,
+                      "type": "string"
+                    }
+                  },
+                  {
+                    "dp": {
+                      "required": false,
+                      "type": "string"
+                    }
+                  },
+                  {
+                    "dq": {
+                      "required": false,
+                      "type": "string"
+                    }
+                  },
+                  {
+                    "qi": {
+                      "required": false,
+                      "type": "string"
+                    }
+                  }
+                ],
+                "required": false
+              },
+              "type": "array",
+              "required": false
+            }
+          },
+          {
+            "client_alg": {
+              "elements": {
+                "one_of": [
+                  "HS256",
+                  "HS384",
+                  "HS512",
+                  "RS256",
+                  "RS512",
+                  "ES256",
+                  "ES384",
+                  "ES512",
+                  "PS256",
+                  "PS384",
+                  "PS512",
+                  "EdDSA"
+                ],
+                "type": "string"
+              },
+              "type": "array",
+              "required": false
+            }
+          },
+          {
+            "client_arg": {
+              "type": "string",
+              "default": "client_id",
+              "required": false
+            }
+          },
+          {
+            "redirect_uri": {
+              "elements": {
+                "type": "string"
+              },
+              "type": "array",
+              "required": false
+            }
+          },
+          {
+            "login_redirect_uri": {
+              "elements": {
+                "type": "string"
+              },
+              "type": "array",
+              "required": false
+            }
+          },
+          {
+            "logout_redirect_uri": {
+              "elements": {
+                "type": "string"
+              },
+              "type": "array",
+              "required": false
+            }
+          },
+          {
+            "forbidden_redirect_uri": {
+              "elements": {
+                "type": "string"
+              },
+              "type": "array",
+              "required": false
+            }
+          },
+          {
+            "forbidden_error_message": {
+              "type": "string",
+              "default": "Forbidden",
+              "required": false
+            }
+          },
+          {
+            "forbidden_destroy_session": {
+              "type": "boolean",
+              "default": true,
+              "required": false
+            }
+          },
+          {
+            "unauthorized_redirect_uri": {
+              "elements": {
+                "type": "string"
+              },
+              "type": "array",
+              "required": false
+            }
+          },
+          {
+            "unauthorized_error_message": {
+              "type": "string",
+              "default": "Unauthorized",
+              "required": false
+            }
+          },
+          {
+            "unexpected_redirect_uri": {
+              "elements": {
+                "type": "string"
+              },
+              "type": "array",
+              "required": false
+            }
+          },
+          {
+            "response_mode": {
+              "default": "query",
+              "type": "string",
+              "one_of": [
+                "query",
+                "form_post",
+                "fragment"
+              ],
+              "required": false
+            }
+          },
+          {
+            "response_type": {
+              "elements": {
+                "type": "string"
+              },
+              "type": "array",
+              "default": [
+                "code"
+              ],
+              "required": false
+            }
+          },
+          {
+            "scopes": {
+              "elements": {
+                "type": "string"
+              },
+              "type": "array",
+              "default": [
+                "openid"
+              ],
+              "required": false
+            }
+          },
+          {
+            "audience": {
+              "elements": {
+                "type": "string"
+              },
+              "type": "array",
+              "required": false
+            }
+          },
+          {
+            "issuers_allowed": {
+              "elements": {
+                "type": "string"
+              },
+              "type": "array",
+              "required": false
+            }
+          },
+          {
+            "scopes_required": {
+              "elements": {
+                "type": "string"
+              },
+              "type": "array",
+              "required": false
+            }
+          },
+          {
+            "scopes_claim": {
+              "elements": {
+                "type": "string"
+              },
+              "type": "array",
+              "default": [
+                "scope"
+              ],
+              "required": false
+            }
+          },
+          {
+            "audience_required": {
+              "elements": {
+                "type": "string"
+              },
+              "type": "array",
+              "required": false
+            }
+          },
+          {
+            "audience_claim": {
+              "elements": {
+                "type": "string"
+              },
+              "type": "array",
+              "default": [
+                "aud"
+              ],
+              "required": false
+            }
+          },
+          {
+            "groups_required": {
+              "elements": {
+                "type": "string"
+              },
+              "type": "array",
+              "required": false
+            }
+          },
+          {
+            "groups_claim": {
+              "elements": {
+                "type": "string"
+              },
+              "type": "array",
+              "default": [
+                "groups"
+              ],
+              "required": false
+            }
+          },
+          {
+            "roles_required": {
+              "elements": {
+                "type": "string"
+              },
+              "type": "array",
+              "required": false
+            }
+          },
+          {
+            "roles_claim": {
+              "elements": {
+                "type": "string"
+              },
+              "type": "array",
+              "default": [
+                "roles"
+              ],
+              "required": false
+            }
+          },
+          {
+            "domains": {
+              "elements": {
+                "type": "string"
+              },
+              "type": "array",
+              "required": false
+            }
+          },
+          {
+            "max_age": {
+              "type": "number",
+              "required": false
+            }
+          },
+          {
+            "authenticated_groups_claim": {
+              "elements": {
+                "type": "string"
+              },
+              "type": "array",
+              "required": false
+            }
+          },
+          {
+            "authorization_endpoint": {
+              "required": false,
+              "type": "string"
+            }
+          },
+          {
+            "authorization_query_args_names": {
+              "elements": {
+                "type": "string"
+              },
+              "type": "array",
+              "required": false
+            }
+          },
+          {
+            "authorization_query_args_values": {
+              "elements": {
+                "type": "string"
+              },
+              "type": "array",
+              "required": false
+            }
+          },
+          {
+            "authorization_query_args_client": {
+              "elements": {
+                "type": "string"
+              },
+              "type": "array",
+              "required": false
+            }
+          },
+          {
+            "authorization_cookie_name": {
+              "type": "string",
+              "default": "authorization",
+              "required": false
+            }
+          },
+          {
+            "authorization_cookie_lifetime": {
+              "type": "number",
+              "default": 600,
+              "required": false
+            }
+          },
+          {
+            "authorization_cookie_path": {
+              "type": "string",
+              "match_none": [
+                {
+                  "pattern": "//",
+                  "err": "must not have empty segments"
+                }
+              ],
+              "required": false,
+              "starts_with": "/",
+              "default": "/"
+            }
+          },
+          {
+            "authorization_cookie_domain": {
+              "type": "string",
+              "required": false
+            }
+          },
+          {
+            "authorization_cookie_samesite": {
+              "default": "off",
+              "type": "string",
+              "one_of": [
+                "Strict",
+                "Lax",
+                "None",
+                "off"
+              ],
+              "required": false
+            }
+          },
+          {
+            "authorization_cookie_httponly": {
+              "type": "boolean",
+              "default": true,
+              "required": false
+            }
+          },
+          {
+            "authorization_cookie_secure": {
+              "type": "boolean",
+              "required": false
+            }
+          },
+          {
+            "preserve_query_args": {
+              "type": "boolean",
+              "default": false,
+              "required": false
+            }
+          },
+          {
+            "token_endpoint": {
+              "required": false,
+              "type": "string"
+            }
+          },
+          {
+            "token_endpoint_auth_method": {
+              "type": "string",
+              "one_of": [
+                "client_secret_basic",
+                "client_secret_post",
+                "client_secret_jwt",
+                "private_key_jwt",
+                "none"
+              ],
+              "required": false
+            }
+          },
+          {
+            "token_headers_names": {
+              "elements": {
+                "type": "string"
+              },
+              "type": "array",
+              "required": false
+            }
+          },
+          {
+            "token_headers_values": {
+              "elements": {
+                "type": "string"
+              },
+              "type": "array",
+              "required": false
+            }
+          },
+          {
+            "token_headers_client": {
+              "elements": {
+                "type": "string"
+              },
+              "type": "array",
+              "required": false
+            }
+          },
+          {
+            "token_headers_replay": {
+              "elements": {
+                "type": "string"
+              },
+              "type": "array",
+              "required": false
+            }
+          },
+          {
+            "token_headers_prefix": {
+              "type": "string",
+              "required": false
+            }
+          },
+          {
+            "token_headers_grants": {
+              "elements": {
+                "one_of": [
+                  "password",
+                  "client_credentials",
+                  "authorization_code"
+                ],
+                "type": "string"
+              },
+              "type": "array",
+              "required": false
+            }
+          },
+          {
+            "token_post_args_names": {
+              "elements": {
+                "type": "string"
+              },
+              "type": "array",
+              "required": false
+            }
+          },
+          {
+            "token_post_args_values": {
+              "elements": {
+                "type": "string"
+              },
+              "type": "array",
+              "required": false
+            }
+          },
+          {
+            "token_post_args_client": {
+              "elements": {
+                "type": "string"
+              },
+              "type": "array",
+              "required": false
+            }
+          },
+          {
+            "introspection_endpoint": {
+              "required": false,
+              "type": "string"
+            }
+          },
+          {
+            "introspection_endpoint_auth_method": {
+              "type": "string",
+              "one_of": [
+                "client_secret_basic",
+                "client_secret_post",
+                "client_secret_jwt",
+                "private_key_jwt",
+                "none"
+              ],
+              "required": false
+            }
+          },
+          {
+            "introspection_hint": {
+              "type": "string",
+              "default": "access_token",
+              "required": false
+            }
+          },
+          {
+            "introspection_headers_names": {
+              "elements": {
+                "type": "string"
+              },
+              "type": "array",
+              "required": false
+            }
+          },
+          {
+            "introspection_headers_values": {
+              "elements": {
+                "type": "string"
+              },
+              "type": "array",
+              "required": false
+            }
+          },
+          {
+            "introspection_headers_client": {
+              "elements": {
+                "type": "string"
+              },
+              "type": "array",
+              "required": false
+            }
+          },
+          {
+            "introspection_post_args_names": {
+              "elements": {
+                "type": "string"
+              },
+              "type": "array",
+              "required": false
+            }
+          },
+          {
+            "introspection_post_args_values": {
+              "elements": {
+                "type": "string"
+              },
+              "type": "array",
+              "required": false
+            }
+          },
+          {
+            "introspection_post_args_client": {
+              "elements": {
+                "type": "string"
+              },
+              "type": "array",
+              "required": false
+            }
+          },
+          {
+            "introspect_jwt_tokens": {
+              "type": "boolean",
+              "default": false,
+              "required": false
+            }
+          },
+          {
+            "revocation_endpoint": {
+              "required": false,
+              "type": "string"
+            }
+          },
+          {
+            "revocation_endpoint_auth_method": {
+              "type": "string",
+              "one_of": [
+                "client_secret_basic",
+                "client_secret_post",
+                "client_secret_jwt",
+                "private_key_jwt",
+                "none"
+              ],
+              "required": false
+            }
+          },
+          {
+            "end_session_endpoint": {
+              "required": false,
+              "type": "string"
+            }
+          },
+          {
+            "userinfo_endpoint": {
+              "required": false,
+              "type": "string"
+            }
+          },
+          {
+            "token_exchange_endpoint": {
+              "required": false,
+              "type": "string"
+            }
+          },
+          {
+            "session_secret": {
+              "type": "string",
+              "required": false
+            }
+          },
+          {
+            "session_cookie_name": {
+              "type": "string",
+              "default": "session",
+              "required": false
+            }
+          },
+          {
+            "session_cookie_lifetime": {
+              "type": "number",
+              "default": 3600,
+              "required": false
+            }
+          },
+          {
+            "session_cookie_idletime": {
+              "type": "number",
+              "required": false
+            }
+          },
+          {
+            "session_cookie_renew": {
+              "type": "number",
+              "default": 600,
+              "required": false
+            }
+          },
+          {
+            "session_cookie_path": {
+              "type": "string",
+              "match_none": [
+                {
+                  "pattern": "//",
+                  "err": "must not have empty segments"
+                }
+              ],
+              "required": false,
+              "starts_with": "/",
+              "default": "/"
+            }
+          },
+          {
+            "session_cookie_domain": {
+              "type": "string",
+              "required": false
+            }
+          },
+          {
+            "session_cookie_samesite": {
+              "default": "Lax",
+              "type": "string",
+              "one_of": [
+                "Strict",
+                "Lax",
+                "None",
+                "off"
+              ],
+              "required": false
+            }
+          },
+          {
+            "session_cookie_httponly": {
+              "type": "boolean",
+              "default": true,
+              "required": false
+            }
+          },
+          {
+            "session_cookie_secure": {
+              "type": "boolean",
+              "required": false
+            }
+          },
+          {
+            "session_cookie_maxsize": {
+              "type": "integer",
+              "default": 4000,
+              "required": false
+            }
+          },
+          {
+            "session_strategy": {
+              "default": "default",
+              "type": "string",
+              "one_of": [
+                "default",
+                "regenerate"
+              ],
+              "required": false
+            }
+          },
+          {
+            "session_compressor": {
+              "default": "none",
+              "type": "string",
+              "one_of": [
+                "none",
+                "zlib"
+              ],
+              "required": false
+            }
+          },
+          {
+            "session_storage": {
+              "default": "cookie",
+              "type": "string",
+              "one_of": [
+                "cookie",
+                "memcache",
+                "redis"
+              ],
+              "required": false
+            }
+          },
+          {
+            "session_memcache_prefix": {
+              "type": "string",
+              "default": "sessions",
+              "required": false
+            }
+          },
+          {
+            "session_memcache_socket": {
+              "type": "string",
+              "required": false
+            }
+          },
+          {
+            "session_memcache_host": {
+              "type": "string",
+              "default": "127.0.0.1",
+              "required": false
+            }
+          },
+          {
+            "session_memcache_port": {
+              "between": [
+                0,
+                65535
+              ],
+              "type": "integer",
+              "required": false,
+              "default": 11211
+            }
+          },
+          {
+            "session_redis_prefix": {
+              "type": "string",
+              "default": "sessions",
+              "required": false
+            }
+          },
+          {
+            "session_redis_socket": {
+              "type": "string",
+              "required": false
+            }
+          },
+          {
+            "session_redis_host": {
+              "type": "string",
+              "default": "127.0.0.1",
+              "required": false
+            }
+          },
+          {
+            "session_redis_port": {
+              "between": [
+                0,
+                65535
+              ],
+              "type": "integer",
+              "required": false,
+              "default": 6379
+            }
+          },
+          {
+            "session_redis_auth": {
+              "type": "string",
+              "required": false
+            }
+          },
+          {
+            "session_redis_connect_timeout": {
+              "type": "integer",
+              "required": false
+            }
+          },
+          {
+            "session_redis_read_timeout": {
+              "type": "integer",
+              "required": false
+            }
+          },
+          {
+            "session_redis_send_timeout": {
+              "type": "integer",
+              "required": false
+            }
+          },
+          {
+            "session_redis_ssl": {
+              "type": "boolean",
+              "default": false,
+              "required": false
+            }
+          },
+          {
+            "session_redis_ssl_verify": {
+              "type": "boolean",
+              "default": false,
+              "required": false
+            }
+          },
+          {
+            "session_redis_server_name": {
+              "type": "string",
+              "required": false
+            }
+          },
+          {
+            "session_redis_cluster_nodes": {
+              "elements": {
+                "fields": [
+                  {
+                    "ip": {
+                      "type": "string",
+                      "required": true,
+                      "default": "127.0.0.1"
+                    }
+                  },
+                  {
+                    "port": {
+                      "between": [
+                        0,
+                        65535
+                      ],
+                      "type": "integer",
+                      "default": 6379
+                    }
+                  }
+                ],
+                "type": "record"
+              },
+              "type": "array",
+              "required": false
+            }
+          },
+          {
+            "session_redis_cluster_maxredirections": {
+              "type": "integer",
+              "required": false
+            }
+          },
+          {
+            "reverify": {
+              "type": "boolean",
+              "default": false,
+              "required": false
+            }
+          },
+          {
+            "jwt_session_claim": {
+              "type": "string",
+              "default": "sid",
+              "required": false
+            }
+          },
+          {
+            "jwt_session_cookie": {
+              "type": "string",
+              "required": false
+            }
+          },
+          {
+            "bearer_token_param_type": {
+              "elements": {
+                "one_of": [
+                  "header",
+                  "cookie",
+                  "query",
+                  "body"
+                ],
+                "type": "string"
+              },
+              "type": "array",
+              "default": [
+                "header",
+                "query",
+                "body"
+              ],
+              "required": false
+            }
+          },
+          {
+            "bearer_token_cookie_name": {
+              "type": "string",
+              "required": false
+            }
+          },
+          {
+            "client_credentials_param_type": {
+              "elements": {
+                "one_of": [
+                  "header",
+                  "query",
+                  "body"
+                ],
+                "type": "string"
+              },
+              "type": "array",
+              "default": [
+                "header",
+                "query",
+                "body"
+              ],
+              "required": false
+            }
+          },
+          {
+            "password_param_type": {
+              "elements": {
+                "one_of": [
+                  "header",
+                  "query",
+                  "body"
+                ],
+                "type": "string"
+              },
+              "type": "array",
+              "default": [
+                "header",
+                "query",
+                "body"
+              ],
+              "required": false
+            }
+          },
+          {
+            "id_token_param_type": {
+              "elements": {
+                "one_of": [
+                  "header",
+                  "query",
+                  "body"
+                ],
+                "type": "string"
+              },
+              "type": "array",
+              "default": [
+                "header",
+                "query",
+                "body"
+              ],
+              "required": false
+            }
+          },
+          {
+            "id_token_param_name": {
+              "type": "string",
+              "required": false
+            }
+          },
+          {
+            "refresh_token_param_type": {
+              "elements": {
+                "one_of": [
+                  "header",
+                  "query",
+                  "body"
+                ],
+                "type": "string"
+              },
+              "type": "array",
+              "default": [
+                "header",
+                "query",
+                "body"
+              ],
+              "required": false
+            }
+          },
+          {
+            "refresh_token_param_name": {
+              "type": "string",
+              "required": false
+            }
+          },
+          {
+            "refresh_tokens": {
+              "type": "boolean",
+              "default": true,
+              "required": false
+            }
+          },
+          {
+            "upstream_headers_claims": {
+              "elements": {
+                "type": "string"
+              },
+              "type": "array",
+              "required": false
+            }
+          },
+          {
+            "upstream_headers_names": {
+              "elements": {
+                "type": "string"
+              },
+              "type": "array",
+              "required": false
+            }
+          },
+          {
+            "upstream_access_token_header": {
+              "type": "string",
+              "default": "authorization:bearer",
+              "required": false
+            }
+          },
+          {
+            "upstream_access_token_jwk_header": {
+              "type": "string",
+              "required": false
+            }
+          },
+          {
+            "upstream_id_token_header": {
+              "type": "string",
+              "required": false
+            }
+          },
+          {
+            "upstream_id_token_jwk_header": {
+              "type": "string",
+              "required": false
+            }
+          },
+          {
+            "upstream_refresh_token_header": {
+              "type": "string",
+              "required": false
+            }
+          },
+          {
+            "upstream_user_info_header": {
+              "type": "string",
+              "required": false
+            }
+          },
+          {
+            "upstream_introspection_header": {
+              "type": "string",
+              "required": false
+            }
+          },
+          {
+            "upstream_session_id_header": {
+              "type": "string",
+              "required": false
+            }
+          },
+          {
+            "downstream_headers_claims": {
+              "elements": {
+                "type": "string"
+              },
+              "type": "array",
+              "required": false
+            }
+          },
+          {
+            "downstream_headers_names": {
+              "elements": {
+                "type": "string"
+              },
+              "type": "array",
+              "required": false
+            }
+          },
+          {
+            "downstream_access_token_header": {
+              "type": "string",
+              "required": false
+            }
+          },
+          {
+            "downstream_access_token_jwk_header": {
+              "type": "string",
+              "required": false
+            }
+          },
+          {
+            "downstream_id_token_header": {
+              "type": "string",
+              "required": false
+            }
+          },
+          {
+            "downstream_id_token_jwk_header": {
+              "type": "string",
+              "required": false
+            }
+          },
+          {
+            "downstream_refresh_token_header": {
+              "type": "string",
+              "required": false
+            }
+          },
+          {
+            "downstream_user_info_header": {
+              "type": "string",
+              "required": false
+            }
+          },
+          {
+            "downstream_introspection_header": {
+              "type": "string",
+              "required": false
+            }
+          },
+          {
+            "downstream_session_id_header": {
+              "type": "string",
+              "required": false
+            }
+          },
+          {
+            "login_methods": {
+              "elements": {
+                "one_of": [
+                  "password",
+                  "client_credentials",
+                  "authorization_code",
+                  "bearer",
+                  "introspection",
+                  "kong_oauth2",
+                  "refresh_token",
+                  "session"
+                ],
+                "type": "string"
+              },
+              "type": "array",
+              "default": [
+                "authorization_code"
+              ],
+              "required": false
+            }
+          },
+          {
+            "login_action": {
+              "default": "upstream",
+              "type": "string",
+              "one_of": [
+                "upstream",
+                "response",
+                "redirect"
+              ],
+              "required": false
+            }
+          },
+          {
+            "login_tokens": {
+              "elements": {
+                "one_of": [
+                  "id_token",
+                  "access_token",
+                  "refresh_token",
+                  "tokens",
+                  "introspection"
+                ],
+                "type": "string"
+              },
+              "type": "array",
+              "default": [
+                "id_token"
+              ],
+              "required": false
+            }
+          },
+          {
+            "login_redirect_mode": {
+              "default": "fragment",
+              "type": "string",
+              "one_of": [
+                "query",
+                "fragment"
+              ],
+              "required": false
+            }
+          },
+          {
+            "logout_query_arg": {
+              "type": "string",
+              "required": false
+            }
+          },
+          {
+            "logout_post_arg": {
+              "type": "string",
+              "required": false
+            }
+          },
+          {
+            "logout_uri_suffix": {
+              "type": "string",
+              "required": false
+            }
+          },
+          {
+            "logout_methods": {
+              "elements": {
+                "one_of": [
+                  "POST",
+                  "GET",
+                  "DELETE"
+                ],
+                "type": "string"
+              },
+              "type": "array",
+              "default": [
+                "POST",
+                "DELETE"
+              ],
+              "required": false
+            }
+          },
+          {
+            "logout_revoke": {
+              "type": "boolean",
+              "default": false,
+              "required": false
+            }
+          },
+          {
+            "logout_revoke_access_token": {
+              "type": "boolean",
+              "default": true,
+              "required": false
+            }
+          },
+          {
+            "logout_revoke_refresh_token": {
+              "type": "boolean",
+              "default": true,
+              "required": false
+            }
+          },
+          {
+            "consumer_claim": {
+              "elements": {
+                "type": "string"
+              },
+              "type": "array",
+              "required": false
+            }
+          },
+          {
+            "consumer_by": {
+              "elements": {
+                "one_of": [
+                  "id",
+                  "username",
+                  "custom_id"
+                ],
+                "type": "string"
+              },
+              "type": "array",
+              "default": [
+                "username",
+                "custom_id"
+              ],
+              "required": false
+            }
+          },
+          {
+            "consumer_optional": {
+              "type": "boolean",
+              "default": false,
+              "required": false
+            }
+          },
+          {
+            "credential_claim": {
+              "elements": {
+                "type": "string"
+              },
+              "type": "array",
+              "default": [
+                "sub"
+              ],
+              "required": false
+            }
+          },
+          {
+            "anonymous": {
+              "uuid": true,
+              "type": "string",
+              "legacy": true,
+              "required": false
+            }
+          },
+          {
+            "run_on_preflight": {
+              "type": "boolean",
+              "default": true,
+              "required": false
+            }
+          },
+          {
+            "leeway": {
+              "type": "number",
+              "default": 0,
+              "required": false
+            }
+          },
+          {
+            "verify_parameters": {
+              "type": "boolean",
+              "default": false,
+              "required": false
+            }
+          },
+          {
+            "verify_nonce": {
+              "type": "boolean",
+              "default": true,
+              "required": false
+            }
+          },
+          {
+            "verify_claims": {
+              "type": "boolean",
+              "default": true,
+              "required": false
+            }
+          },
+          {
+            "verify_signature": {
+              "type": "boolean",
+              "default": true,
+              "required": false
+            }
+          },
+          {
+            "ignore_signature": {
+              "elements": {
+                "one_of": [
+                  "password",
+                  "client_credentials",
+                  "authorization_code",
+                  "refresh_token",
+                  "session"
+                ],
+                "type": "string"
+              },
+              "type": "array",
+              "default": [
+
+              ],
+              "required": false
+            }
+          },
+          {
+            "enable_hs_signatures": {
+              "type": "boolean",
+              "default": false,
+              "required": false
+            }
+          },
+          {
+            "cache_ttl": {
+              "type": "number",
+              "default": 3600,
+              "required": false
+            }
+          },
+          {
+            "cache_ttl_max": {
+              "type": "number",
+              "required": false
+            }
+          },
+          {
+            "cache_ttl_min": {
+              "type": "number",
+              "required": false
+            }
+          },
+          {
+            "cache_ttl_neg": {
+              "type": "number",
+              "required": false
+            }
+          },
+          {
+            "cache_ttl_resurrect": {
+              "type": "number",
+              "required": false
+            }
+          },
+          {
+            "cache_tokens": {
+              "type": "boolean",
+              "default": true,
+              "required": false
+            }
+          },
+          {
+            "cache_tokens_salt": {
+              "type": "string",
+              "auto": true,
+              "required": false
+            }
+          },
+          {
+            "cache_introspection": {
+              "type": "boolean",
+              "default": true,
+              "required": false
+            }
+          },
+          {
+            "cache_token_exchange": {
+              "type": "boolean",
+              "default": true,
+              "required": false
+            }
+          },
+          {
+            "cache_user_info": {
+              "type": "boolean",
+              "default": true,
+              "required": false
+            }
+          },
+          {
+            "search_user_info": {
+              "type": "boolean",
+              "default": false,
+              "required": false
+            }
+          },
+          {
+            "hide_credentials": {
+              "type": "boolean",
+              "default": false,
+              "required": false
+            }
+          },
+          {
+            "http_version": {
+              "type": "number",
+              "default": 1.1,
+              "required": false
+            }
+          },
+          {
+            "http_proxy": {
+              "required": false,
+              "type": "string"
+            }
+          },
+          {
+            "http_proxy_authorization": {
+              "type": "string",
+              "required": false
+            }
+          },
+          {
+            "https_proxy": {
+              "required": false,
+              "type": "string"
+            }
+          },
+          {
+            "https_proxy_authorization": {
+              "type": "string",
+              "required": false
+            }
+          },
+          {
+            "no_proxy": {
+              "type": "string",
+              "required": false
+            }
+          },
+          {
+            "keepalive": {
+              "type": "boolean",
+              "default": true,
+              "required": false
+            }
+          },
+          {
+            "ssl_verify": {
+              "type": "boolean",
+              "default": false,
+              "required": false
+            }
+          },
+          {
+            "timeout": {
+              "type": "number",
+              "default": 10000,
+              "required": false
+            }
+          },
+          {
+            "display_errors": {
+              "type": "boolean",
+              "default": false,
+              "required": false
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

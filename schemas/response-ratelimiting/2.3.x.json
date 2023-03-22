@@ -1,1 +1,176 @@
-{"fields":[{"protocols":{"type":"set","required":true,"elements":{"type":"string","one_of":["grpc","grpcs","http","https"]},"default":["grpc","grpcs","http","https"]}},{"config":{"type":"record","required":true,"fields":[{"header_name":{"type":"string","default":"x-kong-limit"}},{"limit_by":{"type":"string","one_of":["consumer","credential","ip"],"default":"consumer"}},{"policy":{"type":"string","one_of":["local","cluster","redis"],"default":"cluster"}},{"fault_tolerant":{"type":"boolean","default":true}},{"redis_host":{"type":"string"}},{"redis_port":{"type":"integer","between":[0,65535],"default":6379}},{"redis_password":{"type":"string","len_min":0}},{"redis_timeout":{"type":"number","default":2000}},{"redis_database":{"type":"number","default":0}},{"block_on_first_violation":{"type":"boolean","default":false}},{"hide_client_headers":{"type":"boolean","default":false}},{"limits":{"keys":{"type":"string"},"type":"map","required":true,"values":{"type":"record","entity_checks":[{"at_least_one_of":["second","minute","hour","day","month","year"]}],"fields":[{"second":{"type":"number","gt":0}},{"minute":{"type":"number","gt":0}},{"hour":{"type":"number","gt":0}},{"day":{"type":"number","gt":0}},{"month":{"type":"number","gt":0}},{"year":{"type":"number","gt":0}}],"required":true},"len_min":1}}]}}]}
+{
+  "fields": [
+    {
+      "protocols": {
+        "type": "set",
+        "required": true,
+        "elements": {
+          "type": "string",
+          "one_of": [
+            "grpc",
+            "grpcs",
+            "http",
+            "https"
+          ]
+        },
+        "default": [
+          "grpc",
+          "grpcs",
+          "http",
+          "https"
+        ]
+      }
+    },
+    {
+      "config": {
+        "type": "record",
+        "required": true,
+        "fields": [
+          {
+            "header_name": {
+              "type": "string",
+              "default": "x-kong-limit"
+            }
+          },
+          {
+            "limit_by": {
+              "type": "string",
+              "one_of": [
+                "consumer",
+                "credential",
+                "ip"
+              ],
+              "default": "consumer"
+            }
+          },
+          {
+            "policy": {
+              "type": "string",
+              "one_of": [
+                "local",
+                "cluster",
+                "redis"
+              ],
+              "default": "cluster"
+            }
+          },
+          {
+            "fault_tolerant": {
+              "type": "boolean",
+              "default": true
+            }
+          },
+          {
+            "redis_host": {
+              "type": "string"
+            }
+          },
+          {
+            "redis_port": {
+              "type": "integer",
+              "between": [
+                0,
+                65535
+              ],
+              "default": 6379
+            }
+          },
+          {
+            "redis_password": {
+              "type": "string",
+              "len_min": 0
+            }
+          },
+          {
+            "redis_timeout": {
+              "type": "number",
+              "default": 2000
+            }
+          },
+          {
+            "redis_database": {
+              "type": "number",
+              "default": 0
+            }
+          },
+          {
+            "block_on_first_violation": {
+              "type": "boolean",
+              "default": false
+            }
+          },
+          {
+            "hide_client_headers": {
+              "type": "boolean",
+              "default": false
+            }
+          },
+          {
+            "limits": {
+              "keys": {
+                "type": "string"
+              },
+              "type": "map",
+              "required": true,
+              "values": {
+                "type": "record",
+                "entity_checks": [
+                  {
+                    "at_least_one_of": [
+                      "second",
+                      "minute",
+                      "hour",
+                      "day",
+                      "month",
+                      "year"
+                    ]
+                  }
+                ],
+                "fields": [
+                  {
+                    "second": {
+                      "type": "number",
+                      "gt": 0
+                    }
+                  },
+                  {
+                    "minute": {
+                      "type": "number",
+                      "gt": 0
+                    }
+                  },
+                  {
+                    "hour": {
+                      "type": "number",
+                      "gt": 0
+                    }
+                  },
+                  {
+                    "day": {
+                      "type": "number",
+                      "gt": 0
+                    }
+                  },
+                  {
+                    "month": {
+                      "type": "number",
+                      "gt": 0
+                    }
+                  },
+                  {
+                    "year": {
+                      "type": "number",
+                      "gt": 0
+                    }
+                  }
+                ],
+                "required": true
+              },
+              "len_min": 1
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

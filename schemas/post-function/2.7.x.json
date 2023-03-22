@@ -1,1 +1,110 @@
-{"fields":[{"consumer":{"reference":"consumers","eq":null,"type":"foreign"}},{"config":{"fields":[{"functions":{"required":true,"default":[],"elements":{"type":"string","required":false},"type":"array"}},{"certificate":{"type":"array","elements":{"type":"string","required":false},"default":[],"required":true}},{"rewrite":{"type":"array","elements":{"type":"string","required":false},"default":[],"required":true}},{"access":{"type":"array","elements":{"type":"string","required":false},"default":[],"required":true}},{"header_filter":{"type":"array","elements":{"type":"string","required":false},"default":[],"required":true}},{"body_filter":{"type":"array","elements":{"type":"string","required":false},"default":[],"required":true}},{"log":{"type":"array","elements":{"type":"string","required":false},"default":[],"required":true}}],"type":"record","required":true}}]}
+{
+  "fields": [
+    {
+      "consumer": {
+        "reference": "consumers",
+        "eq": null,
+        "type": "foreign"
+      }
+    },
+    {
+      "config": {
+        "fields": [
+          {
+            "functions": {
+              "required": true,
+              "default": [
+
+              ],
+              "elements": {
+                "type": "string",
+                "required": false
+              },
+              "type": "array"
+            }
+          },
+          {
+            "certificate": {
+              "type": "array",
+              "elements": {
+                "type": "string",
+                "required": false
+              },
+              "default": [
+
+              ],
+              "required": true
+            }
+          },
+          {
+            "rewrite": {
+              "type": "array",
+              "elements": {
+                "type": "string",
+                "required": false
+              },
+              "default": [
+
+              ],
+              "required": true
+            }
+          },
+          {
+            "access": {
+              "type": "array",
+              "elements": {
+                "type": "string",
+                "required": false
+              },
+              "default": [
+
+              ],
+              "required": true
+            }
+          },
+          {
+            "header_filter": {
+              "type": "array",
+              "elements": {
+                "type": "string",
+                "required": false
+              },
+              "default": [
+
+              ],
+              "required": true
+            }
+          },
+          {
+            "body_filter": {
+              "type": "array",
+              "elements": {
+                "type": "string",
+                "required": false
+              },
+              "default": [
+
+              ],
+              "required": true
+            }
+          },
+          {
+            "log": {
+              "type": "array",
+              "elements": {
+                "type": "string",
+                "required": false
+              },
+              "default": [
+
+              ],
+              "required": true
+            }
+          }
+        ],
+        "type": "record",
+        "required": true
+      }
+    }
+  ]
+}

@@ -1,1 +1,83 @@
-{"fields":[{"consumer":{"reference":"consumers","eq":null,"type":"foreign"}},{"protocols":{"required":true,"default":["grpc","grpcs","http","https"],"type":"set","elements":{"type":"string","one_of":["grpc","grpcs","http","https"]}}},{"config":{"required":true,"shorthand_fields":[{"blacklist":{"type":"array","elements":{"type":"string","is_regex":true}}},{"whitelist":{"type":"array","elements":{"type":"string","is_regex":true}}}],"type":"record","fields":[{"allow":{"type":"array","elements":{"type":"string"}}},{"deny":{"type":"array","elements":{"type":"string"}}},{"hide_groups_header":{"required":true,"type":"boolean","default":false}}]}}]}
+{
+  "fields": [
+    {
+      "consumer": {
+        "reference": "consumers",
+        "eq": null,
+        "type": "foreign"
+      }
+    },
+    {
+      "protocols": {
+        "required": true,
+        "default": [
+          "grpc",
+          "grpcs",
+          "http",
+          "https"
+        ],
+        "type": "set",
+        "elements": {
+          "type": "string",
+          "one_of": [
+            "grpc",
+            "grpcs",
+            "http",
+            "https"
+          ]
+        }
+      }
+    },
+    {
+      "config": {
+        "required": true,
+        "shorthand_fields": [
+          {
+            "blacklist": {
+              "type": "array",
+              "elements": {
+                "type": "string",
+                "is_regex": true
+              }
+            }
+          },
+          {
+            "whitelist": {
+              "type": "array",
+              "elements": {
+                "type": "string",
+                "is_regex": true
+              }
+            }
+          }
+        ],
+        "type": "record",
+        "fields": [
+          {
+            "allow": {
+              "type": "array",
+              "elements": {
+                "type": "string"
+              }
+            }
+          },
+          {
+            "deny": {
+              "type": "array",
+              "elements": {
+                "type": "string"
+              }
+            }
+          },
+          {
+            "hide_groups_header": {
+              "required": true,
+              "type": "boolean",
+              "default": false
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

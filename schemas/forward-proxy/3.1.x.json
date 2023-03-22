@@ -1,1 +1,142 @@
-{"fields":[{"protocols":{"type":"set","elements":{"type":"string","one_of":["grpc","grpcs","http","https"]},"default":["grpc","grpcs","http","https"],"required":true}},{"config":{"required":true,"fields":[{"x_headers":{"required":true,"one_of":["append","transparent","delete"],"type":"string","default":"append"}},{"http_proxy_host":{"type":"string"}},{"http_proxy_port":{"type":"integer","between":[0,65535]}},{"https_proxy_host":{"type":"string"}},{"https_proxy_port":{"type":"integer","between":[0,65535]}},{"proxy_scheme":{"required":true,"one_of":["http"],"type":"string","default":"http"}},{"auth_username":{"required":false,"referenceable":true,"type":"string"}},{"auth_password":{"required":false,"referenceable":true,"type":"string"}},{"https_verify":{"required":true,"type":"boolean","default":false}}],"shorthand_fields":[{"proxy_host":{"type":"string"}},{"proxy_port":{"type":"integer"}}],"type":"record","entity_checks":[{"at_least_one_of":["http_proxy_host","https_proxy_host"]},{"at_least_one_of":["http_proxy_port","https_proxy_port"]},{"mutually_required":["http_proxy_host","http_proxy_port"]},{"mutually_required":["https_proxy_host","https_proxy_port"]}]}}]}
+{
+  "fields": [
+    {
+      "protocols": {
+        "type": "set",
+        "elements": {
+          "type": "string",
+          "one_of": [
+            "grpc",
+            "grpcs",
+            "http",
+            "https"
+          ]
+        },
+        "default": [
+          "grpc",
+          "grpcs",
+          "http",
+          "https"
+        ],
+        "required": true
+      }
+    },
+    {
+      "config": {
+        "required": true,
+        "fields": [
+          {
+            "x_headers": {
+              "required": true,
+              "one_of": [
+                "append",
+                "transparent",
+                "delete"
+              ],
+              "type": "string",
+              "default": "append"
+            }
+          },
+          {
+            "http_proxy_host": {
+              "type": "string"
+            }
+          },
+          {
+            "http_proxy_port": {
+              "type": "integer",
+              "between": [
+                0,
+                65535
+              ]
+            }
+          },
+          {
+            "https_proxy_host": {
+              "type": "string"
+            }
+          },
+          {
+            "https_proxy_port": {
+              "type": "integer",
+              "between": [
+                0,
+                65535
+              ]
+            }
+          },
+          {
+            "proxy_scheme": {
+              "required": true,
+              "one_of": [
+                "http"
+              ],
+              "type": "string",
+              "default": "http"
+            }
+          },
+          {
+            "auth_username": {
+              "required": false,
+              "referenceable": true,
+              "type": "string"
+            }
+          },
+          {
+            "auth_password": {
+              "required": false,
+              "referenceable": true,
+              "type": "string"
+            }
+          },
+          {
+            "https_verify": {
+              "required": true,
+              "type": "boolean",
+              "default": false
+            }
+          }
+        ],
+        "shorthand_fields": [
+          {
+            "proxy_host": {
+              "type": "string"
+            }
+          },
+          {
+            "proxy_port": {
+              "type": "integer"
+            }
+          }
+        ],
+        "type": "record",
+        "entity_checks": [
+          {
+            "at_least_one_of": [
+              "http_proxy_host",
+              "https_proxy_host"
+            ]
+          },
+          {
+            "at_least_one_of": [
+              "http_proxy_port",
+              "https_proxy_port"
+            ]
+          },
+          {
+            "mutually_required": [
+              "http_proxy_host",
+              "http_proxy_port"
+            ]
+          },
+          {
+            "mutually_required": [
+              "https_proxy_host",
+              "https_proxy_port"
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

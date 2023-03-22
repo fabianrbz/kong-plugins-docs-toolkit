@@ -1,1 +1,95 @@
-{"fields":[{"config":{"type":"record","fields":[{"api_spec":{"type":"string","required":true}},{"verbose_response":{"default":false,"required":false,"type":"boolean"}},{"validate_request_body":{"default":true,"required":false,"type":"boolean"}},{"notify_only_request_validation_failure":{"default":false,"required":false,"type":"boolean"}},{"validate_request_header_params":{"default":true,"required":false,"type":"boolean"}},{"validate_request_query_params":{"default":true,"required":false,"type":"boolean"}},{"validate_request_uri_params":{"default":true,"required":false,"type":"boolean"}},{"validate_response_body":{"default":false,"required":false,"type":"boolean"}},{"notify_only_response_body_validation_failure":{"default":false,"required":false,"type":"boolean"}},{"query_parameter_check":{"default":false,"required":true,"type":"boolean"}},{"header_parameter_check":{"default":false,"required":true,"type":"boolean"}},{"allowed_header_parameters":{"default":"Host,Content-Type,User-Agent,Accept,Content-Length","required":false,"type":"string"}}],"required":true}}]}
+{
+  "fields": [
+    {
+      "config": {
+        "type": "record",
+        "fields": [
+          {
+            "api_spec": {
+              "type": "string",
+              "required": true
+            }
+          },
+          {
+            "verbose_response": {
+              "default": false,
+              "required": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "validate_request_body": {
+              "default": true,
+              "required": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "notify_only_request_validation_failure": {
+              "default": false,
+              "required": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "validate_request_header_params": {
+              "default": true,
+              "required": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "validate_request_query_params": {
+              "default": true,
+              "required": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "validate_request_uri_params": {
+              "default": true,
+              "required": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "validate_response_body": {
+              "default": false,
+              "required": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "notify_only_response_body_validation_failure": {
+              "default": false,
+              "required": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "query_parameter_check": {
+              "default": false,
+              "required": true,
+              "type": "boolean"
+            }
+          },
+          {
+            "header_parameter_check": {
+              "default": false,
+              "required": true,
+              "type": "boolean"
+            }
+          },
+          {
+            "allowed_header_parameters": {
+              "default": "Host,Content-Type,User-Agent,Accept,Content-Length",
+              "required": false,
+              "type": "string"
+            }
+          }
+        ],
+        "required": true
+      }
+    }
+  ]
+}

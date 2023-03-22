@@ -1,1 +1,84 @@
-{"fields":[{"protocols":{"type":"set","elements":{"type":"string","one_of":["grpc","grpcs","http","https"]},"default":["grpc","grpcs","http","https"],"required":true}},{"config":{"type":"record","fields":[{"api_specification_filename":{"required":false,"type":"string"}},{"api_specification":{"type":"string","required":false}},{"random_delay":{"default":false,"type":"boolean"}},{"max_delay_time":{"default":1,"type":"number"}},{"min_delay_time":{"default":0.001,"type":"number"}},{"random_examples":{"default":false,"type":"boolean"}},{"included_status_codes":{"type":"array","elements":{"type":"integer"}}},{"random_status_code":{"default":false,"required":true,"type":"boolean"}}],"required":true}}]}
+{
+  "fields": [
+    {
+      "protocols": {
+        "type": "set",
+        "elements": {
+          "type": "string",
+          "one_of": [
+            "grpc",
+            "grpcs",
+            "http",
+            "https"
+          ]
+        },
+        "default": [
+          "grpc",
+          "grpcs",
+          "http",
+          "https"
+        ],
+        "required": true
+      }
+    },
+    {
+      "config": {
+        "type": "record",
+        "fields": [
+          {
+            "api_specification_filename": {
+              "required": false,
+              "type": "string"
+            }
+          },
+          {
+            "api_specification": {
+              "type": "string",
+              "required": false
+            }
+          },
+          {
+            "random_delay": {
+              "default": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "max_delay_time": {
+              "default": 1,
+              "type": "number"
+            }
+          },
+          {
+            "min_delay_time": {
+              "default": 0.001,
+              "type": "number"
+            }
+          },
+          {
+            "random_examples": {
+              "default": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "included_status_codes": {
+              "type": "array",
+              "elements": {
+                "type": "integer"
+              }
+            }
+          },
+          {
+            "random_status_code": {
+              "default": false,
+              "required": true,
+              "type": "boolean"
+            }
+          }
+        ],
+        "required": true
+      }
+    }
+  ]
+}

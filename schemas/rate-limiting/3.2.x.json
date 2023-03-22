@@ -1,1 +1,198 @@
-{"fields":[{"protocols":{"elements":{"one_of":["grpc","grpcs","http","https"],"type":"string"},"required":true,"type":"set","default":["grpc","grpcs","http","https"]}},{"config":{"fields":[{"second":{"gt":0,"type":"number"}},{"minute":{"gt":0,"type":"number"}},{"hour":{"gt":0,"type":"number"}},{"day":{"gt":0,"type":"number"}},{"month":{"gt":0,"type":"number"}},{"year":{"gt":0,"type":"number"}},{"limit_by":{"type":"string","one_of":["consumer","credential","ip","service","header","path"],"default":"consumer"}},{"header_name":{"type":"string"}},{"path":{"match_none":[{"err":"must not have empty segments","pattern":"//"}],"type":"string","starts_with":"/"}},{"policy":{"one_of":["local","cluster","redis"],"type":"string","len_min":0,"default":"local"}},{"fault_tolerant":{"type":"boolean","required":true,"default":true}},{"redis_host":{"type":"string"}},{"redis_port":{"between":[0,65535],"type":"integer","default":6379}},{"redis_password":{"referenceable":true,"len_min":0,"type":"string"}},{"redis_username":{"referenceable":true,"type":"string"}},{"redis_ssl":{"type":"boolean","required":true,"default":false}},{"redis_ssl_verify":{"type":"boolean","required":true,"default":false}},{"redis_server_name":{"type":"string"}},{"redis_timeout":{"default":2000,"type":"number"}},{"redis_database":{"default":0,"type":"integer"}},{"hide_client_headers":{"type":"boolean","required":true,"default":false}},{"error_code":{"type":"number","gt":0,"default":429}},{"error_message":{"default":"API rate limit exceeded","type":"string"}}],"type":"record","required":true}}]}
+{
+  "fields": [
+    {
+      "protocols": {
+        "elements": {
+          "one_of": [
+            "grpc",
+            "grpcs",
+            "http",
+            "https"
+          ],
+          "type": "string"
+        },
+        "required": true,
+        "type": "set",
+        "default": [
+          "grpc",
+          "grpcs",
+          "http",
+          "https"
+        ]
+      }
+    },
+    {
+      "config": {
+        "fields": [
+          {
+            "second": {
+              "gt": 0,
+              "type": "number"
+            }
+          },
+          {
+            "minute": {
+              "gt": 0,
+              "type": "number"
+            }
+          },
+          {
+            "hour": {
+              "gt": 0,
+              "type": "number"
+            }
+          },
+          {
+            "day": {
+              "gt": 0,
+              "type": "number"
+            }
+          },
+          {
+            "month": {
+              "gt": 0,
+              "type": "number"
+            }
+          },
+          {
+            "year": {
+              "gt": 0,
+              "type": "number"
+            }
+          },
+          {
+            "limit_by": {
+              "type": "string",
+              "one_of": [
+                "consumer",
+                "credential",
+                "ip",
+                "service",
+                "header",
+                "path"
+              ],
+              "default": "consumer"
+            }
+          },
+          {
+            "header_name": {
+              "type": "string"
+            }
+          },
+          {
+            "path": {
+              "match_none": [
+                {
+                  "err": "must not have empty segments",
+                  "pattern": "//"
+                }
+              ],
+              "type": "string",
+              "starts_with": "/"
+            }
+          },
+          {
+            "policy": {
+              "one_of": [
+                "local",
+                "cluster",
+                "redis"
+              ],
+              "type": "string",
+              "len_min": 0,
+              "default": "local"
+            }
+          },
+          {
+            "fault_tolerant": {
+              "type": "boolean",
+              "required": true,
+              "default": true
+            }
+          },
+          {
+            "redis_host": {
+              "type": "string"
+            }
+          },
+          {
+            "redis_port": {
+              "between": [
+                0,
+                65535
+              ],
+              "type": "integer",
+              "default": 6379
+            }
+          },
+          {
+            "redis_password": {
+              "referenceable": true,
+              "len_min": 0,
+              "type": "string"
+            }
+          },
+          {
+            "redis_username": {
+              "referenceable": true,
+              "type": "string"
+            }
+          },
+          {
+            "redis_ssl": {
+              "type": "boolean",
+              "required": true,
+              "default": false
+            }
+          },
+          {
+            "redis_ssl_verify": {
+              "type": "boolean",
+              "required": true,
+              "default": false
+            }
+          },
+          {
+            "redis_server_name": {
+              "type": "string"
+            }
+          },
+          {
+            "redis_timeout": {
+              "default": 2000,
+              "type": "number"
+            }
+          },
+          {
+            "redis_database": {
+              "default": 0,
+              "type": "integer"
+            }
+          },
+          {
+            "hide_client_headers": {
+              "type": "boolean",
+              "required": true,
+              "default": false
+            }
+          },
+          {
+            "error_code": {
+              "type": "number",
+              "gt": 0,
+              "default": 429
+            }
+          },
+          {
+            "error_message": {
+              "default": "API rate limit exceeded",
+              "type": "string"
+            }
+          }
+        ],
+        "type": "record",
+        "required": true
+      }
+    }
+  ]
+}

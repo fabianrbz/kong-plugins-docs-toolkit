@@ -1,1 +1,134 @@
-{"fields":[{"consumer":{"eq":null,"reference":"consumers","type":"foreign"}},{"config":{"required":true,"fields":[{"secret":{"encrypted":true,"required":false,"referenceable":true,"default":"UnXKQHe8y4hyiLqpH0BX9pSz4blZuZvIFhg11Zv87dEe","type":"string"}},{"cookie_name":{"default":"session","type":"string"}},{"cookie_lifetime":{"default":3600,"type":"number"}},{"cookie_idletime":{"type":"number"}},{"cookie_renew":{"default":600,"type":"number"}},{"cookie_path":{"default":"/","type":"string"}},{"cookie_domain":{"type":"string"}},{"cookie_samesite":{"one_of":["Strict","Lax","None","off"],"default":"Strict","type":"string"}},{"cookie_httponly":{"default":true,"type":"boolean"}},{"cookie_secure":{"default":true,"type":"boolean"}},{"cookie_discard":{"default":10,"type":"number"}},{"storage":{"required":false,"one_of":["cookie","kong"],"default":"cookie","type":"string"}},{"logout_methods":{"elements":{"one_of":["GET","POST","DELETE"],"type":"string"},"default":["POST","DELETE"],"type":"array"}},{"logout_query_arg":{"required":false,"default":"session_logout","type":"string"}},{"logout_post_arg":{"required":false,"default":"session_logout","type":"string"}}],"type":"record"}}]}
+{
+  "fields": [
+    {
+      "consumer": {
+        "eq": null,
+        "reference": "consumers",
+        "type": "foreign"
+      }
+    },
+    {
+      "config": {
+        "required": true,
+        "fields": [
+          {
+            "secret": {
+              "encrypted": true,
+              "required": false,
+              "referenceable": true,
+              "default": "UnXKQHe8y4hyiLqpH0BX9pSz4blZuZvIFhg11Zv87dEe",
+              "type": "string"
+            }
+          },
+          {
+            "cookie_name": {
+              "default": "session",
+              "type": "string"
+            }
+          },
+          {
+            "cookie_lifetime": {
+              "default": 3600,
+              "type": "number"
+            }
+          },
+          {
+            "cookie_idletime": {
+              "type": "number"
+            }
+          },
+          {
+            "cookie_renew": {
+              "default": 600,
+              "type": "number"
+            }
+          },
+          {
+            "cookie_path": {
+              "default": "/",
+              "type": "string"
+            }
+          },
+          {
+            "cookie_domain": {
+              "type": "string"
+            }
+          },
+          {
+            "cookie_samesite": {
+              "one_of": [
+                "Strict",
+                "Lax",
+                "None",
+                "off"
+              ],
+              "default": "Strict",
+              "type": "string"
+            }
+          },
+          {
+            "cookie_httponly": {
+              "default": true,
+              "type": "boolean"
+            }
+          },
+          {
+            "cookie_secure": {
+              "default": true,
+              "type": "boolean"
+            }
+          },
+          {
+            "cookie_discard": {
+              "default": 10,
+              "type": "number"
+            }
+          },
+          {
+            "storage": {
+              "required": false,
+              "one_of": [
+                "cookie",
+                "kong"
+              ],
+              "default": "cookie",
+              "type": "string"
+            }
+          },
+          {
+            "logout_methods": {
+              "elements": {
+                "one_of": [
+                  "GET",
+                  "POST",
+                  "DELETE"
+                ],
+                "type": "string"
+              },
+              "default": [
+                "POST",
+                "DELETE"
+              ],
+              "type": "array"
+            }
+          },
+          {
+            "logout_query_arg": {
+              "required": false,
+              "default": "session_logout",
+              "type": "string"
+            }
+          },
+          {
+            "logout_post_arg": {
+              "required": false,
+              "default": "session_logout",
+              "type": "string"
+            }
+          }
+        ],
+        "type": "record"
+      }
+    }
+  ]
+}

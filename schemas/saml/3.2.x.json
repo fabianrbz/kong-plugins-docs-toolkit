@@ -1,1 +1,583 @@
-{"fields":[{"consumer":{"eq":null,"type":"foreign","reference":"consumers"}},{"protocols":{"elements":{"one_of":["grpc","grpcs","http","https"],"type":"string"},"required":true,"type":"set","default":["grpc","grpcs","http","https"]}},{"config":{"fields":[{"assertion_consumer_path":{"match_none":[{"err":"must not have empty segments","pattern":"//"}],"required":true,"starts_with":"/","type":"string"}},{"idp_sso_url":{"type":"string","required":true}},{"idp_certificate":{"type":"string","encrypted":true,"required":false,"referenceable":true}},{"response_encryption_key":{"type":"string","encrypted":true,"required":false,"referenceable":true}},{"request_signing_key":{"type":"string","encrypted":true,"required":false,"referenceable":true}},{"request_signing_certificate":{"type":"string","encrypted":true,"required":false,"referenceable":true}},{"request_signature_algorithm":{"one_of":["SHA256","SHA384","SHA512"],"required":false,"type":"string","default":"SHA256"}},{"request_digest_algorithm":{"one_of":["SHA256","SHA1"],"required":false,"type":"string","default":"SHA256"}},{"response_signature_algorithm":{"one_of":["SHA256","SHA384","SHA512"],"required":false,"type":"string","default":"SHA256"}},{"response_digest_algorithm":{"one_of":["SHA256","SHA1"],"required":false,"type":"string","default":"SHA256"}},{"issuer":{"type":"string","required":true}},{"nameid_format":{"one_of":["Unspecified","EmailAddress","Persistent","Transient"],"required":false,"type":"string","default":"EmailAddress"}},{"validate_assertion_signature":{"required":false,"type":"boolean","default":true}},{"anonymous":{"type":"string","required":false}},{"session_secret":{"encrypted":true,"referenceable":true,"match":"^[0-9a-zA-Z/_+]+$","type":"string","len_min":32,"len_max":32,"required":true}},{"session_audience":{"required":false,"type":"string","default":"default"}},{"session_cookie_name":{"required":false,"type":"string","default":"session"}},{"session_remember":{"required":false,"type":"boolean","default":false}},{"session_remember_cookie_name":{"required":false,"type":"string","default":"remember"}},{"session_remember_rolling_timeout":{"required":false,"type":"number","default":604800}},{"session_remember_absolute_timeout":{"required":false,"type":"number","default":2592000}},{"session_idling_timeout":{"required":false,"type":"number","default":900}},{"session_rolling_timeout":{"required":false,"type":"number","default":3600}},{"session_absolute_timeout":{"required":false,"type":"number","default":86400}},{"session_cookie_path":{"required":false,"match_none":[{"err":"must not have empty segments","pattern":"//"}],"type":"string","starts_with":"/","default":"/"}},{"session_cookie_domain":{"type":"string","required":false}},{"session_cookie_same_site":{"one_of":["Strict","Lax","None","Default"],"required":false,"type":"string","default":"Lax"}},{"session_cookie_http_only":{"required":false,"type":"boolean","default":true}},{"session_cookie_secure":{"type":"boolean","required":false}},{"session_request_headers":{"elements":{"one_of":["id","audience","subject","timeout","idling-timeout","rolling-timeout","absolute-timeout"],"type":"string"},"type":"set"}},{"session_response_headers":{"elements":{"one_of":["id","audience","subject","timeout","idling-timeout","rolling-timeout","absolute-timeout"],"type":"string"},"type":"set"}},{"session_storage":{"one_of":["cookie","memcache","memcached","redis"],"required":false,"type":"string","default":"cookie"}},{"session_store_metadata":{"required":false,"type":"boolean","default":false}},{"session_enforce_same_subject":{"required":false,"type":"boolean","default":false}},{"session_hash_subject":{"required":false,"type":"boolean","default":false}},{"session_hash_storage_key":{"required":false,"type":"boolean","default":false}},{"session_memcached_prefix":{"type":"string","required":false}},{"session_memcached_socket":{"type":"string","required":false}},{"session_memcached_host":{"required":false,"type":"string","default":"127.0.0.1"}},{"session_memcached_port":{"type":"integer","required":false,"between":[0,65535],"default":11211}},{"session_redis_prefix":{"type":"string","required":false}},{"session_redis_socket":{"type":"string","required":false}},{"session_redis_host":{"required":false,"type":"string","default":"127.0.0.1"}},{"session_redis_port":{"type":"integer","required":false,"between":[0,65535],"default":6379}},{"session_redis_username":{"required":false,"referenceable":true,"type":"string"}},{"session_redis_password":{"type":"string","encrypted":true,"required":false,"referenceable":true}},{"session_redis_connect_timeout":{"type":"integer","required":false}},{"session_redis_read_timeout":{"type":"integer","required":false}},{"session_redis_send_timeout":{"type":"integer","required":false}},{"session_redis_ssl":{"required":false,"type":"boolean","default":false}},{"session_redis_ssl_verify":{"required":false,"type":"boolean","default":false}},{"session_redis_server_name":{"type":"string","required":false}},{"session_redis_cluster_nodes":{"required":false,"type":"array","elements":{"fields":[{"ip":{"type":"string","required":true,"default":"127.0.0.1"}},{"port":{"between":[0,65535],"type":"integer","default":6379}}],"type":"record"}}},{"session_redis_cluster_max_redirections":{"type":"integer","required":false}}],"type":"record","required":true,"shorthand_fields":[{"session_cookie_lifetime":{"type":"number"}},{"session_cookie_idletime":{"type":"number"}},{"session_cookie_samesite":{"type":"string"}},{"session_cookie_httponly":{"type":"boolean"}},{"session_memcache_prefix":{"type":"string"}},{"session_memcache_socket":{"type":"string"}},{"session_memcache_host":{"type":"string"}},{"session_memcache_port":{"type":"integer"}},{"session_redis_cluster_maxredirections":{"type":"integer"}},{"session_cookie_renew":{"type":"number"}},{"session_cookie_maxsize":{"type":"integer"}},{"session_strategy":{"type":"string"}},{"session_compressor":{"type":"string"}},{"session_auth_ttl":{"type":"string"}}]}}]}
+{
+  "fields": [
+    {
+      "consumer": {
+        "eq": null,
+        "type": "foreign",
+        "reference": "consumers"
+      }
+    },
+    {
+      "protocols": {
+        "elements": {
+          "one_of": [
+            "grpc",
+            "grpcs",
+            "http",
+            "https"
+          ],
+          "type": "string"
+        },
+        "required": true,
+        "type": "set",
+        "default": [
+          "grpc",
+          "grpcs",
+          "http",
+          "https"
+        ]
+      }
+    },
+    {
+      "config": {
+        "fields": [
+          {
+            "assertion_consumer_path": {
+              "match_none": [
+                {
+                  "err": "must not have empty segments",
+                  "pattern": "//"
+                }
+              ],
+              "required": true,
+              "starts_with": "/",
+              "type": "string"
+            }
+          },
+          {
+            "idp_sso_url": {
+              "type": "string",
+              "required": true
+            }
+          },
+          {
+            "idp_certificate": {
+              "type": "string",
+              "encrypted": true,
+              "required": false,
+              "referenceable": true
+            }
+          },
+          {
+            "response_encryption_key": {
+              "type": "string",
+              "encrypted": true,
+              "required": false,
+              "referenceable": true
+            }
+          },
+          {
+            "request_signing_key": {
+              "type": "string",
+              "encrypted": true,
+              "required": false,
+              "referenceable": true
+            }
+          },
+          {
+            "request_signing_certificate": {
+              "type": "string",
+              "encrypted": true,
+              "required": false,
+              "referenceable": true
+            }
+          },
+          {
+            "request_signature_algorithm": {
+              "one_of": [
+                "SHA256",
+                "SHA384",
+                "SHA512"
+              ],
+              "required": false,
+              "type": "string",
+              "default": "SHA256"
+            }
+          },
+          {
+            "request_digest_algorithm": {
+              "one_of": [
+                "SHA256",
+                "SHA1"
+              ],
+              "required": false,
+              "type": "string",
+              "default": "SHA256"
+            }
+          },
+          {
+            "response_signature_algorithm": {
+              "one_of": [
+                "SHA256",
+                "SHA384",
+                "SHA512"
+              ],
+              "required": false,
+              "type": "string",
+              "default": "SHA256"
+            }
+          },
+          {
+            "response_digest_algorithm": {
+              "one_of": [
+                "SHA256",
+                "SHA1"
+              ],
+              "required": false,
+              "type": "string",
+              "default": "SHA256"
+            }
+          },
+          {
+            "issuer": {
+              "type": "string",
+              "required": true
+            }
+          },
+          {
+            "nameid_format": {
+              "one_of": [
+                "Unspecified",
+                "EmailAddress",
+                "Persistent",
+                "Transient"
+              ],
+              "required": false,
+              "type": "string",
+              "default": "EmailAddress"
+            }
+          },
+          {
+            "validate_assertion_signature": {
+              "required": false,
+              "type": "boolean",
+              "default": true
+            }
+          },
+          {
+            "anonymous": {
+              "type": "string",
+              "required": false
+            }
+          },
+          {
+            "session_secret": {
+              "encrypted": true,
+              "referenceable": true,
+              "match": "^[0-9a-zA-Z/_+]+$",
+              "type": "string",
+              "len_min": 32,
+              "len_max": 32,
+              "required": true
+            }
+          },
+          {
+            "session_audience": {
+              "required": false,
+              "type": "string",
+              "default": "default"
+            }
+          },
+          {
+            "session_cookie_name": {
+              "required": false,
+              "type": "string",
+              "default": "session"
+            }
+          },
+          {
+            "session_remember": {
+              "required": false,
+              "type": "boolean",
+              "default": false
+            }
+          },
+          {
+            "session_remember_cookie_name": {
+              "required": false,
+              "type": "string",
+              "default": "remember"
+            }
+          },
+          {
+            "session_remember_rolling_timeout": {
+              "required": false,
+              "type": "number",
+              "default": 604800
+            }
+          },
+          {
+            "session_remember_absolute_timeout": {
+              "required": false,
+              "type": "number",
+              "default": 2592000
+            }
+          },
+          {
+            "session_idling_timeout": {
+              "required": false,
+              "type": "number",
+              "default": 900
+            }
+          },
+          {
+            "session_rolling_timeout": {
+              "required": false,
+              "type": "number",
+              "default": 3600
+            }
+          },
+          {
+            "session_absolute_timeout": {
+              "required": false,
+              "type": "number",
+              "default": 86400
+            }
+          },
+          {
+            "session_cookie_path": {
+              "required": false,
+              "match_none": [
+                {
+                  "err": "must not have empty segments",
+                  "pattern": "//"
+                }
+              ],
+              "type": "string",
+              "starts_with": "/",
+              "default": "/"
+            }
+          },
+          {
+            "session_cookie_domain": {
+              "type": "string",
+              "required": false
+            }
+          },
+          {
+            "session_cookie_same_site": {
+              "one_of": [
+                "Strict",
+                "Lax",
+                "None",
+                "Default"
+              ],
+              "required": false,
+              "type": "string",
+              "default": "Lax"
+            }
+          },
+          {
+            "session_cookie_http_only": {
+              "required": false,
+              "type": "boolean",
+              "default": true
+            }
+          },
+          {
+            "session_cookie_secure": {
+              "type": "boolean",
+              "required": false
+            }
+          },
+          {
+            "session_request_headers": {
+              "elements": {
+                "one_of": [
+                  "id",
+                  "audience",
+                  "subject",
+                  "timeout",
+                  "idling-timeout",
+                  "rolling-timeout",
+                  "absolute-timeout"
+                ],
+                "type": "string"
+              },
+              "type": "set"
+            }
+          },
+          {
+            "session_response_headers": {
+              "elements": {
+                "one_of": [
+                  "id",
+                  "audience",
+                  "subject",
+                  "timeout",
+                  "idling-timeout",
+                  "rolling-timeout",
+                  "absolute-timeout"
+                ],
+                "type": "string"
+              },
+              "type": "set"
+            }
+          },
+          {
+            "session_storage": {
+              "one_of": [
+                "cookie",
+                "memcache",
+                "memcached",
+                "redis"
+              ],
+              "required": false,
+              "type": "string",
+              "default": "cookie"
+            }
+          },
+          {
+            "session_store_metadata": {
+              "required": false,
+              "type": "boolean",
+              "default": false
+            }
+          },
+          {
+            "session_enforce_same_subject": {
+              "required": false,
+              "type": "boolean",
+              "default": false
+            }
+          },
+          {
+            "session_hash_subject": {
+              "required": false,
+              "type": "boolean",
+              "default": false
+            }
+          },
+          {
+            "session_hash_storage_key": {
+              "required": false,
+              "type": "boolean",
+              "default": false
+            }
+          },
+          {
+            "session_memcached_prefix": {
+              "type": "string",
+              "required": false
+            }
+          },
+          {
+            "session_memcached_socket": {
+              "type": "string",
+              "required": false
+            }
+          },
+          {
+            "session_memcached_host": {
+              "required": false,
+              "type": "string",
+              "default": "127.0.0.1"
+            }
+          },
+          {
+            "session_memcached_port": {
+              "type": "integer",
+              "required": false,
+              "between": [
+                0,
+                65535
+              ],
+              "default": 11211
+            }
+          },
+          {
+            "session_redis_prefix": {
+              "type": "string",
+              "required": false
+            }
+          },
+          {
+            "session_redis_socket": {
+              "type": "string",
+              "required": false
+            }
+          },
+          {
+            "session_redis_host": {
+              "required": false,
+              "type": "string",
+              "default": "127.0.0.1"
+            }
+          },
+          {
+            "session_redis_port": {
+              "type": "integer",
+              "required": false,
+              "between": [
+                0,
+                65535
+              ],
+              "default": 6379
+            }
+          },
+          {
+            "session_redis_username": {
+              "required": false,
+              "referenceable": true,
+              "type": "string"
+            }
+          },
+          {
+            "session_redis_password": {
+              "type": "string",
+              "encrypted": true,
+              "required": false,
+              "referenceable": true
+            }
+          },
+          {
+            "session_redis_connect_timeout": {
+              "type": "integer",
+              "required": false
+            }
+          },
+          {
+            "session_redis_read_timeout": {
+              "type": "integer",
+              "required": false
+            }
+          },
+          {
+            "session_redis_send_timeout": {
+              "type": "integer",
+              "required": false
+            }
+          },
+          {
+            "session_redis_ssl": {
+              "required": false,
+              "type": "boolean",
+              "default": false
+            }
+          },
+          {
+            "session_redis_ssl_verify": {
+              "required": false,
+              "type": "boolean",
+              "default": false
+            }
+          },
+          {
+            "session_redis_server_name": {
+              "type": "string",
+              "required": false
+            }
+          },
+          {
+            "session_redis_cluster_nodes": {
+              "required": false,
+              "type": "array",
+              "elements": {
+                "fields": [
+                  {
+                    "ip": {
+                      "type": "string",
+                      "required": true,
+                      "default": "127.0.0.1"
+                    }
+                  },
+                  {
+                    "port": {
+                      "between": [
+                        0,
+                        65535
+                      ],
+                      "type": "integer",
+                      "default": 6379
+                    }
+                  }
+                ],
+                "type": "record"
+              }
+            }
+          },
+          {
+            "session_redis_cluster_max_redirections": {
+              "type": "integer",
+              "required": false
+            }
+          }
+        ],
+        "type": "record",
+        "required": true,
+        "shorthand_fields": [
+          {
+            "session_cookie_lifetime": {
+              "type": "number"
+            }
+          },
+          {
+            "session_cookie_idletime": {
+              "type": "number"
+            }
+          },
+          {
+            "session_cookie_samesite": {
+              "type": "string"
+            }
+          },
+          {
+            "session_cookie_httponly": {
+              "type": "boolean"
+            }
+          },
+          {
+            "session_memcache_prefix": {
+              "type": "string"
+            }
+          },
+          {
+            "session_memcache_socket": {
+              "type": "string"
+            }
+          },
+          {
+            "session_memcache_host": {
+              "type": "string"
+            }
+          },
+          {
+            "session_memcache_port": {
+              "type": "integer"
+            }
+          },
+          {
+            "session_redis_cluster_maxredirections": {
+              "type": "integer"
+            }
+          },
+          {
+            "session_cookie_renew": {
+              "type": "number"
+            }
+          },
+          {
+            "session_cookie_maxsize": {
+              "type": "integer"
+            }
+          },
+          {
+            "session_strategy": {
+              "type": "string"
+            }
+          },
+          {
+            "session_compressor": {
+              "type": "string"
+            }
+          },
+          {
+            "session_auth_ttl": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

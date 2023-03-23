@@ -12,7 +12,10 @@
           },
           {
             "http_endpoint": {
-              "type": "string"
+              "type": "string",
+              "examples": [
+                "http://your.zipkin.collector:9411/api/v2/spans"
+              ]
             }
           },
           {
@@ -22,6 +25,9 @@
               "between": [
                 0,
                 1
+              ],
+              "examples": [
+                0.001
               ]
             }
           },
@@ -34,7 +40,10 @@
             "include_credential": {
               "type": "boolean",
               "required": true,
-              "default": true
+              "default": true,
+              "examples": [
+                true
+              ]
             }
           },
           {

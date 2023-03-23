@@ -13,7 +13,10 @@
           {
             "introspection_url": {
               "required": true,
-              "type": "string"
+              "type": "string",
+              "examples": [
+                "https://example-url.com"
+              ]
             }
           },
           {
@@ -30,7 +33,10 @@
           {
             "authorization_value": {
               "type": "string",
-              "required": true
+              "required": true,
+              "examples": [
+                "Basic MG9hNWlpbjpPcGVuU2VzYW1l"
+              ]
             }
           },
           {
@@ -79,7 +85,10 @@
                 "client_id"
               ],
               "default": "username",
-              "required": true
+              "required": true,
+              "examples": [
+                "username"
+              ]
             }
           },
           {

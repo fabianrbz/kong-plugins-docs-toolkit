@@ -15,7 +15,10 @@
                 "path"
               ],
               "default": "consumer",
-              "required": true
+              "required": true,
+              "examples": [
+                "consumer"
+              ]
             }
           },
           {
@@ -24,7 +27,12 @@
               "elements": {
                 "type": "number"
               },
-              "required": true
+              "required": true,
+              "examples": [
+                [
+                  30
+                ]
+              ]
             }
           },
           {
@@ -43,7 +51,12 @@
               "elements": {
                 "type": "number"
               },
-              "required": true
+              "required": true,
+              "examples": [
+                [
+                  5
+                ]
+              ]
             }
           },
           {
@@ -55,7 +68,10 @@
             "namespace": {
               "required": true,
               "type": "string",
-              "auto": true
+              "auto": true,
+              "examples": [
+                "example_namespace"
+              ]
             }
           },
           {
@@ -67,7 +83,10 @@
                 "local"
               ],
               "default": "cluster",
-              "required": true
+              "required": true,
+              "examples": [
+                "local"
+              ]
             }
           },
           {
@@ -80,7 +99,10 @@
           {
             "hide_client_headers": {
               "type": "boolean",
-              "default": false
+              "default": false,
+              "examples": [
+                false
+              ]
             }
           },
           {
@@ -316,7 +338,10 @@
           {
             "enforce_consumer_groups": {
               "type": "boolean",
-              "default": false
+              "default": false,
+              "examples": [
+                true
+              ]
             }
           },
           {
@@ -324,7 +349,13 @@
               "type": "array",
               "elements": {
                 "type": "string"
-              }
+              },
+              "examples": [
+                [
+                  "group1",
+                  "group2"
+                ]
+              ]
             }
           }
         ],

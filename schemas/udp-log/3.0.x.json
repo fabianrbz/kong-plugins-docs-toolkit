@@ -34,7 +34,10 @@
           {
             "host": {
               "required": true,
-              "type": "string"
+              "type": "string",
+              "examples": [
+                "127.0.0.1"
+              ]
             }
           },
           {
@@ -44,13 +47,19 @@
                 65535
               ],
               "required": true,
-              "type": "integer"
+              "type": "integer",
+              "examples": [
+                9999
+              ]
             }
           },
           {
             "timeout": {
               "type": "number",
-              "default": 10000
+              "default": 10000,
+              "examples": [
+                10000
+              ]
             }
           },
           {

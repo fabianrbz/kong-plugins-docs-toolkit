@@ -34,12 +34,18 @@
                 "delete"
               ],
               "type": "string",
-              "default": "append"
+              "default": "append",
+              "examples": [
+                "transparent"
+              ]
             }
           },
           {
             "http_proxy_host": {
-              "type": "string"
+              "type": "string",
+              "examples": [
+                "example.com"
+              ]
             }
           },
           {
@@ -48,6 +54,9 @@
               "between": [
                 0,
                 65535
+              ],
+              "examples": [
+                80
               ]
             }
           },
@@ -72,28 +81,40 @@
                 "http"
               ],
               "type": "string",
-              "default": "http"
+              "default": "http",
+              "examples": [
+                "http"
+              ]
             }
           },
           {
             "auth_username": {
               "required": false,
               "referenceable": true,
-              "type": "string"
+              "type": "string",
+              "examples": [
+                "example_user"
+              ]
             }
           },
           {
             "auth_password": {
               "required": false,
               "referenceable": true,
-              "type": "string"
+              "type": "string",
+              "examples": [
+                "example_pass"
+              ]
             }
           },
           {
             "https_verify": {
               "required": true,
               "type": "boolean",
-              "default": false
+              "default": false,
+              "examples": [
+                false
+              ]
             }
           }
         ],

@@ -7,7 +7,10 @@
           {
             "proto": {
               "required": false,
-              "type": "string"
+              "type": "string",
+              "examples": [
+                "path/to/hello.proto"
+              ]
             }
           }
         ],

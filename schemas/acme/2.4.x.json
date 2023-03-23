@@ -51,7 +51,10 @@
             "account_email": {
               "match": "%w*%p*@+%w*%.?%w*",
               "type": "string",
-              "required": true
+              "required": true,
+              "examples": [
+                "example@example.com"
+              ]
             }
           },
           {

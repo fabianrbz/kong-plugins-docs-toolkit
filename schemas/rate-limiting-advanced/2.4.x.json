@@ -16,7 +16,10 @@
                 "service",
                 "header"
               ],
-              "default": "consumer"
+              "default": "consumer",
+              "examples": [
+                "consumer"
+              ]
             }
           },
           {
@@ -25,7 +28,12 @@
                 "type": "number"
               },
               "type": "array",
-              "required": true
+              "required": true,
+              "examples": [
+                [
+                  30
+                ]
+              ]
             }
           },
           {
@@ -44,20 +52,31 @@
                 "type": "number"
               },
               "type": "array",
-              "required": true
+              "required": true,
+              "examples": [
+                [
+                  5
+                ]
+              ]
             }
           },
           {
             "sync_rate": {
               "required": true,
-              "type": "number"
+              "type": "number",
+              "examples": [
+                10
+              ]
             }
           },
           {
             "namespace": {
               "type": "string",
               "required": true,
-              "auto": true
+              "auto": true,
+              "examples": [
+                "example_namespace"
+              ]
             }
           },
           {
@@ -68,7 +87,10 @@
                 "cluster",
                 "redis"
               ],
-              "default": "cluster"
+              "default": "cluster",
+              "examples": [
+                "cluster"
+              ]
             }
           },
           {
@@ -81,7 +103,10 @@
           {
             "hide_client_headers": {
               "default": false,
-              "type": "boolean"
+              "type": "boolean",
+              "examples": [
+                false
+              ]
             }
           },
           {

@@ -14,7 +14,10 @@
             "secret": {
               "required": false,
               "default": "q0RFWpOD3jZ0Ym7kfac3pYQnEnukerMXcZ4IBeOf3nIe",
-              "type": "string"
+              "type": "string",
+              "examples": [
+                "opensesame"
+              ]
             }
           },
           {

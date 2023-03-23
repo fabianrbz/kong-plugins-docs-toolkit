@@ -63,7 +63,15 @@
                   }
                 }
               ],
-              "required": true
+              "required": true,
+              "examples": [
+                {
+                  "json": [
+                    "json-key-toremove",
+                    "another-json-key"
+                  ]
+                }
+              ]
             }
           },
           {
@@ -213,7 +221,16 @@
                   }
                 }
               ],
-              "required": true
+              "required": true,
+              "examples": [
+                {
+                  "json_types": [
+                    "string",
+                    "boolean",
+                    "number"
+                  ]
+                }
+              ]
             }
           },
           {
@@ -270,7 +287,15 @@
                   }
                 }
               ],
-              "required": true
+              "required": true,
+              "examples": [
+                {
+                  "headers": [
+                    "x-existing-header:some_value",
+                    "x-another-header:some_value"
+                  ]
+                }
+              ]
             }
           },
           {

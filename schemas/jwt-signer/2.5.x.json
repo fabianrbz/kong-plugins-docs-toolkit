@@ -186,7 +186,12 @@
               "type": "array",
               "elements": {
                 "type": "string"
-              }
+              },
+              "examples": [
+                [
+                  "scope"
+                ]
+              ]
             }
           },
           {

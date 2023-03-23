@@ -32,14 +32,20 @@
           {
             "inject_client_cert_details": {
               "type": "boolean",
-              "default": false
+              "default": false,
+              "examples": [
+                true
+              ]
             }
           },
           {
             "client_cert_header_name": {
               "required": true,
               "type": "string",
-              "default": "X-Client-Cert"
+              "default": "X-Client-Cert",
+              "examples": [
+                "X-Forwarded-Client-Cert"
+              ]
             }
           },
           {

@@ -73,7 +73,10 @@
           {
             "topic": {
               "required": true,
-              "type": "string"
+              "type": "string",
+              "examples": [
+                "TOPIC"
+              ]
             }
           },
           {

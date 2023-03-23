@@ -44,6 +44,11 @@
               },
               "default": [
                 "apikey"
+              ],
+              "examples": [
+                [
+                  "apikey"
+                ]
               ]
             }
           },

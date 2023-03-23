@@ -8,7 +8,10 @@
           {
             "proto": {
               "type": "string",
-              "required": false
+              "required": false,
+              "examples": [
+                "path/to/hello.proto"
+              ]
             }
           },
           {

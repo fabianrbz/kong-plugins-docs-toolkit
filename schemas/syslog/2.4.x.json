@@ -42,7 +42,10 @@
                 "alert",
                 "emerg"
               ],
-              "default": "info"
+              "default": "info",
+              "examples": [
+                "info"
+              ]
             }
           },
           {

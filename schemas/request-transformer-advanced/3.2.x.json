@@ -68,7 +68,15 @@
                 }
               ],
               "type": "record",
-              "required": true
+              "required": true,
+              "examples": [
+                {
+                  "body": [
+                    "formparam-toremove",
+                    "formparam-another-one"
+                  ]
+                }
+              ]
             }
           },
           {
@@ -112,7 +120,15 @@
                 }
               ],
               "type": "record",
-              "required": true
+              "required": true,
+              "examples": [
+                {
+                  "body": [
+                    "param-old:param-new",
+                    "param2-old:param2-new"
+                  ]
+                }
+              ]
             }
           },
           {
@@ -177,7 +193,15 @@
                 }
               ],
               "type": "record",
-              "required": true
+              "required": true,
+              "examples": [
+                {
+                  "body": [
+                    "body-param1:new-value-1",
+                    "body-param2:new-value-2"
+                  ]
+                }
+              ]
             }
           },
           {
@@ -237,7 +261,16 @@
                 }
               ],
               "type": "record",
-              "required": true
+              "required": true,
+              "examples": [
+                {
+                  "json_types": [
+                    "string",
+                    "boolean",
+                    "number"
+                  ]
+                }
+              ]
             }
           },
           {

@@ -21,7 +21,12 @@
                   100,
                   900
                 ]
-              }
+              },
+              "examples": [
+                [
+                  200
+                ]
+              ]
             }
           },
           {
@@ -41,7 +46,13 @@
                   "PATCH",
                   "PUT"
                 ]
-              }
+              },
+              "examples": [
+                [
+                  "GET",
+                  "HEAD"
+                ]
+              ]
             }
           },
           {
@@ -54,14 +65,23 @@
               "type": "array",
               "elements": {
                 "type": "string"
-              }
+              },
+              "examples": [
+                [
+                  "text/plain",
+                  "application/json"
+                ]
+              ]
             }
           },
           {
             "cache_ttl": {
               "default": 300,
               "type": "integer",
-              "gt": 0
+              "gt": 0,
+              "examples": [
+                300
+              ]
             }
           },
           {
@@ -70,7 +90,10 @@
               "one_of": [
                 "memory"
               ],
-              "type": "string"
+              "type": "string",
+              "examples": [
+                "memory"
+              ]
             }
           },
           {

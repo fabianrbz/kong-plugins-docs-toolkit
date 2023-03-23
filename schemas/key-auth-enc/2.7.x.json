@@ -40,7 +40,12 @@
                 "apikey"
               ],
               "required": true,
-              "type": "array"
+              "type": "array",
+              "examples": [
+                [
+                  "apikey"
+                ]
+              ]
             }
           },
           {

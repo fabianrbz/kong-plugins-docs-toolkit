@@ -53,7 +53,12 @@
               "elements": {
                 "is_regex": true,
                 "type": "string"
-              }
+              },
+              "examples": [
+                [
+                  "helloworld"
+                ]
+              ]
             }
           }
         ],

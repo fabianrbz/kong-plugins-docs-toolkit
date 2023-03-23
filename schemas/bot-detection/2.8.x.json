@@ -53,7 +53,12 @@
               "default": [
 
               ],
-              "type": "array"
+              "type": "array",
+              "examples": [
+                [
+                  "helloworld"
+                ]
+              ]
             }
           }
         ],

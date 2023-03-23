@@ -65,7 +65,10 @@
             "scope": {
               "unique": true,
               "required": true,
-              "type": "string"
+              "type": "string",
+              "examples": [
+                "uuid"
+              ]
             }
           }
         ],

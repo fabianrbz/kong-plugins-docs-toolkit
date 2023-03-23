@@ -44,7 +44,10 @@
               "default": "tW20j9bkitAMqUwbXl2Pmj5jBjpq2WTQBrUzVzsvvo4y",
               "type": "string",
               "referenceable": true,
-              "required": false
+              "required": false,
+              "examples": [
+                "opensesame"
+              ]
             }
           },
           {

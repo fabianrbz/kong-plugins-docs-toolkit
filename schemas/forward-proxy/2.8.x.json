@@ -32,7 +32,10 @@
         "fields": [
           {
             "http_proxy_host": {
-              "type": "string"
+              "type": "string",
+              "examples": [
+                "example.com"
+              ]
             }
           },
           {
@@ -41,7 +44,10 @@
                 0,
                 65535
               ],
-              "type": "integer"
+              "type": "integer",
+              "examples": [
+                80
+              ]
             }
           },
           {
@@ -65,28 +71,40 @@
               ],
               "required": true,
               "default": "http",
-              "type": "string"
+              "type": "string",
+              "examples": [
+                "http"
+              ]
             }
           },
           {
             "auth_username": {
               "required": false,
               "referenceable": true,
-              "type": "string"
+              "type": "string",
+              "examples": [
+                "example_user"
+              ]
             }
           },
           {
             "auth_password": {
               "required": false,
               "referenceable": true,
-              "type": "string"
+              "type": "string",
+              "examples": [
+                "example_pass"
+              ]
             }
           },
           {
             "https_verify": {
               "required": true,
               "default": false,
-              "type": "boolean"
+              "type": "boolean",
+              "examples": [
+                false
+              ]
             }
           }
         ],

@@ -45,7 +45,10 @@
             "opa_host": {
               "required": true,
               "default": "localhost",
-              "type": "string"
+              "type": "string",
+              "examples": [
+                "localhost"
+              ]
             }
           },
           {
@@ -56,7 +59,10 @@
               ],
               "required": true,
               "default": 8181,
-              "type": "integer"
+              "type": "integer",
+              "examples": [
+                8181
+              ]
             }
           },
           {
@@ -69,6 +75,9 @@
                   "err": "must not have empty segments",
                   "pattern": "//"
                 }
+              ],
+              "examples": [
+                "/v1/data/example/kong/allowBoolean"
               ]
             }
           },

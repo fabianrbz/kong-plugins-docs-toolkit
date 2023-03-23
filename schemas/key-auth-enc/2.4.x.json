@@ -42,7 +42,12 @@
               "default": [
                 "apikey"
               ],
-              "required": true
+              "required": true,
+              "examples": [
+                [
+                  "apikey"
+                ]
+              ]
             }
           },
           {

@@ -30,7 +30,10 @@
           {
             "host": {
               "default": "localhost",
-              "type": "string"
+              "type": "string",
+              "examples": [
+                "127.0.0.1"
+              ]
             }
           },
           {
@@ -40,7 +43,10 @@
                 65535
               ],
               "default": 8125,
-              "type": "integer"
+              "type": "integer",
+              "examples": [
+                8125
+              ]
             }
           },
           {

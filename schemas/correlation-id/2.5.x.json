@@ -29,7 +29,10 @@
           {
             "header_name": {
               "type": "string",
-              "default": "Kong-Request-ID"
+              "default": "Kong-Request-ID",
+              "examples": [
+                "Kong-Request-ID"
+              ]
             }
           },
           {
@@ -40,14 +43,20 @@
                 "uuid#counter",
                 "tracker"
               ],
-              "type": "string"
+              "type": "string",
+              "examples": [
+                "uuid#counter"
+              ]
             }
           },
           {
             "echo_downstream": {
               "required": true,
               "type": "boolean",
-              "default": false
+              "default": false,
+              "examples": [
+                false
+              ]
             }
           }
         ]

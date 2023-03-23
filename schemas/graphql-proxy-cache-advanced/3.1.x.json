@@ -32,7 +32,10 @@
                 "memory"
               ],
               "required": true,
-              "default": "memory"
+              "default": "memory",
+              "examples": [
+                "memory"
+              ]
             }
           },
           {

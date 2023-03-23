@@ -49,7 +49,10 @@
           {
             "endpoint": {
               "required": true,
-              "type": "string"
+              "type": "string",
+              "examples": [
+                "http://opentelemetry.collector:4318/v1/traces"
+              ]
             }
           },
           {
@@ -60,7 +63,12 @@
               "type": "map",
               "values": {
                 "type": "string"
-              }
+              },
+              "examples": [
+                {
+                  "X-Auth-Token": "secret-token"
+                }
+              ]
             }
           },
           {

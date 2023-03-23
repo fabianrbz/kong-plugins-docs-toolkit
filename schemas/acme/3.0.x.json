@@ -52,7 +52,10 @@
               "encrypted": true,
               "required": true,
               "type": "string",
-              "referenceable": true
+              "referenceable": true,
+              "examples": [
+                "example@example.com"
+              ]
             }
           },
           {

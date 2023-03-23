@@ -20,6 +20,11 @@
                 200,
                 301,
                 404
+              ],
+              "examples": [
+                [
+                  200
+                ]
               ]
             }
           },
@@ -40,6 +45,12 @@
               "default": [
                 "GET",
                 "HEAD"
+              ],
+              "examples": [
+                [
+                  "GET",
+                  "HEAD"
+                ]
               ]
             }
           },
@@ -53,6 +64,12 @@
               "default": [
                 "text/plain",
                 "application/json"
+              ],
+              "examples": [
+                [
+                  "text/plain",
+                  "application/json"
+                ]
               ]
             }
           },
@@ -70,6 +87,9 @@
               "one_of": [
                 "memory",
                 "redis"
+              ],
+              "examples": [
+                "memory"
               ]
             }
           },

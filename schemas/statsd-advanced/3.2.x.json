@@ -33,7 +33,10 @@
           {
             "host": {
               "default": "localhost",
-              "type": "string"
+              "type": "string",
+              "examples": [
+                "127.0.0.1"
+              ]
             }
           },
           {
@@ -43,7 +46,10 @@
                 65535
               ],
               "type": "integer",
-              "default": 8125
+              "default": 8125,
+              "examples": [
+                8125
+              ]
             }
           },
           {
@@ -278,7 +284,13 @@
                 "match": "^[0-9]+-[0-9]+$",
                 "type": "string"
               },
-              "type": "array"
+              "type": "array",
+              "examples": [
+                [
+                  "200-205",
+                  "400-499"
+                ]
+              ]
             }
           },
           {

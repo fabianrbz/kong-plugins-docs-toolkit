@@ -11,7 +11,10 @@
                 "memory"
               ],
               "type": "string",
-              "default": "memory"
+              "default": "memory",
+              "examples": [
+                "memory"
+              ]
             }
           },
           {

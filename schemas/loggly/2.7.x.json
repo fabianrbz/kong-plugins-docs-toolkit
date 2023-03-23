@@ -48,7 +48,10 @@
             "key": {
               "type": "string",
               "required": true,
-              "encrypted": true
+              "encrypted": true,
+              "examples": [
+                "YOUR_LOGGLY_SERVICE_TOKEN"
+              ]
             }
           },
           {

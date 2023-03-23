@@ -5,7 +5,10 @@
         "fields": [
           {
             "http_endpoint": {
-              "type": "string"
+              "type": "string",
+              "examples": [
+                "http://your.zipkin.collector:9411/api/v2/spans"
+              ]
             }
           },
           {
@@ -15,7 +18,10 @@
                 1
               ],
               "default": 0.001,
-              "type": "number"
+              "type": "number",
+              "examples": [
+                0.001
+              ]
             }
           },
           {
@@ -27,7 +33,10 @@
             "include_credential": {
               "required": true,
               "default": true,
-              "type": "boolean"
+              "type": "boolean",
+              "examples": [
+                true
+              ]
             }
           },
           {

@@ -28,7 +28,10 @@
           {
             "allowed_payload_size": {
               "type": "integer",
-              "default": 128
+              "default": 128,
+              "examples": [
+                128
+              ]
             }
           },
           {
@@ -47,7 +50,10 @@
             "require_content_length": {
               "type": "boolean",
               "required": true,
-              "default": false
+              "default": false,
+              "examples": [
+                false
+              ]
             }
           }
         ],

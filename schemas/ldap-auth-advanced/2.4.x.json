@@ -15,7 +15,10 @@
           {
             "ldap_host": {
               "required": true,
-              "type": "string"
+              "type": "string",
+              "examples": [
+                "ldap.example.com"
+              ]
             }
           },
           {
@@ -26,7 +29,10 @@
           {
             "ldap_port": {
               "default": 389,
-              "type": "number"
+              "type": "number",
+              "examples": [
+                389
+              ]
             }
           },
           {
@@ -45,33 +51,48 @@
             "start_tls": {
               "type": "boolean",
               "default": false,
-              "required": true
+              "required": true,
+              "examples": [
+                true
+              ]
             }
           },
           {
             "verify_ldap_host": {
               "type": "boolean",
               "default": false,
-              "required": true
+              "required": true,
+              "examples": [
+                false
+              ]
             }
           },
           {
             "base_dn": {
               "required": true,
-              "type": "string"
+              "type": "string",
+              "examples": [
+                "dc=example,dc=com"
+              ]
             }
           },
           {
             "attribute": {
               "required": true,
-              "type": "string"
+              "type": "string",
+              "examples": [
+                "cn"
+              ]
             }
           },
           {
             "cache_ttl": {
               "type": "number",
               "default": 60,
-              "required": true
+              "required": true,
+              "examples": [
+                60
+              ]
             }
           },
           {
@@ -102,7 +123,10 @@
           {
             "header_type": {
               "default": "ldap",
-              "type": "string"
+              "type": "string",
+              "examples": [
+                "ldap"
+              ]
             }
           },
           {

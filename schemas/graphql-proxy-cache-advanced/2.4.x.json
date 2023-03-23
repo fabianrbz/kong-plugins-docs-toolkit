@@ -12,7 +12,10 @@
               "one_of": [
                 "memory"
               ],
-              "default": "memory"
+              "default": "memory",
+              "examples": [
+                "memory"
+              ]
             }
           },
           {

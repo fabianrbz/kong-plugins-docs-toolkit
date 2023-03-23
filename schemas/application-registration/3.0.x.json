@@ -51,27 +51,39 @@
             "display_name": {
               "type": "string",
               "required": true,
-              "unique": true
+              "unique": true,
+              "examples": [
+                "<my_service_display_name>"
+              ]
             }
           },
           {
             "description": {
               "type": "string",
-              "unique": true
+              "unique": true,
+              "examples": [
+                "<my_service_description>"
+              ]
             }
           },
           {
             "auto_approve": {
               "type": "boolean",
               "required": true,
-              "default": false
+              "default": false,
+              "examples": [
+                false
+              ]
             }
           },
           {
             "show_issuer": {
               "type": "boolean",
               "required": true,
-              "default": false
+              "default": false,
+              "examples": [
+                false
+              ]
             }
           }
         ],

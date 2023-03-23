@@ -57,12 +57,18 @@
               "between": [
                 0,
                 100
+              ],
+              "examples": [
+                50
               ]
             }
           },
           {
             "upstream_host": {
-              "type": "string"
+              "type": "string",
+              "examples": [
+                "example.com"
+              ]
             }
           },
           {
@@ -71,6 +77,9 @@
               "between": [
                 0,
                 65535
+              ],
+              "examples": [
+                80
               ]
             }
           },

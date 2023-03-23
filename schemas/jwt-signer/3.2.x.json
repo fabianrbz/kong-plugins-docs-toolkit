@@ -199,6 +199,11 @@
               },
               "default": [
                 "scope"
+              ],
+              "examples": [
+                [
+                  "scope"
+                ]
               ]
             }
           },

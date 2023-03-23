@@ -43,7 +43,10 @@
                 "emerg"
               ],
               "default": "info",
-              "type": "string"
+              "type": "string",
+              "examples": [
+                "info"
+              ]
             }
           },
           {

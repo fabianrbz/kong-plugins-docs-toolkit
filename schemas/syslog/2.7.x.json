@@ -42,7 +42,10 @@
                 "emerg"
               ],
               "default": "info",
-              "required": true
+              "required": true,
+              "examples": [
+                "info"
+              ]
             }
           },
           {

@@ -33,12 +33,18 @@
                 100,
                 599
               ],
-              "required": true
+              "required": true,
+              "examples": [
+                403
+              ]
             }
           },
           {
             "message": {
-              "type": "string"
+              "type": "string",
+              "examples": [
+                "So long and thanks for all the fish!"
+              ]
             }
           },
           {

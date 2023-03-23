@@ -6,7 +6,10 @@
           {
             "host": {
               "default": "localhost",
-              "type": "string"
+              "type": "string",
+              "examples": [
+                "127.0.0.1"
+              ]
             }
           },
           {
@@ -16,6 +19,9 @@
               "between": [
                 0,
                 65535
+              ],
+              "examples": [
+                8125
               ]
             }
           },
@@ -299,7 +305,13 @@
               "elements": {
                 "type": "string",
                 "match": "^[0-9]+-[0-9]+$"
-              }
+              },
+              "examples": [
+                [
+                  "200-205",
+                  "400-499"
+                ]
+              ]
             }
           },
           {

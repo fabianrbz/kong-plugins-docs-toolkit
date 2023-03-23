@@ -185,6 +185,11 @@
               },
               "default": [
                 "scope"
+              ],
+              "examples": [
+                [
+                  "scope"
+                ]
               ]
             }
           },

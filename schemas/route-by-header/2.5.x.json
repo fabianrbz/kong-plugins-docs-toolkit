@@ -34,7 +34,17 @@
                     }
                   }
                 ]
-              }
+              },
+              "examples": [
+                [
+                  {
+                    "upstream_name": "bar.domain.com",
+                    "condition": {
+                      "location": "us-east"
+                    }
+                  }
+                ]
+              ]
             }
           }
         ]

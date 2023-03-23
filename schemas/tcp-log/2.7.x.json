@@ -31,7 +31,10 @@
           {
             "host": {
               "required": true,
-              "type": "string"
+              "type": "string",
+              "examples": [
+                "127.0.0.1"
+              ]
             }
           },
           {
@@ -41,6 +44,9 @@
               "between": [
                 0,
                 65535
+              ],
+              "examples": [
+                9999
               ]
             }
           },

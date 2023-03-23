@@ -36,7 +36,10 @@
                 33554432
               ],
               "required": false,
-              "type": "integer"
+              "type": "integer",
+              "examples": [
+                1024
+              ]
             }
           },
           {
@@ -46,7 +49,10 @@
                 33554432
               ],
               "required": false,
-              "type": "integer"
+              "type": "integer",
+              "examples": [
+                16384
+              ]
             }
           }
         ],

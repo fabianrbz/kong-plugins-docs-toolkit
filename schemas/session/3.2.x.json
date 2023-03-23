@@ -43,7 +43,10 @@
               "encrypted": true,
               "type": "string",
               "referenceable": true,
-              "default": "m0gES0h6yYUYgUhP69xjhRMk1hcvA6bqv79bwLX3cn4h"
+              "default": "m0gES0h6yYUYgUhP69xjhRMk1hcvA6bqv79bwLX3cn4h",
+              "examples": [
+                "opensesame"
+              ]
             }
           },
           {

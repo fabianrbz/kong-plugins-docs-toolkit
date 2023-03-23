@@ -186,6 +186,11 @@
               "required": true,
               "default": [
                 "scope"
+              ],
+              "examples": [
+                [
+                  "scope"
+                ]
               ]
             }
           },

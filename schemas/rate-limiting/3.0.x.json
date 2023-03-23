@@ -28,7 +28,10 @@
           {
             "second": {
               "type": "number",
-              "gt": 0
+              "gt": 0,
+              "examples": [
+                5
+              ]
             }
           },
           {
@@ -40,7 +43,10 @@
           {
             "hour": {
               "type": "number",
-              "gt": 0
+              "gt": 0,
+              "examples": [
+                10000
+              ]
             }
           },
           {
@@ -101,7 +107,10 @@
                 "redis"
               ],
               "type": "string",
-              "default": "local"
+              "default": "local",
+              "examples": [
+                "local"
+              ]
             }
           },
           {

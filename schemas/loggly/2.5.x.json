@@ -48,7 +48,10 @@
           {
             "key": {
               "type": "string",
-              "required": true
+              "required": true,
+              "examples": [
+                "YOUR_LOGGLY_SERVICE_TOKEN"
+              ]
             }
           },
           {

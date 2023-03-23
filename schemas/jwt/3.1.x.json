@@ -40,7 +40,12 @@
               ],
               "elements": {
                 "type": "string"
-              }
+              },
+              "examples": [
+                [
+                  "paramName_2.2.x"
+                ]
+              ]
             }
           },
           {

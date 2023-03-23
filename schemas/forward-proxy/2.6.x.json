@@ -6,7 +6,10 @@
           {
             "proxy_host": {
               "type": "string",
-              "required": true
+              "required": true,
+              "examples": [
+                "example.com"
+              ]
             }
           },
           {
@@ -16,7 +19,10 @@
                 65535
               ],
               "required": true,
-              "type": "integer"
+              "type": "integer",
+              "examples": [
+                80
+              ]
             }
           },
           {
@@ -26,6 +32,9 @@
               "default": "http",
               "one_of": [
                 "http"
+              ],
+              "examples": [
+                "http"
               ]
             }
           },
@@ -33,7 +42,10 @@
             "https_verify": {
               "required": true,
               "default": false,
-              "type": "boolean"
+              "type": "boolean",
+              "examples": [
+                false
+              ]
             }
           }
         ],

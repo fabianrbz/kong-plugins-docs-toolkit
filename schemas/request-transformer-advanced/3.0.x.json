@@ -48,7 +48,15 @@
                   }
                 }
               ],
-              "required": true
+              "required": true,
+              "examples": [
+                {
+                  "body": [
+                    "formparam-toremove",
+                    "formparam-another-one"
+                  ]
+                }
+              ]
             }
           },
           {
@@ -89,7 +97,15 @@
                   }
                 }
               ],
-              "required": true
+              "required": true,
+              "examples": [
+                {
+                  "body": [
+                    "param-old:param-new",
+                    "param2-old:param2-new"
+                  ]
+                }
+              ]
             }
           },
           {
@@ -135,7 +151,15 @@
                   }
                 }
               ],
-              "required": true
+              "required": true,
+              "examples": [
+                {
+                  "body": [
+                    "body-param1:new-value-1",
+                    "body-param2:new-value-2"
+                  ]
+                }
+              ]
             }
           },
           {
@@ -176,7 +200,15 @@
                   }
                 }
               ],
-              "required": true
+              "required": true,
+              "examples": [
+                {
+                  "querystring": [
+                    "new-param:some_value",
+                    "another-param:some_value"
+                  ]
+                }
+              ]
             }
           },
           {

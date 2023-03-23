@@ -41,7 +41,10 @@
             "hide_credentials": {
               "required": true,
               "default": false,
-              "type": "boolean"
+              "type": "boolean",
+              "examples": [
+                true
+              ]
             }
           }
         ],

@@ -52,7 +52,10 @@
               "type": "string",
               "required": true,
               "referenceable": true,
-              "match": "%w*%p*@+%w*%.?%w*"
+              "match": "%w*%p*@+%w*%.?%w*",
+              "examples": [
+                "example@example.com"
+              ]
             }
           },
           {

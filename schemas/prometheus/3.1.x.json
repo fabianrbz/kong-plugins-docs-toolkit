@@ -34,7 +34,10 @@
           {
             "per_consumer": {
               "type": "boolean",
-              "default": false
+              "default": false,
+              "examples": [
+                false
+              ]
             }
           },
           {

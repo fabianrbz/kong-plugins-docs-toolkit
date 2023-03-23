@@ -53,6 +53,14 @@
                     }
                   }
                 }
+              ],
+              "examples": [
+                {
+                  "body": [
+                    "formparam-toremove",
+                    "formparam-another-one"
+                  ]
+                }
               ]
             }
           },
@@ -93,6 +101,14 @@
                       "type": "string"
                     }
                   }
+                }
+              ],
+              "examples": [
+                {
+                  "body": [
+                    "param-old:param-new",
+                    "param2-old:param2-new"
+                  ]
                 }
               ]
             }
@@ -140,6 +156,14 @@
                     "type": "string"
                   }
                 }
+              ],
+              "examples": [
+                {
+                  "body": [
+                    "body-param1:new-value-1",
+                    "body-param2:new-value-2"
+                  ]
+                }
               ]
             }
           },
@@ -180,6 +204,14 @@
                       "type": "string"
                     }
                   }
+                }
+              ],
+              "examples": [
+                {
+                  "querystring": [
+                    "new-param:some_value",
+                    "another-param:some_value"
+                  ]
                 }
               ]
             }

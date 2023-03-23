@@ -47,6 +47,14 @@
                     ]
                   }
                 }
+              ],
+              "examples": [
+                {
+                  "json": [
+                    "json-key-toremove",
+                    "another-json-key"
+                  ]
+                }
               ]
             }
           },
@@ -197,6 +205,15 @@
                     ]
                   }
                 }
+              ],
+              "examples": [
+                {
+                  "json_types": [
+                    "string",
+                    "boolean",
+                    "number"
+                  ]
+                }
               ]
             }
           },
@@ -253,6 +270,14 @@
 
                     ]
                   }
+                }
+              ],
+              "examples": [
+                {
+                  "headers": [
+                    "x-existing-header:some_value",
+                    "x-another-header:some_value"
+                  ]
                 }
               ]
             }

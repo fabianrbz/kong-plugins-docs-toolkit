@@ -55,12 +55,18 @@
                 0,
                 100
               ],
-              "type": "number"
+              "type": "number",
+              "examples": [
+                50
+              ]
             }
           },
           {
             "upstream_host": {
-              "type": "string"
+              "type": "string",
+              "examples": [
+                "example.com"
+              ]
             }
           },
           {
@@ -69,7 +75,10 @@
                 0,
                 65535
               ],
-              "type": "integer"
+              "type": "integer",
+              "examples": [
+                80
+              ]
             }
           },
           {

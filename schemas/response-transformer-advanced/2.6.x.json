@@ -42,7 +42,15 @@
                 }
               ],
               "required": true,
-              "type": "record"
+              "type": "record",
+              "examples": [
+                {
+                  "json": [
+                    "json-key-toremove",
+                    "another-json-key"
+                  ]
+                }
+              ]
             }
           },
           {
@@ -192,7 +200,16 @@
                 }
               ],
               "required": true,
-              "type": "record"
+              "type": "record",
+              "examples": [
+                {
+                  "json_types": [
+                    "string",
+                    "boolean",
+                    "number"
+                  ]
+                }
+              ]
             }
           },
           {
@@ -249,7 +266,15 @@
                 }
               ],
               "required": true,
-              "type": "record"
+              "type": "record",
+              "examples": [
+                {
+                  "headers": [
+                    "x-existing-header:some_value",
+                    "x-another-header:some_value"
+                  ]
+                }
+              ]
             }
           },
           {

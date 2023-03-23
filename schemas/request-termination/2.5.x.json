@@ -33,12 +33,18 @@
               "between": [
                 100,
                 599
+              ],
+              "examples": [
+                403
               ]
             }
           },
           {
             "message": {
-              "type": "string"
+              "type": "string",
+              "examples": [
+                "So long and thanks for all the fish!"
+              ]
             }
           },
           {

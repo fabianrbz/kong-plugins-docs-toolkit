@@ -33,7 +33,10 @@
           {
             "host": {
               "default": "localhost",
-              "type": "string"
+              "type": "string",
+              "examples": [
+                "127.0.0.1"
+              ]
             }
           },
           {
@@ -43,7 +46,10 @@
                 65535
               ],
               "type": "integer",
-              "default": 8125
+              "default": 8125,
+              "examples": [
+                8125
+              ]
             }
           },
           {
@@ -74,7 +80,10 @@
             "retry_count": {
               "required": true,
               "type": "integer",
-              "default": 10
+              "default": 10,
+              "examples": [
+                10
+              ]
             }
           },
           {
@@ -88,7 +97,10 @@
             "flush_timeout": {
               "required": true,
               "type": "number",
-              "default": 2
+              "default": 2,
+              "examples": [
+                2
+              ]
             }
           },
           {

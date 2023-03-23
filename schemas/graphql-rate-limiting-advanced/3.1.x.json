@@ -43,7 +43,12 @@
               "elements": {
                 "type": "number"
               },
-              "type": "array"
+              "type": "array",
+              "examples": [
+                [
+                  30
+                ]
+              ]
             }
           },
           {
@@ -62,19 +67,30 @@
               "elements": {
                 "type": "number"
               },
-              "type": "array"
+              "type": "array",
+              "examples": [
+                [
+                  5
+                ]
+              ]
             }
           },
           {
             "sync_rate": {
               "required": true,
-              "type": "number"
+              "type": "number",
+              "examples": [
+                -1
+              ]
             }
           },
           {
             "namespace": {
               "auto": true,
-              "type": "string"
+              "type": "string",
+              "examples": [
+                "example_namespace"
+              ]
             }
           },
           {
@@ -85,7 +101,10 @@
                 "redis"
               ],
               "type": "string",
-              "required": true
+              "required": true,
+              "examples": [
+                "cluster"
+              ]
             }
           },
           {

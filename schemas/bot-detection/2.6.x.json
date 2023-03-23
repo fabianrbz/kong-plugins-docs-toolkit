@@ -72,7 +72,12 @@
                 "is_regex": true,
                 "type": "string"
               },
-              "type": "array"
+              "type": "array",
+              "examples": [
+                [
+                  "helloworld"
+                ]
+              ]
             }
           }
         ],

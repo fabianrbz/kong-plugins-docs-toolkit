@@ -28,7 +28,10 @@
           {
             "second": {
               "gt": 0,
-              "type": "number"
+              "type": "number",
+              "examples": [
+                5
+              ]
             }
           },
           {
@@ -40,7 +43,10 @@
           {
             "hour": {
               "gt": 0,
-              "type": "number"
+              "type": "number",
+              "examples": [
+                10000
+              ]
             }
           },
           {
@@ -101,7 +107,10 @@
               ],
               "len_min": 0,
               "default": "cluster",
-              "type": "string"
+              "type": "string",
+              "examples": [
+                "local"
+              ]
             }
           },
           {

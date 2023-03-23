@@ -16,7 +16,10 @@
         "fields": [
           {
             "path": {
-              "type": "string"
+              "type": "string",
+              "examples": [
+                "/path"
+              ]
             }
           },
           {

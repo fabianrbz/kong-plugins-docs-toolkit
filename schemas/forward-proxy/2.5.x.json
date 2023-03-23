@@ -8,7 +8,10 @@
           {
             "proxy_host": {
               "required": true,
-              "type": "string"
+              "type": "string",
+              "examples": [
+                "example.com"
+              ]
             }
           },
           {
@@ -18,6 +21,9 @@
               "between": [
                 0,
                 65535
+              ],
+              "examples": [
+                80
               ]
             }
           },
@@ -28,14 +34,20 @@
                 "http"
               ],
               "type": "string",
-              "default": "http"
+              "default": "http",
+              "examples": [
+                "http"
+              ]
             }
           },
           {
             "https_verify": {
               "required": true,
               "type": "boolean",
-              "default": false
+              "default": false,
+              "examples": [
+                false
+              ]
             }
           }
         ]

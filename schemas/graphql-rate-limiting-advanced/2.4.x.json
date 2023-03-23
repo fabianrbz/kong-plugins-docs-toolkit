@@ -23,7 +23,12 @@
                 "type": "number"
               },
               "type": "array",
-              "required": true
+              "required": true,
+              "examples": [
+                [
+                  30
+                ]
+              ]
             }
           },
           {
@@ -42,19 +47,30 @@
                 "type": "number"
               },
               "type": "array",
-              "required": true
+              "required": true,
+              "examples": [
+                [
+                  5
+                ]
+              ]
             }
           },
           {
             "sync_rate": {
               "required": true,
-              "type": "number"
+              "type": "number",
+              "examples": [
+                -1
+              ]
             }
           },
           {
             "namespace": {
               "auto": true,
-              "type": "string"
+              "type": "string",
+              "examples": [
+                "example_namespace"
+              ]
             }
           },
           {
@@ -65,7 +81,10 @@
                 "cluster",
                 "redis"
               ],
-              "default": "cluster"
+              "default": "cluster",
+              "examples": [
+                "cluster"
+              ]
             }
           },
           {

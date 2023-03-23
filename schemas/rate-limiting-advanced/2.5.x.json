@@ -16,7 +16,10 @@
                 "header"
               ],
               "type": "string",
-              "required": true
+              "required": true,
+              "examples": [
+                "consumer"
+              ]
             }
           },
           {
@@ -25,7 +28,12 @@
               "type": "array",
               "elements": {
                 "type": "number"
-              }
+              },
+              "examples": [
+                [
+                  30
+                ]
+              ]
             }
           },
           {
@@ -44,20 +52,31 @@
               "type": "array",
               "elements": {
                 "type": "number"
-              }
+              },
+              "examples": [
+                [
+                  5
+                ]
+              ]
             }
           },
           {
             "sync_rate": {
               "type": "number",
-              "required": true
+              "required": true,
+              "examples": [
+                10
+              ]
             }
           },
           {
             "namespace": {
               "auto": true,
               "type": "string",
-              "required": true
+              "required": true,
+              "examples": [
+                "example_namespace"
+              ]
             }
           },
           {
@@ -68,7 +87,10 @@
                 "redis"
               ],
               "type": "string",
-              "required": true
+              "required": true,
+              "examples": [
+                "cluster"
+              ]
             }
           },
           {
@@ -81,7 +103,10 @@
           {
             "hide_client_headers": {
               "type": "boolean",
-              "default": false
+              "default": false,
+              "examples": [
+                false
+              ]
             }
           },
           {

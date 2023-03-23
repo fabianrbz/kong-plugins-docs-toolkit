@@ -36,7 +36,12 @@
             "vault": {
               "type": "foreign",
               "reference": "vaults",
-              "required": true
+              "required": true,
+              "examples": [
+                {
+                  "id": "00000000-0000-0000-0000-000000000000"
+                }
+              ]
             }
           },
           {

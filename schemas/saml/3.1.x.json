@@ -42,13 +42,19 @@
                 }
               ],
               "type": "string",
-              "starts_with": "/"
+              "starts_with": "/",
+              "examples": [
+                "/acs-uri"
+              ]
             }
           },
           {
             "idp_sso_url": {
               "required": true,
-              "type": "string"
+              "type": "string",
+              "examples": [
+                "http://example.org/sso-uri"
+              ]
             }
           },
           {
@@ -56,7 +62,10 @@
               "required": false,
               "type": "string",
               "referenceable": true,
-              "encrypted": true
+              "encrypted": true,
+              "examples": [
+                "-----BEGIN CERTIFICATE-----\n<certificate contents>\n-----END CERTIFICATE-----\n"
+              ]
             }
           },
           {
@@ -132,7 +141,10 @@
           {
             "issuer": {
               "type": "string",
-              "required": true
+              "required": true,
+              "examples": [
+                "AzureAD_Identity_ID"
+              ]
             }
           },
           {
@@ -152,13 +164,19 @@
             "validate_assertion_signature": {
               "required": false,
               "type": "boolean",
-              "default": true
+              "default": true,
+              "examples": [
+                true
+              ]
             }
           },
           {
             "anonymous": {
               "required": false,
-              "type": "string"
+              "type": "string",
+              "examples": [
+                "anonymous"
+              ]
             }
           },
           {
@@ -169,7 +187,10 @@
               "match": "^[0-9a-zA-Z/_+]+$",
               "type": "string",
               "referenceable": true,
-              "required": true
+              "required": true,
+              "examples": [
+                "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+              ]
             }
           },
           {

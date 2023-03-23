@@ -50,7 +50,10 @@
                 "redis"
               ],
               "type": "string",
-              "default": "local"
+              "default": "local",
+              "examples": [
+                "local"
+              ]
             }
           },
           {
@@ -175,7 +178,14 @@
                 "type": "record"
               },
               "required": true,
-              "type": "map"
+              "type": "map",
+              "examples": [
+                {
+                  "{\"limit_name\"=>nil}": {
+                    "minute": 10
+                  }
+                }
+              ]
             }
           }
         ],

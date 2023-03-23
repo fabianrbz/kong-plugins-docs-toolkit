@@ -28,7 +28,10 @@
           {
             "body_schema": {
               "required": false,
-              "type": "string"
+              "type": "string",
+              "examples": [
+                "[{\"name\":{\"type\": \"string\", \"required\": true}}]"
+              ]
             }
           },
           {

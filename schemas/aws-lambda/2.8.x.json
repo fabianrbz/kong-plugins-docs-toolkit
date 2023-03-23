@@ -43,38 +43,56 @@
             "aws_key": {
               "encrypted": true,
               "referenceable": true,
-              "type": "string"
+              "type": "string",
+              "examples": [
+                "<AWS_KEY>"
+              ]
             }
           },
           {
             "aws_secret": {
               "encrypted": true,
               "referenceable": true,
-              "type": "string"
+              "type": "string",
+              "examples": [
+                "<AWS_SECRET>"
+              ]
             }
           },
           {
             "aws_assume_role_arn": {
               "encrypted": true,
               "referenceable": true,
-              "type": "string"
+              "type": "string",
+              "examples": [
+                "<AWS_ASSUME_ROLE_ARN>"
+              ]
             }
           },
           {
             "aws_role_session_name": {
               "default": "kong",
-              "type": "string"
+              "type": "string",
+              "examples": [
+                "<AWS_ROLE_SESSION_NAME>"
+              ]
             }
           },
           {
             "aws_region": {
-              "type": "string"
+              "type": "string",
+              "examples": [
+                "<AWS_REGION>"
+              ]
             }
           },
           {
             "function_name": {
               "required": false,
-              "type": "string"
+              "type": "string",
+              "examples": [
+                "<LAMBDA_FUNCTION_NAME>"
+              ]
             }
           },
           {
@@ -176,7 +194,10 @@
           },
           {
             "proxy_url": {
-              "type": "string"
+              "type": "string",
+              "examples": [
+                "http://my-proxy-server:3128"
+              ]
             }
           },
           {

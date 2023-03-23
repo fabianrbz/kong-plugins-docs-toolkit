@@ -54,7 +54,19 @@
                   }
                 }
               ],
-              "required": true
+              "required": true,
+              "examples": [
+                {
+                  "headers": [
+                    "x-toremove",
+                    "x-another-one"
+                  ],
+                  "json": [
+                    "json-key-toremove",
+                    "another-json-key"
+                  ]
+                }
+              ]
             }
           },
           {
@@ -177,7 +189,24 @@
                   }
                 }
               ],
-              "required": true
+              "required": true,
+              "examples": [
+                {
+                  "headers": [
+                    "x-new-header:value",
+                    "x-another-header:something"
+                  ],
+                  "json": [
+                    "new-json-key:some_value",
+                    "another-json-key:some_value"
+                  ],
+                  "json_types": [
+                    "string",
+                    "boolean",
+                    "number"
+                  ]
+                }
+              ]
             }
           },
           {
@@ -228,7 +257,15 @@
                   }
                 }
               ],
-              "required": true
+              "required": true,
+              "examples": [
+                {
+                  "headers": [
+                    "x-existing-header:some_value",
+                    "x-another-header:some_value"
+                  ]
+                }
+              ]
             }
           }
         ],

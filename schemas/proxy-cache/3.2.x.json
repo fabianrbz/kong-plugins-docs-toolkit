@@ -46,6 +46,11 @@
                 200,
                 301,
                 404
+              ],
+              "examples": [
+                [
+                  200
+                ]
               ]
             }
           },
@@ -66,6 +71,12 @@
               "default": [
                 "GET",
                 "HEAD"
+              ],
+              "examples": [
+                [
+                  "GET",
+                  "HEAD"
+                ]
               ]
             }
           },
@@ -79,6 +90,12 @@
               "default": [
                 "text/plain",
                 "application/json"
+              ],
+              "examples": [
+                [
+                  "text/plain",
+                  "application/json"
+                ]
               ]
             }
           },
@@ -86,7 +103,10 @@
             "cache_ttl": {
               "type": "integer",
               "gt": 0,
-              "default": 300
+              "default": 300,
+              "examples": [
+                300
+              ]
             }
           },
           {
@@ -94,6 +114,9 @@
               "type": "string",
               "required": true,
               "one_of": [
+                "memory"
+              ],
+              "examples": [
                 "memory"
               ]
             }

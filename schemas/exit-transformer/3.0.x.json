@@ -10,7 +10,12 @@
               "type": "array",
               "elements": {
                 "type": "string"
-              }
+              },
+              "examples": [
+                [
+                  "return function(status, body, header) return status, body, headers end"
+                ]
+              ]
             }
           },
           {

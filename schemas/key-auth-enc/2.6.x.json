@@ -40,7 +40,12 @@
               "elements": {
                 "type": "string"
               },
-              "type": "array"
+              "type": "array",
+              "examples": [
+                [
+                  "apikey"
+                ]
+              ]
             }
           },
           {

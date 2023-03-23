@@ -30,7 +30,10 @@
           {
             "host": {
               "type": "string",
-              "required": true
+              "required": true,
+              "examples": [
+                "127.0.0.1"
+              ]
             }
           },
           {
@@ -40,7 +43,10 @@
                 65535
               ],
               "required": true,
-              "type": "integer"
+              "type": "integer",
+              "examples": [
+                9999
+              ]
             }
           },
           {

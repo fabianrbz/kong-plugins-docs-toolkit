@@ -31,7 +31,10 @@
               ],
               "type": "string",
               "required": true,
-              "default": "memory"
+              "default": "memory",
+              "examples": [
+                "memory"
+              ]
             }
           },
           {

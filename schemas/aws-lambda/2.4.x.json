@@ -42,23 +42,35 @@
           },
           {
             "aws_key": {
-              "type": "string"
+              "type": "string",
+              "examples": [
+                "<AWS_KEY>"
+              ]
             }
           },
           {
             "aws_secret": {
-              "type": "string"
+              "type": "string",
+              "examples": [
+                "<AWS_SECRET>"
+              ]
             }
           },
           {
             "aws_region": {
-              "type": "string"
+              "type": "string",
+              "examples": [
+                "<AWS_REGION>"
+              ]
             }
           },
           {
             "function_name": {
               "required": true,
-              "type": "string"
+              "type": "string",
+              "examples": [
+                "<LAMBDA_FUNCTION_NAME>"
+              ]
             }
           },
           {

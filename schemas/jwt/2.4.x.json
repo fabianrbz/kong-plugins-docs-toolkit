@@ -41,6 +41,11 @@
               "type": "set",
               "default": [
                 "jwt"
+              ],
+              "examples": [
+                [
+                  "paramName_2.2.x"
+                ]
               ]
             }
           },

@@ -7,7 +7,10 @@
           {
             "api_spec": {
               "type": "string",
-              "required": true
+              "required": true,
+              "examples": [
+                "openapi: 3.0.0\ninfo:\n  version: \"2.19.3\"\n  title: Xero Finance API\n  description: The Finance API is a collection of endpoints which customers can use in the course of a loan application, which may assist lenders to gain the confidence they need to provide capital.\n  termsOfService: \"https://developer.xero.com/xero-developer-platform-terms-conditions/\"\n  contact:\n    name: \"Xero Platform Team\"\n    email: \"api@xero.com\"\n    url: \"https://developer.xero.com\"\n  license:\n    name: MIT\n    url: 'https://github.com/XeroAPI/Xero-OpenAPI/blob/master/LICENSE'\nservers:\n  - description: Xero API servers\n    url: https://api.xero.com/finance.xro/1.0\npaths:\n  /CashValidation:\n    get:\n      security:\n        - OAuth2: [finance.cashvalidation.read]\n      tags:\n        - Finance\n      summary: Get cash validation\n      operationId: getCashValidation\n      description: Summarizes the total cash position for each account for an org\n"
+              ]
             }
           },
           {

@@ -41,7 +41,12 @@
               "default": [
                 "apikey"
               ],
-              "type": "array"
+              "type": "array",
+              "examples": [
+                [
+                  "apikey"
+                ]
+              ]
             }
           },
           {

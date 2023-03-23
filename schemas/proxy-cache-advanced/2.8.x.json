@@ -20,7 +20,12 @@
                 301,
                 404
               ],
-              "type": "array"
+              "type": "array",
+              "examples": [
+                [
+                  200
+                ]
+              ]
             }
           },
           {
@@ -40,7 +45,13 @@
                 "GET",
                 "HEAD"
               ],
-              "type": "array"
+              "type": "array",
+              "examples": [
+                [
+                  "GET",
+                  "HEAD"
+                ]
+              ]
             }
           },
           {
@@ -53,7 +64,13 @@
                 "text/plain",
                 "application/json"
               ],
-              "type": "array"
+              "type": "array",
+              "examples": [
+                [
+                  "text/plain",
+                  "application/json"
+                ]
+              ]
             }
           },
           {
@@ -70,7 +87,10 @@
                 "redis"
               ],
               "required": true,
-              "type": "string"
+              "type": "string",
+              "examples": [
+                "memory"
+              ]
             }
           },
           {

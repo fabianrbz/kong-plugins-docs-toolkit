@@ -31,7 +31,10 @@
                 0,
                 2147483646
               ],
-              "type": "integer"
+              "type": "integer",
+              "examples": [
+                5000
+              ]
             }
           },
           {
@@ -40,7 +43,10 @@
                 0,
                 2147483646
               ],
-              "type": "integer"
+              "type": "integer",
+              "examples": [
+                5000
+              ]
             }
           },
           {
@@ -49,7 +55,10 @@
                 0,
                 2147483646
               ],
-              "type": "integer"
+              "type": "integer",
+              "examples": [
+                4000
+              ]
             }
           }
         ],

@@ -108,7 +108,15 @@
                 }
               ],
               "type": "record",
-              "required": false
+              "required": false,
+              "examples": [
+                {
+                  "text": {
+                    "type": "draft4",
+                    "schema": "{\n  \"type\": \"object\",\n  \"properties\": {\n    \"foo\": { \"type\": \"string\" },\n    \"bar\": { \"type\": \"string\" }\n  },\n  \"required\": [ \"foo\", \"bar\" ]\n}\n"
+                  }
+                }
+              ]
             }
           },
           {

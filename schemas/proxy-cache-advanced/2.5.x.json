@@ -21,7 +21,12 @@
                   100,
                   900
                 ]
-              }
+              },
+              "examples": [
+                [
+                  200
+                ]
+              ]
             }
           },
           {
@@ -41,7 +46,13 @@
                   "PATCH",
                   "PUT"
                 ]
-              }
+              },
+              "examples": [
+                [
+                  "GET",
+                  "HEAD"
+                ]
+              ]
             }
           },
           {
@@ -54,7 +65,13 @@
               "type": "array",
               "elements": {
                 "type": "string"
-              }
+              },
+              "examples": [
+                [
+                  "text/plain",
+                  "application/json"
+                ]
+              ]
             }
           },
           {
@@ -71,7 +88,10 @@
                 "memory",
                 "redis"
               ],
-              "type": "string"
+              "type": "string",
+              "examples": [
+                "memory"
+              ]
             }
           },
           {

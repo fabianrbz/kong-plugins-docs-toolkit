@@ -42,7 +42,10 @@
               ],
               "type": "string",
               "starts_with": "/",
-              "default": "/graphql"
+              "default": "/graphql",
+              "examples": [
+                "/graphql"
+              ]
             }
           }
         ],

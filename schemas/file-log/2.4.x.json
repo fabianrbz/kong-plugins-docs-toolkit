@@ -34,7 +34,10 @@
               "err": "not a valid filename",
               "type": "string",
               "match": "^[^*&%%\\`]+$",
-              "required": true
+              "required": true,
+              "examples": [
+                "/tmp/file.log"
+              ]
             }
           },
           {

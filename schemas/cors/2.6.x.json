@@ -38,7 +38,12 @@
               "elements": {
                 "type": "string"
               },
-              "type": "array"
+              "type": "array",
+              "examples": [
+                [
+                  "http://mockbin.com"
+                ]
+              ]
             }
           },
           {
@@ -46,7 +51,18 @@
               "elements": {
                 "type": "string"
               },
-              "type": "array"
+              "type": "array",
+              "examples": [
+                [
+                  "Accept",
+                  "Accept-Version",
+                  "Content-Length",
+                  "Content-MD5",
+                  "Content-Type",
+                  "Date",
+                  "X-Auth-Token"
+                ]
+              ]
             }
           },
           {
@@ -54,7 +70,12 @@
               "elements": {
                 "type": "string"
               },
-              "type": "array"
+              "type": "array",
+              "examples": [
+                [
+                  "X-Auth-Token"
+                ]
+              ]
             }
           },
           {
@@ -84,19 +105,31 @@
                 "TRACE",
                 "CONNECT"
               ],
-              "type": "array"
+              "type": "array",
+              "examples": [
+                [
+                  "GET",
+                  "POST"
+                ]
+              ]
             }
           },
           {
             "max_age": {
-              "type": "number"
+              "type": "number",
+              "examples": [
+                3600
+              ]
             }
           },
           {
             "credentials": {
               "required": true,
               "default": false,
-              "type": "boolean"
+              "type": "boolean",
+              "examples": [
+                true
+              ]
             }
           },
           {

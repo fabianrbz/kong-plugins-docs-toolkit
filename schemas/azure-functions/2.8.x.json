@@ -32,7 +32,10 @@
             "apikey": {
               "encrypted": true,
               "referenceable": true,
-              "type": "string"
+              "type": "string",
+              "examples": [
+                "<AZURE_APIKEY>"
+              ]
             }
           },
           {
@@ -45,14 +48,20 @@
           {
             "appname": {
               "required": true,
-              "type": "string"
+              "type": "string",
+              "examples": [
+                "<AZURE_APPNAME>"
+              ]
             }
           },
           {
             "hostdomain": {
               "required": true,
               "default": "azurewebsites.net",
-              "type": "string"
+              "type": "string",
+              "examples": [
+                "azurewebsites.net"
+              ]
             }
           },
           {
@@ -64,7 +73,10 @@
           {
             "functionname": {
               "required": true,
-              "type": "string"
+              "type": "string",
+              "examples": [
+                "<AZURE_FUNCTIONNAME>"
+              ]
             }
           }
         ],

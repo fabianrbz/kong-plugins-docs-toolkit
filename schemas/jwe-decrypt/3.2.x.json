@@ -30,7 +30,12 @@
               "type": "array",
               "elements": {
                 "type": "string"
-              }
+              },
+              "examples": [
+                [
+                  "dummyID"
+                ]
+              ]
             }
           },
           {

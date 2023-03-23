@@ -47,7 +47,10 @@
             "opa_host": {
               "required": true,
               "type": "string",
-              "default": "localhost"
+              "default": "localhost",
+              "examples": [
+                "localhost"
+              ]
             }
           },
           {
@@ -58,6 +61,9 @@
               "between": [
                 0,
                 65535
+              ],
+              "examples": [
+                8181
               ]
             }
           },
@@ -71,7 +77,10 @@
                 }
               ],
               "type": "string",
-              "starts_with": "/"
+              "starts_with": "/",
+              "examples": [
+                "/v1/data/example/kong/allowBoolean"
+              ]
             }
           },
           {

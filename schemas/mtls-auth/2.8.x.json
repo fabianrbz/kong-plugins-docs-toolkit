@@ -63,7 +63,12 @@
                 "uuid": true,
                 "type": "string"
               },
-              "type": "array"
+              "type": "array",
+              "examples": [
+                [
+                  "fdac360e-7b19-4ade-a553-6dd22937c82f"
+                ]
+              ]
             }
           },
           {
@@ -117,7 +122,10 @@
           },
           {
             "http_proxy_host": {
-              "type": "string"
+              "type": "string",
+              "examples": [
+                "example"
+              ]
             }
           },
           {
@@ -126,7 +134,10 @@
                 0,
                 65535
               ],
-              "type": "integer"
+              "type": "integer",
+              "examples": [
+                80
+              ]
             }
           },
           {

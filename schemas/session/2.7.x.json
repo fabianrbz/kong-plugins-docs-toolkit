@@ -15,7 +15,10 @@
               "default": "4uio7OfYs8uKC14WQkUARHbW98pFF4WE7s33mUCGRSEb",
               "encrypted": true,
               "required": false,
-              "type": "string"
+              "type": "string",
+              "examples": [
+                "opensesame"
+              ]
             }
           },
           {

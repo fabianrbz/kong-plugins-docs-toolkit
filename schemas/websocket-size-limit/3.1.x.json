@@ -28,7 +28,10 @@
                 1,
                 33554432
               ],
-              "type": "integer"
+              "type": "integer",
+              "examples": [
+                1024
+              ]
             }
           },
           {
@@ -38,7 +41,10 @@
                 1,
                 33554432
               ],
-              "type": "integer"
+              "type": "integer",
+              "examples": [
+                16384
+              ]
             }
           }
         ],

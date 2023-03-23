@@ -50,7 +50,10 @@
               "required": true,
               "referenceable": true,
               "encrypted": true,
-              "type": "string"
+              "type": "string",
+              "examples": [
+                "YOUR_LOGGLY_SERVICE_TOKEN"
+              ]
             }
           },
           {

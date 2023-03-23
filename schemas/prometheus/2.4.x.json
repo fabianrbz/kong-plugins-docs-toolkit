@@ -8,7 +8,10 @@
           {
             "per_consumer": {
               "default": false,
-              "type": "boolean"
+              "type": "boolean",
+              "examples": [
+                false
+              ]
             }
           }
         ]

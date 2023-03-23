@@ -10,7 +10,10 @@
                 "memory"
               ],
               "default": "memory",
-              "required": true
+              "required": true,
+              "examples": [
+                "memory"
+              ]
             }
           },
           {

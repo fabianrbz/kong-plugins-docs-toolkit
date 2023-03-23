@@ -11,7 +11,12 @@
                 "type": "string"
               },
               "type": "array",
-              "required": true
+              "required": true,
+              "examples": [
+                [
+                  "return function(status, body, header) return status, body, headers end"
+                ]
+              ]
             }
           },
           {

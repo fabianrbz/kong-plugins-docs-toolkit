@@ -69,7 +69,10 @@
             "scope": {
               "required": true,
               "type": "string",
-              "unique": true
+              "unique": true,
+              "examples": [
+                "uuid"
+              ]
             }
           }
         ],

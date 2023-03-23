@@ -16,7 +16,10 @@
               ],
               "required": true,
               "default": "consumer",
-              "type": "string"
+              "type": "string",
+              "examples": [
+                "consumer"
+              ]
             }
           },
           {
@@ -25,7 +28,12 @@
                 "type": "number"
               },
               "required": true,
-              "type": "array"
+              "type": "array",
+              "examples": [
+                [
+                  30
+                ]
+              ]
             }
           },
           {
@@ -44,19 +52,30 @@
                 "type": "number"
               },
               "required": true,
-              "type": "array"
+              "type": "array",
+              "examples": [
+                [
+                  5
+                ]
+              ]
             }
           },
           {
             "sync_rate": {
-              "type": "number"
+              "type": "number",
+              "examples": [
+                -1
+              ]
             }
           },
           {
             "namespace": {
               "required": true,
               "auto": true,
-              "type": "string"
+              "type": "string",
+              "examples": [
+                "example_namespace"
+              ]
             }
           },
           {
@@ -68,7 +87,10 @@
               ],
               "required": true,
               "default": "cluster",
-              "type": "string"
+              "type": "string",
+              "examples": [
+                "local"
+              ]
             }
           },
           {
@@ -81,7 +103,10 @@
           {
             "hide_client_headers": {
               "default": false,
-              "type": "boolean"
+              "type": "boolean",
+              "examples": [
+                false
+              ]
             }
           },
           {
@@ -331,7 +356,10 @@
           {
             "enforce_consumer_groups": {
               "default": false,
-              "type": "boolean"
+              "type": "boolean",
+              "examples": [
+                true
+              ]
             }
           },
           {
@@ -339,7 +367,13 @@
               "elements": {
                 "type": "string"
               },
-              "type": "array"
+              "type": "array",
+              "examples": [
+                [
+                  "group1",
+                  "group2"
+                ]
+              ]
             }
           }
         ],

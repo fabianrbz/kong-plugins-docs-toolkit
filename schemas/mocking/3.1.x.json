@@ -34,31 +34,46 @@
           {
             "api_specification": {
               "type": "string",
-              "required": false
+              "required": false,
+              "examples": [
+                "openapi: 3.0.1\ninfo:\n  title: OpenAPI 3.0 API\n  description: This is a simple API\n  contact:\n    email: example@example.com\n  version: 1.0.0\n"
+              ]
             }
           },
           {
             "random_delay": {
               "default": false,
-              "type": "boolean"
+              "type": "boolean",
+              "examples": [
+                true
+              ]
             }
           },
           {
             "max_delay_time": {
               "default": 1,
-              "type": "number"
+              "type": "number",
+              "examples": [
+                1
+              ]
             }
           },
           {
             "min_delay_time": {
               "default": 0.001,
-              "type": "number"
+              "type": "number",
+              "examples": [
+                0.001
+              ]
             }
           },
           {
             "random_examples": {
               "default": false,
-              "type": "boolean"
+              "type": "boolean",
+              "examples": [
+                true
+              ]
             }
           },
           {

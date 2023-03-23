@@ -14,7 +14,10 @@
           {
             "ldap_host": {
               "required": true,
-              "type": "string"
+              "type": "string",
+              "examples": [
+                "ldap.example.com"
+              ]
             }
           },
           {
@@ -27,7 +30,10 @@
           {
             "ldap_port": {
               "default": 389,
-              "type": "number"
+              "type": "number",
+              "examples": [
+                389
+              ]
             }
           },
           {
@@ -47,33 +53,48 @@
             "start_tls": {
               "required": true,
               "default": false,
-              "type": "boolean"
+              "type": "boolean",
+              "examples": [
+                true
+              ]
             }
           },
           {
             "verify_ldap_host": {
               "required": true,
               "default": false,
-              "type": "boolean"
+              "type": "boolean",
+              "examples": [
+                false
+              ]
             }
           },
           {
             "base_dn": {
               "required": true,
-              "type": "string"
+              "type": "string",
+              "examples": [
+                "dc=example,dc=com"
+              ]
             }
           },
           {
             "attribute": {
               "required": true,
-              "type": "string"
+              "type": "string",
+              "examples": [
+                "cn"
+              ]
             }
           },
           {
             "cache_ttl": {
               "required": true,
               "default": 60,
-              "type": "number"
+              "type": "number",
+              "examples": [
+                60
+              ]
             }
           },
           {
@@ -104,7 +125,10 @@
           {
             "header_type": {
               "default": "ldap",
-              "type": "string"
+              "type": "string",
+              "examples": [
+                "ldap"
+              ]
             }
           },
           {

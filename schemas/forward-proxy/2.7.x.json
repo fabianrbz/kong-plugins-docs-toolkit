@@ -6,7 +6,10 @@
           {
             "proxy_host": {
               "required": true,
-              "type": "string"
+              "type": "string",
+              "examples": [
+                "example.com"
+              ]
             }
           },
           {
@@ -16,6 +19,9 @@
               "between": [
                 0,
                 65535
+              ],
+              "examples": [
+                80
               ]
             }
           },
@@ -26,26 +32,38 @@
                 "http"
               ],
               "required": true,
-              "default": "http"
+              "default": "http",
+              "examples": [
+                "http"
+              ]
             }
           },
           {
             "auth_username": {
               "type": "string",
-              "required": false
+              "required": false,
+              "examples": [
+                "example_user"
+              ]
             }
           },
           {
             "auth_password": {
               "type": "string",
-              "required": false
+              "required": false,
+              "examples": [
+                "example_pass"
+              ]
             }
           },
           {
             "https_verify": {
               "type": "boolean",
               "required": true,
-              "default": false
+              "default": false,
+              "examples": [
+                false
+              ]
             }
           }
         ],

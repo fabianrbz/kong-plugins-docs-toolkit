@@ -35,7 +35,10 @@
           {
             "issuer": {
               "required": true,
-              "type": "string"
+              "type": "string",
+              "examples": [
+                "http://example.org"
+              ]
             }
           },
           {
@@ -100,6 +103,12 @@
                 "kong_oauth2",
                 "refresh_token",
                 "session"
+              ],
+              "examples": [
+                [
+                  "authorization_code",
+                  "session"
+                ]
               ]
             }
           },
@@ -111,7 +120,12 @@
                 "referenceable": true
               },
               "type": "array",
-              "required": false
+              "required": false,
+              "examples": [
+                [
+                  "<client-id>"
+                ]
+              ]
             }
           },
           {
@@ -122,7 +136,12 @@
                 "referenceable": true
               },
               "type": "array",
-              "required": false
+              "required": false,
+              "examples": [
+                [
+                  "<client-secret>"
+                ]
+              ]
             }
           },
           {
@@ -446,7 +465,10 @@
                 "fragment"
               ],
               "type": "string",
-              "default": "query"
+              "default": "query",
+              "examples": [
+                "form_post"
+              ]
             }
           },
           {
@@ -1015,7 +1037,10 @@
               "required": false,
               "type": "string",
               "encrypted": true,
-              "referenceable": true
+              "referenceable": true,
+              "examples": [
+                "<session-secret>"
+              ]
             }
           },
           {

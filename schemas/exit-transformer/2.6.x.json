@@ -9,7 +9,12 @@
               "elements": {
                 "type": "string"
               },
-              "type": "array"
+              "type": "array",
+              "examples": [
+                [
+                  "return function(status, body, header) return status, body, headers end"
+                ]
+              ]
             }
           },
           {

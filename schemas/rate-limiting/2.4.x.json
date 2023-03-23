@@ -29,7 +29,10 @@
           {
             "second": {
               "gt": 0,
-              "type": "number"
+              "type": "number",
+              "examples": [
+                5
+              ]
             }
           },
           {
@@ -41,7 +44,10 @@
           {
             "hour": {
               "gt": 0,
-              "type": "number"
+              "type": "number",
+              "examples": [
+                10000
+              ]
             }
           },
           {
@@ -102,7 +108,10 @@
                 "cluster",
                 "redis"
               ],
-              "default": "cluster"
+              "default": "cluster",
+              "examples": [
+                "local"
+              ]
             }
           },
           {

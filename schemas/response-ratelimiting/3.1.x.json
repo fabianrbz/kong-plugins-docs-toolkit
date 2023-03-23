@@ -50,7 +50,10 @@
                 "cluster",
                 "redis"
               ],
-              "type": "string"
+              "type": "string",
+              "examples": [
+                "local"
+              ]
             }
           },
           {
@@ -194,7 +197,14 @@
                   }
                 ],
                 "type": "record"
-              }
+              },
+              "examples": [
+                {
+                  "{\"limit_name\"=>nil}": {
+                    "minute": 10
+                  }
+                }
+              ]
             }
           }
         ],

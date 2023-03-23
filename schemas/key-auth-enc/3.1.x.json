@@ -45,7 +45,12 @@
               "elements": {
                 "type": "string"
               },
-              "required": true
+              "required": true,
+              "examples": [
+                [
+                  "apikey"
+                ]
+              ]
             }
           },
           {

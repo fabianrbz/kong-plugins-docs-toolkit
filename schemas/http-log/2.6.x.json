@@ -30,7 +30,10 @@
           {
             "http_endpoint": {
               "type": "string",
-              "required": true
+              "required": true,
+              "examples": [
+                "http://mockbin.org/bin/:id"
+              ]
             }
           },
           {
@@ -41,7 +44,10 @@
                 "PATCH"
               ],
               "default": "POST",
-              "type": "string"
+              "type": "string",
+              "examples": [
+                "POST"
+              ]
             }
           },
           {
@@ -56,19 +62,28 @@
           {
             "timeout": {
               "default": 10000,
-              "type": "number"
+              "type": "number",
+              "examples": [
+                1000
+              ]
             }
           },
           {
             "keepalive": {
               "default": 60000,
-              "type": "number"
+              "type": "number",
+              "examples": [
+                1000
+              ]
             }
           },
           {
             "retry_count": {
               "default": 10,
-              "type": "integer"
+              "type": "integer",
+              "examples": [
+                15
+              ]
             }
           },
           {
@@ -80,7 +95,10 @@
           {
             "flush_timeout": {
               "default": 2,
-              "type": "number"
+              "type": "number",
+              "examples": [
+                2
+              ]
             }
           },
           {

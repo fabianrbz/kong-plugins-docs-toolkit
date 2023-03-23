@@ -39,7 +39,10 @@
           {
             "ldap_host": {
               "required": true,
-              "type": "string"
+              "type": "string",
+              "examples": [
+                "ldap.example.com"
+              ]
             }
           },
           {
@@ -50,7 +53,10 @@
                 0,
                 65535
               ],
-              "default": 389
+              "default": 389,
+              "examples": [
+                389
+              ]
             }
           },
           {
@@ -77,13 +83,19 @@
           {
             "base_dn": {
               "required": true,
-              "type": "string"
+              "type": "string",
+              "examples": [
+                "dc=example,dc=com"
+              ]
             }
           },
           {
             "attribute": {
               "required": true,
-              "type": "string"
+              "type": "string",
+              "examples": [
+                "cn"
+              ]
             }
           },
           {
@@ -97,7 +109,10 @@
             "hide_credentials": {
               "default": false,
               "type": "boolean",
-              "required": true
+              "required": true,
+              "examples": [
+                true
+              ]
             }
           },
           {
@@ -120,7 +135,10 @@
           {
             "header_type": {
               "default": "ldap",
-              "type": "string"
+              "type": "string",
+              "examples": [
+                "ldap"
+              ]
             }
           }
         ],

@@ -51,7 +51,10 @@
               "match": "%w*%p*@+%w*%.?%w*",
               "type": "string",
               "encrypted": true,
-              "required": true
+              "required": true,
+              "examples": [
+                "example@example.com"
+              ]
             }
           },
           {

@@ -86,7 +86,10 @@
             "host": {
               "required": true,
               "type": "string",
-              "default": "localhost"
+              "default": "localhost",
+              "examples": [
+                "127.0.0.1"
+              ]
             }
           },
           {
@@ -97,6 +100,9 @@
               "between": [
                 0,
                 65535
+              ],
+              "examples": [
+                8125
               ]
             }
           },

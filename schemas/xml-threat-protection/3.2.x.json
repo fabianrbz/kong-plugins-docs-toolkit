@@ -71,7 +71,10 @@
               "type": "integer",
               "required": true,
               "gt": 0,
-              "default": 50
+              "default": 50,
+              "examples": [
+                50
+              ]
             }
           },
           {
@@ -127,7 +130,10 @@
               "type": "integer",
               "required": true,
               "gt": 0,
-              "default": 1024
+              "default": 1024,
+              "examples": [
+                512
+              ]
             }
           },
           {
@@ -135,7 +141,10 @@
               "type": "integer",
               "required": false,
               "gt": 0,
-              "default": 1024
+              "default": 1024,
+              "examples": [
+                512
+              ]
             }
           },
           {
@@ -143,7 +152,10 @@
               "type": "integer",
               "required": false,
               "gt": 0,
-              "default": 1024
+              "default": 1024,
+              "examples": [
+                1024
+              ]
             }
           },
           {

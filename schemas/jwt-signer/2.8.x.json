@@ -185,7 +185,12 @@
               "default": [
                 "scope"
               ],
-              "type": "array"
+              "type": "array",
+              "examples": [
+                [
+                  "scope"
+                ]
+              ]
             }
           },
           {

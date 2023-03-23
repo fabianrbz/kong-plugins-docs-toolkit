@@ -58,7 +58,13 @@
               "type": "array",
               "elements": {
                 "type": "string"
-              }
+              },
+              "examples": [
+                [
+                  "group1",
+                  "group2"
+                ]
+              ]
             }
           },
           {
@@ -73,7 +79,10 @@
             "hide_groups_header": {
               "required": true,
               "type": "boolean",
-              "default": false
+              "default": false,
+              "examples": [
+                true
+              ]
             }
           }
         ]

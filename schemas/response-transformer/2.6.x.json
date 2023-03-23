@@ -53,7 +53,19 @@
                 }
               ],
               "required": true,
-              "type": "record"
+              "type": "record",
+              "examples": [
+                {
+                  "headers": [
+                    "x-toremove",
+                    "x-another-one"
+                  ],
+                  "json": [
+                    "json-key-toremove",
+                    "another-json-key"
+                  ]
+                }
+              ]
             }
           },
           {
@@ -176,7 +188,24 @@
                 }
               ],
               "required": true,
-              "type": "record"
+              "type": "record",
+              "examples": [
+                {
+                  "headers": [
+                    "x-new-header:value",
+                    "x-another-header:something"
+                  ],
+                  "json": [
+                    "new-json-key:some_value",
+                    "another-json-key:some_value"
+                  ],
+                  "json_types": [
+                    "string",
+                    "boolean",
+                    "number"
+                  ]
+                }
+              ]
             }
           },
           {
@@ -227,7 +256,15 @@
                 }
               ],
               "required": true,
-              "type": "record"
+              "type": "record",
+              "examples": [
+                {
+                  "headers": [
+                    "x-existing-header:some_value",
+                    "x-another-header:some_value"
+                  ]
+                }
+              ]
             }
           }
         ],

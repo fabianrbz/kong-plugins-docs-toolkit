@@ -41,7 +41,10 @@
               ],
               "required": true,
               "default": "info",
-              "type": "string"
+              "type": "string",
+              "examples": [
+                "info"
+              ]
             }
           },
           {

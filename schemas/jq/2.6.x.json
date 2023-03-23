@@ -28,7 +28,10 @@
           {
             "request_jq_program": {
               "type": "string",
-              "required": false
+              "required": false,
+              "examples": [
+                ".[0]"
+              ]
             }
           },
           {

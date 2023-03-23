@@ -35,7 +35,10 @@
           {
             "issuer": {
               "required": true,
-              "type": "string"
+              "type": "string",
+              "examples": [
+                "http://example.org"
+              ]
             }
           },
           {
@@ -100,7 +103,13 @@
                 "refresh_token",
                 "session"
               ],
-              "type": "array"
+              "type": "array",
+              "examples": [
+                [
+                  "authorization_code",
+                  "session"
+                ]
+              ]
             }
           },
           {
@@ -111,7 +120,12 @@
                 "type": "string"
               },
               "encrypted": true,
-              "type": "array"
+              "type": "array",
+              "examples": [
+                [
+                  "<client-id>"
+                ]
+              ]
             }
           },
           {
@@ -122,7 +136,12 @@
                 "type": "string"
               },
               "encrypted": true,
-              "type": "array"
+              "type": "array",
+              "examples": [
+                [
+                  "<client-secret>"
+                ]
+              ]
             }
           },
           {
@@ -446,7 +465,10 @@
                 "fragment"
               ],
               "default": "query",
-              "type": "string"
+              "type": "string",
+              "examples": [
+                "form_post"
+              ]
             }
           },
           {
@@ -1015,7 +1037,10 @@
               "required": false,
               "referenceable": true,
               "encrypted": true,
-              "type": "string"
+              "type": "string",
+              "examples": [
+                "<session-secret>"
+              ]
             }
           },
           {

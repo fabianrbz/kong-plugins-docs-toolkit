@@ -33,12 +33,18 @@
               ],
               "type": "string",
               "required": true,
-              "default": "append"
+              "default": "append",
+              "examples": [
+                "transparent"
+              ]
             }
           },
           {
             "http_proxy_host": {
-              "type": "string"
+              "type": "string",
+              "examples": [
+                "example.com"
+              ]
             }
           },
           {
@@ -47,7 +53,10 @@
                 0,
                 65535
               ],
-              "type": "integer"
+              "type": "integer",
+              "examples": [
+                80
+              ]
             }
           },
           {
@@ -71,28 +80,40 @@
               ],
               "type": "string",
               "required": true,
-              "default": "http"
+              "default": "http",
+              "examples": [
+                "http"
+              ]
             }
           },
           {
             "auth_username": {
               "required": false,
               "type": "string",
-              "referenceable": true
+              "referenceable": true,
+              "examples": [
+                "example_user"
+              ]
             }
           },
           {
             "auth_password": {
               "required": false,
               "type": "string",
-              "referenceable": true
+              "referenceable": true,
+              "examples": [
+                "example_pass"
+              ]
             }
           },
           {
             "https_verify": {
               "type": "boolean",
               "required": true,
-              "default": false
+              "default": false,
+              "examples": [
+                false
+              ]
             }
           }
         ],

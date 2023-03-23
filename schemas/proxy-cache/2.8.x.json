@@ -20,7 +20,12 @@
                 301,
                 404
               ],
-              "type": "array"
+              "type": "array",
+              "examples": [
+                [
+                  200
+                ]
+              ]
             }
           },
           {
@@ -40,7 +45,13 @@
                 "GET",
                 "HEAD"
               ],
-              "type": "array"
+              "type": "array",
+              "examples": [
+                [
+                  "GET",
+                  "HEAD"
+                ]
+              ]
             }
           },
           {
@@ -53,14 +64,23 @@
                 "text/plain",
                 "application/json"
               ],
-              "type": "array"
+              "type": "array",
+              "examples": [
+                [
+                  "text/plain",
+                  "application/json"
+                ]
+              ]
             }
           },
           {
             "cache_ttl": {
               "gt": 0,
               "default": 300,
-              "type": "integer"
+              "type": "integer",
+              "examples": [
+                300
+              ]
             }
           },
           {
@@ -69,7 +89,10 @@
                 "memory"
               ],
               "required": true,
-              "type": "string"
+              "type": "string",
+              "examples": [
+                "memory"
+              ]
             }
           },
           {

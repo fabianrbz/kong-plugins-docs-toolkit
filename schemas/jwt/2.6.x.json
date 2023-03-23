@@ -39,7 +39,12 @@
               "elements": {
                 "type": "string"
               },
-              "type": "set"
+              "type": "set",
+              "examples": [
+                [
+                  "paramName_2.2.x"
+                ]
+              ]
             }
           },
           {

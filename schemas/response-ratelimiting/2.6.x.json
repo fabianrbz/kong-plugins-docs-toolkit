@@ -173,7 +173,7 @@
               "type": "map",
               "examples": [
                 {
-                  "{\"limit_name\"=>nil}": {
+                  "limit_name": {
                     "minute": 10
                   }
                 }

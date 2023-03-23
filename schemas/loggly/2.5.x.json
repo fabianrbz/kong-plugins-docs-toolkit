@@ -32,7 +32,8 @@
           {
             "host": {
               "default": "logs-01.loggly.com",
-              "type": "string"
+              "type": "string",
+              "description": "The IP address or hostname of Loggly server."
             }
           },
           {
@@ -42,7 +43,8 @@
               "between": [
                 0,
                 65535
-              ]
+              ],
+              "description": "The UDP port to send data to on the Loggly server."
             }
           },
           {
@@ -51,7 +53,8 @@
               "required": true,
               "examples": [
                 "YOUR_LOGGLY_SERVICE_TOKEN"
-              ]
+              ],
+              "description": "Loggly [customer token](https://www.loggly.com/docs/customer-token-authentication-token/)."
             }
           },
           {
@@ -62,7 +65,8 @@
               "type": "set",
               "elements": {
                 "type": "string"
-              }
+              },
+              "description": "An optional list of [tags](https://www.loggly.com/docs/tags/) to support segmentation and filtering of logs."
             }
           },
           {
@@ -78,7 +82,8 @@
                 "alert",
                 "emerg"
               ],
-              "type": "string"
+              "type": "string",
+              "description": "An optional logging severity, any request with equal or higher severity will be\nlogged to Loggly. Available options: `debug`, `info`, `notice`, `warning`, `err`,\n`crit`, `alert`, `emerg`."
             }
           },
           {
@@ -94,7 +99,8 @@
                 "alert",
                 "emerg"
               ],
-              "type": "string"
+              "type": "string",
+              "description": "An optional logging severity assigned to all the successful requests with a response\nstatus code 400. Available options: `debug`, `info`, `notice`, `warning`, `err`,\n`crit`, `alert`, `emerg`."
             }
           },
           {
@@ -110,7 +116,8 @@
                 "alert",
                 "emerg"
               ],
-              "type": "string"
+              "type": "string",
+              "description": "An optional logging severity assigned to all the failed requests with a response\nstatus code 400 or higher but less than 500. Available options: `debug`, `info`,\n`notice`, `warning`, `err`, `crit`, `alert`, `emerg`."
             }
           },
           {
@@ -126,13 +133,15 @@
                 "alert",
                 "emerg"
               ],
-              "type": "string"
+              "type": "string",
+              "description": "An optional logging severity assigned to all the failed requests with response status\ncode 500 or higher. Available options: `debug`, `info`, `notice`, `warning`, `err`,\n`crit`, `alert`, `emerg`."
             }
           },
           {
             "timeout": {
               "type": "number",
-              "default": 10000
+              "default": 10000,
+              "description": "An optional timeout in milliseconds when sending data to the Loggly server."
             }
           },
           {
@@ -145,7 +154,8 @@
               "values": {
                 "type": "string",
                 "len_min": 1
-              }
+              },
+              "description": "A list of key-value pairs, where the key is the name of a log field and\nthe value is a chunk of Lua code, whose return value sets or replaces\nthe log field value."
             }
           }
         ]

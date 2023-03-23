@@ -34,14 +34,16 @@
               "default": "memory",
               "examples": [
                 "memory"
-              ]
+              ],
+              "description": "The backing data store in which to hold cached entities. Accepted value is `memory`."
             }
           },
           {
             "cache_ttl": {
               "type": "integer",
               "gt": 0,
-              "default": 300
+              "default": 300,
+              "description": "TTL in seconds of cache entities. Must be a value greater than 0."
             }
           },
           {
@@ -51,7 +53,8 @@
                   "dictionary_name": {
                     "type": "string",
                     "required": true,
-                    "default": "kong_db_cache"
+                    "default": "kong_db_cache",
+                    "description": "The name of the shared dictionary in which to hold cache entities when the memory strategy is selected. Note\n that this dictionary currently must be defined manually in the Kong Nginx template."
                   }
                 }
               ],
@@ -64,7 +67,8 @@
               "elements": {
                 "type": "string"
               },
-              "type": "array"
+              "type": "array",
+              "description": "Relevant headers considered for the cache key. If undefined, none of the headers are taken into consideration."
             }
           }
         ],

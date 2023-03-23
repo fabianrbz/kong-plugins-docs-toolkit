@@ -36,7 +36,8 @@
                   "54.13.21.1",
                   "143.1.0.0/24"
                 ]
-              ]
+              ],
+              "description": "List of IPs or CIDR ranges to allow. One of `config.allow` or `config.deny` must be specified.\n\nNote: We have deprecated the usage of `whitelist` and `blacklist` in favor of `allow` and `deny`."
             }
           },
           {
@@ -44,19 +45,22 @@
               "elements": {
                 "type": "string"
               },
-              "type": "array"
+              "type": "array",
+              "description": "List of IPs or CIDR ranges to deny. One of `config.allow` or `config.deny` must be specified.\n\nNote: We have deprecated the usage of `whitelist` and `blacklist` in favor of `allow` and `deny`."
             }
           },
           {
             "status": {
               "required": false,
-              "type": "number"
+              "type": "number",
+              "description": "The HTTP status of the requests that will be rejected by the plugin."
             }
           },
           {
             "message": {
               "required": false,
-              "type": "string"
+              "type": "string",
+              "description": "The message to send as a response body to rejected requests."
             }
           }
         ],

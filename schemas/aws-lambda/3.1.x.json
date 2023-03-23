@@ -66,7 +66,8 @@
               "encrypted": true,
               "examples": [
                 "<AWS_ASSUME_ROLE_ARN>"
-              ]
+              ],
+              "description": "The target AWS IAM role ARN used to invoke the Lambda function. Typically this is\nused for a cross-account Lambda function invocation."
             }
           },
           {
@@ -75,7 +76,8 @@
               "default": "kong",
               "examples": [
                 "<AWS_ROLE_SESSION_NAME>"
-              ]
+              ],
+              "description": "The identifier of the assumed role session. It is used for uniquely identifying\na session when the same target role is assumed by different principals or\nfor different reasons. The role session name is also used in the ARN of the assumed role principle."
             }
           },
           {
@@ -83,7 +85,8 @@
               "type": "string",
               "examples": [
                 "<AWS_REGION>"
-              ]
+              ],
+              "description": "The AWS region where the Lambda function is located. The plugin does not\nattempt to validate the supplied region name.\n\nThe plugin has two methods of detecting the AWS region: the `aws_region`\nparameter, or one of the `AWS_REGION` or `AWS_DEFAULT_REGION` environment\nvariables. One of these must be set.\n\nIf `region` is not specified in plugin configuration, the plugin\nautomatically detects the AWS region on runtime via one of the environment\nvariables.\nUsing environment variables enables regionally distributed Kong cluster nodes\nto connect to the closest AWS region.\n\nThe AWS region is required for AWS SigV4.\nIf `aws_region` or the `AWS_REGION` or `AWS_DEFAULT_REGION` environment\nvariables have not been specified, or an invalid region name has been provided,\nthe plugin responds with an HTTP `500 Internal Server Error` at runtime."
             }
           },
           {
@@ -125,7 +128,8 @@
           },
           {
             "host": {
-              "type": "string"
+              "type": "string",
+              "description": "The host where the Lambda function is located. This value can point to a\nlocal Lambda server, allowing for easier debugging.\n\nTo set a region, use the `aws_region` parameter."
             }
           },
           {
@@ -200,7 +204,8 @@
           {
             "base64_encode_body": {
               "type": "boolean",
-              "default": true
+              "default": true,
+              "description": "An optional value that Base64-encodes the request body."
             }
           }
         ],

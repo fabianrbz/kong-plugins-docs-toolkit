@@ -42,7 +42,8 @@
                     }
                   }
                 ]
-              ]
+              ],
+              "description": "List of [rules](#rules)"
             }
           }
         ],

@@ -9,7 +9,8 @@
               "required": true,
               "examples": [
                 "example.com"
-              ]
+              ],
+              "description": "\n{:.important}\n> This parameter is deprecated as of Kong Gateway 2.8.0.0 and\nis planned to be removed in a future release.\n> <br>\n> Use `http_proxy_host` or `https_proxy_host` instead.\n\nThe hostname or IP address of the forward proxy to which to connect."
             }
           },
           {
@@ -22,7 +23,8 @@
               "type": "integer",
               "examples": [
                 80
-              ]
+              ],
+              "description": "\n{:.important}\n> This parameter is deprecated as of Kong Gateway 2.8.0.0 and\nis planned to be removed in a future release.\n> <br>\n> Use `http_proxy_host` or `https_proxy_host` instead.\n\nThe TCP port of the forward proxy to which to connect."
             }
           },
           {
@@ -35,7 +37,8 @@
               ],
               "examples": [
                 "http"
-              ]
+              ],
+              "description": "The proxy scheme to use when connecting. Only `http` is supported."
             }
           },
           {
@@ -45,7 +48,8 @@
               "type": "boolean",
               "examples": [
                 false
-              ]
+              ],
+              "description": "Whether the server certificate will be verified according to the CA certificates\nspecified in\n[lua_ssl_trusted_certificate](https://www.nginx.com/resources/wiki/modules/lua/#lua-ssl-trusted-certificate)."
             }
           }
         ],

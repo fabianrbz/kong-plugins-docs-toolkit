@@ -61,7 +61,8 @@
                     }
                   }
                 ]
-              }
+              },
+              "description": "Set of bootstrap brokers in a `{host: host, port: port}` list format."
             }
           },
           {
@@ -70,43 +71,50 @@
               "required": true,
               "examples": [
                 "TOPIC"
-              ]
+              ],
+              "description": "The Kafka topic to publish to."
             }
           },
           {
             "timeout": {
               "type": "integer",
-              "default": 10000
+              "default": 10000,
+              "description": "Socket timeout in milliseconds."
             }
           },
           {
             "keepalive": {
               "type": "integer",
-              "default": 60000
+              "default": 60000,
+              "description": "Keepalive timeout in milliseconds."
             }
           },
           {
             "forward_method": {
               "type": "boolean",
-              "default": false
+              "default": false,
+              "description": "Include the request method in the message. At least one of these must be true:\n`forward_method`, `forward_uri`, `forward_headers`, `forward_body`."
             }
           },
           {
             "forward_uri": {
               "type": "boolean",
-              "default": false
+              "default": false,
+              "description": "Include the request URI and URI arguments (as in, query arguments) in the message.\nAt least one of these must be true: `forward_method`, `forward_uri`, `forward_headers`,\n`forward_body`."
             }
           },
           {
             "forward_headers": {
               "type": "boolean",
-              "default": false
+              "default": false,
+              "description": "Include the request headers in the message. At least one of these must be true:\n`forward_method`, `forward_uri`, `forward_headers`, `forward_body`."
             }
           },
           {
             "forward_body": {
               "type": "boolean",
-              "default": true
+              "default": true,
+              "description": "Include the request body in the message. At least one of these must be true:\n`forward_method`, `forward_uri`, `forward_headers`, `forward_body`."
             }
           },
           {
@@ -117,55 +125,64 @@
                 0,
                 1
               ],
-              "type": "integer"
+              "type": "integer",
+              "description": "The number of acknowledgments the producer requires the leader to have received before\nconsidering a request complete. Allowed values: 0 for no acknowledgments; 1 for only the\nleader; and -1 for the full ISR (In-Sync Replica set)."
             }
           },
           {
             "producer_request_timeout": {
               "type": "integer",
-              "default": 2000
+              "default": 2000,
+              "description": "Time to wait for a Produce response in milliseconds."
             }
           },
           {
             "producer_request_limits_messages_per_request": {
               "type": "integer",
-              "default": 200
+              "default": 200,
+              "description": "Maximum number of messages to include into a single Produce request."
             }
           },
           {
             "producer_request_limits_bytes_per_request": {
               "type": "integer",
-              "default": 1048576
+              "default": 1048576,
+              "description": "Maximum size of a Produce request in bytes."
             }
           },
           {
             "producer_request_retries_max_attempts": {
               "type": "integer",
-              "default": 10
+              "default": 10,
+              "description": "Maximum number of retry attempts per single Produce request."
             }
           },
           {
             "producer_request_retries_backoff_timeout": {
               "type": "integer",
-              "default": 100
+              "default": 100,
+              "description": "Backoff interval between retry attempts in milliseconds."
             }
           },
           {
             "producer_async": {
               "type": "boolean",
-              "default": true
+              "default": true,
+              "description": "Flag to enable asynchronous mode."
             }
           },
           {
             "producer_async_flush_timeout": {
               "type": "integer",
-              "default": 1000
+              "default": 1000,
+              "description": "Maximum time interval in milliseconds between buffer flushes in asynchronous mode."
             }
           },
           {
             "producer_async_buffering_limits_messages_in_memory": {
               "type": "integer",
-              "default": 50000
+              "default": 50000,
+              "description": "Maximum number of messages that can be buffered in memory in asynchronous mode."
             }
           }
         ]

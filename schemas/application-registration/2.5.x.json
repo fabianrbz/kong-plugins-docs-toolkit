@@ -55,7 +55,8 @@
               "unique": true,
               "examples": [
                 "<my_service_display_name>"
-              ]
+              ],
+              "description": "Unique display name used for a Service in the Developer Portal."
             }
           },
           {
@@ -64,7 +65,8 @@
               "unique": true,
               "examples": [
                 "<my_service_description>"
-              ]
+              ],
+              "description": "Unique description displayed in information about a Service in the Developer Portal."
             }
           },
           {
@@ -74,7 +76,8 @@
               "default": false,
               "examples": [
                 false
-              ]
+              ],
+              "description": "If enabled, all new Service Contracts requests are automatically\napproved. See [Enable automatic registration approval](#enable-automatic-registration-approval). Otherwise, Dev Portal admins must manually approve requests."
             }
           },
           {
@@ -84,7 +87,8 @@
               "default": false,
               "examples": [
                 false
-              ]
+              ],
+              "description": "Displays the **Issuer URL** in the **Service Details** dialog."
             }
           }
         ]

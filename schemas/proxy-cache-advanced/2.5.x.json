@@ -26,7 +26,8 @@
                 [
                   200
                 ]
-              ]
+              ],
+              "description": "Upstream response status code considered cacheable. The integers must be a value\nbetween 100 and 900."
             }
           },
           {
@@ -52,7 +53,8 @@
                   "GET",
                   "HEAD"
                 ]
-              ]
+              ],
+              "description": "Downstream request methods considered cacheable. Available options: `HEAD`, `GET`, `POST`, `PATCH`, `PUT`."
             }
           },
           {
@@ -71,14 +73,16 @@
                   "text/plain",
                   "application/json"
                 ]
-              ]
+              ],
+              "description": "Upstream response content types considered cacheable. The plugin performs an **exact match** against each specified value; for example, if the upstream is expected to respond with a `application/json; charset=utf-8` content-type, the plugin configuration must contain said value or a `Bypass` cache status is returned."
             }
           },
           {
             "cache_ttl": {
               "default": 300,
               "type": "integer",
-              "gt": 0
+              "gt": 0,
+              "description": "TTL in seconds of cache entities."
             }
           },
           {
@@ -91,19 +95,22 @@
               "type": "string",
               "examples": [
                 "memory"
-              ]
+              ],
+              "description": "The backing data store in which to hold cache entities. Accepted values are: `memory` and `redis`."
             }
           },
           {
             "cache_control": {
               "default": false,
               "type": "boolean",
-              "required": true
+              "required": true,
+              "description": "When enabled, respect the Cache-Control behaviors defined in [RFC7234](https://tools.ietf.org/html/rfc7234#section-5.2)."
             }
           },
           {
             "storage_ttl": {
-              "type": "integer"
+              "type": "integer",
+              "description": "Number of seconds to keep resources in the storage backend. This value is independent\nof `cache_ttl` or resource TTLs defined by Cache-Control behaviors."
             }
           },
           {
@@ -115,7 +122,8 @@
                   "dictionary_name": {
                     "required": true,
                     "type": "string",
-                    "default": "kong_db_cache"
+                    "default": "kong_db_cache",
+                    "description": "The name of the shared dictionary in which to hold cache entities when the memory strategy is selected. Note that this dictionary currently must be defined manually in the Kong Nginx template."
                   }
                 }
               ]
@@ -126,7 +134,8 @@
               "type": "array",
               "elements": {
                 "type": "string"
-              }
+              },
+              "description": "Relevant query parameters considered for the cache key. If undefined, all params are taken into consideration."
             }
           },
           {
@@ -134,7 +143,8 @@
               "type": "array",
               "elements": {
                 "type": "string"
-              }
+              },
+              "description": "Relevant headers considered for the cache key. If undefined, none of the headers are taken into consideration."
             }
           },
           {
@@ -202,7 +212,8 @@
               "fields": [
                 {
                   "host": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Host to use for Redis connection when the redis strategy is defined."
                   }
                 },
                 {
@@ -211,7 +222,8 @@
                     "between": [
                       0,
                       65535
-                    ]
+                    ],
+                    "description": "Port to use for Redis connections when the `redis` strategy is defined. Must be a\nvalue between 0 and 65535. Default: 6379."
                   }
                 },
                 {
@@ -221,7 +233,8 @@
                     "between": [
                       0,
                       2147483646
-                    ]
+                    ],
+                    "description": "Connection timeout to use for Redis connection when the `redis` strategy is defined."
                   }
                 },
                 {
@@ -253,18 +266,21 @@
                 },
                 {
                   "password": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Password to use for Redis connection when the `redis` strategy is defined.\nIf undefined, no AUTH commands are sent to Redis."
                   }
                 },
                 {
                   "sentinel_password": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Sentinel password to authenticate with a Redis Sentinel instance.\nIf undefined, no AUTH commands are sent to Redis Sentinels."
                   }
                 },
                 {
                   "database": {
                     "default": 0,
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Database to use for Redis connection when the `redis` strategy is defined."
                   }
                 },
                 {
@@ -288,7 +304,8 @@
                 },
                 {
                   "sentinel_master": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Sentinel master to use for Redis connection when the `redis` strategy is defined. Defining this value implies using Redis Sentinel."
                   }
                 },
                 {
@@ -298,7 +315,8 @@
                       "master",
                       "slave",
                       "any"
-                    ]
+                    ],
+                    "description": "Sentinel role to use for Redis connections when the `redis` strategy is defined. Defining this value\nimplies using Redis Sentinel. Available options:  `master`, `slave`, `any`."
                   }
                 },
                 {
@@ -307,7 +325,8 @@
                       "type": "string"
                     },
                     "type": "array",
-                    "len_min": 1
+                    "len_min": 1,
+                    "description": "Sentinel addresses to use for Redis connections when the `redis` strategy is defined.\nDefining this value implies using Redis Sentinel. Each string element must\nbe a hostname. The minimum length of the array is 1 element."
                   }
                 },
                 {
@@ -316,27 +335,31 @@
                       "type": "string"
                     },
                     "type": "array",
-                    "len_min": 1
+                    "len_min": 1,
+                    "description": "Cluster addresses to use for Redis connection when the `redis` strategy is defined.\nDefining this value implies using Redis cluster. Each string element must\nbe a hostname. The minimum length of the array is 1 element."
                   }
                 },
                 {
                   "ssl": {
                     "required": false,
                     "type": "boolean",
-                    "default": false
+                    "default": false,
+                    "description": "If set to `true`, then uses SSL to connect to Redis.\n**Note:** This parameter is only available for Kong Gateway versions\n2.2.x and later."
                   }
                 },
                 {
                   "ssl_verify": {
                     "required": false,
                     "type": "boolean",
-                    "default": false
+                    "default": false,
+                    "description": "If set to `true`, then verifies the validity of the server SSL certificate. Note that you need to configure the\n[lua_ssl_trusted_certificate](/gateway/latest/reference/configuration/#lua_ssl_trusted_certificate)\nto specify the CA (or server) certificate used by your Redis server. You may also need to configure\n[lua_ssl_verify_depth](/gateway/latest/reference/configuration/#lua_ssl_verify_depth) accordingly.\n**Note:** This parameter is only available for Kong Gateway versions\n2.2.x and later."
                   }
                 },
                 {
                   "server_name": {
                     "required": false,
-                    "type": "string"
+                    "type": "string",
+                    "description": "Specifies the server name for the new TLS extension Server Name Indication (SNI) when connecting over SSL.\n**Note:** This parameter is only available for Kong Gateway versions\n2.2.x and later."
                   }
                 }
               ]
@@ -345,7 +368,8 @@
           {
             "bypass_on_err": {
               "type": "boolean",
-              "default": false
+              "default": false,
+              "description": "Unhandled errors while trying to retrieve a cache entry (such as redis down) are resolved with `Bypass`, with the request going upstream."
             }
           }
         ]

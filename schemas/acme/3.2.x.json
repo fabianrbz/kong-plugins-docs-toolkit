@@ -54,33 +54,38 @@
               "required": true,
               "examples": [
                 "example@example.com"
-              ]
+              ],
+              "description": "The account identifier. Can be reused in a different plugin instance."
             }
           },
           {
             "api_uri": {
               "default": "https://acme-v02.api.letsencrypt.org/directory",
-              "type": "string"
+              "type": "string",
+              "description": "The ACMEv2 API endpoint to use. You can specify the [Let's Encrypt staging environment](https://letsencrypt.org/docs/staging-environment/) for testing. Kong doesn't automatically delete staging certificates. If you use the same domain in test and production environments, you need to manually delete those certificates after testing."
             }
           },
           {
             "tos_accepted": {
               "type": "boolean",
-              "default": false
+              "default": false,
+              "description": "If you are using Let's Encrypt, you must set this to `true` to agree the [Terms of Service](https://letsencrypt.org/repository/)."
             }
           },
           {
             "eab_kid": {
               "type": "string",
               "encrypted": true,
-              "referenceable": true
+              "referenceable": true,
+              "description": "External account binding (EAB) key id. You usually don't need to set this unless it is explicitly required by the CA."
             }
           },
           {
             "eab_hmac_key": {
               "type": "string",
               "encrypted": true,
-              "referenceable": true
+              "referenceable": true,
+              "description": "External account binding (EAB) base64-encoded URL string of the HMAC key. You usually don't need to set this unless it is explicitly required by the CA."
             }
           },
           {
@@ -90,7 +95,8 @@
                 "rsa",
                 "ecc"
               ],
-              "default": "rsa"
+              "default": "rsa",
+              "description": "The certificate type to create. The possible values are `'rsa'` for RSA certificate or `'ecc'` for EC certificate."
             }
           },
           {
@@ -101,13 +107,15 @@
                 3072,
                 4096
               ],
-              "default": 4096
+              "default": 4096,
+              "description": "RSA private key size for the certificate. The possible values are 2048, 3072, or 4096."
             }
           },
           {
             "renew_threshold_days": {
               "type": "number",
-              "default": 14
+              "default": 14,
+              "description": " Days remaining to renew the certificate before it expires."
             }
           },
           {
@@ -129,19 +137,22 @@
                   ]
                 }
               },
-              "type": "array"
+              "type": "array",
+              "description": "The list of domains to create certificates for. To match subdomains under `example.com`, use `*.example.com`.\nRegex pattern is not supported.\n\nThis parameter is only used to match domains, not to specify the Common Name\nor Subject Alternative Name to create certificates. Each domain must have its own certificate.\nThe ACME plugin checks this configuration before checking any certificate in `storage` when serving the certificate of a request.\n\nIf this field is left empty, all top-level domains (TLDs) are allowed."
             }
           },
           {
             "allow_any_domain": {
               "type": "boolean",
-              "default": false
+              "default": false,
+              "description": "If set to `true`, the plugin allows all domains and ignores any values in the `domains` list."
             }
           },
           {
             "fail_backoff_minutes": {
               "type": "number",
-              "default": 5
+              "default": 5,
+              "description": "Minutes to wait for each domain that fails to create a certificate. This applies to both a\nnew certificate and a renewal certificate."
             }
           },
           {
@@ -154,7 +165,8 @@
                 "consul",
                 "vault"
               ],
-              "default": "shm"
+              "default": "shm",
+              "description": "The backend storage type to use. The possible values are `'kong'`, `'shm'`, `'redis'`, `'consul'`, or `'vault'`. In DB-less mode, `'kong'` storage is unavailable. Note that `'shm'` storage does not persist during Kong restarts and does not work for Kong running on different machines, so consider using one of `'kong'`, `'redis'`, `'consul'`, or `'vault'` in production. Please refer to the Hybrid Mode sections below as well."
             }
           },
           {

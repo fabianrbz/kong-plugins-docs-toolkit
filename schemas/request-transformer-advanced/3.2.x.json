@@ -27,7 +27,8 @@
           {
             "http_method": {
               "match": "^%u+$",
-              "type": "string"
+              "type": "string",
+              "description": "Changes the HTTP method for the upstream request."
             }
           },
           {
@@ -41,7 +42,8 @@
                     },
                     "default": [
 
-                    ]
+                    ],
+                    "description": "List of parameter names. Remove the parameter if and only if content-type is one of the\nfollowing: [`application/json`, `multipart/form-data`, `application/x-www-form-urlencoded`]; and parameter is present."
                   }
                 },
                 {
@@ -52,7 +54,8 @@
                     },
                     "default": [
 
-                    ]
+                    ],
+                    "description": "List of header names. Unset the headers with the given name."
                   }
                 },
                 {
@@ -63,7 +66,8 @@
                     },
                     "default": [
 
-                    ]
+                    ],
+                    "description": "List of querystring names. Remove the querystring if it is present."
                   }
                 }
               ],
@@ -91,7 +95,8 @@
                     },
                     "default": [
 
-                    ]
+                    ],
+                    "description": "List of parameter `name:value` pairs. Rename the parameter name if and only if content-type is\none of the following: [`application/json`, `multipart/form-data`, `application/x-www-form-urlencoded`]; and parameter is present."
                   }
                 },
                 {
@@ -103,7 +108,8 @@
                     },
                     "default": [
 
-                    ]
+                    ],
+                    "description": "List of `headername:value` pairs. If and only if the header is already set,\nrename the header. The value is unchanged. Ignored if the header is not already set."
                   }
                 },
                 {
@@ -115,7 +121,8 @@
                     },
                     "default": [
 
-                    ]
+                    ],
+                    "description": "List of `queryname:value` pairs. If and only if the field name is already set,\nrename the field name. The value is unchanged. Ignored if the field name is not already set."
                   }
                 }
               ],
@@ -143,7 +150,8 @@
                     },
                     "default": [
 
-                    ]
+                    ],
+                    "description": "List of paramname:value pairs. If and only if content-type is one the\nfollowing: [`application/json`, `multipart/form-data`, `application/x-www-form-urlencoded`];\nand the parameter is already present, replace its old value with the new one. Ignored if the parameter is not already present."
                   }
                 },
                 {
@@ -155,7 +163,8 @@
                     },
                     "default": [
 
-                    ]
+                    ],
+                    "description": "List of headername:value pairs. If and only if the header is already set,\nreplace its old value with the new one. Ignored if the header is not already set."
                   }
                 },
                 {
@@ -167,7 +176,8 @@
                     },
                     "default": [
 
-                    ]
+                    ],
+                    "description": "List of queryname:value pairs. If and only if the querystring name is already set,\nreplace its old value with the new one. Ignored if the header is not already set."
                   }
                 },
                 {
@@ -183,12 +193,14 @@
                     "type": "array",
                     "default": [
 
-                    ]
+                    ],
+                    "description": "List of JSON type names. Specify the types of the JSON values returned when replacing JSON properties."
                   }
                 },
                 {
                   "uri": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Updates the upstream request URI with given value. This value can only\nbe used to update the path part of the URI; not the scheme, nor the hostname."
                   }
                 }
               ],
@@ -216,7 +228,8 @@
                     "type": "array",
                     "default": [
 
-                    ]
+                    ],
+                    "description": "List of `paramname:value` pairs. If and only if content-type is one the following: [`application/json, multipart/form-data`, `application/x-www-form-urlencoded`]; and the parameter is not present, add a new parameter with the given value to form-encoded body.\nIgnored if the parameter is already present."
                   }
                 },
                 {
@@ -228,7 +241,8 @@
                     "type": "array",
                     "default": [
 
-                    ]
+                    ],
+                    "description": "List of `headername:value` pairs. If and only if the header is not already set,\nset a new header with the given value. Ignored if the header is already set."
                   }
                 },
                 {
@@ -240,7 +254,8 @@
                     "type": "array",
                     "default": [
 
-                    ]
+                    ],
+                    "description": "List of `queryname:value` pairs. If and only if the querystring name is not already set,\nset a new querystring with the given value. Ignored if the querystring name is already set."
                   }
                 },
                 {
@@ -256,7 +271,8 @@
                     },
                     "default": [
 
-                    ]
+                    ],
+                    "description": "List of JSON type names. Specify the types of the JSON values returned when adding a new JSON property."
                   }
                 }
               ],
@@ -285,7 +301,8 @@
                     "type": "array",
                     "default": [
 
-                    ]
+                    ],
+                    "description": "List of `paramname:value` pairs. If the content-type is one the following: [`application/json`, `application/x-www-form-urlencoded`]; add a new parameter with the given value if the parameter is not present. Otherwise, if it is already present,\nthe two values (old and new) will be aggregated in an array."
                   }
                 },
                 {
@@ -297,7 +314,8 @@
                     "type": "array",
                     "default": [
 
-                    ]
+                    ],
+                    "description": "List of `headername:value` pairs. If the header is not set, set it with the given value.\nIf it is already set, a new header with the same name and the new value will be set."
                   }
                 },
                 {
@@ -309,7 +327,8 @@
                     "type": "array",
                     "default": [
 
-                    ]
+                    ],
+                    "description": "List of `queryname:value` pairs. If the querystring is not set, set it with the given value.\nIf it is already set, a new querystring with the same name and the new value will be set."
                   }
                 },
                 {
@@ -325,7 +344,8 @@
                     },
                     "default": [
 
-                    ]
+                    ],
+                    "description": "List of JSON type names. Specify the types of the JSON values returned when appending JSON properties."
                   }
                 }
               ],
@@ -341,7 +361,8 @@
                     "elements": {
                       "type": "string"
                     },
-                    "type": "set"
+                    "type": "set",
+                    "description": "Set of parameter names. If and only if content-type is one the following:\n[`application/json`, `multipart/form-data`, `application/x-www-form-urlencoded`]; allow only allowed parameters in the body."
                   }
                 }
               ],
@@ -352,7 +373,8 @@
           {
             "dots_in_keys": {
               "type": "boolean",
-              "default": true
+              "default": true,
+              "description": "Specify whether dots (for example, `customers.info.phone`) should be treated as part of a property name or used to descend into nested JSON objects. \nSee [Arrays and nested objects](#arrays-and-nested-objects)."
             }
           }
         ],

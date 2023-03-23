@@ -38,7 +38,8 @@
               "type": "array",
               "elements": {
                 "type": "string"
-              }
+              },
+              "description": "List of allowed domains for the `Access-Control-Allow-Origin` header. If you want to allow all origins, add `*` as a single value to this configuration field. The accepted values can either be flat strings or PCRE regexes."
             }
           },
           {
@@ -46,7 +47,8 @@
               "type": "array",
               "elements": {
                 "type": "string"
-              }
+              },
+              "description": "Value for the `Access-Control-Allow-Headers` header."
             }
           },
           {
@@ -54,7 +56,8 @@
               "type": "array",
               "elements": {
                 "type": "string"
-              }
+              },
+              "description": "Value for the `Access-Control-Expose-Headers` header. If not specified, no custom headers are exposed."
             }
           },
           {
@@ -84,24 +87,28 @@
                 "OPTIONS",
                 "TRACE",
                 "CONNECT"
-              ]
+              ],
+              "description": "'Value for the `Access-Control-Allow-Methods` header. Available options include `GET`, `HEAD`, `PUT`, `PATCH`, `POST`, `DELETE`, `OPTIONS`, `TRACE`, `CONNECT`. By default, all options are allowed.'"
             }
           },
           {
             "max_age": {
-              "type": "number"
+              "type": "number",
+              "description": "Indicates how long the results of the preflight request can be cached, in `seconds`."
             }
           },
           {
             "credentials": {
               "type": "boolean",
-              "default": false
+              "default": false,
+              "description": "Flag to determine whether the `Access-Control-Allow-Credentials` header should be sent with `true` as the value."
             }
           },
           {
             "preflight_continue": {
               "type": "boolean",
-              "default": false
+              "default": false,
+              "description": "A boolean value that instructs the plugin to proxy the `OPTIONS` preflight request to the Upstream service."
             }
           }
         ]

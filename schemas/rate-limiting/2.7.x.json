@@ -30,13 +30,15 @@
               "gt": 0,
               "examples": [
                 5
-              ]
+              ],
+              "description": "The number of HTTP requests that can be made per second."
             }
           },
           {
             "minute": {
               "type": "number",
-              "gt": 0
+              "gt": 0,
+              "description": "The number of HTTP requests that can be made per minute."
             }
           },
           {
@@ -45,25 +47,29 @@
               "gt": 0,
               "examples": [
                 10000
-              ]
+              ],
+              "description": "The number of HTTP requests that can be made per hour."
             }
           },
           {
             "day": {
               "type": "number",
-              "gt": 0
+              "gt": 0,
+              "description": "The number of HTTP requests that can be made per day."
             }
           },
           {
             "month": {
               "type": "number",
-              "gt": 0
+              "gt": 0,
+              "description": "The number of HTTP requests that can be made per month."
             }
           },
           {
             "year": {
               "type": "number",
-              "gt": 0
+              "gt": 0,
+              "description": "The number of HTTP requests that can be made per year."
             }
           },
           {
@@ -77,12 +83,14 @@
                 "path"
               ],
               "type": "string",
-              "default": "consumer"
+              "default": "consumer",
+              "description": "The entity that is used when aggregating the limits. Available values are:\n- `consumer`\n- `credential`\n- `ip`\n- `service`\n- `header` (The `header_name` configuration must be provided.)\n- `path` (The `path` configuration must be provided.)\n\nIf the entity value for aggregating the limits cannot be determined, the system falls back to `ip`."
             }
           },
           {
             "header_name": {
-              "type": "string"
+              "type": "string",
+              "description": "Header name to be used if `limit_by` is set to `header`."
             }
           },
           {
@@ -94,7 +102,8 @@
                 }
               ],
               "type": "string",
-              "starts_with": "/"
+              "starts_with": "/",
+              "description": "Path to be used if `limit_by` is set to `path`."
             }
           },
           {
@@ -109,19 +118,22 @@
               "len_min": 0,
               "examples": [
                 "local"
-              ]
+              ],
+              "description": "The rate-limiting policies to use for retrieving and incrementing the\nlimits. Available values are:\n- `local`: Counters are stored locally in-memory on the node.\n- `cluster`: Counters are stored in the Kong data store and shared across\nthe nodes.\n- `redis`: Counters are stored on a Redis server and shared\nacross the nodes.\n\nIn DB-less, hybrid mode, and Konnect, the `cluster` config policy is not supported.\nFor DB-less mode or Konnect, use one of `redis` or `local`; for hybrid mode, use\n`redis`, or `local` for data planes only.\n\nFor details on which policy should be used, refer to the\n[implementation considerations](#implementation-considerations)."
             }
           },
           {
             "fault_tolerant": {
               "type": "boolean",
               "required": true,
-              "default": true
+              "default": true,
+              "description": "A boolean value that determines if the requests should be proxied even if Kong has troubles connecting a third-party data store. If `true`, requests will be proxied anyway, effectively disabling the rate-limiting function until the data store is working again. If `false`, then the clients will see `500` errors."
             }
           },
           {
             "redis_host": {
-              "type": "string"
+              "type": "string",
+              "description": "When using the `redis` policy, this property specifies the address to the Redis server."
             }
           },
           {
@@ -131,51 +143,59 @@
               "between": [
                 0,
                 65535
-              ]
+              ],
+              "description": "When using the `redis` policy, this property specifies the port of the Redis server. By default is `6379`."
             }
           },
           {
             "redis_password": {
               "type": "string",
-              "len_min": 0
+              "len_min": 0,
+              "description": "When using the `redis` policy, this property specifies the password to connect to the Redis server."
             }
           },
           {
             "redis_ssl": {
               "type": "boolean",
               "required": true,
-              "default": false
+              "default": false,
+              "description": "When using the `redis` policy, this property specifies if SSL is used to connect to the Redis server."
             }
           },
           {
             "redis_ssl_verify": {
               "type": "boolean",
               "required": true,
-              "default": false
+              "default": false,
+              "description": "When using the `redis` policy with `redis_ssl` set to `true`, this property specifies it server SSL certificate is validated. Note that you need to configure the lua_ssl_trusted_certificate to specify the CA (or server) certificate used by your Redis server. You may also need to configure lua_ssl_verify_depth accordingly."
             }
           },
           {
             "redis_server_name": {
-              "type": "string"
+              "type": "string",
+              "description": "When using the `redis` policy with `redis_ssl` set to `true`, this property specifies the server name for the TLS extension Server Name Indication (SNI)"
             }
           },
           {
             "redis_timeout": {
               "type": "number",
-              "default": 2000
+              "default": 2000,
+              "description": "When using the `redis` policy, this property specifies the timeout in milliseconds of any command submitted to the Redis server."
             }
           },
           {
             "redis_database": {
               "type": "integer",
-              "default": 0
+              "default": 0,
+              "description": "When using the `redis` policy, this property specifies the Redis database to use."
             }
           },
           {
             "hide_client_headers": {
               "type": "boolean",
               "required": true,
-              "default": false
+              "default": false,
+              "description": "Optionally hide informative response headers."
             }
           }
         ],

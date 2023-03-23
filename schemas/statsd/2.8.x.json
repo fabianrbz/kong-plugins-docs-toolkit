@@ -35,7 +35,8 @@
               "type": "string",
               "examples": [
                 "127.0.0.1"
-              ]
+              ],
+              "description": "The IP address or hostname of StatsD server to send data to."
             }
           },
           {
@@ -48,13 +49,15 @@
               "type": "integer",
               "examples": [
                 8125
-              ]
+              ],
+              "description": "The port of StatsD server to send data to."
             }
           },
           {
             "prefix": {
               "default": "kong",
-              "type": "string"
+              "type": "string",
+              "description": "String to prefix to each metric's name."
             }
           },
           {
@@ -222,7 +225,8 @@
                   "consumer_identifier": "custom_id"
                 }
               ],
-              "type": "array"
+              "type": "array",
+              "description": "List of metrics to be logged. Available values are described under [Metrics](#metrics)."
             }
           }
         ],

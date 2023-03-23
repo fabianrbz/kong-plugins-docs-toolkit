@@ -62,7 +62,8 @@
               "type": "array",
               "default": [
 
-              ]
+              ],
+              "description": "An array of regular expressions that should be allowed. The regular expressions will be checked against the `User-Agent` header."
             }
           },
           {
@@ -79,7 +80,8 @@
                 [
                   "helloworld"
                 ]
-              ]
+              ],
+              "description": "An array of regular expressions that should be denied. The regular expressions will be checked against the `User-Agent` header."
             }
           }
         ]

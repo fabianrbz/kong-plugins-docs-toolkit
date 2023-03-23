@@ -32,7 +32,8 @@
           {
             "host": {
               "type": "string",
-              "default": "localhost"
+              "default": "localhost",
+              "description": "The IP address or hostname of StatsD server to send data to."
             }
           },
           {
@@ -42,13 +43,15 @@
                 0,
                 65535
               ],
-              "default": 8125
+              "default": 8125,
+              "description": "The port of StatsD server to send data to."
             }
           },
           {
             "prefix": {
               "type": "string",
-              "default": "kong"
+              "default": "kong",
+              "description": "String to prefix to each metric's name."
             }
           },
           {
@@ -216,7 +219,8 @@
                   "name": "status_count_per_user",
                   "consumer_identifier": "custom_id"
                 }
-              ]
+              ],
+              "description": "List of metrics to be logged. Available values are described under [Metrics](#metrics)."
             }
           }
         ]

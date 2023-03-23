@@ -51,7 +51,8 @@
                 [
                   200
                 ]
-              ]
+              ],
+              "description": "Upstream response status code considered cacheable."
             }
           },
           {
@@ -77,7 +78,8 @@
                   "GET",
                   "HEAD"
                 ]
-              ]
+              ],
+              "description": "Downstream request methods considered cacheable."
             }
           },
           {
@@ -96,7 +98,8 @@
                   "text/plain",
                   "application/json"
                 ]
-              ]
+              ],
+              "description": "Upstream response content types considered cacheable. The plugin performs an **exact match** against each specified value; for example, if the upstream is expected to respond with a `application/json; charset=utf-8` content-type, the plugin configuration must contain said value or a `Bypass` cache status is returned."
             }
           },
           {
@@ -106,7 +109,8 @@
               "default": 300,
               "examples": [
                 300
-              ]
+              ],
+              "description": "TTL, in seconds, of cache entities."
             }
           },
           {
@@ -118,19 +122,22 @@
               ],
               "examples": [
                 "memory"
-              ]
+              ],
+              "description": "The backing data store in which to hold cache entities. The only accepted value is `memory`."
             }
           },
           {
             "cache_control": {
               "type": "boolean",
               "required": true,
-              "default": false
+              "default": false,
+              "description": "When enabled, respect the Cache-Control behaviors defined in [RFC7234](https://tools.ietf.org/html/rfc7234#section-5.2)."
             }
           },
           {
             "storage_ttl": {
-              "type": "integer"
+              "type": "integer",
+              "description": "Number of seconds to keep resources in the storage backend. This value is independent of `cache_ttl` or resource TTLs defined by Cache-Control behaviors."
             }
           },
           {
@@ -140,7 +147,8 @@
                   "dictionary_name": {
                     "type": "string",
                     "required": true,
-                    "default": "kong_db_cache"
+                    "default": "kong_db_cache",
+                    "description": "The name of the shared dictionary in which to hold cache entities when the memory strategy is selected. Note that this dictionary currently must be defined manually in the Kong Nginx template."
                   }
                 }
               ],
@@ -153,7 +161,8 @@
               "elements": {
                 "type": "string"
               },
-              "type": "array"
+              "type": "array",
+              "description": "Relevant query parameters considered for the cache key. If undefined, all params are taken into consideration."
             }
           },
           {
@@ -161,7 +170,8 @@
               "elements": {
                 "type": "string"
               },
-              "type": "array"
+              "type": "array",
+              "description": "Relevant headers considered for the cache key. If undefined, none of the headers are taken into consideration."
             }
           }
         ],

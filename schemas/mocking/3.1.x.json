@@ -28,7 +28,8 @@
           {
             "api_specification_filename": {
               "required": false,
-              "type": "string"
+              "type": "string",
+              "description": "The path and name of the specification file loaded into Kong Gateway's database. You cannot\nuse this option for DB-less or hybrid mode."
             }
           },
           {
@@ -37,7 +38,8 @@
               "required": false,
               "examples": [
                 "openapi: 3.0.1\ninfo:\n  title: OpenAPI 3.0 API\n  description: This is a simple API\n  contact:\n    email: example@example.com\n  version: 1.0.0\n"
-              ]
+              ],
+              "description": "The contents of the specification file. You must use this option for hybrid or DB-less mode.\nWith this configuration option, you can include the full specification as part of the configuration,\ninstead of referring to a separate file with `api_specification_filename` that lives next to the Kong Gateway.\nIn Kong Manager, you can copy and paste the contents of the spec directly into\nthe `Config.Api Specification` text field."
             }
           },
           {
@@ -46,7 +48,8 @@
               "type": "boolean",
               "examples": [
                 true
-              ]
+              ],
+              "description": "Enables a random delay in the mocked response. Introduces delays to simulate\nreal-time response times by APIs."
             }
           },
           {
@@ -55,7 +58,8 @@
               "type": "number",
               "examples": [
                 1
-              ]
+              ],
+              "description": "The maximum value in seconds of delay time. Set this value when `random_delay` is enabled\nand you want to adjust the default. The value must be greater than the\n`min_delay_time`."
             }
           },
           {
@@ -64,7 +68,8 @@
               "type": "number",
               "examples": [
                 0.001
-              ]
+              ],
+              "description": "The minimum value in seconds of delay time. Set this value when `random_delay` is enabled\nand you want to adjust the default. The value must be less than the\n`max_delay_time`."
             }
           },
           {
@@ -73,7 +78,8 @@
               "type": "boolean",
               "examples": [
                 true
-              ]
+              ],
+              "description": "Randomly selects one example and returns it. This parameter requires the spec to have multiple examples configured."
             }
           },
           {
@@ -81,14 +87,16 @@
               "type": "array",
               "elements": {
                 "type": "integer"
-              }
+              },
+              "description": "A global list of the HTTP status codes that can only be selected and returned."
             }
           },
           {
             "random_status_code": {
               "default": false,
               "required": true,
-              "type": "boolean"
+              "type": "boolean",
+              "description": "Determines whether to randomly select an HTTP status code from the responses of the corresponding API method.\nThe default value is `false`, which means the minimum HTTP status code is always selected and returned."
             }
           }
         ],

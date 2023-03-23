@@ -13,7 +13,8 @@
               ],
               "required": true,
               "default": "consumer",
-              "type": "string"
+              "type": "string",
+              "description": "How to define the rate limit key. Can be `ip`, `credential`, `consumer`."
             }
           },
           {
@@ -27,7 +28,8 @@
                 [
                   30
                 ]
-              ]
+              ],
+              "description": "One or more window sizes to apply a limit to (defined in seconds)."
             }
           },
           {
@@ -37,7 +39,8 @@
                 "sliding"
               ],
               "default": "sliding",
-              "type": "string"
+              "type": "string",
+              "description": "Sets the time window to either `sliding` or `fixed`."
             }
           },
           {
@@ -51,7 +54,8 @@
                 [
                   5
                 ]
-              ]
+              ],
+              "description": "One or more requests-per-window limits to apply."
             }
           },
           {
@@ -60,7 +64,8 @@
               "type": "number",
               "examples": [
                 -1
-              ]
+              ],
+              "description": "How often to sync counter data to the central data store. A value of 0\nresults in synchronous behavior; a value of -1 ignores sync behavior\nentirely and only stores counters in node memory. A value greater than\n0 syncs the counters in that many number of seconds."
             }
           },
           {
@@ -69,7 +74,8 @@
               "type": "string",
               "examples": [
                 "example_namespace"
-              ]
+              ],
+              "description": "The rate limiting library namespace to use for this plugin instance. Counter\ndata and sync configuration is shared in a namespace.\n\n{:.important}\n> **Important**: If managing Kong Gateway with **declarative configuration** or running\nKong Gateway in **DB-less mode**, set the `namespace` explicitly in your declarative configuration.\n> <br><br>\n> If not set, you will run into the following issues:\n* In DB-less mode, this field will be regenerated automatically on every configuration change.\n* If applying declarative configuration with decK, decK will automatically fail the update and require a\n`namespace` value."
             }
           },
           {
@@ -83,20 +89,23 @@
               "type": "string",
               "examples": [
                 "cluster"
-              ]
+              ],
+              "description": "The rate-limiting strategy to use for retrieving and incrementing the\nlimits. Available values are:\n- `cluster`: Counters are stored in the Kong datastore and shared across\nthe nodes.\n- `redis`: Counters are stored on a Redis server and shared\nacross the nodes.\n\nIn DB-less and hybrid modes, the `cluster` config strategy is not\nsupported.\n\n{:.important}\n> There is no local storage strategy. However, you can achieve local\nrate limiting by using a placeholder `strategy` value (either `cluster` or `redis`)\nand a `sync_rate` of `-1`. This setting stores counters in-memory on the\nnode.\n<br><br>If using `redis` as the placeholder value, you must fill in all\nadditional `redis` configuration parameters with placeholder values.\n\nFor details on which strategy should be used, refer to the\n[implementation considerations](/hub/kong-inc/rate-limiting/#implementation-considerations)."
             }
           },
           {
             "dictionary_name": {
               "required": true,
               "default": "kong_rate_limiting_counters",
-              "type": "string"
+              "type": "string",
+              "description": "The shared dictionary where counters will be stored until the next sync cycle."
             }
           },
           {
             "hide_client_headers": {
               "default": false,
-              "type": "boolean"
+              "type": "boolean",
+              "description": "Optionally hide informative response headers. Available options: `true` or `false`."
             }
           },
           {
@@ -106,7 +115,8 @@
                 "node_quantifier"
               ],
               "default": "default",
-              "type": "string"
+              "type": "string",
+              "description": "Strategy to use to evaluate query costs. Either `default` or\n`node_quantifier`. See [default](/hub/kong-inc/graphql-rate-limiting-advanced/#default) and\n[node_quantifier](/hub/kong-inc/graphql-rate-limiting-advanced/#node_quantifier) respectively."
             }
           },
           {
@@ -114,14 +124,16 @@
               "required": false,
               "gt": 0,
               "default": 1,
-              "type": "number"
+              "type": "number",
+              "description": "A scoring factor to multiply (or divide) the cost. The `score_factor` must always be greater than 0."
             }
           },
           {
             "max_cost": {
               "required": false,
               "default": 0,
-              "type": "number"
+              "type": "number",
+              "description": "A defined maximum cost per query. 0 means unlimited."
             }
           },
           {
@@ -130,7 +142,8 @@
               "fields": [
                 {
                   "host": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Host to use for Redis connection when the `redis` strategy is defined."
                   }
                 },
                 {
@@ -139,7 +152,8 @@
                       0,
                       65535
                     ],
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Port to use for Redis connection when the `redis` strategy is defined."
                   }
                 },
                 {
@@ -149,7 +163,8 @@
                       2147483646
                     ],
                     "default": 2000,
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Connection timeout (in milliseconds) to use for Redis connection when the `redis` strategy is defined."
                   }
                 },
                 {
@@ -182,20 +197,23 @@
                 {
                   "username": {
                     "referenceable": true,
-                    "type": "string"
+                    "type": "string",
+                    "description": "Username to use for Redis connection when the `redis` strategy is defined and ACL authentication is desired.\nIf undefined, ACL authentication will not be performed.\n\nThis requires Redis v6.0.0+. The username **cannot** be set to `default`."
                   }
                 },
                 {
                   "password": {
                     "encrypted": true,
                     "referenceable": true,
-                    "type": "string"
+                    "type": "string",
+                    "description": "Password to use for Redis connection when the `redis` strategy is defined.\nIf undefined, no AUTH commands are sent to Redis."
                   }
                 },
                 {
                   "sentinel_username": {
                     "referenceable": true,
-                    "type": "string"
+                    "type": "string",
+                    "description": "Sentinel username to authenticate with a Redis Sentinel instance.\nIf undefined, ACL authentication will not be performed. This requires Redis v6.2.0+."
                   }
                 },
                 {
@@ -208,7 +226,8 @@
                 {
                   "database": {
                     "default": 0,
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Database to use for Redis connection when the `redis` strategy is defined."
                   }
                 },
                 {
@@ -218,7 +237,8 @@
                       2147483646
                     ],
                     "default": 30,
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The size limit for every cosocket connection pool associated with every remote\nserver, per worker process. If no `keepalive_pool_size` is specified and no `keepalive_backlog`\nis specified, no pool is created. If no `keepalive_pool_size` is specified and `keepalive_backlog`\nis specified, then the pool uses the default value `30`."
                   }
                 },
                 {
@@ -227,12 +247,14 @@
                       0,
                       2147483646
                     ],
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "If specified, limits the total number of opened connections for a pool. If the\nconnection pool is full, all connection queues beyond the maximum limit go into\nthe backlog queue. Once the backlog queue is full, subsequent connect operations\nwill fail and return `nil`. Queued connect operations resume once the number of\nconnections in the pool is less than `keepalive_pool_size`. Note that queued\nconnect operations are subject to set timeouts."
                   }
                 },
                 {
                   "sentinel_master": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Sentinel master to use for Redis connection when the `redis` strategy is defined. Defining this value implies using Redis Sentinel."
                   }
                 },
                 {
@@ -242,7 +264,8 @@
                       "slave",
                       "any"
                     ],
-                    "type": "string"
+                    "type": "string",
+                    "description": "Sentinel role to use for Redis connection when the `redis` strategy is defined. Defining this value implies using Redis Sentinel."
                   }
                 },
                 {
@@ -251,7 +274,8 @@
                       "type": "string"
                     },
                     "len_min": 1,
-                    "type": "array"
+                    "type": "array",
+                    "description": "Sentinel addresses to use for Redis connection when the `redis` strategy is defined. Defining this value implies using Redis Sentinel."
                   }
                 },
                 {
@@ -260,27 +284,31 @@
                       "type": "string"
                     },
                     "len_min": 1,
-                    "type": "array"
+                    "type": "array",
+                    "description": "Cluster addresses to use for Redis connection when the `redis` strategy is defined. Defining this value implies using Redis cluster."
                   }
                 },
                 {
                   "ssl": {
                     "required": false,
                     "default": false,
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "If set to true, then uses SSL to connect to Redis."
                   }
                 },
                 {
                   "ssl_verify": {
                     "required": false,
                     "default": false,
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "If set to true, then verifies the validity of the server SSL certificate. Note that you need to configure the\n[lua_ssl_trusted_certificate](/gateway/latest/reference/configuration/#lua_ssl_trusted_certificate)\nto specify the CA (or server) certificate used by your redis server. You may also need to configure\n[lua_ssl_verify_depth](/gateway/latest/reference/configuration/#lua_ssl_verify_depth) accordingly."
                   }
                 },
                 {
                   "server_name": {
                     "required": false,
-                    "type": "string"
+                    "type": "string",
+                    "description": "Specifies the server name for the new TLS extension Server Name Indication (SNI) when connecting over SSL."
                   }
                 }
               ],

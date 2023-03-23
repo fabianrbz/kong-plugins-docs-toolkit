@@ -33,7 +33,8 @@
             "host": {
               "type": "string",
               "required": true,
-              "default": "localhost"
+              "default": "localhost",
+              "description": "The IP address or hostname to send data to."
             }
           },
           {
@@ -44,13 +45,15 @@
                 0,
                 65535
               ],
-              "default": 8125
+              "default": 8125,
+              "description": "The port to send data to on the upstream server."
             }
           },
           {
             "prefix": {
               "type": "string",
-              "default": "kong"
+              "default": "kong",
+              "description": "String to be attached as a prefix to a metric's name."
             }
           },
           {
@@ -185,7 +188,8 @@
                   "name": "kong_latency",
                   "consumer_identifier": "custom_id"
                 }
-              ]
+              ],
+              "description": "List of metrics to be logged. Available values are described at [Metrics](#metrics).\nBy default, the plugin logs all available metrics. If you specify an array of metrics,\nonly the listed metrics are logged."
             }
           }
         ],

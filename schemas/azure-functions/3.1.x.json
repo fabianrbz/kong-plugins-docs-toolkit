@@ -34,25 +34,29 @@
           {
             "timeout": {
               "default": 600000,
-              "type": "number"
+              "type": "number",
+              "description": "Timeout in milliseconds before closing a connection to the Azure Functions server."
             }
           },
           {
             "keepalive": {
               "default": 60000,
-              "type": "number"
+              "type": "number",
+              "description": "Time in milliseconds during which an idle connection to the Azure Functions server lives before being closed."
             }
           },
           {
             "https": {
               "default": true,
-              "type": "boolean"
+              "type": "boolean",
+              "description": "Use of HTTPS to connect with the Azure Functions server."
             }
           },
           {
             "https_verify": {
               "default": false,
-              "type": "boolean"
+              "type": "boolean",
+              "description": "Set to `true` to authenticate the Azure Functions server."
             }
           },
           {
@@ -62,14 +66,16 @@
               "encrypted": true,
               "examples": [
                 "<AZURE_APIKEY>"
-              ]
+              ],
+              "description": "The apikey to access the Azure resources. If provided, it is injected as the `x-functions-key` header."
             }
           },
           {
             "clientid": {
               "type": "string",
               "referenceable": true,
-              "encrypted": true
+              "encrypted": true,
+              "description": "The `clientid` to access the Azure resources. If provided, it is injected as the `x-functions-clientid` header."
             }
           },
           {
@@ -78,7 +84,8 @@
               "type": "string",
               "examples": [
                 "<AZURE_APPNAME>"
-              ]
+              ],
+              "description": "The Azure app name."
             }
           },
           {
@@ -88,13 +95,15 @@
               "type": "string",
               "examples": [
                 "azurewebsites.net"
-              ]
+              ],
+              "description": "The domain where the function resides."
             }
           },
           {
             "routeprefix": {
               "default": "api",
-              "type": "string"
+              "type": "string",
+              "description": "Route prefix to use."
             }
           },
           {
@@ -103,7 +112,8 @@
               "type": "string",
               "examples": [
                 "<AZURE_FUNCTIONNAME>"
-              ]
+              ],
+              "description": "Name of the Azure function to invoke."
             }
           }
         ],

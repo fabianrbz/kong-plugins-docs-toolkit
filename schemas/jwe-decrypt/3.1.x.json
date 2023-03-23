@@ -15,14 +15,16 @@
             "lookup_header_name": {
               "required": true,
               "type": "string",
-              "default": "Authorization"
+              "default": "Authorization",
+              "description": "The name of the header to look for the JWE token."
             }
           },
           {
             "forward_header_name": {
               "required": true,
               "type": "string",
-              "default": "Authorization"
+              "default": "Authorization",
+              "description": "The name of the header that is used to set the decrypted value."
             }
           },
           {
@@ -36,13 +38,15 @@
                 [
                   "dummyID"
                 ]
-              ]
+              ],
+              "description": "Denote the name or names of all Key Sets that should be inspected when trying to find a suitable key to decrypt the JWE token."
             }
           },
           {
             "strict": {
               "default": true,
-              "type": "boolean"
+              "type": "boolean",
+              "description": "Defines how the plugin behaves in cases where no token was found in the request. When using `strict` mode, the request requires a token to be present and subsequently raise an error if none could be found."
             }
           }
         ],

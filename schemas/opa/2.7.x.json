@@ -38,7 +38,8 @@
                 "https"
               ],
               "type": "string",
-              "default": "http"
+              "default": "http",
+              "description": "The protocol to use when talking to Open Policy Agent (OPA) server. Allowed protocols are `http` and `https`."
             }
           },
           {
@@ -48,7 +49,8 @@
               "required": true,
               "examples": [
                 "localhost"
-              ]
+              ],
+              "description": "The DNS name or IP address of the OPA server."
             }
           },
           {
@@ -62,7 +64,8 @@
               ],
               "examples": [
                 8181
-              ]
+              ],
+              "description": "The port of the OPA server."
             }
           },
           {
@@ -78,25 +81,29 @@
               "starts_with": "/",
               "examples": [
                 "/v1/data/example/kong/allowBoolean"
-              ]
+              ],
+              "description": "The HTTP path to use when making a request to the OPA server. This is usually the path to the policy and rule to evaluate, prefixed with `/v1/data/`. For example,\nif you want to evaluate the `allow` rule inside `example.kong` package, then the path would be `/v1/data/example/kong/allowBoolean`."
             }
           },
           {
             "include_service_in_opa_input": {
               "type": "boolean",
-              "default": false
+              "default": false,
+              "description": "If set to true, the Kong Gateway Service object in use for the current request is included as input to OPA."
             }
           },
           {
             "include_route_in_opa_input": {
               "type": "boolean",
-              "default": false
+              "default": false,
+              "description": "If set to true, the Kong Gateway Route object in use for the current request is included as input to OPA."
             }
           },
           {
             "include_consumer_in_opa_input": {
               "type": "boolean",
-              "default": false
+              "default": false,
+              "description": "If set to true, the Kong Gateway Consumer object in use for the current request (if any) is included as input to OPA."
             }
           }
         ],

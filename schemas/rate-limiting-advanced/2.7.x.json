@@ -18,7 +18,8 @@
               "required": true,
               "examples": [
                 "consumer"
-              ]
+              ],
+              "description": "The type of identifier used to generate the rate limit key.\nDefines the scope used to increment the rate limiting counters.\nCan be `ip`, `credential`, `consumer`, `service`, `header`, or `path`."
             }
           },
           {
@@ -32,7 +33,8 @@
                 [
                   30
                 ]
-              ]
+              ],
+              "description": "One or more window sizes to apply a limit to (defined in seconds). There\nmust be a matching number of window limits and sizes specified."
             }
           },
           {
@@ -42,7 +44,8 @@
                 "sliding"
               ],
               "type": "string",
-              "default": "sliding"
+              "default": "sliding",
+              "description": "Sets the time window type to either `sliding` (default) or `fixed`.\nSliding windows apply the rate limiting logic while taking into account\nprevious hit rates (from the window that immediately precedes the current)\nusing a dynamic weight.\nFixed windows consist of buckets that are statically assigned to a\ndefinitive time range, each request is mapped to only one fixed window\nbased on its timestamp and will affect only that window's counters.\nFor more information refer to the\n[Enterprise Rate Limiting Library Overview](/gateway/latest/reference/rate-limiting/#overview)."
             }
           },
           {
@@ -56,12 +59,14 @@
                 [
                   5
                 ]
-              ]
+              ],
+              "description": "One or more requests-per-window limits to apply. There must be a matching\nnumber of window limits and sizes specified."
             }
           },
           {
             "sync_rate": {
-              "type": "number"
+              "type": "number",
+              "description": "How often to sync counter data to the central data store. A value of 0\nresults in synchronous behavior; a value of -1 ignores sync behavior\nentirely and only stores counters in node memory. A value greater than\n0 will sync the counters in the specified number of seconds. The minimum\nallowed interval is 0.02 seconds (20ms)."
             }
           },
           {
@@ -71,7 +76,8 @@
               "auto": true,
               "examples": [
                 "example_namespace"
-              ]
+              ],
+              "description": "The rate limiting library namespace to use for this plugin instance. Counter\ndata and sync configuration is isolated in each namespace.\n{:.important}\n> **Important**: If managing Kong Gateway with **declarative configuration** or running\nKong Gateway in **DB-less mode**, set the `namespace` explicitly in your declarative configuration.\n> <br><br>\n> If not set, you will run into the following issues:\n* In DB-less mode, this field will be regenerated automatically on every configuration change.\n* If applying declarative configuration with decK, decK will automatically fail the update and require a \n`namespace` value."
             }
           },
           {
@@ -86,14 +92,16 @@
               "required": true,
               "examples": [
                 "local"
-              ]
+              ],
+              "description": "The rate-limiting strategy to use for retrieving and incrementing the\nlimits. Available values are:\n- `cluster`: Counters are stored in the Kong datastore and shared across\n   the nodes.\n- `redis`: Counters are stored on a Redis server and shared\n   across the nodes.\n- `local`: Counters are stored locally in-memory on the node (same effect\n   as setting `sync_rate` to `-1`).\n\nIn DB-less, hybrid mode, and Konnect, the `cluster` config strategy\nis not supported.\n\nFor details on which strategy should be used, refer to the\n[implementation considerations](/hub/kong-inc/rate-limiting/#implementation-considerations)."
             }
           },
           {
             "dictionary_name": {
               "type": "string",
               "default": "kong_rate_limiting_counters",
-              "required": true
+              "required": true,
+              "description": "The shared dictionary where counters are stored. When the plugin is\nconfigured to synchronize counter data externally (that is \n`config.strategy` is `cluster` or `redis` and `config.sync_rate` isn't\n`-1`), this dictionary serves as a buffer to populate counters in the\ndata store on each synchronization cycle."
             }
           },
           {
@@ -102,18 +110,21 @@
               "default": false,
               "examples": [
                 false
-              ]
+              ],
+              "description": "Optionally hide informative response headers that would otherwise\nprovide information about the current status of limits and counters as\ndescribed in the paragraph [Headers sent to the client](#headers-sent-to-the-client).\nAvailable options: `true` or `false`."
             }
           },
           {
             "retry_after_jitter_max": {
               "type": "number",
-              "default": 0
+              "default": 0,
+              "description": "The upper bound of a jitter (random delay) in seconds to be added to the `Retry-After`\nheader of denied requests (status = `429`) in order to prevent all the clients\nfrom coming back at the same time. The lower bound of the jitter is `0`; in this case,\nthe `Retry-After` header is equal to the `RateLimit-Reset` header."
             }
           },
           {
             "header_name": {
-              "type": "string"
+              "type": "string",
+              "description": "Header name to use as the rate limit key when `config.identifier` is\nconfigured with the value `header`. Ignored when `config.identifier` is not `header`."
             }
           },
           {
@@ -134,7 +145,8 @@
               "fields": [
                 {
                   "host": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Host to use for Redis connection when the `redis` strategy is defined.\nThis parameter accepts a hostname or an IP address as a value."
                   }
                 },
                 {
@@ -143,7 +155,8 @@
                     "between": [
                       0,
                       65535
-                    ]
+                    ],
+                    "description": "Specifies the Redis server port when using the `redis` strategy. Must be a\nvalue between 0 and 65535. Default: 6379."
                   }
                 },
                 {
@@ -153,7 +166,8 @@
                     "between": [
                       0,
                       2147483646
-                    ]
+                    ],
+                    "description": "Connection timeout (in milliseconds) to use for Redis connection when the `redis` strategy is defined."
                   }
                 },
                 {
@@ -162,7 +176,8 @@
                     "between": [
                       0,
                       2147483646
-                    ]
+                    ],
+                    "description": "Connection timeout to use for Redis connection when the `redis` strategy is defined."
                   }
                 },
                 {
@@ -171,7 +186,8 @@
                     "between": [
                       0,
                       2147483646
-                    ]
+                    ],
+                    "description": "Send timeout to use for Redis connection when the `redis` strategy is defined."
                   }
                 },
                 {
@@ -180,25 +196,29 @@
                     "between": [
                       0,
                       2147483646
-                    ]
+                    ],
+                    "description": "Read timeout to use for Redis connection when the `redis` strategy is defined."
                   }
                 },
                 {
                   "password": {
                     "type": "string",
-                    "encrypted": true
+                    "encrypted": true,
+                    "description": "Password to use for Redis connection when the `redis` strategy is defined.\nIf undefined, no AUTH commands are sent to Redis."
                   }
                 },
                 {
                   "sentinel_password": {
                     "type": "string",
-                    "encrypted": true
+                    "encrypted": true,
+                    "description": "Sentinel password to authenticate with a Redis Sentinel instance.\nIf undefined, no AUTH commands are sent to Redis Sentinels."
                   }
                 },
                 {
                   "database": {
                     "type": "integer",
-                    "default": 0
+                    "default": 0,
+                    "description": "Database to use for Redis connection when the `redis` strategy is defined."
                   }
                 },
                 {
@@ -208,7 +228,8 @@
                     "between": [
                       1,
                       2147483646
-                    ]
+                    ],
+                    "description": "The size limit for every cosocket connection pool associated with every remote\nserver, per worker process. If no `keepalive_pool_size` is specified and no `keepalive_backlog`\nis specified, no pool is created. If no `keepalive_pool_size` is specified and `keepalive_backlog`\nis specified, then the pool uses the default value `30`."
                   }
                 },
                 {
@@ -217,12 +238,14 @@
                     "between": [
                       0,
                       2147483646
-                    ]
+                    ],
+                    "description": "If specified, limits the total number of opened connections for a pool. If the\nconnection pool is full, all connection queues beyond the maximum limit go into\nthe backlog queue. Once the backlog queue is full, subsequent connect operations\nwill fail and return `nil`. Queued connect operations resume once the number of\nconnections in the pool is less than `keepalive_pool_size`. Note that queued\nconnect operations are subject to set timeouts."
                   }
                 },
                 {
                   "sentinel_master": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Sentinel master to use for Redis connections when the `redis` strategy is defined.\nDefining this value implies using Redis Sentinel."
                   }
                 },
                 {
@@ -232,7 +255,8 @@
                       "master",
                       "slave",
                       "any"
-                    ]
+                    ],
+                    "description": "Sentinel role to use for Redis connections when the `redis` strategy is defined.\nDefining this value implies using Redis Sentinel. Available options:  `master`, `slave`, `any`."
                   }
                 },
                 {
@@ -241,7 +265,8 @@
                       "type": "string"
                     },
                     "type": "array",
-                    "len_min": 1
+                    "len_min": 1,
+                    "description": "Sentinel addresses to use for Redis connections when the `redis` strategy is defined.\nDefining this value implies using Redis Sentinel. Each string element must\nconsist of a hostname (or IP address) and port. The minimum length of the array is 1 element."
                   }
                 },
                 {
@@ -250,27 +275,31 @@
                       "type": "string"
                     },
                     "type": "array",
-                    "len_min": 1
+                    "len_min": 1,
+                    "description": "Cluster addresses to use for Redis connections when the `redis` strategy is defined.\nDefining this value implies using Redis cluster. Each string element must\nconsist of a hostname (or IP address) and port. The minimum length of the array is 1 element."
                   }
                 },
                 {
                   "ssl": {
                     "type": "boolean",
                     "default": false,
-                    "required": false
+                    "required": false,
+                    "description": "If set to true, then uses SSL to connect to Redis."
                   }
                 },
                 {
                   "ssl_verify": {
                     "type": "boolean",
                     "default": false,
-                    "required": false
+                    "required": false,
+                    "description": "If set to true, then verifies the validity of the server SSL certificate. Note that you need to configure the\n[lua_ssl_trusted_certificate](/gateway/latest/reference/configuration/#lua_ssl_trusted_certificate)\nto specify the CA (or server) certificate used by your redis server. You may also need to configure\n[lua_ssl_verify_depth](/gateway/latest/reference/configuration/#lua_ssl_verify_depth) accordingly."
                   }
                 },
                 {
                   "server_name": {
                     "required": false,
-                    "type": "string"
+                    "type": "string",
+                    "description": "Specifies the server name for the new TLS extension Server Name Indication (SNI) when connecting over SSL."
                   }
                 }
               ],
@@ -341,7 +370,8 @@
               "default": false,
               "examples": [
                 true
-              ]
+              ],
+              "description": "Set to `true` to enable `consumer_groups`, which allows the settings\nfrom one of the allowed consumer groups to override the given plugin\nconfiguration."
             }
           },
           {
@@ -355,7 +385,8 @@
                   "group1",
                   "group2"
                 ]
-              ]
+              ],
+              "description": "List of consumer groups allowed to override the rate limiting\nsettings for the given Route or Service. Required if\n`enforce_consumer_groups` is set to `true`.\nFlipping `enforce_consumer_groups` from `true` to `false` disables the\ngroup override, but does not clear the list of consumer groups.\nYou can then flip `enforce_consumer_groups` to `true` to re-enforce the\ngroups."
             }
           }
         ],

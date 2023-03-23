@@ -10,7 +10,8 @@
               "type": "boolean",
               "examples": [
                 false
-              ]
+              ],
+              "description": "A boolean value that determines if per-consumer metrics should be\ncollected.\nIf enabled, the `kong_http_requests_total` and `kong_bandwidth_bytes`\nmetrics fill in the consumer label when available."
             }
           }
         ],

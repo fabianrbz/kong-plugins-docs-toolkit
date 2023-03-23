@@ -32,7 +32,8 @@
           {
             "http_endpoint": {
               "type": "string",
-              "required": true
+              "required": true,
+              "description": "The HTTP URL endpoint (including the protocol to use) to which the data is sent.\n\nIf the `http_endpoint` contains a username and password (for example,\n`http://bob:password@example.com/logs`), then Kong Gateway automatically includes\na basic-auth `Authorization` header in the log requests."
             }
           },
           {
@@ -43,7 +44,8 @@
                 "PUT",
                 "PATCH"
               ],
-              "default": "POST"
+              "default": "POST",
+              "description": "An optional method used to send data to the HTTP server. Supported values are\n`POST` (default), `PUT`, and `PATCH`."
             }
           },
           {
@@ -52,37 +54,43 @@
               "one_of": [
                 "application/json"
               ],
-              "default": "application/json"
+              "default": "application/json",
+              "description": "Indicates the type of data sent. The only available option is `application/json`."
             }
           },
           {
             "timeout": {
               "type": "number",
-              "default": 10000
+              "default": 10000,
+              "description": "An optional timeout in milliseconds when sending data to the upstream server."
             }
           },
           {
             "keepalive": {
               "type": "number",
-              "default": 60000
+              "default": 60000,
+              "description": "An optional value in milliseconds that defines how long an idle connection will live before being closed."
             }
           },
           {
             "retry_count": {
               "type": "integer",
-              "default": 10
+              "default": 10,
+              "description": "Number of times to retry when sending data to the upstream server."
             }
           },
           {
             "queue_size": {
               "type": "integer",
-              "default": 1
+              "default": 1,
+              "description": "Maximum number of log entries to be sent on each message to the upstream server."
             }
           },
           {
             "flush_timeout": {
               "type": "number",
-              "default": 2
+              "default": 2,
+              "description": "Optional time in seconds. If `queue_size` > 1, this is the max idle time before sending a log with less than `queue_size` records."
             }
           }
         ]

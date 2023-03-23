@@ -20,7 +20,8 @@
         "fields": [
           {
             "start": {
-              "type": "number"
+              "type": "number",
+              "description": "Future time in seconds since epoch, when the canary release will start.\nIgnored when `percentage` is set, or when using `allow` or `deny` in `hash`."
             }
           },
           {
@@ -34,26 +35,30 @@
                 "header"
               ],
               "type": "string",
-              "default": "consumer"
+              "default": "consumer",
+              "description": "Entity to be used for hashing. Options: `consumer`, `ip`, `header`, `allow`, `deny`, or `none`.\nWhen using `consumer` or `ip`, make sure to properly set the settings for trusted IPs\n(see the `trusted_ips` and `real_ip_header` settings in the Kong configuration file.)"
             }
           },
           {
             "hash_header": {
-              "type": "string"
+              "type": "string",
+              "description": "Header name whose value will be used as hash input. Required if `config.hash` is set to `header`."
             }
           },
           {
             "duration": {
               "gt": 0,
               "type": "number",
-              "default": 3600
+              "default": 3600,
+              "description": "The duration of the transition in seconds. Ignored when `percentage` is set, or\nwhen using `allow` or `deny` in `hash`."
             }
           },
           {
             "steps": {
               "gt": 1,
               "type": "number",
-              "default": 1000
+              "default": 1000,
+              "description": "Number of steps the release should be broken into."
             }
           },
           {
@@ -65,7 +70,8 @@
               ],
               "examples": [
                 50
-              ]
+              ],
+              "description": "Fixed percentage of traffic to be routed to new target, if given overrides `start` and `duration`. The\nvalue must be between 0 and 100."
             }
           },
           {
@@ -73,7 +79,8 @@
               "type": "string",
               "examples": [
                 "example.com"
-              ]
+              ],
+              "description": "The target hostname where traffic will be routed. Required if `upstream_uri` and `upstream_port` are not set."
             }
           },
           {
@@ -85,13 +92,15 @@
               ],
               "examples": [
                 80
-              ]
+              ],
+              "description": "The target port where traffic will be routed. Required if `upstream_uri` and `upstream_host` are not set.\nMust be a value between 0 and 65535."
             }
           },
           {
             "upstream_uri": {
               "len_min": 1,
-              "type": "string"
+              "type": "string",
+              "description": "The Upstream URI where traffic will be routed. Required if `upstream_port` and `upstream_host` are not set."
             }
           },
           {
@@ -106,12 +115,14 @@
               "type": "array",
               "elements": {
                 "type": "string"
-              }
+              },
+              "description": "An array of strings with the group names that are allowed or denied. Set `hash` to either `allow` (the listed groups\ngo into the canary) or `deny` (the listed groups will NOT go into the canary.)"
             }
           },
           {
             "canary_by_header_name": {
-              "type": "string"
+              "type": "string",
+              "description": "Header name that, when present on a request, overrides the configured canary\nfunctionality.\n\n* If the configured header is present with the value `always`, the request will\nalways go to the canary upstream.\n* If the header is present with the value `never`, the request will never go to the\ncanary upstream.\n\nFor all other values, the configured canary rules will be applied."
             }
           }
         ],

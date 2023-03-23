@@ -35,13 +35,15 @@
                           "one_of": [
                             "draft4"
                           ],
-                          "required": true
+                          "required": true,
+                          "description": "The corresponding validation library for `config.client.text.schema`.\nCurrently, only `draft4` is supported."
                         }
                       },
                       {
                         "schema": {
                           "type": "string",
-                          "required": true
+                          "required": true,
+                          "description": "Schema used to validate client-originated text frames. The semantics of\nthis field depend on the validation type set by `config.client.text.type`."
                         }
                       }
                     ],
@@ -68,13 +70,15 @@
                           "one_of": [
                             "draft4"
                           ],
-                          "required": true
+                          "required": true,
+                          "description": "The corresponding validation library for `config.client.binary.schema`.\nCurrently, only `draft4` is supported."
                         }
                       },
                       {
                         "schema": {
                           "type": "string",
-                          "required": true
+                          "required": true,
+                          "description": "Schema used to validate client-originated binary frames. The semantics of\nthis field depend on the validation type set by `config.client.binary.type`."
                         }
                       }
                     ],
@@ -125,13 +129,15 @@
                           "one_of": [
                             "draft4"
                           ],
-                          "required": true
+                          "required": true,
+                          "description": "The corresponding validation library for `config.upstream.text.schema`.\nCurrently, only `draft4` is supported."
                         }
                       },
                       {
                         "schema": {
                           "type": "string",
-                          "required": true
+                          "required": true,
+                          "description": "Schema used to validate upstream-originated text frames. The semantics of\nthis field depend on the validation type set by `config.upstream.text.type`."
                         }
                       }
                     ],
@@ -158,13 +164,15 @@
                           "one_of": [
                             "draft4"
                           ],
-                          "required": true
+                          "required": true,
+                          "description": "The corresponding validation library for `config.upstream.binary.schema`.\nCurrently, only `draft4` is supported."
                         }
                       },
                       {
                         "schema": {
                           "type": "string",
-                          "required": true
+                          "required": true,
+                          "description": "Schema used to validate upstream-originated binary frames. The semantics of\nthis field depend on the validation type set by `config.upstream.binary.type`."
                         }
                       }
                     ],

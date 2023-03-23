@@ -49,7 +49,8 @@
                 ],
                 "type": "record"
               },
-              "type": "set"
+              "type": "set",
+              "description": "Set of bootstrap brokers in a `{host: host, port: port}` list format."
             }
           },
           {
@@ -58,13 +59,15 @@
               "type": "string",
               "examples": [
                 "TOPIC"
-              ]
+              ],
+              "description": "The Kafka topic to publish to."
             }
           },
           {
             "timeout": {
               "default": 10000,
-              "type": "integer"
+              "type": "integer",
+              "description": "Socket timeout in milliseconds."
             }
           },
           {
@@ -81,61 +84,71 @@
                 0,
                 1
               ],
-              "default": 1
+              "default": 1,
+              "description": "The number of acknowledgments the producer requires the leader to have received before\nconsidering a request complete. Allowed values: 0 for no acknowledgments; 1 for only the\nleader; and -1 for the full ISR (In-Sync Replica set)."
             }
           },
           {
             "producer_request_timeout": {
               "default": 2000,
-              "type": "integer"
+              "type": "integer",
+              "description": "Time to wait for a Produce response in milliseconds"
             }
           },
           {
             "producer_request_limits_messages_per_request": {
               "default": 200,
-              "type": "integer"
+              "type": "integer",
+              "description": "Maximum number of messages to include into a single Produce request."
             }
           },
           {
             "producer_request_limits_bytes_per_request": {
               "default": 1048576,
-              "type": "integer"
+              "type": "integer",
+              "description": "Maximum size of a Produce request in bytes."
             }
           },
           {
             "producer_request_retries_max_attempts": {
               "default": 10,
-              "type": "integer"
+              "type": "integer",
+              "description": "Maximum number of retry attempts per single Produce request."
             }
           },
           {
             "producer_request_retries_backoff_timeout": {
               "default": 100,
-              "type": "integer"
+              "type": "integer",
+              "description": "Backoff interval between retry attempts in milliseconds."
             }
           },
           {
             "producer_async": {
               "default": true,
-              "type": "boolean"
+              "type": "boolean",
+              "description": "Flag to enable asynchronous mode."
             }
           },
           {
             "producer_async_flush_timeout": {
               "default": 1000,
-              "type": "integer"
+              "type": "integer",
+              "description": "Maximum time interval in milliseconds between buffer flushes in asynchronous mode."
             }
           },
           {
             "producer_async_buffering_limits_messages_in_memory": {
               "default": 50000,
-              "type": "integer"
+              "type": "integer",
+              "description": "Maximum number of messages that can be buffered in memory in asynchronous mode."
             }
           },
           {
             "api_version": {
               "default": 0,
-              "type": "integer"
+              "type": "integer",
+              "description": "API version of a Produce request. Allowed values: `0`, `1`, or `2`."
             }
           }
         ]

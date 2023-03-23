@@ -35,7 +35,8 @@
               "type": "string",
               "examples": [
                 "example.com"
-              ]
+              ],
+              "description": "The HTTP hostname or IP address of the forward proxy to which to connect.\n Required if `http_proxy_port` is set.\n\nAt least one of `http_proxy_host` or `https_proxy_host` must be specified.\n\nIf `http_proxy_host` isn't set, the plugin falls back to the value\nconfigured in `https_proxy_host`."
             }
           },
           {
@@ -47,12 +48,14 @@
               "type": "integer",
               "examples": [
                 80
-              ]
+              ],
+              "description": "The TCP port of the HTTP forward proxy to which to connect.\nRequired if `http_proxy_host` is set.\n\nAt least one of `http_proxy_port` or `https_proxy_port` must be specified.\n\nIf `http_proxy_port` isn't set, the plugin falls back to the value\nconfigured in `https_proxy_port`."
             }
           },
           {
             "https_proxy_host": {
-              "type": "string"
+              "type": "string",
+              "description": "The HTTPS hostname or IP address of the forward proxy to which to connect.\nRequired if `https_proxy_port` is set.\n\nAt least one of `http_proxy_host` or `https_proxy_host` must be specified.\n\nIf `https_proxy_host` isn't set, the plugin falls back to the value\nconfigured in `http_proxy_host`."
             }
           },
           {
@@ -61,7 +64,8 @@
                 0,
                 65535
               ],
-              "type": "integer"
+              "type": "integer",
+              "description": "The TCP port of the HTTPS forward proxy to which to connect.\nRequired if `https_proxy_host` is set.\n\nAt least one of `http_proxy_port` or `https_proxy_port` must be specified.\n\nIf `https_proxy_port` isn't set, the plugin falls back to the value\nconfigured in `http_proxy_port`."
             }
           },
           {
@@ -74,7 +78,8 @@
               "type": "string",
               "examples": [
                 "http"
-              ]
+              ],
+              "description": "The proxy scheme to use when connecting. Only `http` is supported."
             }
           },
           {
@@ -84,7 +89,8 @@
               "type": "string",
               "examples": [
                 "example_user"
-              ]
+              ],
+              "description": "The username to authenticate with, if the forward proxy is protected\nby basic authentication."
             }
           },
           {
@@ -94,7 +100,8 @@
               "type": "string",
               "examples": [
                 "example_pass"
-              ]
+              ],
+              "description": "The password to authenticate with, if the forward proxy is protected\nby basic authentication."
             }
           },
           {
@@ -104,7 +111,8 @@
               "type": "boolean",
               "examples": [
                 false
-              ]
+              ],
+              "description": "Whether the server certificate will be verified according to the CA certificates\nspecified in\n[lua_ssl_trusted_certificate](https://www.nginx.com/resources/wiki/modules/lua/#lua-ssl-trusted-certificate)."
             }
           }
         ],

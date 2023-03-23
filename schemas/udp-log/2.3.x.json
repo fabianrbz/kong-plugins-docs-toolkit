@@ -32,7 +32,8 @@
           {
             "host": {
               "type": "string",
-              "required": true
+              "required": true,
+              "description": "The IP address or host name to send data to."
             }
           },
           {
@@ -42,13 +43,15 @@
               "between": [
                 0,
                 65535
-              ]
+              ],
+              "description": "The port to send data to on the upstream server."
             }
           },
           {
             "timeout": {
               "type": "number",
-              "default": 10000
+              "default": 10000,
+              "description": "An optional timeout in milliseconds when sending data to the upstream server."
             }
           }
         ]

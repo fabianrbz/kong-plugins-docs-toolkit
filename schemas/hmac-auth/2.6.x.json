@@ -38,26 +38,30 @@
               "type": "boolean",
               "examples": [
                 false
-              ]
+              ],
+              "description": "An optional boolean value telling the plugin to show or hide the credential from the upstream service. If `true`, the plugin strips the credential from the request (i.e. the `Authorization` header) before proxying it."
             }
           },
           {
             "clock_skew": {
               "gt": 0,
               "default": 300,
-              "type": "number"
+              "type": "number",
+              "description": "[Clock Skew](https://tools.ietf.org/html/draft-cavage-http-signatures-00#section-3.4) in seconds to prevent replay attacks."
             }
           },
           {
             "anonymous": {
-              "type": "string"
+              "type": "string",
+              "description": "An optional string (consumer UUID) value to use as an anonymous consumer if authentication fails.\nIf empty (default), the request will fail with an authentication failure `4xx`. Note that this value\nmust refer to the consumer `id` attribute that is internal to Kong Gateway, and **not** its `custom_id`."
             }
           },
           {
             "validate_request_body": {
               "required": true,
               "default": false,
-              "type": "boolean"
+              "type": "boolean",
+              "description": "A boolean value telling the plugin to enable body validation."
             }
           },
           {
@@ -68,7 +72,8 @@
               "elements": {
                 "type": "string"
               },
-              "type": "array"
+              "type": "array",
+              "description": "A list of headers that the client should at least use for HTTP signature creation."
             }
           },
           {
@@ -88,7 +93,8 @@
                 ],
                 "type": "string"
               },
-              "type": "array"
+              "type": "array",
+              "description": "A list of HMAC digest algorithms that the user wants to support. Allowed values are `hmac-sha1`, `hmac-sha256`, `hmac-sha384`, and `hmac-sha512`"
             }
           }
         ],

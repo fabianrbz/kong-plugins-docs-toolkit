@@ -18,41 +18,48 @@
               "type": "string",
               "examples": [
                 "opensesame"
-              ]
+              ],
+              "description": "The secret that is used in keyed HMAC generation."
             }
           },
           {
             "cookie_name": {
               "type": "string",
-              "default": "session"
+              "default": "session",
+              "description": "The name of the cookie."
             }
           },
           {
             "cookie_lifetime": {
               "type": "number",
-              "default": 3600
+              "default": 3600,
+              "description": "The duration in seconds that the session will remain open."
             }
           },
           {
             "cookie_idletime": {
-              "type": "number"
+              "type": "number",
+              "description": "The cookie idle time (in seconds); if a cookie is not used for this time\nperiod, the session becomes invalid. This value is not set by default,\nmeaning idle time checks are disabled."
             }
           },
           {
             "cookie_renew": {
               "type": "number",
-              "default": 600
+              "default": 600,
+              "description": "The remaining duration in seconds of a session at which point the Plugin renews the session."
             }
           },
           {
             "cookie_path": {
               "type": "string",
-              "default": "/"
+              "default": "/",
+              "description": "The resource in the host where the cookie is available."
             }
           },
           {
             "cookie_domain": {
-              "type": "string"
+              "type": "string",
+              "description": "The domain with which the cookie is intended to be exchanged."
             }
           },
           {
@@ -64,25 +71,29 @@
                 "off"
               ],
               "type": "string",
-              "default": "Strict"
+              "default": "Strict",
+              "description": "Determines whether and how a cookie may be sent with cross-site requests. \n\n\n* `Strict`: The browser sends cookies only if the request originated from the website that set the cookie.\n* `Lax`: Same-site cookies are withheld on cross-domain subrequests, but are sent when a user navigates\nto the URL from an external site, for example, by following a link. \n* `None` or `off`: Disables the same-site attribute so that a cookie may be sent with cross-site requests. \n`None` requires the Secure attribute (`cookie_secure`) in latest browser versions. For more information, \nsee the [SameSite cookies docs on MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie/SameSite)."
             }
           },
           {
             "cookie_httponly": {
               "type": "boolean",
-              "default": true
+              "default": true,
+              "description": "Applies the `HttpOnly` tag so that the cookie is sent only to a server. See the\n[Restrict access to cookies docs on MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies#Restrict_access_to_cookies)."
             }
           },
           {
             "cookie_secure": {
               "type": "boolean",
-              "default": true
+              "default": true,
+              "description": "Applies the Secure directive so that the cookie may be sent to the server only with an encrypted\nrequest over the HTTPS protocol. See the\n[Restrict access to cookies docs on MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies#Restrict_access_to_cookies)."
             }
           },
           {
             "cookie_discard": {
               "type": "number",
-              "default": 10
+              "default": 10,
+              "description": "The duration in seconds after which an old session’s TTL is updated that an old cookie is discarded."
             }
           },
           {
@@ -93,7 +104,8 @@
                 "kong"
               ],
               "type": "string",
-              "default": "cookie"
+              "default": "cookie",
+              "description": "Determines where the session data is stored. `kong`: Stores encrypted session data into Kong's current database\nstrategy; the cookie will not contain any session data. `cookie`: Stores encrypted\nsession data within the cookie itself."
             }
           },
           {
@@ -110,21 +122,24 @@
               "default": [
                 "POST",
                 "DELETE"
-              ]
+              ],
+              "description": "The methods that may be used to end sessions: POST, DELETE, GET."
             }
           },
           {
             "logout_query_arg": {
               "required": false,
               "type": "string",
-              "default": "session_logout"
+              "default": "session_logout",
+              "description": "The query argument passed to logout requests."
             }
           },
           {
             "logout_post_arg": {
               "required": false,
               "type": "string",
-              "default": "session_logout"
+              "default": "session_logout",
+              "description": "The POST argument passed to logout requests. Do not change this property."
             }
           }
         ],

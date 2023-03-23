@@ -35,7 +35,8 @@
               "type": "boolean",
               "examples": [
                 true
-              ]
+              ],
+              "description": "Enables TLS client certificate metadata values to be injected into HTTP headers."
             }
           },
           {
@@ -45,35 +46,40 @@
               "required": true,
               "examples": [
                 "X-Forwarded-Client-Cert"
-              ]
+              ],
+              "description": "Define the HTTP header name used for the PEM format URL encoded client certificate."
             }
           },
           {
             "client_serial_header_name": {
               "default": "X-Client-Cert-Serial",
               "type": "string",
-              "required": true
+              "required": true,
+              "description": "Define the HTTP header name used for the serial number of the client certificate."
             }
           },
           {
             "client_cert_issuer_dn_header_name": {
               "default": "X-Client-Cert-Issuer-DN",
               "type": "string",
-              "required": true
+              "required": true,
+              "description": "Define the HTTP header name used for the issuer DN of the client certificate."
             }
           },
           {
             "client_cert_subject_dn_header_name": {
               "default": "X-Client-Cert-Subject-DN",
               "type": "string",
-              "required": true
+              "required": true,
+              "description": "Define the HTTP header name used for the subject DN of the client certificate."
             }
           },
           {
             "client_cert_fingerprint_header_name": {
               "default": "X-Client-Cert-Fingerprint",
               "type": "string",
-              "required": true
+              "required": true,
+              "description": "Define the HTTP header name used for the SHA1 fingerprint of the client certificate."
             }
           }
         ],

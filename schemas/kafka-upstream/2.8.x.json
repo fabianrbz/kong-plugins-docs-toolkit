@@ -48,7 +48,8 @@
                 ],
                 "type": "record"
               },
-              "type": "set"
+              "type": "set",
+              "description": "Set of bootstrap brokers in a `{host: host, port: port}` list format."
             }
           },
           {
@@ -57,19 +58,22 @@
               "type": "string",
               "examples": [
                 "TOPIC"
-              ]
+              ],
+              "description": "The Kafka topic to publish to."
             }
           },
           {
             "timeout": {
               "default": 10000,
-              "type": "integer"
+              "type": "integer",
+              "description": "Socket timeout in milliseconds."
             }
           },
           {
             "keepalive": {
               "default": 60000,
-              "type": "integer"
+              "type": "integer",
+              "description": "Keepalive timeout in milliseconds."
             }
           },
           {
@@ -88,7 +92,8 @@
                     "one_of": [
                       "sasl"
                     ],
-                    "type": "string"
+                    "type": "string",
+                    "description": "The authentication strategy for the plugin, the only option for the value is `sasl`."
                   }
                 },
                 {
@@ -99,13 +104,15 @@
                       "SCRAM-SHA-256",
                       "SCRAM-SHA-512"
                     ],
-                    "type": "string"
+                    "type": "string",
+                    "description": "The SASL authentication mechanism.\n\nSupported options: `PLAIN`, `SCRAM-SHA-256`, or `SCRAM-SHA-512`."
                   }
                 },
                 {
                   "tokenauth": {
                     "required": false,
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Enable this to indicate `DelegationToken` authentication."
                   }
                 },
                 {
@@ -113,7 +120,8 @@
                     "required": false,
                     "referenceable": true,
                     "encrypted": true,
-                    "type": "string"
+                    "type": "string",
+                    "description": "Username for SASL authentication."
                   }
                 },
                 {
@@ -121,7 +129,8 @@
                     "required": false,
                     "referenceable": true,
                     "encrypted": true,
-                    "type": "string"
+                    "type": "string",
+                    "description": "Password for SASL authentication."
                   }
                 }
               ],
@@ -136,13 +145,15 @@
                   "certificate_id": {
                     "uuid": true,
                     "required": false,
-                    "type": "string"
+                    "type": "string",
+                    "description": "UUID of certificate entity for mTLS authentication."
                   }
                 },
                 {
                   "ssl": {
                     "required": false,
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Enables TLS."
                   }
                 }
               ],
@@ -152,32 +163,37 @@
           {
             "forward_method": {
               "default": false,
-              "type": "boolean"
+              "type": "boolean",
+              "description": "Include the request method in the message. At least one of these must be true:\n`forward_method`, `forward_uri`, `forward_headers`, `forward_body`."
             }
           },
           {
             "forward_uri": {
               "default": false,
-              "type": "boolean"
+              "type": "boolean",
+              "description": "Include the request URI and URI arguments (as in, query arguments) in the message.\nAt least one of these must be true: `forward_method`, `forward_uri`, `forward_headers`,\n`forward_body`."
             }
           },
           {
             "forward_headers": {
               "default": false,
-              "type": "boolean"
+              "type": "boolean",
+              "description": "Include the request headers in the message. At least one of these must be true:\n`forward_method`, `forward_uri`, `forward_headers`, `forward_body`."
             }
           },
           {
             "forward_body": {
               "default": true,
-              "type": "boolean"
+              "type": "boolean",
+              "description": "Include the request body in the message. At least one of these must be true:\n`forward_method`, `forward_uri`, `forward_headers`, `forward_body`."
             }
           },
           {
             "cluster_name": {
               "required": false,
               "auto": true,
-              "type": "string"
+              "type": "string",
+              "description": "An identifier for the Kafka cluster. By default, this field generates a\nrandom string. You can also set your own custom cluster identifier.\n\nIf more than one Kafka plugin is configured without a `cluster_name`\n(that is, if the default autogenerated value is removed),\nthese plugins will use the same producer, and by extension, the same\ncluster. Logs will be sent to the leader of the cluster."
             }
           },
           {
@@ -188,55 +204,64 @@
                 1
               ],
               "default": 1,
-              "type": "integer"
+              "type": "integer",
+              "description": "The number of acknowledgments the producer requires the leader to have received before\nconsidering a request complete. Allowed values: 0 for no acknowledgments; 1 for only the\nleader; and -1 for the full ISR (In-Sync Replica set)."
             }
           },
           {
             "producer_request_timeout": {
               "default": 2000,
-              "type": "integer"
+              "type": "integer",
+              "description": "Time to wait for a Produce response in milliseconds."
             }
           },
           {
             "producer_request_limits_messages_per_request": {
               "default": 200,
-              "type": "integer"
+              "type": "integer",
+              "description": "Maximum number of messages to include into a single Produce request."
             }
           },
           {
             "producer_request_limits_bytes_per_request": {
               "default": 1048576,
-              "type": "integer"
+              "type": "integer",
+              "description": "Maximum size of a Produce request in bytes."
             }
           },
           {
             "producer_request_retries_max_attempts": {
               "default": 10,
-              "type": "integer"
+              "type": "integer",
+              "description": "Maximum number of retry attempts per single Produce request."
             }
           },
           {
             "producer_request_retries_backoff_timeout": {
               "default": 100,
-              "type": "integer"
+              "type": "integer",
+              "description": "Backoff interval between retry attempts in milliseconds."
             }
           },
           {
             "producer_async": {
               "default": true,
-              "type": "boolean"
+              "type": "boolean",
+              "description": "Flag to enable asynchronous mode."
             }
           },
           {
             "producer_async_flush_timeout": {
               "default": 1000,
-              "type": "integer"
+              "type": "integer",
+              "description": "Maximum time interval in milliseconds between buffer flushes in asynchronous mode."
             }
           },
           {
             "producer_async_buffering_limits_messages_in_memory": {
               "default": 50000,
-              "type": "integer"
+              "type": "integer",
+              "description": "Maximum number of messages that can be buffered in memory in asynchronous mode."
             }
           }
         ],

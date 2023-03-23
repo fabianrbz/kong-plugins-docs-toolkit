@@ -31,7 +31,8 @@
               "type": "integer",
               "examples": [
                 1024
-              ]
+              ],
+              "description": "Maximum size (in bytes) of client-originated WebSocket messages. Must\nbe greater than `0` and less than `33554432` (32 MiB)"
             }
           },
           {
@@ -44,7 +45,8 @@
               "type": "integer",
               "examples": [
                 16384
-              ]
+              ],
+              "description": "Maximum size (in bytes) of upstream-originated WebSocket messages. Must\nbe greater than `0` and less than `33554432` (32 MiB)"
             }
           }
         ],

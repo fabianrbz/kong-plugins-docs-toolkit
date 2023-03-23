@@ -11,13 +11,15 @@
               "required": false,
               "examples": [
                 "path/to/hello.proto"
-              ]
+              ],
+              "description": "If present, describes the gRPC types and methods.\nRequired to support payload transcoding. When absent, the\nweb client must use application/grpw-web+proto content."
             }
           },
           {
             "pass_stripped_path": {
               "required": false,
-              "type": "boolean"
+              "type": "boolean",
+              "description": "If set to `true` causes the plugin to pass the stripped request path to the upstream gRPC service (see the `strip_path` Route attribute)."
             }
           }
         ]

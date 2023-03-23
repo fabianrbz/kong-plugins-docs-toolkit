@@ -34,13 +34,15 @@
               "type": "string",
               "required": true,
               "match": "^[^*&%%\\`]+$",
-              "err": "not a valid filename"
+              "err": "not a valid filename",
+              "description": "The file path of the output log file. The plugin creates the log file if it doesn't exist yet. Make sure Kong has write permissions to this file."
             }
           },
           {
             "reopen": {
               "type": "boolean",
-              "default": false
+              "default": false,
+              "description": "Determines whether the log file is closed and reopened on every request. If the file\nis not reopened, and has been removed/rotated, the plugin keeps writing to the\nstale file descriptor, and hence loses information."
             }
           }
         ]

@@ -9,7 +9,8 @@
               "type": "string",
               "examples": [
                 "127.0.0.1"
-              ]
+              ],
+              "description": "The IP address or hostname of the StatsD server."
             }
           },
           {
@@ -22,13 +23,15 @@
               ],
               "examples": [
                 8125
-              ]
+              ],
+              "description": "The port of the StatsD server."
             }
           },
           {
             "prefix": {
               "type": "string",
-              "default": "kong"
+              "default": "kong",
+              "description": "String to prefix to each metric's name."
             }
           },
           {
@@ -296,7 +299,8 @@
                     }
                   }
                 ]
-              }
+              },
+              "description": "List of Metrics to be logged. Available values are described under [Metrics](#metrics)."
             }
           },
           {
@@ -311,7 +315,8 @@
                   "200-205",
                   "400-499"
                 ]
-              ]
+              ],
+              "description": "List of status code ranges that are allowed to be logged in metrics."
             }
           },
           {
@@ -321,19 +326,22 @@
               "between": [
                 0,
                 65507
-              ]
+              ],
+              "description": "Combine UDP packet up to the size configured. If zero (0), don't combine the\nUDP packet. Must be a number between 0 and 65507 (inclusive)."
             }
           },
           {
             "use_tcp": {
               "type": "boolean",
-              "default": false
+              "default": false,
+              "description": "Use TCP instead of UDP."
             }
           },
           {
             "hostname_in_prefix": {
               "type": "boolean",
-              "default": false
+              "default": false,
+              "description": "Include the `hostname` in the `prefix` for each metric name."
             }
           }
         ],

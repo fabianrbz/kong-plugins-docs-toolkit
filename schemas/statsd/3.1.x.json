@@ -37,7 +37,8 @@
               "type": "string",
               "examples": [
                 "127.0.0.1"
-              ]
+              ],
+              "description": "The IP address or hostname of StatsD server to send data to."
             }
           },
           {
@@ -50,13 +51,15 @@
               "type": "integer",
               "examples": [
                 8125
-              ]
+              ],
+              "description": "The port of StatsD server to send data to."
             }
           },
           {
             "prefix": {
               "default": "kong",
-              "type": "string"
+              "type": "string",
+              "description": "String to prefix to each metric's name."
             }
           },
           {
@@ -229,7 +232,8 @@
                   "stat_type": "counter",
                   "name": "cache_datastore_misses_total"
                 }
-              ]
+              ],
+              "description": "List of metrics to be logged. Available values are described under [Metrics](#metrics)."
             }
           },
           {
@@ -244,7 +248,8 @@
                   "200-205",
                   "400-499"
                 ]
-              ]
+              ],
+              "description": "List of status code ranges that are allowed to be logged in metrics."
             }
           },
           {
@@ -254,19 +259,22 @@
                 0,
                 65507
               ],
-              "type": "number"
+              "type": "number",
+              "description": "Combine UDP packet up to the size configured. If zero (0), don't combine the\nUDP packet. Must be a number between 0 and 65507 (inclusive)."
             }
           },
           {
             "use_tcp": {
               "default": false,
-              "type": "boolean"
+              "type": "boolean",
+              "description": "Use TCP instead of UDP."
             }
           },
           {
             "hostname_in_prefix": {
               "default": false,
-              "type": "boolean"
+              "type": "boolean",
+              "description": "Include the `hostname` in the `prefix` for each metric name."
             }
           },
           {
@@ -278,7 +286,8 @@
                 "username"
               ],
               "type": "string",
-              "default": "custom_id"
+              "default": "custom_id",
+              "description": "The default consumer identifier of metrics. This takes effect when a metric's consumer identifier is omitted. Allowed values are `custom_id`, `consumer_id`, `username`."
             }
           },
           {
@@ -291,7 +300,8 @@
                 "service_name_or_host"
               ],
               "type": "string",
-              "default": "service_name_or_host"
+              "default": "service_name_or_host",
+              "description": "The default service identifier of metrics. This takes effect when a metric's service identifier is omitted. Allowed values are `service_name_or_host`, `service_id`, `service_name`, `service_host`."
             }
           },
           {
@@ -302,7 +312,8 @@
                 "workspace_name"
               ],
               "type": "string",
-              "default": "workspace_id"
+              "default": "workspace_id",
+              "description": "The default workspace identifier of metrics. This will take effect when a metric's workspace identifier is omitted. Allowed values are `workspace_id`, `workspace_name`."
             }
           },
           {
@@ -312,14 +323,16 @@
               "default": 10,
               "examples": [
                 10
-              ]
+              ],
+              "description": "Number of times to retry when sending data to the upstream server."
             }
           },
           {
             "queue_size": {
               "required": true,
               "type": "integer",
-              "default": 1
+              "default": 1,
+              "description": "Maximum number of log entries to be sent on each message to the upstream server."
             }
           },
           {
@@ -329,7 +342,8 @@
               "default": 2,
               "examples": [
                 2
-              ]
+              ],
+              "description": "Optional time in seconds. If `queue_size` > 1, this is the max idle time before sending a log with less than `queue_size` records."
             }
           }
         ],

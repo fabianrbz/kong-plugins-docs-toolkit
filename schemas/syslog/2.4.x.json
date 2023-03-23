@@ -45,7 +45,8 @@
               "default": "info",
               "examples": [
                 "info"
-              ]
+              ],
+              "description": "An optional logging severity. Any request with equal or higher severity\nwill be logged to System log. Available options: `debug`, `info`, `notice`, `warning`, `err`, `crit`, `alert`, `emerg`."
             }
           },
           {
@@ -61,7 +62,8 @@
                 "alert",
                 "emerg"
               ],
-              "default": "info"
+              "default": "info",
+              "description": "An optional logging severity assigned to all the successful requests with a response\nstatus code less then 400. Available options: `debug`, `info`, `notice`, `warning`, `err`, `crit`, `alert`, `emerg`."
             }
           },
           {
@@ -77,7 +79,8 @@
                 "alert",
                 "emerg"
               ],
-              "default": "info"
+              "default": "info",
+              "description": "An optional logging severity assigned to all the failed requests with a\nresponse status code 400 or higher but less than 500. Available options: `debug`, `info`, `notice`,\n `warning`, `err`, `crit`, `alert`, `emerg`."
             }
           },
           {
@@ -93,7 +96,8 @@
                 "alert",
                 "emerg"
               ],
-              "default": "info"
+              "default": "info",
+              "description": "An optional logging severity assigned to all the failed requests with a\nresponse status code 500 or higher. Available options: `debug`, `info`, `notice`, `warning`, `err`, `crit`, `alert`, `emerg`."
             }
           },
           {
@@ -106,7 +110,8 @@
               "values": {
                 "len_min": 1,
                 "type": "string"
-              }
+              },
+              "description": "A list of key-value pairs, where the key is the name of a log field and\nthe value is a chunk of Lua code, whose return value sets or replaces\nthe log field value."
             }
           }
         ]

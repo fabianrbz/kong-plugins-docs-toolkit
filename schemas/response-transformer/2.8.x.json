@@ -38,7 +38,8 @@
                     "default": [
 
                     ],
-                    "type": "array"
+                    "type": "array",
+                    "description": "List of property names. Remove the property from the JSON body if it is present."
                   }
                 },
                 {
@@ -50,7 +51,8 @@
                     "default": [
 
                     ],
-                    "type": "array"
+                    "type": "array",
+                    "description": "List of header names. Unset the header(s) with the given name."
                   }
                 }
               ],
@@ -83,7 +85,8 @@
                     "default": [
 
                     ],
-                    "type": "array"
+                    "type": "array",
+                    "description": "List of `original_header_name:new_header_name` pairs. If the header `original_headername` is already set, rename it to `new_headername`. Ignored if the header is not already set."
                   }
                 }
               ],
@@ -104,7 +107,8 @@
                     "default": [
 
                     ],
-                    "type": "array"
+                    "type": "array",
+                    "description": "List of `property:value` pairs. If and only if the parameter is already present, replace its old value with the new one. Ignored if the parameter is not already present."
                   }
                 },
                 {
@@ -121,7 +125,8 @@
                     "default": [
 
                     ],
-                    "type": "array"
+                    "type": "array",
+                    "description": "List of JSON type names. Specify the types of the JSON values returned when\nreplacing JSON properties. Each string\nelement can be one of: boolean, number, or string."
                   }
                 },
                 {
@@ -134,7 +139,8 @@
                     "default": [
 
                     ],
-                    "type": "array"
+                    "type": "array",
+                    "description": "List of `headername:value` pairs. If and only if the header is already set, replace its old value with the new one. Ignored if the header is not already set."
                   }
                 }
               ],
@@ -155,7 +161,8 @@
                     "default": [
 
                     ],
-                    "type": "array"
+                    "type": "array",
+                    "description": "List of `property:value` pairs. If and only if the property is not present, add a new property with the given value to the JSON body. Ignored if the property is already present."
                   }
                 },
                 {
@@ -172,7 +179,8 @@
                     "default": [
 
                     ],
-                    "type": "array"
+                    "type": "array",
+                    "description": "List of JSON type names. Specify the types of the JSON values returned when adding\na new JSON property. Each string element can be one of: boolean, number, or string."
                   }
                 },
                 {
@@ -185,7 +193,8 @@
                     "default": [
 
                     ],
-                    "type": "array"
+                    "type": "array",
+                    "description": "List of `headername:value` pairs. If and only if the header is not already set, set a new header with the given value. Ignored if the header is already set."
                   }
                 }
               ],
@@ -223,7 +232,8 @@
                     "default": [
 
                     ],
-                    "type": "array"
+                    "type": "array",
+                    "description": "List of `property:value` pairs. If the property is not present in the JSON body, add it with the given value. If it is already present, the two values (old and new) will be aggregated in an array."
                   }
                 },
                 {
@@ -240,7 +250,8 @@
                     "default": [
 
                     ],
-                    "type": "array"
+                    "type": "array",
+                    "description": "List of JSON type names. Specify the types of the JSON values returned when appending\nJSON properties. Each string element can be one of: boolean, number, or string."
                   }
                 },
                 {
@@ -253,7 +264,8 @@
                     "default": [
 
                     ],
-                    "type": "array"
+                    "type": "array",
+                    "description": "List of `headername:value` pairs. If the header is not set, set it with the given value. If it is\nalready set, a new header with the same name and the new value will be set. Each string\nelement can be one of: boolean, number, or string."
                   }
                 }
               ],

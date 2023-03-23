@@ -46,7 +46,8 @@
               "default": "/graphql",
               "examples": [
                 "/graphql"
-              ]
+              ],
+              "description": "The path to the GraphQL server."
             }
           }
         ],

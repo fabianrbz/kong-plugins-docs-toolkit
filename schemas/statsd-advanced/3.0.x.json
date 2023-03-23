@@ -37,7 +37,8 @@
               "default": "localhost",
               "examples": [
                 "127.0.0.1"
-              ]
+              ],
+              "description": "The IP address or hostname of the StatsD server."
             }
           },
           {
@@ -50,13 +51,15 @@
               "default": 8125,
               "examples": [
                 8125
-              ]
+              ],
+              "description": "The port of the StatsD server."
             }
           },
           {
             "prefix": {
               "type": "string",
-              "default": "kong"
+              "default": "kong",
+              "description": "String to prefix to each metric's name."
             }
           },
           {
@@ -276,7 +279,8 @@
                   "stat_type": "counter",
                   "sample_rate": 1
                 }
-              ]
+              ],
+              "description": "List of Metrics to be logged. Available values are described under [Metrics](#metrics)."
             }
           },
           {
@@ -291,7 +295,8 @@
                   "200-205",
                   "400-499"
                 ]
-              ]
+              ],
+              "description": "List of status code ranges that are allowed to be logged in metrics."
             }
           },
           {
@@ -301,19 +306,22 @@
                 65507
               ],
               "type": "number",
-              "default": 0
+              "default": 0,
+              "description": "Combine UDP packet up to the size configured. If zero (0), don't combine the\nUDP packet. Must be a number between 0 and 65507 (inclusive)."
             }
           },
           {
             "use_tcp": {
               "type": "boolean",
-              "default": false
+              "default": false,
+              "description": "Use TCP instead of UDP."
             }
           },
           {
             "hostname_in_prefix": {
               "type": "boolean",
-              "default": false
+              "default": false,
+              "description": "Include the `hostname` in the `prefix` for each metric name."
             }
           },
           {
@@ -325,7 +333,8 @@
               ],
               "required": true,
               "type": "string",
-              "default": "custom_id"
+              "default": "custom_id",
+              "description": "The default consumer identifier for metrics. This will take effect when a metric's consumer identifier is omitted. Allowed values are `custom_id`, `consumer_id`, `username`."
             }
           },
           {
@@ -338,7 +347,8 @@
               ],
               "required": true,
               "type": "string",
-              "default": "service_name_or_host"
+              "default": "service_name_or_host",
+              "description": "The default service identifier for metrics. This will take effect when a metric's service identifier is omitted. Allowed values are `service_name_or_host`, `service_id`, `service_name`, `service_host`."
             }
           },
           {
@@ -349,7 +359,8 @@
               ],
               "required": true,
               "type": "string",
-              "default": "workspace_id"
+              "default": "workspace_id",
+              "description": "The default workspace identifier for metrics. This will take effect when a metric's workspace identifier is omitted. Allowed values are `workspace_id`, `workspace_name`.   "
             }
           }
         ],

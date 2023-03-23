@@ -33,7 +33,8 @@
               "required": true,
               "examples": [
                 "http://mockbin.org/bin/:id"
-              ]
+              ],
+              "description": "The HTTP URL endpoint (including the protocol to use) to which the data is sent.\n\nIf the `http_endpoint` contains a username and password (for example,\n`http://bob:password@example.com/logs`), then Kong Gateway automatically includes\na basic-auth `Authorization` header in the log requests."
             }
           },
           {
@@ -47,7 +48,8 @@
               "type": "string",
               "examples": [
                 "POST"
-              ]
+              ],
+              "description": "An optional method used to send data to the HTTP server. Supported values are\n`POST` (default), `PUT`, and `PATCH`."
             }
           },
           {
@@ -56,7 +58,8 @@
                 "application/json"
               ],
               "default": "application/json",
-              "type": "string"
+              "type": "string",
+              "description": "Indicates the type of data sent. The only available option is `application/json`."
             }
           },
           {
@@ -65,7 +68,8 @@
               "type": "number",
               "examples": [
                 1000
-              ]
+              ],
+              "description": "An optional timeout in milliseconds when sending data to the upstream server."
             }
           },
           {
@@ -74,7 +78,8 @@
               "type": "number",
               "examples": [
                 1000
-              ]
+              ],
+              "description": "An optional value in milliseconds that defines how long an idle connection will live before being closed."
             }
           },
           {
@@ -83,13 +88,15 @@
               "type": "integer",
               "examples": [
                 15
-              ]
+              ],
+              "description": "Number of times to retry when sending data to the upstream server."
             }
           },
           {
             "queue_size": {
               "default": 1,
-              "type": "integer"
+              "type": "integer",
+              "description": "Maximum number of log entries to be sent on each message to the upstream server."
             }
           },
           {
@@ -98,7 +105,8 @@
               "type": "number",
               "examples": [
                 2
-              ]
+              ],
+              "description": "Optional time in seconds. If `queue_size` > 1, this is the max idle time before sending a log with less than `queue_size` records."
             }
           },
           {
@@ -126,7 +134,8 @@
                   }
                 ]
               },
-              "type": "map"
+              "type": "map",
+              "description": "\nAn optional table of headers added to the HTTP message to the upstream server.\nThe table contains arrays of values, indexed by the header name (multiple values per header).\n\nThe following headers are not allowed: `Host`, `Content-Length`, `Content-Type`."
             }
           },
           {
@@ -139,7 +148,8 @@
                 "type": "string",
                 "len_min": 1
               },
-              "type": "map"
+              "type": "map",
+              "description": "A list of key-value pairs, where the key is the name of a log field and\nthe value is a chunk of Lua code, whose return value sets or replaces\nthe log field value."
             }
           }
         ],

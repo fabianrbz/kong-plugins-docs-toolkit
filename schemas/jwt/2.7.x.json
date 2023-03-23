@@ -44,7 +44,8 @@
                 [
                   "paramName_2.2.x"
                 ]
-              ]
+              ],
+              "description": "A list of querystring parameters that Kong will inspect to retrieve JWTs."
             }
           },
           {
@@ -55,20 +56,23 @@
               },
               "default": [
 
-              ]
+              ],
+              "description": "A list of cookie names that Kong will inspect to retrieve JWTs."
             }
           },
           {
             "key_claim_name": {
               "type": "string",
-              "default": "iss"
+              "default": "iss",
+              "description": "The name of the claim in which the `key` identifying the secret **must** be passed. Starting with version `0.13.1`, the plugin will attempt to read this claim from the JWT payload and the header, in that order."
             }
           },
           {
             "secret_is_base64": {
               "type": "boolean",
               "required": true,
-              "default": false
+              "default": false,
+              "description": "If true, the plugin assumes the credential's `secret` to be base64 encoded. You will need to create a base64-encoded secret for your Consumer, and sign your JWT with the original secret."
             }
           },
           {
@@ -80,19 +84,22 @@
                   "exp",
                   "nbf"
                 ]
-              }
+              },
+              "description": "A list of registered claims (according to [RFC 7519](https://tools.ietf.org/html/rfc7519)) that Kong can verify as well. Accepted values: one of `exp` or `nbf`."
             }
           },
           {
             "anonymous": {
-              "type": "string"
+              "type": "string",
+              "description": "An optional string (consumer UUID) value to use as an anonymous consumer if authentication fails.\nIf empty (default), the request will fail with an authentication failure `4xx`. Note that this value\nmust refer to the consumer `id` attribute that is internal to Kong Gateway, and **not** its `custom_id`."
             }
           },
           {
             "run_on_preflight": {
               "type": "boolean",
               "required": true,
-              "default": true
+              "default": true,
+              "description": "A boolean value that indicates whether the plugin should run (and try to authenticate) on `OPTIONS` preflight requests. If set to `false`, then `OPTIONS` requests will always be allowed."
             }
           },
           {
@@ -102,7 +109,8 @@
               "between": [
                 0,
                 31536000
-              ]
+              ],
+              "description": "A value between 0 and 31536000 (365 days) limiting the lifetime of the JWT to `maximum_expiration` seconds in the future. Any JWT that has a longer lifetime is rejected (HTTP 403). If this value is specified, `exp` must be specified as well in the `claims_to_verify` property. The default value of `0` represents an indefinite period. Potential clock skew should be considered when configuring this setting."
             }
           },
           {
@@ -113,7 +121,8 @@
               },
               "default": [
                 "authorization"
-              ]
+              ],
+              "description": "A list of HTTP header names that Kong will inspect to retrieve JWTs."
             }
           }
         ],

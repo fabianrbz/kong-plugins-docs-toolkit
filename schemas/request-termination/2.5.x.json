@@ -36,7 +36,8 @@
               ],
               "examples": [
                 403
-              ]
+              ],
+              "description": "The response code to send. Must be an integer between 100 and 599."
             }
           },
           {
@@ -44,17 +45,20 @@
               "type": "string",
               "examples": [
                 "So long and thanks for all the fish!"
-              ]
+              ],
+              "description": "The message to send, if using the default response generator."
             }
           },
           {
             "content_type": {
-              "type": "string"
+              "type": "string",
+              "description": "Content type of the raw response configured with `config.body`."
             }
           },
           {
             "body": {
-              "type": "string"
+              "type": "string",
+              "description": "The raw response body to send. This is mutually exclusive with the `config.message` field."
             }
           }
         ]

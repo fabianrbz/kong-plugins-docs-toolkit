@@ -10,7 +10,8 @@
               "type": "string",
               "examples": [
                 "127.0.0.1"
-              ]
+              ],
+              "description": "The IP address or hostname of the StatsD server."
             }
           },
           {
@@ -23,13 +24,15 @@
               "type": "integer",
               "examples": [
                 8125
-              ]
+              ],
+              "description": "The port of the StatsD server."
             }
           },
           {
             "prefix": {
               "default": "kong",
-              "type": "string"
+              "type": "string",
+              "description": "String to prefix to each metric's name."
             }
           },
           {
@@ -297,7 +300,8 @@
                   "name": "cache_datastore_misses_total"
                 }
               ],
-              "type": "array"
+              "type": "array",
+              "description": "List of Metrics to be logged. Available values are described under [Metrics](#metrics)."
             }
           },
           {
@@ -312,7 +316,8 @@
                   "200-205",
                   "400-499"
                 ]
-              ]
+              ],
+              "description": "List of status code ranges that are allowed to be logged in metrics."
             }
           },
           {
@@ -322,19 +327,22 @@
                 0,
                 65507
               ],
-              "type": "number"
+              "type": "number",
+              "description": "Combine UDP packet up to the size configured. If zero (0), don't combine the\nUDP packet. Must be a number between 0 and 65507 (inclusive)."
             }
           },
           {
             "use_tcp": {
               "default": false,
-              "type": "boolean"
+              "type": "boolean",
+              "description": "Use TCP instead of UDP."
             }
           },
           {
             "hostname_in_prefix": {
               "default": false,
-              "type": "boolean"
+              "type": "boolean",
+              "description": "Include the `hostname` in the `prefix` for each metric name."
             }
           }
         ],

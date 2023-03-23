@@ -34,7 +34,8 @@
               "default": false,
               "examples": [
                 true
-              ]
+              ],
+              "description": "Enables TLS client certificate metadata values to be injected into HTTP headers."
             }
           },
           {
@@ -44,35 +45,40 @@
               "default": "X-Client-Cert",
               "examples": [
                 "X-Forwarded-Client-Cert"
-              ]
+              ],
+              "description": "Define the HTTP header name used for the PEM format URL encoded client certificate."
             }
           },
           {
             "client_serial_header_name": {
               "required": true,
               "type": "string",
-              "default": "X-Client-Cert-Serial"
+              "default": "X-Client-Cert-Serial",
+              "description": "Define the HTTP header name used for the serial number of the client certificate."
             }
           },
           {
             "client_cert_issuer_dn_header_name": {
               "required": true,
               "type": "string",
-              "default": "X-Client-Cert-Issuer-DN"
+              "default": "X-Client-Cert-Issuer-DN",
+              "description": "Define the HTTP header name used for the issuer DN of the client certificate."
             }
           },
           {
             "client_cert_subject_dn_header_name": {
               "required": true,
               "type": "string",
-              "default": "X-Client-Cert-Subject-DN"
+              "default": "X-Client-Cert-Subject-DN",
+              "description": "Define the HTTP header name used for the subject DN of the client certificate."
             }
           },
           {
             "client_cert_fingerprint_header_name": {
               "required": true,
               "type": "string",
-              "default": "X-Client-Cert-Fingerprint"
+              "default": "X-Client-Cert-Fingerprint",
+              "description": "Define the HTTP header name used for the SHA1 fingerprint of the client certificate."
             }
           }
         ],

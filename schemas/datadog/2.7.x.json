@@ -35,7 +35,8 @@
               "type": "string",
               "examples": [
                 "127.0.0.1"
-              ]
+              ],
+              "description": "The IP address or hostname to send data to."
             }
           },
           {
@@ -48,31 +49,36 @@
               ],
               "examples": [
                 8125
-              ]
+              ],
+              "description": "The port to send data to on the upstream server."
             }
           },
           {
             "prefix": {
               "type": "string",
-              "default": "kong"
+              "default": "kong",
+              "description": "String to be attached as a prefix to a metric's name."
             }
           },
           {
             "service_name_tag": {
               "type": "string",
-              "default": "name"
+              "default": "name",
+              "description": "String to be attached as the name of the service."
             }
           },
           {
             "status_tag": {
               "type": "string",
-              "default": "status"
+              "default": "status",
+              "description": "String to be attached as the tag of the HTTP status."
             }
           },
           {
             "consumer_tag": {
               "type": "string",
-              "default": "consumer"
+              "default": "consumer",
+              "description": "String to be attached as tag of the consumer."
             }
           },
           {
@@ -208,7 +214,8 @@
                 ]
               },
               "required": true,
-              "type": "array"
+              "type": "array",
+              "description": "List of metrics to be logged. Available values are described at [Metrics](#metrics).\nBy default, the plugin logs all available metrics. If you specify an array of metrics,\nonly the listed metrics are logged."
             }
           }
         ],

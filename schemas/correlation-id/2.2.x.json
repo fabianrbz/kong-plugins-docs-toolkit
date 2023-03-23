@@ -29,7 +29,8 @@
           {
             "header_name": {
               "type": "string",
-              "default": "Kong-Request-ID"
+              "default": "Kong-Request-ID",
+              "description": "The HTTP header name to use for the correlation ID."
             }
           },
           {
@@ -40,13 +41,15 @@
                 "uuid#counter",
                 "tracker"
               ],
-              "default": "uuid#counter"
+              "default": "uuid#counter",
+              "description": "The generator to use for the correlation ID. Accepted values are `uuid`, `uuid#counter`, and `tracker`. See [Generators](#generators)."
             }
           },
           {
             "echo_downstream": {
               "type": "boolean",
-              "default": false
+              "default": false,
+              "description": "Whether to echo the header back to downstream (the client)."
             }
           }
         ]

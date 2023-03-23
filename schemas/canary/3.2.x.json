@@ -33,7 +33,8 @@
         "fields": [
           {
             "start": {
-              "type": "number"
+              "type": "number",
+              "description": "Future time in seconds since epoch, when the canary release will start.\nIgnored when `percentage` is set, or when using `allow` or `deny` in `hash`.\n\nIf no value is set for the `start` field, it defaults to the \ntimestamp of the moment that the plugin instance is created."
             }
           },
           {
@@ -124,7 +125,8 @@
           },
           {
             "canary_by_header_name": {
-              "type": "string"
+              "type": "string",
+              "description": "Header name that, when present on a request, overrides the configured canary\nfunctionality.\n\n* If the configured header is present with the value `always`, the request will\nalways go to the canary upstream.\n* If the header is present with the value `never`, the request will never go to the\ncanary upstream.\n\nFor all other values, the configured canary rules will be applied."
             }
           }
         ],

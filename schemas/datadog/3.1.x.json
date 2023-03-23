@@ -37,7 +37,8 @@
               "type": "string",
               "examples": [
                 "127.0.0.1"
-              ]
+              ],
+              "description": "The IP address or hostname to send data to."
             }
           },
           {
@@ -50,31 +51,36 @@
               "type": "integer",
               "examples": [
                 8125
-              ]
+              ],
+              "description": "The port to send data to on the upstream server."
             }
           },
           {
             "prefix": {
               "default": "kong",
-              "type": "string"
+              "type": "string",
+              "description": "String to be attached as a prefix to a metric's name."
             }
           },
           {
             "service_name_tag": {
               "default": "name",
-              "type": "string"
+              "type": "string",
+              "description": "String to be attached as the name of the service."
             }
           },
           {
             "status_tag": {
               "default": "status",
-              "type": "string"
+              "type": "string",
+              "description": "String to be attached as the tag of the HTTP status."
             }
           },
           {
             "consumer_tag": {
               "default": "consumer",
-              "type": "string"
+              "type": "string",
+              "description": "String to be attached as tag of the consumer."
             }
           },
           {
@@ -84,14 +90,16 @@
               "default": 10,
               "examples": [
                 10
-              ]
+              ],
+              "description": "Number of times to retry when sending data to the upstream server."
             }
           },
           {
             "queue_size": {
               "type": "integer",
               "required": true,
-              "default": 1
+              "default": 1,
+              "description": "Maximum number of log entries to be sent on each message to the upstream server."
             }
           },
           {
@@ -101,7 +109,8 @@
               "default": 2,
               "examples": [
                 2
-              ]
+              ],
+              "description": "Optional time in seconds. If `queue_size` > 1, this is the max idle time before sending a log with less than `queue_size` records."
             }
           },
           {
@@ -237,7 +246,8 @@
                   "name": "kong_latency"
                 }
               ],
-              "required": true
+              "required": true,
+              "description": "List of metrics to be logged. Available values are described at [Metrics](#metrics).\nBy default, the plugin logs all available metrics. If you specify an array of metrics,\nonly the listed metrics are logged."
             }
           }
         ],

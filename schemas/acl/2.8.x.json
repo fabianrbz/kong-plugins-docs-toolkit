@@ -43,7 +43,8 @@
                   "group1",
                   "group2"
                 ]
-              ]
+              ],
+              "description": "Arbitrary group names that are allowed to consume the Service or Route. One of `config.allow` or `config.deny` must be specified."
             }
           },
           {
@@ -51,7 +52,8 @@
               "elements": {
                 "type": "string"
               },
-              "type": "array"
+              "type": "array",
+              "description": "Arbitrary group names that are not allowed to consume the Service or Route. One of `config.allow` or `config.deny` must be specified."
             }
           },
           {
@@ -61,7 +63,8 @@
               "type": "boolean",
               "examples": [
                 true
-              ]
+              ],
+              "description": "Flag that if enabled (`true`), prevents the `X-Consumer-Groups` header to be sent in the request to the Upstream service."
             }
           }
         ],

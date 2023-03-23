@@ -66,7 +66,8 @@
               "type": "string",
               "examples": [
                 "<AWS_ASSUME_ROLE_ARN>"
-              ]
+              ],
+              "description": "The target AWS IAM role ARN used to invoke the Lambda function. Typically this is\nused for a cross-account Lambda function invocation."
             }
           },
           {
@@ -75,7 +76,8 @@
               "type": "string",
               "examples": [
                 "<AWS_ROLE_SESSION_NAME>"
-              ]
+              ],
+              "description": "The identifier of the assumed role session. It is used for uniquely identifying\na session when the same target role is assumed by different principals or\nfor different reasons. The role session name is also used in the ARN of the assumed role principle."
             }
           },
           {
@@ -83,7 +85,8 @@
               "type": "string",
               "examples": [
                 "<AWS_REGION>"
-              ]
+              ],
+              "description": "The AWS region where the Lambda function is located. The plugin does not\nattempt to validate the supplied region name. If an invalid region name\nis provided, the plugin responds with an HTTP `500 Internal Server Error`\nat runtime and logs a DNS resolution failure.\n\nThe plugin will automatically\ndetect the AWS region on runtime via `AWS_REGION` or `AWS_DEFAULT_REGION` environment\nvariables when neither `aws_region` nor `host` is specified in plugin configuration.\nUsing environment variables enables regionally distributed Kong cluster nodes\nto connect to the closest AWS region. If `aws_region`, `host` and environment\nvariables have not been specified, the plugin responds with an HTTP\n`500 Internal Server Error` at run-time."
             }
           },
           {
@@ -125,7 +128,8 @@
           },
           {
             "host": {
-              "type": "string"
+              "type": "string",
+              "description": "The host where the Lambda function is located. This value can point to a\nlocal Lambda server, allowing for easier debugging.\n\nEither `aws_region` or `host` must be provided."
             }
           },
           {

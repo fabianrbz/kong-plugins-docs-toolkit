@@ -35,19 +35,22 @@
                 [
                   "return function(status, body, header) return status, body, headers end"
                 ]
-              ]
+              ],
+              "description": "Array of functions used to transform any Kong proxy exit response."
             }
           },
           {
             "handle_unknown": {
               "type": "boolean",
-              "default": false
+              "default": false,
+              "description": "Allow transform to apply to unmatched Service, Route, or Workspace (404) responses."
             }
           },
           {
             "handle_unexpected": {
               "type": "boolean",
-              "default": false
+              "default": false,
+              "description": "Allow transform to apply to unexpected request (400) responses."
             }
           }
         ],

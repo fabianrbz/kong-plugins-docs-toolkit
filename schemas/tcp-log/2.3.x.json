@@ -32,7 +32,8 @@
           {
             "host": {
               "type": "string",
-              "required": true
+              "required": true,
+              "description": "The IP address or host name to send data to."
             }
           },
           {
@@ -42,30 +43,35 @@
               "between": [
                 0,
                 65535
-              ]
+              ],
+              "description": "The port to send data to on the upstream server."
             }
           },
           {
             "timeout": {
               "type": "number",
-              "default": 10000
+              "default": 10000,
+              "description": "An optional timeout in milliseconds when sending data to the upstream server."
             }
           },
           {
             "keepalive": {
               "type": "number",
-              "default": 60000
+              "default": 60000,
+              "description": "An optional value in milliseconds that defines how long an idle connection lives before being closed."
             }
           },
           {
             "tls": {
               "type": "boolean",
-              "default": false
+              "default": false,
+              "description": "Indicates whether to perform a TLS handshake against the remote server."
             }
           },
           {
             "tls_sni": {
-              "type": "string"
+              "type": "string",
+              "description": "An optional string that defines the SNI (Server Name Indication) hostname to send in the TLS handshake."
             }
           }
         ]

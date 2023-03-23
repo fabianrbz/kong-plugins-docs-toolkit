@@ -34,7 +34,8 @@
               "type": "string",
               "examples": [
                 "127.0.0.1"
-              ]
+              ],
+              "description": "The IP address or hostname to send data to."
             }
           },
           {
@@ -47,13 +48,15 @@
               "type": "integer",
               "examples": [
                 8125
-              ]
+              ],
+              "description": "The port to send data to on the upstream server."
             }
           },
           {
             "prefix": {
               "default": "kong",
-              "type": "string"
+              "type": "string",
+              "description": "String to be attached as a prefix to a metric's name."
             }
           },
           {
@@ -188,7 +191,8 @@
                   ]
                 }
               ],
-              "type": "array"
+              "type": "array",
+              "description": "List of metrics to be logged. Available values are described at [Metrics](#metrics).\nBy default, the plugin logs all available metrics. If you specify an array of metrics,\nonly the listed metrics are logged."
             }
           }
         ],

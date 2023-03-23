@@ -16,18 +16,21 @@
               "required": true,
               "examples": [
                 "https://example-url.com"
-              ]
+              ],
+              "description": "The full URL to the third-party introspection endpoint.\n\nIf the introspection endpoint is `https`, [`lua_ssl_trusted_certificate`](/gateway/latest/reference/configuration/#lua_ssl_trusted_certificate)\nmust be set in `kong.conf` to ensure the plugin can connect\nto the endpoint. The CA bundle file location depends on your OS. See the\n[configuration reference](/gateway/latest/reference/configuration/#lua_ssl_trusted_certificate) for a list.\n\nStarting with Kong v2.2, users can set `lua_ssl_trusted_certificate=system`\nto automatically use the CA bundle from the OS."
             }
           },
           {
             "ttl": {
               "default": 30,
-              "type": "number"
+              "type": "number",
+              "description": "The TTL in seconds for the introspection response. Set to 0 to disable the expiration."
             }
           },
           {
             "token_type_hint": {
-              "type": "string"
+              "type": "string",
+              "description": "The `token_type_hint` value to associate to introspection requests."
             }
           },
           {
@@ -36,45 +39,52 @@
               "type": "string",
               "examples": [
                 "Basic MG9hNWlpbjpPcGVuU2VzYW1l"
-              ]
+              ],
+              "description": "The value to set as the `Authorization` header when querying the introspection endpoint. This depends on the OAuth 2.0 server, but usually is the `client_id` and `client_secret` as a Base64-encoded Basic Auth string (`Basic MG9hNWl...`)."
             }
           },
           {
             "timeout": {
               "default": 10000,
-              "type": "integer"
+              "type": "integer",
+              "description": "An optional timeout in milliseconds when sending data to the upstream server."
             }
           },
           {
             "keepalive": {
               "default": 60000,
-              "type": "integer"
+              "type": "integer",
+              "description": "An optional value in milliseconds that defines how long an idle connection lives before being closed."
             }
           },
           {
             "introspect_request": {
               "required": true,
               "default": false,
-              "type": "boolean"
+              "type": "boolean",
+              "description": "A boolean indicating whether to forward information about the current\ndownstream request to the introspect endpoint. If true, headers\n`X-Request-Path` and `X-Request-Http-Method` will be inserted into the\nintrospect request."
             }
           },
           {
             "hide_credentials": {
               "default": false,
-              "type": "boolean"
+              "type": "boolean",
+              "description": "An optional boolean value telling the plugin to hide the credential to the upstream API server. It will be removed by Kong before proxying the request."
             }
           },
           {
             "run_on_preflight": {
               "default": true,
-              "type": "boolean"
+              "type": "boolean",
+              "description": "A boolean value that indicates whether the plugin should run (and try to authenticate) on `OPTIONS` preflight requests. If set to `false`, then `OPTIONS` requests will always be allowed."
             }
           },
           {
             "anonymous": {
               "len_min": 0,
               "default": "",
-              "type": "string"
+              "type": "string",
+              "description": "An optional string (consumer UUID) value to use as an anonymous consumer if authentication fails. If empty (default), the request fails with an authentication failure `4xx`."
             }
           },
           {
@@ -88,7 +98,8 @@
               "type": "string",
               "examples": [
                 "username"
-              ]
+              ],
+              "description": "A string indicating whether to associate OAuth2 `username` or `client_id`\nwith the consumer's username. OAuth2 `username` is mapped to a consumer's\n`username` field, while an OAuth2 `client_id` maps to a consumer's\n`custom_id`."
             }
           },
           {
@@ -103,7 +114,8 @@
               "default": [
 
               ],
-              "type": "map"
+              "type": "map",
+              "description": "A list of custom headers to be added in the introspection request."
             }
           },
           {
@@ -115,7 +127,8 @@
               "elements": {
                 "type": "string"
               },
-              "type": "set"
+              "type": "set",
+              "description": "A list of custom claims to be forwarded from the introspection response\nto the upstream request. Claims are forwarded in headers with prefix\n`X-Credential-{claim-name}`."
             }
           }
         ],

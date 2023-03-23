@@ -35,7 +35,8 @@
               "type": "integer",
               "examples": [
                 5000
-              ]
+              ],
+              "description": "The timeout, in milliseconds, between two\nsuccessive read operations when receiving a response from the upstream server.\nOverrides the service object [`read_timeout`](/gateway/latest/how-kong-works/routing-traffic/#proxying-and-upstream-timeouts) setting, if the setting exists."
             }
           },
           {
@@ -47,7 +48,8 @@
               "type": "integer",
               "examples": [
                 5000
-              ]
+              ],
+              "description": "The timeout, in milliseconds, between two\nsuccessive write operations when sending a request to the upstream server.\nOverrides the service object [`write_timeout`](/gateway/latest/how-kong-works/routing-traffic/#proxying-and-upstream-timeouts) setting, if the setting exists."
             }
           },
           {
@@ -59,7 +61,8 @@
               "type": "integer",
               "examples": [
                 4000
-              ]
+              ],
+              "description": "The timeout, in milliseconds, for establishing a connection to the upstream server.\nOverrides the service object [`connect_timeout`](/gateway/latest/how-kong-works/routing-traffic/#proxying-and-upstream-timeouts) setting, if the setting exists."
             }
           }
         ]

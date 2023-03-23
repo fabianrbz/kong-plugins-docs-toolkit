@@ -36,7 +36,8 @@
                 "REQUEST"
               ],
               "required": false,
-              "type": "string"
+              "type": "string",
+              "description": "Indicates the TLS handshake preference. The only option is `REQUEST`, which\nrequests the client certificate."
             }
           }
         ],

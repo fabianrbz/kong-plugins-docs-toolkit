@@ -17,6 +17,12 @@
                     "default": [
 
                     ],
+                    "examples": [
+                      [
+                        "json-key-toremove",
+                        "another-json-key"
+                      ]
+                    ],
                     "description": "List of property names. Remove the property from the JSON body if it is present."
                   }
                 },
@@ -28,6 +34,16 @@
                     "type": "array",
                     "default": [
 
+                    ],
+                    "examples": [
+                      [
+                        "x-toremove",
+                        "x-another-one:application/json",
+                        "x-list-of-values:v1,v2,v3",
+                        "Set-Cookie:/JSESSIONID=.*/",
+                        "x-another-regex://status/$/",
+                        "x-one-more-regex:/^/begin//"
+                      ]
                     ],
                     "description": "List of `headername[:value]`. If only `headername` is given, unset the header field with the given `headername`. If `headername:value` is given, unset the header field `headername` when it has a specific `value`. If `value` starts and ends with a `/` (slash character), then it is considered to be a regular expression. Note that in accordance with [RFC 7230](https://httpwg.org/specs/rfc7230.html#field.order) multiple header values with the same header name are allowed if the entire field value for that header field is defined as a comma-separated list or the header field is a `Set-Cookie` header field."
                   }
@@ -45,15 +61,7 @@
                   }
                 }
               ],
-              "required": true,
-              "examples": [
-                {
-                  "json": [
-                    "json-key-toremove",
-                    "another-json-key"
-                  ]
-                }
-              ]
+              "required": true
             }
           },
           {
@@ -169,6 +177,12 @@
                     "default": [
 
                     ],
+                    "examples": [
+                      [
+                        "new-json-key:some_value",
+                        "another-json-key:some_value"
+                      ]
+                    ],
                     "description": "List of `name:value` pairs. If and only if the property is not present, add a new property with the given value to the JSON body. Ignored if the property is already present."
                   }
                 },
@@ -186,6 +200,13 @@
                     "default": [
 
                     ],
+                    "examples": [
+                      [
+                        "string",
+                        "boolean",
+                        "number"
+                      ]
+                    ],
                     "description": "List of JSON type names. Specify the types of the JSON values returned when adding a new JSON property."
                   }
                 },
@@ -197,6 +218,12 @@
                     "type": "array",
                     "default": [
 
+                    ],
+                    "examples": [
+                      [
+                        "x-new-header:value",
+                        "x-another-header:something"
+                      ]
                     ],
                     "description": "List of `headername:value` pairs. If and only if the header is not already set, set a new header with the given value. Ignored if the header is already set."
                   }
@@ -214,16 +241,7 @@
                   }
                 }
               ],
-              "required": true,
-              "examples": [
-                {
-                  "json_types": [
-                    "string",
-                    "boolean",
-                    "number"
-                  ]
-                }
-              ]
+              "required": true
             }
           },
           {
@@ -268,6 +286,12 @@
                     "default": [
 
                     ],
+                    "examples": [
+                      [
+                        "x-existing-header:some_value",
+                        "x-another-header:some_value"
+                      ]
+                    ],
                     "description": "List of `headername:value` pairs. If the header is not set, set it with the given value. If it is already set, a new header with the same name and the new value will be set."
                   }
                 },
@@ -284,15 +308,7 @@
                   }
                 }
               ],
-              "required": true,
-              "examples": [
-                {
-                  "headers": [
-                    "x-existing-header:some_value",
-                    "x-another-header:some_value"
-                  ]
-                }
-              ]
+              "required": true
             }
           },
           {

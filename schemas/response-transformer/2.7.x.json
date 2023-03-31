@@ -37,6 +37,12 @@
 
                     ],
                     "type": "array",
+                    "examples": [
+                      [
+                        "json-key-toremove",
+                        "another-json-key"
+                      ]
+                    ],
                     "description": "List of property names. Remove the property from the JSON body if it is present."
                   }
                 },
@@ -50,24 +56,18 @@
 
                     ],
                     "type": "array",
+                    "examples": [
+                      [
+                        "x-toremove",
+                        "x-another-one"
+                      ]
+                    ],
                     "description": "List of header names. Unset the header(s) with the given name."
                   }
                 }
               ],
               "type": "record",
-              "required": true,
-              "examples": [
-                {
-                  "headers": [
-                    "x-toremove",
-                    "x-another-one"
-                  ],
-                  "json": [
-                    "json-key-toremove",
-                    "another-json-key"
-                  ]
-                }
-              ]
+              "required": true
             }
           },
           {
@@ -160,6 +160,12 @@
 
                     ],
                     "type": "array",
+                    "examples": [
+                      [
+                        "new-json-key:some_value",
+                        "another-json-key:some_value"
+                      ]
+                    ],
                     "description": "List of `property:value` pairs. If and only if the property is not present, add a new property with the given value to the JSON body. Ignored if the property is already present."
                   }
                 },
@@ -178,6 +184,13 @@
 
                     ],
                     "type": "array",
+                    "examples": [
+                      [
+                        "string",
+                        "boolean",
+                        "number"
+                      ]
+                    ],
                     "description": "List of JSON type names. Specify the types of the JSON values returned when adding\na new JSON property. Each string element can be one of: boolean, number, or string."
                   }
                 },
@@ -192,29 +205,18 @@
 
                     ],
                     "type": "array",
+                    "examples": [
+                      [
+                        "x-new-header:value",
+                        "x-another-header:something"
+                      ]
+                    ],
                     "description": "List of `headername:value` pairs. If and only if the header is not already set, set a new header with the given value. Ignored if the header is already set."
                   }
                 }
               ],
               "type": "record",
-              "required": true,
-              "examples": [
-                {
-                  "headers": [
-                    "x-new-header:value",
-                    "x-another-header:something"
-                  ],
-                  "json": [
-                    "new-json-key:some_value",
-                    "another-json-key:some_value"
-                  ],
-                  "json_types": [
-                    "string",
-                    "boolean",
-                    "number"
-                  ]
-                }
-              ]
+              "required": true
             }
           },
           {
@@ -263,20 +265,18 @@
 
                     ],
                     "type": "array",
+                    "examples": [
+                      [
+                        "x-existing-header:some_value",
+                        "x-another-header:some_value"
+                      ]
+                    ],
                     "description": "List of `headername:value` pairs. If the header is not set, set it with the given value. If it is\nalready set, a new header with the same name and the new value will be set. Each string\nelement can be one of: boolean, number, or string."
                   }
                 }
               ],
               "type": "record",
-              "required": true,
-              "examples": [
-                {
-                  "headers": [
-                    "x-existing-header:some_value",
-                    "x-another-header:some_value"
-                  ]
-                }
-              ]
+              "required": true
             }
           }
         ],

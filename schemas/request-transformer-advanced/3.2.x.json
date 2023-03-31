@@ -43,6 +43,12 @@
                     "default": [
 
                     ],
+                    "examples": [
+                      [
+                        "formparam-toremove",
+                        "formparam-another-one"
+                      ]
+                    ],
                     "description": "List of parameter names. Remove the parameter if and only if content-type is one of the\nfollowing: [`application/json`, `multipart/form-data`, `application/x-www-form-urlencoded`]; and parameter is present."
                   }
                 },
@@ -54,6 +60,12 @@
                     },
                     "default": [
 
+                    ],
+                    "examples": [
+                      [
+                        "x-toremove",
+                        "x-another-one"
+                      ]
                     ],
                     "description": "List of header names. Unset the headers with the given name."
                   }
@@ -67,20 +79,18 @@
                     "default": [
 
                     ],
+                    "examples": [
+                      [
+                        "qs-old-name:qs-new-name",
+                        "qs2-old-name:qs2-new-name"
+                      ]
+                    ],
                     "description": "List of querystring names. Remove the querystring if it is present."
                   }
                 }
               ],
               "type": "record",
-              "required": true,
-              "examples": [
-                {
-                  "body": [
-                    "formparam-toremove",
-                    "formparam-another-one"
-                  ]
-                }
-              ]
+              "required": true
             }
           },
           {
@@ -96,6 +106,12 @@
                     "default": [
 
                     ],
+                    "examples": [
+                      [
+                        "param-old:param-new",
+                        "param2-old:param2-new"
+                      ]
+                    ],
                     "description": "List of parameter `name:value` pairs. Rename the parameter name if and only if content-type is\none of the following: [`application/json`, `multipart/form-data`, `application/x-www-form-urlencoded`]; and parameter is present."
                   }
                 },
@@ -108,6 +124,12 @@
                     },
                     "default": [
 
+                    ],
+                    "examples": [
+                      [
+                        "header-old-name:header-new-name",
+                        "another-old-name:another-new-name"
+                      ]
                     ],
                     "description": "List of `headername:value` pairs. If and only if the header is already set,\nrename the header. The value is unchanged. Ignored if the header is not already set."
                   }
@@ -122,20 +144,18 @@
                     "default": [
 
                     ],
+                    "examples": [
+                      [
+                        "qs-old-name:qs-new-name",
+                        "qs2-old-name:qs2-new-name"
+                      ]
+                    ],
                     "description": "List of `queryname:value` pairs. If and only if the field name is already set,\nrename the field name. The value is unchanged. Ignored if the field name is not already set."
                   }
                 }
               ],
               "type": "record",
-              "required": true,
-              "examples": [
-                {
-                  "body": [
-                    "param-old:param-new",
-                    "param2-old:param2-new"
-                  ]
-                }
-              ]
+              "required": true
             }
           },
           {
@@ -150,6 +170,12 @@
                     },
                     "default": [
 
+                    ],
+                    "examples": [
+                      [
+                        "body-param1:new-value-1",
+                        "body-param2:new-value-2"
+                      ]
                     ],
                     "description": "List of paramname:value pairs. If and only if content-type is one the\nfollowing: [`application/json`, `multipart/form-data`, `application/x-www-form-urlencoded`];\nand the parameter is already present, replace its old value with the new one. Ignored if the parameter is not already present."
                   }
@@ -205,15 +231,7 @@
                 }
               ],
               "type": "record",
-              "required": true,
-              "examples": [
-                {
-                  "body": [
-                    "body-param1:new-value-1",
-                    "body-param2:new-value-2"
-                  ]
-                }
-              ]
+              "required": true
             }
           },
           {
@@ -242,6 +260,12 @@
                     "default": [
 
                     ],
+                    "examples": [
+                      [
+                        "x-new-header:value",
+                        "x-another-header:something"
+                      ]
+                    ],
                     "description": "List of `headername:value` pairs. If and only if the header is not already set,\nset a new header with the given value. Ignored if the header is already set."
                   }
                 },
@@ -254,6 +278,12 @@
                     "type": "array",
                     "default": [
 
+                    ],
+                    "examples": [
+                      [
+                        "new-param:some_value",
+                        "another-param:some_value"
+                      ]
                     ],
                     "description": "List of `queryname:value` pairs. If and only if the querystring name is not already set,\nset a new querystring with the given value. Ignored if the querystring name is already set."
                   }
@@ -272,21 +302,19 @@
                     "default": [
 
                     ],
+                    "examples": [
+                      [
+                        "string",
+                        "boolean",
+                        "number"
+                      ]
+                    ],
                     "description": "List of JSON type names. Specify the types of the JSON values returned when adding a new JSON property."
                   }
                 }
               ],
               "type": "record",
-              "required": true,
-              "examples": [
-                {
-                  "json_types": [
-                    "string",
-                    "boolean",
-                    "number"
-                  ]
-                }
-              ]
+              "required": true
             }
           },
           {

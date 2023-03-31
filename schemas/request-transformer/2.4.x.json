@@ -27,6 +27,12 @@
                     "default": [
 
                     ],
+                    "examples": [
+                      [
+                        "formparam-toremove",
+                        "formparam-another-one"
+                      ]
+                    ],
                     "description": "List of parameter names. Remove the parameter if and only if content-type is one the following:\n[`application/json`, `multipart/form-data`, `application/x-www-form-urlencoded`] and the parameter is present."
                   }
                 },
@@ -39,6 +45,12 @@
                     "required": true,
                     "default": [
 
+                    ],
+                    "examples": [
+                      [
+                        "x-toremove",
+                        "x-another-one"
+                      ]
                     ],
                     "description": "List of header names. Unset the headers with the given name."
                   }
@@ -53,24 +65,14 @@
                     "default": [
 
                     ],
+                    "examples": [
+                      [
+                        "qs-old-name:qs-new-name",
+                        "qs2-old-name:qs2-new-name"
+                      ]
+                    ],
                     "description": "List of querystring names. Remove the querystring if it is present."
                   }
-                }
-              ],
-              "examples": [
-                {
-                  "headers": [
-                    "x-toremove",
-                    "x-another-one"
-                  ],
-                  "querystring": [
-                    "qs-old-name:qs-new-name",
-                    "qs2-old-name:qs2-new-name"
-                  ],
-                  "body": [
-                    "formparam-toremove",
-                    "formparam-another-one"
-                  ]
                 }
               ]
             }
@@ -90,6 +92,12 @@
                     "default": [
 
                     ],
+                    "examples": [
+                      [
+                        "param-old:param-new",
+                        "param2-old:param2-new"
+                      ]
+                    ],
                     "description": "List of `paramname:value` pairs. Rename the parameter name if and only if\ncontent-type is one the following [`application/json`, `multipart/form-data`, `application/x-www-form-urlencoded`]\nand the parameter is present."
                   }
                 },
@@ -104,6 +112,12 @@
                     "default": [
 
                     ],
+                    "examples": [
+                      [
+                        "header-old-name:header-new-name",
+                        "another-old-name:another-new-name"
+                      ]
+                    ],
                     "description": "List of `headername:value` pairs. If and only if the header is already set, rename\nthe header. The value is unchanged. Ignored if the header is not already set."
                   }
                 },
@@ -117,24 +131,14 @@
                     "default": [
 
                     ],
+                    "examples": [
+                      [
+                        "qs-old-name:qs-new-name",
+                        "qs2-old-name:qs2-new-name"
+                      ]
+                    ],
                     "description": "List of queryname:value pairs. If and only if the field name is already set, rename the field name.\nThe value is unchanged. Ignored if the field name is not already set."
                   }
-                }
-              ],
-              "examples": [
-                {
-                  "headers": [
-                    "header-old-name:header-new-name",
-                    "another-old-name:another-new-name"
-                  ],
-                  "querystring": [
-                    "qs-old-name:qs-new-name",
-                    "qs2-old-name:qs2-new-name"
-                  ],
-                  "body": [
-                    "param-old:param-new",
-                    "param2-old:param2-new"
-                  ]
                 }
               ]
             }
@@ -154,6 +158,12 @@
 
                     ],
                     "required": true,
+                    "examples": [
+                      [
+                        "body-param1:new-value-1",
+                        "body-param2:new-value-2"
+                      ]
+                    ],
                     "description": "List of `paramname:value` pairs. If and only if content-type is one the following\n[`application/json`, `multipart/form-data`, `application/x-www-form-urlencoded`] and the\nparameter is already present, replace its old value with the new one. Ignored if\nthe parameter is not already present."
                   }
                 },
@@ -190,14 +200,6 @@
                     "description": "Updates the upstream request URI with a given value. This value can be used to update\nonly the path part of the URI, not the scheme or the hostname."
                   }
                 }
-              ],
-              "examples": [
-                {
-                  "body": [
-                    "body-param1:new-value-1",
-                    "body-param2:new-value-2"
-                  ]
-                }
               ]
             }
           },
@@ -216,6 +218,12 @@
                     "default": [
 
                     ],
+                    "examples": [
+                      [
+                        "new-form-param:some_value",
+                        "another-form-param:some_value"
+                      ]
+                    ],
                     "description": "List of `paramname:value` pairs. If and only if content-type is one the\nfollowing [`application/json`, `multipart/form-data`, `application/x-www-form-urlencoded`]\nand the parameter is not present, add a new parameter with the given value to the form-encoded\nbody. Ignored if the parameter is already present."
                   }
                 },
@@ -230,6 +238,12 @@
                     "default": [
 
                     ],
+                    "examples": [
+                      [
+                        "x-new-header:value",
+                        "x-another-header:something"
+                      ]
+                    ],
                     "description": "List of `headername:value` pairs. If and only if the header is not already set, set a new header\nwith the given value. Ignored if the header is already set."
                   }
                 },
@@ -243,24 +257,14 @@
                     "default": [
 
                     ],
+                    "examples": [
+                      [
+                        "new-param:some_value",
+                        "another-param:some_value"
+                      ]
+                    ],
                     "description": "List of `queryname:value` pairs. If and only if the querystring is not already set, set a new\nquerystring with the given value. Ignored if the querystring is already set."
                   }
-                }
-              ],
-              "examples": [
-                {
-                  "headers": [
-                    "x-new-header:value",
-                    "x-another-header:something"
-                  ],
-                  "querystring": [
-                    "new-param:some_value",
-                    "another-param:some_value"
-                  ],
-                  "body": [
-                    "new-form-param:some_value",
-                    "another-form-param:some_value"
-                  ]
                 }
               ]
             }

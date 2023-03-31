@@ -30,6 +30,12 @@
                     "default": [
 
                     ],
+                    "examples": [
+                      [
+                        "formparam-toremove",
+                        "formparam-another-one"
+                      ]
+                    ],
                     "description": "List of parameter names. Remove the parameter if and only if content-type is one of the\nfollowing: [`application/json`, `multipart/form-data`, `application/x-www-form-urlencoded`]; and parameter is present."
                   }
                 },
@@ -41,6 +47,12 @@
                     "type": "array",
                     "default": [
 
+                    ],
+                    "examples": [
+                      [
+                        "x-toremove",
+                        "x-another-one"
+                      ]
                     ],
                     "description": "List of header names. Unset the headers with the given name."
                   }
@@ -54,16 +66,14 @@
                     "default": [
 
                     ],
+                    "examples": [
+                      [
+                        "qs-old-name:qs-new-name",
+                        "qs2-old-name:qs2-new-name"
+                      ]
+                    ],
                     "description": "List of querystring names. Remove the querystring if it is present."
                   }
-                }
-              ],
-              "examples": [
-                {
-                  "body": [
-                    "formparam-toremove",
-                    "formparam-another-one"
-                  ]
                 }
               ]
             }
@@ -82,6 +92,12 @@
                     "default": [
 
                     ],
+                    "examples": [
+                      [
+                        "param-old:param-new",
+                        "param2-old:param2-new"
+                      ]
+                    ],
                     "description": "List of parameter `name:value` pairs. Rename the parameter name if and only if content-type is\none of the following: [`application/json`, `multipart/form-data`, `application/x-www-form-urlencoded`]; and parameter is present."
                   }
                 },
@@ -93,6 +109,12 @@
                     "type": "array",
                     "default": [
 
+                    ],
+                    "examples": [
+                      [
+                        "header-old-name:header-new-name",
+                        "another-old-name:another-new-name"
+                      ]
                     ],
                     "description": "List of `headername:value` pairs. If and only if the header is already set,\nrename the header. The value is unchanged. Ignored if the header is not already set."
                   }
@@ -106,16 +128,14 @@
                     "default": [
 
                     ],
+                    "examples": [
+                      [
+                        "qs-old-name:qs-new-name",
+                        "qs2-old-name:qs2-new-name"
+                      ]
+                    ],
                     "description": "List of `queryname:value` pairs. If and only if the field name is already set,\nrename the field name. The value is unchanged. Ignored if the field name is not already set."
                   }
-                }
-              ],
-              "examples": [
-                {
-                  "body": [
-                    "param-old:param-new",
-                    "param2-old:param2-new"
-                  ]
                 }
               ]
             }
@@ -133,6 +153,12 @@
                     "type": "array",
                     "default": [
 
+                    ],
+                    "examples": [
+                      [
+                        "body-param1:new-value-1",
+                        "body-param2:new-value-2"
+                      ]
                     ],
                     "description": "List of paramname:value pairs. If and only if content-type is one the\nfollowing: [`application/json`, `multipart/form-data`, `application/x-www-form-urlencoded`];\nand the parameter is already present, replace its old value with the new one. Ignored if the parameter is not already present."
                   }
@@ -167,14 +193,6 @@
                     "description": "Updates the upstream request URI with given value. This value can only\nbe used to update the path part of the URI; not the scheme, nor the hostname."
                   }
                 }
-              ],
-              "examples": [
-                {
-                  "body": [
-                    "body-param1:new-value-1",
-                    "body-param2:new-value-2"
-                  ]
-                }
               ]
             }
           },
@@ -204,6 +222,12 @@
                     "default": [
 
                     ],
+                    "examples": [
+                      [
+                        "x-new-header:value",
+                        "x-another-header:something"
+                      ]
+                    ],
                     "description": "List of `headername:value` pairs. If and only if the header is not already set,\nset a new header with the given value. Ignored if the header is already set."
                   }
                 },
@@ -216,16 +240,14 @@
                     "default": [
 
                     ],
+                    "examples": [
+                      [
+                        "new-param:some_value",
+                        "another-param:some_value"
+                      ]
+                    ],
                     "description": "List of `queryname:value` pairs. If and only if the querystring name is not already set,\nset a new querystring with the given value. Ignored if the querystring name is already set."
                   }
-                }
-              ],
-              "examples": [
-                {
-                  "querystring": [
-                    "new-param:some_value",
-                    "another-param:some_value"
-                  ]
                 }
               ]
             }

@@ -2,6 +2,7 @@
 require 'thor'
 require_relative 'lib/schema_downloader'
 require_relative 'lib/example_validator'
+require_relative 'lib/example_copier'
 
 class Plugins < Thor
   class_option :verbose, :type => :boolean
@@ -37,6 +38,20 @@ class Plugins < Thor
 
     options[:plugins].each do |plugin|
       ExampleValidator.run!(plugin:, options:)
+    end
+
+    puts 'Done!'
+  end
+
+  desc 'copy_examples', 'Copy latest examples'
+  option :version, aliases: '-v', type: :string, required: true,  default: '_index',     desc: 'Kong Version'
+  option :plugins, aliases: '-p', type: :array,  required: true,                         desc: 'List containing the name of the plugins'
+  option :source,  aliases: '-s', type: :string,                  default: './examples', desc: 'Source folder containing the examples'
+  def copy_examples
+    puts 'Copying examples...'
+
+    options[:plugins].each do |plugin|
+      ExampleCopier.run!(plugin:, options:)
     end
 
     puts 'Done!'

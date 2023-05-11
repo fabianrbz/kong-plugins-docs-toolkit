@@ -128,7 +128,8 @@
           {
             "disable_https": {
               "default": false,
-              "type": "boolean"
+              "type": "boolean",
+              "description": "Whether to disable HTTPS to connect with the AWS Lambda Function service endpoint. This is useful for local test scenarios by using the [AWS SAM CLI tool](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/what-is-sam.html)."
             }
           },
           {

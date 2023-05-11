@@ -72,7 +72,7 @@
                 "application/json",
                 "application/json; charset=utf-8"
               ],
-              "description": "Indicates the type of data sent. The only available option is `application/json`."
+              "description": "Indicates the type of data sent. The available options are `application/json` and `application/json; charset=utf-8`."
             }
           },
           {

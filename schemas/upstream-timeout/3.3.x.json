@@ -1,0 +1,63 @@
+{
+  "fields": [
+    {
+      "protocols": {
+        "default": [
+          "grpc",
+          "grpcs",
+          "http",
+          "https"
+        ],
+        "type": "set",
+        "required": true,
+        "elements": {
+          "one_of": [
+            "grpc",
+            "grpcs",
+            "http",
+            "https"
+          ],
+          "type": "string"
+        }
+      }
+    },
+    {
+      "config": {
+        "type": "record",
+        "required": true,
+        "fields": [
+          {
+            "read_timeout": {
+              "between": [
+                0,
+                2147483646
+              ],
+              "type": "integer",
+              "description": "The timeout, in milliseconds, between two\nsuccessive read operations when receiving a response from the upstream server.\nOverrides the service object [`read_timeout`](/gateway/latest/how-kong-works/routing-traffic/#proxying-and-upstream-timeouts) setting, if the setting exists."
+            }
+          },
+          {
+            "send_timeout": {
+              "between": [
+                0,
+                2147483646
+              ],
+              "type": "integer",
+              "description": "The timeout, in milliseconds, between two\nsuccessive write operations when sending a request to the upstream server.\nOverrides the service object [`write_timeout`](/gateway/latest/how-kong-works/routing-traffic/#proxying-and-upstream-timeouts) setting, if the setting exists."
+            }
+          },
+          {
+            "connect_timeout": {
+              "between": [
+                0,
+                2147483646
+              ],
+              "type": "integer",
+              "description": "The timeout, in milliseconds, for establishing a connection to the upstream server.\nOverrides the service object [`connect_timeout`](/gateway/latest/how-kong-works/routing-traffic/#proxying-and-upstream-timeouts) setting, if the setting exists."
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

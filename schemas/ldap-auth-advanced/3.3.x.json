@@ -1,0 +1,218 @@
+{
+  "fields": [
+    {
+      "protocols": {
+        "default": [
+          "grpc",
+          "grpcs",
+          "http",
+          "https",
+          "ws",
+          "wss"
+        ],
+        "type": "set",
+        "required": true,
+        "elements": {
+          "one_of": [
+            "grpc",
+            "grpcs",
+            "http",
+            "https",
+            "ws",
+            "wss"
+          ],
+          "type": "string"
+        }
+      }
+    },
+    {
+      "consumer": {
+        "eq": null,
+        "type": "foreign",
+        "reference": "consumers"
+      }
+    },
+    {
+      "config": {
+        "type": "record",
+        "required": true,
+        "fields": [
+          {
+            "ldap_host": {
+              "required": true,
+              "type": "string",
+              "description": "Host on which the LDAP server is running."
+            }
+          },
+          {
+            "ldap_password": {
+              "type": "string",
+              "encrypted": true,
+              "referenceable": true,
+              "description": "The password to the LDAP server."
+            }
+          },
+          {
+            "ldap_port": {
+              "default": 389,
+              "type": "number",
+              "description": "TCP port where the LDAP server is listening. 389 is the default\nport for non-SSL LDAP and AD. 636 is the port required for SSL LDAP and AD. If `ldaps` is\nconfigured, you must use port 636."
+            }
+          },
+          {
+            "bind_dn": {
+              "referenceable": true,
+              "type": "string",
+              "description": "The DN to bind to. Used to perform LDAP search of user. This `bind_dn`\nshould have permissions to search for the user being authenticated."
+            }
+          },
+          {
+            "ldaps": {
+              "default": false,
+              "type": "boolean",
+              "required": true,
+              "description": "Set it to `true` to use `ldaps`, a secure protocol (that can be configured\nto TLS) to connect to the LDAP server. When `ldaps` is\nconfigured, you must use port 636. If the `ldap` setting is enabled, ensure the\n`start_tls` setting is disabled."
+            }
+          },
+          {
+            "start_tls": {
+              "default": false,
+              "type": "boolean",
+              "required": true,
+              "description": "Set it to `true` to issue StartTLS (Transport Layer Security) extended operation\nover `ldap` connection. If the `start_tls` setting is enabled, ensure the `ldaps`\nsetting is disabled."
+            }
+          },
+          {
+            "verify_ldap_host": {
+              "default": false,
+              "type": "boolean",
+              "required": true,
+              "description": "Set to `true` to authenticate LDAP server. The server certificate will be verified according to the CA certificates specified by the `lua_ssl_trusted_certificate` directive."
+            }
+          },
+          {
+            "base_dn": {
+              "required": true,
+              "type": "string",
+              "description": "Base DN as the starting point for the search; e.g., \"dc=example,dc=com\"."
+            }
+          },
+          {
+            "attribute": {
+              "required": true,
+              "type": "string",
+              "description": "Attribute to be used to search the user; e.g., \"cn\"."
+            }
+          },
+          {
+            "cache_ttl": {
+              "default": 60,
+              "type": "number",
+              "required": true,
+              "description": "Cache expiry time in seconds."
+            }
+          },
+          {
+            "hide_credentials": {
+              "default": false,
+              "type": "boolean",
+              "description": "An optional boolean value telling the plugin to hide the credential to the upstream server. It will be removed by Kong before proxying the request."
+            }
+          },
+          {
+            "timeout": {
+              "default": 10000,
+              "type": "number",
+              "description": "An optional timeout in milliseconds when waiting for connection with LDAP server."
+            }
+          },
+          {
+            "keepalive": {
+              "default": 60000,
+              "type": "number",
+              "description": "An optional value in milliseconds that defines how long an idle connection to LDAP server will live before being closed."
+            }
+          },
+          {
+            "anonymous": {
+              "default": "",
+              "type": "string",
+              "len_min": 0,
+              "description": "An optional string (consumer UUID or username) value to use as an “anonymous” consumer if authentication fails. If empty (default null), the request will fail with an authentication failure `4xx`. Note that this value must refer to the consumer `id` or `username` attribute, and **not** its `custom_id`."
+            }
+          },
+          {
+            "header_type": {
+              "default": "ldap",
+              "type": "string",
+              "description": "An optional string to use as part of the Authorization header. By default, a valid Authorization header looks like this:\n`Authorization: ldap base64(username:password)`. If `header_type` is set to \"basic\", then the Authorization header would be\n`Authorization: basic base64(username:password)`. Note that `header_type` can take any string, not just `\"ldap\"` and `\"basic\"`."
+            }
+          },
+          {
+            "consumer_optional": {
+              "default": false,
+              "type": "boolean",
+              "required": false,
+              "description": "Whether consumer mapping is optional. If `consumer_optional=true`, the plugin will not attempt to associate a consumer with the\nLDAP authenticated user. If `consumer_optional=false`, LDAP authenticated users can still access upstream resources.\n\nTo prevent access from LDAP users that are not associated with consumers, set `consumer_optional=false`, set the `anonymous` field to an\nexisting `consumer_id`, then use the [Request Termination plugin](/hub/kong-inc/request-termination/) to deny any requests from the anonymous consumer."
+            }
+          },
+          {
+            "consumer_by": {
+              "default": [
+                "username",
+                "custom_id"
+              ],
+              "type": "array",
+              "required": false,
+              "elements": {
+                "one_of": [
+                  "username",
+                  "custom_id"
+                ],
+                "type": "string"
+              },
+              "description": "Whether to authenticate consumers based on `username`, `custom_id`, or both."
+            }
+          },
+          {
+            "group_base_dn": {
+              "type": "string",
+              "description": "Sets a distinguished name (DN) for the entry where LDAP searches for groups begin. This field is case-insensitive."
+            }
+          },
+          {
+            "group_name_attribute": {
+              "type": "string",
+              "description": "Sets the attribute holding the name of a group, typically\ncalled `name` (in Active Directory) or `cn` (in OpenLDAP). This\nfield is case-insensitive."
+            }
+          },
+          {
+            "group_member_attribute": {
+              "default": "memberOf",
+              "type": "string",
+              "description": "Sets the attribute holding the members of the LDAP group. This field is case-sensitive."
+            }
+          },
+          {
+            "log_search_results": {
+              "default": false,
+              "type": "boolean",
+              "required": false,
+              "description": "Displays all the LDAP search results received from the LDAP\nserver for debugging purposes. Not recommended to be enabled in\na production environment."
+            }
+          },
+          {
+            "groups_required": {
+              "type": "array",
+              "required": false,
+              "elements": {
+                "type": "string"
+              },
+              "description": "The groups required to be present in the LDAP search result for successful authorization. This config parameter works in both **AND** / **OR** cases.\n- When `[\"group1 group2\"]` are in the same array indices, both `group1` AND `group2` need to be present in the LDAP search result.\n- When `[\"group1\", \"group2\"]` are in different array indices, either `group1` OR `group2` need to be present in the LDAP search result."
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,136 @@
+{
+  "fields": [
+    {
+      "consumer": {
+        "eq": null,
+        "type": "foreign",
+        "reference": "consumers"
+      }
+    },
+    {
+      "protocols": {
+        "default": [
+          "grpc",
+          "grpcs",
+          "http",
+          "https"
+        ],
+        "type": "set",
+        "required": true,
+        "elements": {
+          "one_of": [
+            "grpc",
+            "grpcs",
+            "http",
+            "https"
+          ],
+          "type": "string"
+        }
+      }
+    },
+    {
+      "config": {
+        "shorthand_fields": [
+          {
+            "hash": {
+              "type": "string"
+            }
+          }
+        ],
+        "type": "record",
+        "required": true,
+        "fields": [
+          {
+            "start": {
+              "type": "number",
+              "description": "Future time in seconds since epoch, when the canary release will start.\nIgnored when `percentage` is set, or when using `allow` or `deny` in `hash`.\n\nIf no value is set for the `start` field, it defaults to the \ntimestamp of the moment that the plugin instance is created."
+            }
+          },
+          {
+            "hash": {
+              "default": "consumer",
+              "type": "string",
+              "one_of": [
+                "consumer",
+                "ip",
+                "none",
+                "allow",
+                "deny",
+                "header"
+              ]
+            }
+          },
+          {
+            "hash_header": {
+              "type": "string"
+            }
+          },
+          {
+            "duration": {
+              "default": 3600,
+              "type": "number",
+              "gt": 0
+            }
+          },
+          {
+            "steps": {
+              "default": 1000,
+              "type": "number",
+              "gt": 1
+            }
+          },
+          {
+            "percentage": {
+              "between": [
+                0,
+                100
+              ],
+              "type": "number"
+            }
+          },
+          {
+            "upstream_host": {
+              "type": "string"
+            }
+          },
+          {
+            "upstream_port": {
+              "between": [
+                0,
+                65535
+              ],
+              "type": "integer"
+            }
+          },
+          {
+            "upstream_uri": {
+              "type": "string",
+              "len_min": 1
+            }
+          },
+          {
+            "upstream_fallback": {
+              "default": false,
+              "type": "boolean",
+              "required": true
+            }
+          },
+          {
+            "groups": {
+              "elements": {
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          {
+            "canary_by_header_name": {
+              "type": "string",
+              "description": "Header name that, when present on a request, overrides the configured canary\nfunctionality.\n\n* If the configured header is present with the value `always`, the request will\nalways go to the canary upstream.\n* If the header is present with the value `never`, the request will never go to the\ncanary upstream.\n\nFor all other values, the configured canary rules will be applied."
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

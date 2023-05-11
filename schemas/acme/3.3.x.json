@@ -1,0 +1,421 @@
+{
+  "fields": [
+    {
+      "consumer": {
+        "eq": null,
+        "type": "foreign",
+        "reference": "consumers"
+      }
+    },
+    {
+      "service": {
+        "eq": null,
+        "type": "foreign",
+        "reference": "services"
+      }
+    },
+    {
+      "route": {
+        "eq": null,
+        "type": "foreign",
+        "reference": "routes"
+      }
+    },
+    {
+      "protocols": {
+        "default": [
+          "grpc",
+          "grpcs",
+          "http",
+          "https"
+        ],
+        "type": "set",
+        "required": true,
+        "elements": {
+          "one_of": [
+            "grpc",
+            "grpcs",
+            "http",
+            "https"
+          ],
+          "type": "string"
+        }
+      }
+    },
+    {
+      "config": {
+        "type": "record",
+        "required": true,
+        "fields": [
+          {
+            "account_email": {
+              "type": "string",
+              "encrypted": true,
+              "match": "%w*%p*@+%w*%.?%w*",
+              "required": true,
+              "referenceable": true,
+              "description": "The account identifier. Can be reused in a different plugin instance."
+            }
+          },
+          {
+            "account_key": {
+              "type": "record",
+              "required": false,
+              "fields": [
+                {
+                  "key_id": {
+                    "required": true,
+                    "type": "string"
+                  }
+                },
+                {
+                  "key_set": {
+                    "type": "string"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "api_uri": {
+              "default": "https://acme-v02.api.letsencrypt.org/directory",
+              "type": "string",
+              "description": "The ACMEv2 API endpoint to use. You can specify the [Let's Encrypt staging environment](https://letsencrypt.org/docs/staging-environment/) for testing. Kong doesn't automatically delete staging certificates. If you use the same domain in test and production environments, you need to manually delete those certificates after testing."
+            }
+          },
+          {
+            "tos_accepted": {
+              "default": false,
+              "type": "boolean",
+              "description": "If you are using Let's Encrypt, you must set this to `true` to agree the [Terms of Service](https://letsencrypt.org/repository/)."
+            }
+          },
+          {
+            "eab_kid": {
+              "type": "string",
+              "encrypted": true,
+              "referenceable": true,
+              "description": "External account binding (EAB) key id. You usually don't need to set this unless it is explicitly required by the CA."
+            }
+          },
+          {
+            "eab_hmac_key": {
+              "type": "string",
+              "encrypted": true,
+              "referenceable": true,
+              "description": "External account binding (EAB) base64-encoded URL string of the HMAC key. You usually don't need to set this unless it is explicitly required by the CA."
+            }
+          },
+          {
+            "cert_type": {
+              "default": "rsa",
+              "type": "string",
+              "one_of": [
+                "rsa",
+                "ecc"
+              ],
+              "description": "The certificate type to create. The possible values are `'rsa'` for RSA certificate or `'ecc'` for EC certificate."
+            }
+          },
+          {
+            "rsa_key_size": {
+              "default": 4096,
+              "type": "number",
+              "one_of": [
+                2048,
+                3072,
+                4096
+              ],
+              "description": "RSA private key size for the certificate. The possible values are 2048, 3072, or 4096."
+            }
+          },
+          {
+            "renew_threshold_days": {
+              "default": 14,
+              "type": "number",
+              "description": " Days remaining to renew the certificate before it expires."
+            }
+          },
+          {
+            "domains": {
+              "elements": {
+                "match_all": [
+                  {
+                    "pattern": "^[^*]*%*?[^*]*$",
+                    "err": "invalid wildcard: must have at most one wildcard"
+                  }
+                ],
+                "type": "string",
+                "match_any": {
+                  "patterns": [
+                    "^%*%.",
+                    "%.%*$",
+                    "^[^*]*$"
+                  ],
+                  "err": "invalid wildcard: must be placed at leftmost or rightmost label"
+                }
+              },
+              "type": "array",
+              "description": "The list of domains to create certificates for. To match subdomains under `example.com`, use `*.example.com`.\nRegex pattern is not supported.\n\nThis parameter is only used to match domains, not to specify the Common Name\nor Subject Alternative Name to create certificates. Each domain must have its own certificate.\nThe ACME plugin checks this configuration before checking any certificate in `storage` when serving the certificate of a request.\n\nIf this field is left empty, all top-level domains (TLDs) are allowed."
+            }
+          },
+          {
+            "allow_any_domain": {
+              "default": false,
+              "type": "boolean",
+              "description": "If set to `true`, the plugin allows all domains and ignores any values in the `domains` list."
+            }
+          },
+          {
+            "fail_backoff_minutes": {
+              "default": 5,
+              "type": "number",
+              "description": "Minutes to wait for each domain that fails to create a certificate. This applies to both a\nnew certificate and a renewal certificate."
+            }
+          },
+          {
+            "storage": {
+              "default": "shm",
+              "type": "string",
+              "one_of": [
+                "kong",
+                "shm",
+                "redis",
+                "consul",
+                "vault"
+              ],
+              "description": "The backend storage type to use. The possible values are `'kong'`, `'shm'`, `'redis'`, `'consul'`, or `'vault'`. In DB-less mode, `'kong'` storage is unavailable. Note that `'shm'` storage does not persist during Kong restarts and does not work for Kong running on different machines, so consider using one of `'kong'`, `'redis'`, `'consul'`, or `'vault'` in production. Please refer to the Hybrid Mode sections below as well."
+            }
+          },
+          {
+            "storage_config": {
+              "type": "record",
+              "required": true,
+              "fields": [
+                {
+                  "shm": {
+                    "type": "record",
+                    "required": true,
+                    "fields": [
+                      {
+                        "shm_name": {
+                          "default": "kong",
+                          "type": "string"
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "kong": {
+                    "type": "record",
+                    "required": true,
+                    "fields": [
+
+                    ]
+                  }
+                },
+                {
+                  "redis": {
+                    "type": "record",
+                    "required": true,
+                    "fields": [
+                      {
+                        "host": {
+                          "type": "string"
+                        }
+                      },
+                      {
+                        "port": {
+                          "between": [
+                            0,
+                            65535
+                          ],
+                          "type": "integer"
+                        }
+                      },
+                      {
+                        "database": {
+                          "type": "number"
+                        }
+                      },
+                      {
+                        "auth": {
+                          "referenceable": true,
+                          "type": "string"
+                        }
+                      },
+                      {
+                        "ssl": {
+                          "default": false,
+                          "type": "boolean",
+                          "required": true
+                        }
+                      },
+                      {
+                        "ssl_verify": {
+                          "default": false,
+                          "type": "boolean",
+                          "required": true
+                        }
+                      },
+                      {
+                        "ssl_server_name": {
+                          "required": false,
+                          "type": "string"
+                        }
+                      },
+                      {
+                        "namespace": {
+                          "default": "",
+                          "type": "string",
+                          "required": true,
+                          "len_min": 0
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "consul": {
+                    "type": "record",
+                    "required": true,
+                    "fields": [
+                      {
+                        "https": {
+                          "default": false,
+                          "type": "boolean"
+                        }
+                      },
+                      {
+                        "host": {
+                          "type": "string"
+                        }
+                      },
+                      {
+                        "port": {
+                          "between": [
+                            0,
+                            65535
+                          ],
+                          "type": "integer"
+                        }
+                      },
+                      {
+                        "kv_path": {
+                          "type": "string"
+                        }
+                      },
+                      {
+                        "timeout": {
+                          "type": "number"
+                        }
+                      },
+                      {
+                        "token": {
+                          "referenceable": true,
+                          "type": "string"
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "vault": {
+                    "type": "record",
+                    "required": true,
+                    "fields": [
+                      {
+                        "https": {
+                          "default": false,
+                          "type": "boolean"
+                        }
+                      },
+                      {
+                        "host": {
+                          "type": "string"
+                        }
+                      },
+                      {
+                        "port": {
+                          "between": [
+                            0,
+                            65535
+                          ],
+                          "type": "integer"
+                        }
+                      },
+                      {
+                        "kv_path": {
+                          "type": "string"
+                        }
+                      },
+                      {
+                        "timeout": {
+                          "type": "number"
+                        }
+                      },
+                      {
+                        "token": {
+                          "referenceable": true,
+                          "type": "string"
+                        }
+                      },
+                      {
+                        "tls_verify": {
+                          "default": true,
+                          "type": "boolean"
+                        }
+                      },
+                      {
+                        "tls_server_name": {
+                          "type": "string"
+                        }
+                      },
+                      {
+                        "auth_method": {
+                          "default": "token",
+                          "type": "string",
+                          "one_of": [
+                            "token",
+                            "kubernetes"
+                          ]
+                        }
+                      },
+                      {
+                        "auth_path": {
+                          "type": "string"
+                        }
+                      },
+                      {
+                        "auth_role": {
+                          "type": "string"
+                        }
+                      },
+                      {
+                        "jwt_path": {
+                          "type": "string"
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "preferred_chain": {
+              "type": "string"
+            }
+          },
+          {
+            "enable_ipv4_common_name": {
+              "default": true,
+              "type": "boolean"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

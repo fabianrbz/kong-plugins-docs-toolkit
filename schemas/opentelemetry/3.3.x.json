@@ -1,0 +1,204 @@
+{
+  "fields": [
+    {
+      "protocols": {
+        "default": [
+          "grpc",
+          "grpcs",
+          "http",
+          "https"
+        ],
+        "type": "set",
+        "required": true,
+        "elements": {
+          "one_of": [
+            "grpc",
+            "grpcs",
+            "http",
+            "https"
+          ],
+          "type": "string"
+        }
+      }
+    },
+    {
+      "config": {
+        "entity_checks": [
+          {
+            "custom_entity_check": {
+              "field_sources": [
+                "batch_span_count",
+                "batch_flush_delay"
+              ]
+            }
+          }
+        ],
+        "type": "record",
+        "required": true,
+        "fields": [
+          {
+            "endpoint": {
+              "required": true,
+              "type": "string",
+              "description": "The full HTTP(S) endpoint that Kong Gateway should send OpenTelemetry spans to.\nThe endpoint must be a [OTLP/HTTP](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/otlp.md#otlphttp) endpoint."
+            }
+          },
+          {
+            "headers": {
+              "type": "map",
+              "values": {
+                "referenceable": true,
+                "type": "string"
+              },
+              "keys": {
+                "type": "string"
+              },
+              "description": "The custom headers to be added in the HTTP request sent to the OTLP server.\nThis setting is useful for adding the authentication headers (token)\nfor the APM backend."
+            }
+          },
+          {
+            "resource_attributes": {
+              "type": "map",
+              "values": {
+                "required": true,
+                "type": "string"
+              },
+              "keys": {
+                "required": true,
+                "type": "string"
+              },
+              "description": "The attributes specified on this property are added to the OpenTelemetry resource object.\nKong follows the OpenTelemetry specification for [Semantic Attributes](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/resource/semantic_conventions/README.md#service).\n\nThe following attributes are automatically added to the resource object:\n- `service.name`: The name of the service. This is `kong` by default.\n- `service.version`: The version of Kong Gateway.\n- `service.instance.id`: The node id of Kong Gateway.\n\nThe default values for the above attributes can be overridden by specifying them in this property. For example,\nto override the default value of `service.name` to `my-service`, you can specify `{ \"service.name\": \"my-service\" }`."
+            }
+          },
+          {
+            "batch_span_count": {
+              "type": "integer",
+              "description": "The number of spans to be sent in a single batch."
+            }
+          },
+          {
+            "batch_flush_delay": {
+              "type": "integer",
+              "description": "The delay, in seconds, between two consecutive batches."
+            }
+          },
+          {
+            "queue": {
+              "type": "record",
+              "required": true,
+              "fields": [
+                {
+                  "max_batch_size": {
+                    "default": 1,
+                    "type": "number",
+                    "between": [
+                      1,
+                      1000000
+                    ]
+                  }
+                },
+                {
+                  "max_coalescing_delay": {
+                    "default": 1,
+                    "type": "number",
+                    "between": [
+                      0,
+                      3600
+                    ]
+                  }
+                },
+                {
+                  "max_entries": {
+                    "default": 10000,
+                    "type": "number",
+                    "between": [
+                      1,
+                      1000000
+                    ]
+                  }
+                },
+                {
+                  "max_bytes": {
+                    "type": "number"
+                  }
+                },
+                {
+                  "max_retry_time": {
+                    "default": 60,
+                    "type": "number"
+                  }
+                },
+                {
+                  "initial_retry_delay": {
+                    "default": 0.01,
+                    "type": "number"
+                  }
+                },
+                {
+                  "max_retry_delay": {
+                    "default": 60,
+                    "type": "number"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "connect_timeout": {
+              "default": 1000,
+              "type": "integer",
+              "between": [
+                0,
+                2147483646
+              ],
+              "description": "The timeout, in milliseconds, for the OTLP server connection."
+            }
+          },
+          {
+            "send_timeout": {
+              "default": 5000,
+              "type": "integer",
+              "between": [
+                0,
+                2147483646
+              ],
+              "description": "The timeout, in milliseconds, for sending spans to the OTLP server."
+            }
+          },
+          {
+            "read_timeout": {
+              "default": 5000,
+              "type": "integer",
+              "between": [
+                0,
+                2147483646
+              ],
+              "description": "The timeout, in milliseconds, for reading the response from the OTLP server."
+            }
+          },
+          {
+            "http_response_header_for_traceid": {
+              "type": "string"
+            }
+          },
+          {
+            "header_type": {
+              "default": "preserve",
+              "type": "string",
+              "required": false,
+              "one_of": [
+                "preserve",
+                "ignore",
+                "b3",
+                "b3-single",
+                "w3c",
+                "jaeger",
+                "ot"
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

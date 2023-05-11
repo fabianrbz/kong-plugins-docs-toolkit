@@ -1,0 +1,57 @@
+{
+  "fields": [
+    {
+      "protocols": {
+        "default": [
+          "grpc",
+          "grpcs",
+          "http",
+          "https"
+        ],
+        "type": "set",
+        "required": true,
+        "elements": {
+          "one_of": [
+            "grpc",
+            "grpcs",
+            "http",
+            "https"
+          ],
+          "type": "string"
+        }
+      }
+    },
+    {
+      "config": {
+        "type": "record",
+        "required": true,
+        "fields": [
+          {
+            "functions": {
+              "type": "array",
+              "required": true,
+              "elements": {
+                "type": "string"
+              },
+              "description": "Array of functions used to transform any Kong proxy exit response."
+            }
+          },
+          {
+            "handle_unknown": {
+              "default": false,
+              "type": "boolean",
+              "description": "Allow transform to apply to unmatched Service, Route, or Workspace (404) responses."
+            }
+          },
+          {
+            "handle_unexpected": {
+              "default": false,
+              "type": "boolean",
+              "description": "Allow transform to apply to unexpected request (400) responses."
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

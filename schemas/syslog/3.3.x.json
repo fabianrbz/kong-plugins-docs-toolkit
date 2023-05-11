@@ -1,0 +1,155 @@
+{
+  "fields": [
+    {
+      "protocols": {
+        "default": [
+          "grpc",
+          "grpcs",
+          "http",
+          "https"
+        ],
+        "type": "set",
+        "required": true,
+        "elements": {
+          "one_of": [
+            "grpc",
+            "grpcs",
+            "http",
+            "https",
+            "tcp",
+            "tls",
+            "tls_passthrough",
+            "udp",
+            "ws",
+            "wss"
+          ],
+          "type": "string"
+        }
+      }
+    },
+    {
+      "config": {
+        "type": "record",
+        "required": true,
+        "fields": [
+          {
+            "log_level": {
+              "default": "info",
+              "type": "string",
+              "required": true,
+              "one_of": [
+                "debug",
+                "info",
+                "notice",
+                "warning",
+                "err",
+                "crit",
+                "alert",
+                "emerg"
+              ],
+              "description": "An optional logging severity. Any request with equal or higher severity\nwill be logged to System log. Available options: `debug`, `info`, `notice`, `warning`, `err`, `crit`, `alert`, `emerg`."
+            }
+          },
+          {
+            "successful_severity": {
+              "default": "info",
+              "type": "string",
+              "required": true,
+              "one_of": [
+                "debug",
+                "info",
+                "notice",
+                "warning",
+                "err",
+                "crit",
+                "alert",
+                "emerg"
+              ],
+              "description": "An optional logging severity assigned to all the successful requests with a response\nstatus code less then 400. Available options: `debug`, `info`, `notice`, `warning`, `err`, `crit`, `alert`, `emerg`."
+            }
+          },
+          {
+            "client_errors_severity": {
+              "default": "info",
+              "type": "string",
+              "required": true,
+              "one_of": [
+                "debug",
+                "info",
+                "notice",
+                "warning",
+                "err",
+                "crit",
+                "alert",
+                "emerg"
+              ],
+              "description": "An optional logging severity assigned to all the failed requests with a\nresponse status code 400 or higher but less than 500. Available options: `debug`, `info`, `notice`,\n `warning`, `err`, `crit`, `alert`, `emerg`."
+            }
+          },
+          {
+            "server_errors_severity": {
+              "default": "info",
+              "type": "string",
+              "required": true,
+              "one_of": [
+                "debug",
+                "info",
+                "notice",
+                "warning",
+                "err",
+                "crit",
+                "alert",
+                "emerg"
+              ],
+              "description": "An optional logging severity assigned to all the failed requests with a\nresponse status code 500 or higher. Available options: `debug`, `info`, `notice`, `warning`, `err`, `crit`, `alert`, `emerg`."
+            }
+          },
+          {
+            "custom_fields_by_lua": {
+              "type": "map",
+              "values": {
+                "len_min": 1,
+                "type": "string"
+              },
+              "keys": {
+                "len_min": 1,
+                "type": "string"
+              },
+              "description": "A list of key-value pairs, where the key is the name of a log field and\nthe value is a chunk of Lua code, whose return value sets or replaces\nthe log field value."
+            }
+          },
+          {
+            "facility": {
+              "default": "user",
+              "type": "string",
+              "required": true,
+              "one_of": [
+                "auth",
+                "authpriv",
+                "cron",
+                "daemon",
+                "ftp",
+                "kern",
+                "lpr",
+                "mail",
+                "news",
+                "syslog",
+                "user",
+                "uucp",
+                "local0",
+                "local1",
+                "local2",
+                "local3",
+                "local4",
+                "local5",
+                "local6",
+                "local7"
+              ],
+              "description": "The facility is used by the operating system to decide how to handle each log message. This\noptional argument defines what must be the facility set by the plugin when logging. Available\noptions: `auth`, `authpriv`, `cron`, `daemon`, `ftp`, `kern`, `lpr`, `mail`, `news`, `syslog`,\n`user`, `uucp`, `local0`, `local1`, `local2`, `local3`, `local4`, `local5`, `local6`, `local7`."
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

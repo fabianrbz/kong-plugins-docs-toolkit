@@ -1,0 +1,122 @@
+{
+  "fields": [
+    {
+      "consumer": {
+        "eq": null,
+        "type": "foreign",
+        "reference": "consumers"
+      }
+    },
+    {
+      "protocols": {
+        "default": [
+          "grpc",
+          "grpcs",
+          "http",
+          "https"
+        ],
+        "type": "set",
+        "required": true,
+        "elements": {
+          "one_of": [
+            "grpc",
+            "grpcs",
+            "http",
+            "https"
+          ],
+          "type": "string",
+          "required": true,
+          "len_min": 1
+        }
+      }
+    },
+    {
+      "config": {
+        "type": "record",
+        "required": true,
+        "fields": [
+          {
+            "origins": {
+              "elements": {
+                "type": "string"
+              },
+              "type": "array",
+              "description": "List of allowed domains for the `Access-Control-Allow-Origin` header. If you want to allow all origins, add `*` as a single value to this configuration field. The accepted values can either be flat strings or PCRE regexes."
+            }
+          },
+          {
+            "headers": {
+              "elements": {
+                "type": "string"
+              },
+              "type": "array",
+              "description": "Value for the `Access-Control-Allow-Headers` header."
+            }
+          },
+          {
+            "exposed_headers": {
+              "elements": {
+                "type": "string"
+              },
+              "type": "array",
+              "description": "Value for the `Access-Control-Expose-Headers` header. If not specified, no custom headers are exposed."
+            }
+          },
+          {
+            "methods": {
+              "default": [
+                "GET",
+                "HEAD",
+                "PUT",
+                "PATCH",
+                "POST",
+                "DELETE",
+                "OPTIONS",
+                "TRACE",
+                "CONNECT"
+              ],
+              "type": "array",
+              "elements": {
+                "one_of": [
+                  "GET",
+                  "HEAD",
+                  "PUT",
+                  "PATCH",
+                  "POST",
+                  "DELETE",
+                  "OPTIONS",
+                  "TRACE",
+                  "CONNECT"
+                ],
+                "type": "string"
+              },
+              "description": "'Value for the `Access-Control-Allow-Methods` header. Available options include `GET`, `HEAD`, `PUT`, `PATCH`, `POST`, `DELETE`, `OPTIONS`, `TRACE`, `CONNECT`. By default, all options are allowed.'"
+            }
+          },
+          {
+            "max_age": {
+              "type": "number",
+              "description": "Indicates how long the results of the preflight request can be cached, in `seconds`."
+            }
+          },
+          {
+            "credentials": {
+              "default": false,
+              "type": "boolean",
+              "required": true,
+              "description": "Flag to determine whether the `Access-Control-Allow-Credentials` header should be sent with `true` as the value."
+            }
+          },
+          {
+            "preflight_continue": {
+              "default": false,
+              "type": "boolean",
+              "required": true,
+              "description": "A boolean value that instructs the plugin to proxy the `OPTIONS` preflight request to the Upstream service."
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

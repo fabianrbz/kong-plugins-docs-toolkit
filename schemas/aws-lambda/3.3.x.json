@@ -1,0 +1,213 @@
+{
+  "fields": [
+    {
+      "protocols": {
+        "default": [
+          "grpc",
+          "grpcs",
+          "http",
+          "https"
+        ],
+        "type": "set",
+        "required": true,
+        "elements": {
+          "one_of": [
+            "grpc",
+            "grpcs",
+            "http",
+            "https"
+          ],
+          "type": "string"
+        }
+      }
+    },
+    {
+      "config": {
+        "type": "record",
+        "required": true,
+        "fields": [
+          {
+            "timeout": {
+              "default": 60000,
+              "type": "number",
+              "required": true
+            }
+          },
+          {
+            "keepalive": {
+              "default": 60000,
+              "type": "number",
+              "required": true
+            }
+          },
+          {
+            "aws_key": {
+              "type": "string",
+              "encrypted": true,
+              "referenceable": true
+            }
+          },
+          {
+            "aws_secret": {
+              "type": "string",
+              "encrypted": true,
+              "referenceable": true
+            }
+          },
+          {
+            "aws_assume_role_arn": {
+              "type": "string",
+              "encrypted": true,
+              "referenceable": true,
+              "description": "The target AWS IAM role ARN used to invoke the Lambda function. Typically this is\nused for a cross-account Lambda function invocation."
+            }
+          },
+          {
+            "aws_role_session_name": {
+              "default": "kong",
+              "type": "string",
+              "description": "The identifier of the assumed role session. It is used for uniquely identifying\na session when the same target role is assumed by different principals or\nfor different reasons. The role session name is also used in the ARN of the assumed role principle."
+            }
+          },
+          {
+            "aws_region": {
+              "type": "string",
+              "description": "The AWS region where the Lambda function is located. The plugin does not\nattempt to validate the supplied region name.\n\nThe plugin has two methods of detecting the AWS region: the `aws_region`\nparameter, or one of the `AWS_REGION` or `AWS_DEFAULT_REGION` environment\nvariables. One of these must be set.\n\nIf `region` is not specified in plugin configuration, the plugin\nautomatically detects the AWS region on runtime via one of the environment\nvariables.\nUsing environment variables enables regionally distributed Kong cluster nodes\nto connect to the closest AWS region.\n\nThe AWS region is required for AWS SigV4.\nIf `aws_region` or the `AWS_REGION` or `AWS_DEFAULT_REGION` environment\nvariables have not been specified, or an invalid region name has been provided,\nthe plugin responds with an HTTP `500 Internal Server Error` at runtime."
+            }
+          },
+          {
+            "function_name": {
+              "required": false,
+              "type": "string"
+            }
+          },
+          {
+            "qualifier": {
+              "type": "string"
+            }
+          },
+          {
+            "invocation_type": {
+              "default": "RequestResponse",
+              "type": "string",
+              "required": true,
+              "one_of": [
+                "RequestResponse",
+                "Event",
+                "DryRun"
+              ]
+            }
+          },
+          {
+            "log_type": {
+              "default": "Tail",
+              "type": "string",
+              "required": true,
+              "one_of": [
+                "Tail",
+                "None"
+              ]
+            }
+          },
+          {
+            "host": {
+              "type": "string",
+              "description": "The host where the Lambda function is located. This value can point to a\nlocal Lambda server, allowing for easier debugging.\n\nTo set a region, use the `aws_region` parameter."
+            }
+          },
+          {
+            "port": {
+              "default": 443,
+              "type": "integer",
+              "between": [
+                0,
+                65535
+              ]
+            }
+          },
+          {
+            "disable_https": {
+              "default": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "unhandled_status": {
+              "between": [
+                100,
+                999
+              ],
+              "type": "integer"
+            }
+          },
+          {
+            "forward_request_method": {
+              "default": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "forward_request_uri": {
+              "default": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "forward_request_headers": {
+              "default": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "forward_request_body": {
+              "default": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "is_proxy_integration": {
+              "default": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "awsgateway_compatible": {
+              "default": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "proxy_url": {
+              "type": "string"
+            }
+          },
+          {
+            "skip_large_bodies": {
+              "default": true,
+              "type": "boolean"
+            }
+          },
+          {
+            "base64_encode_body": {
+              "default": true,
+              "type": "boolean",
+              "description": "An optional value that Base64-encodes the request body."
+            }
+          },
+          {
+            "aws_imds_protocol_version": {
+              "default": "v1",
+              "type": "string",
+              "required": true,
+              "one_of": [
+                "v1",
+                "v2"
+              ],
+              "description": "Identifier to select the IMDS protocol version to use, either\n`v1` or `v2`.  If `v2` is selected, an additional session\ntoken is requested from the EC2 metadata service by the plugin\nto secure the retrieval of the EC2 instance role.  Note that\nif {{site.base_gateway}} is running inside a container on an\nEC2 instance, the EC2 instance metadata must be configured\naccordingly.  Please refer to 'Considerations' section in the\n['Retrieve instance metadata' section of the EC2 manual](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instancedata-data-retrieval.html)\nfor details."
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

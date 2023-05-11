@@ -1,0 +1,367 @@
+{
+  "fields": [
+    {
+      "protocols": {
+        "default": [
+          "grpc",
+          "grpcs",
+          "http",
+          "https"
+        ],
+        "type": "set",
+        "required": true,
+        "elements": {
+          "one_of": [
+            "grpc",
+            "grpcs",
+            "http",
+            "https"
+          ],
+          "type": "string"
+        }
+      }
+    },
+    {
+      "config": {
+        "type": "record",
+        "required": true,
+        "fields": [
+          {
+            "remove": {
+              "type": "record",
+              "required": true,
+              "fields": [
+                {
+                  "json": {
+                    "default": [
+
+                    ],
+                    "type": "array",
+                    "elements": {
+                      "type": "string"
+                    },
+                    "description": "List of property names. Remove the property from the JSON body if it is present."
+                  }
+                },
+                {
+                  "headers": {
+                    "default": [
+
+                    ],
+                    "type": "array",
+                    "elements": {
+                      "type": "string"
+                    },
+                    "description": "List of `headername[:value]`. If only `headername` is given, unset the header field with the given `headername`. If `headername:value` is given, unset the header field `headername` when it has a specific `value`. If `value` starts and ends with a `/` (slash character), then it is considered to be a regular expression. Note that in accordance with [RFC 7230](https://httpwg.org/specs/rfc7230.html#field.order) multiple header values with the same header name are allowed if the entire field value for that header field is defined as a comma-separated list or the header field is a `Set-Cookie` header field."
+                  }
+                },
+                {
+                  "if_status": {
+                    "default": [
+
+                    ],
+                    "type": "array",
+                    "elements": {
+                      "type": "string"
+                    },
+                    "description": "List of response status codes or status code ranges to which the transformation will apply. Empty means all response codes."
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "rename": {
+              "type": "record",
+              "required": true,
+              "fields": [
+                {
+                  "headers": {
+                    "default": [
+
+                    ],
+                    "type": "array",
+                    "elements": {
+                      "match": "^[^:]+:.*$",
+                      "type": "string"
+                    },
+                    "description": "List of `headername1:headername2` pairs. If a header with `headername1` exists and `headername2` is valid, rename header to `headername2`."
+                  }
+                },
+                {
+                  "if_status": {
+                    "default": [
+
+                    ],
+                    "type": "array",
+                    "elements": {
+                      "type": "string"
+                    },
+                    "description": "List of response status codes or status code ranges to which the transformation will apply. Empty means all response codes."
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "replace": {
+              "type": "record",
+              "required": true,
+              "fields": [
+                {
+                  "body": {
+                    "type": "string",
+                    "description": "String with which to replace the entire response body."
+                  }
+                },
+                {
+                  "json": {
+                    "default": [
+
+                    ],
+                    "type": "array",
+                    "elements": {
+                      "type": "string"
+                    },
+                    "description": "List of property `name:value` pairs. If and only if the parameter is already present, replace its old value with the new one. Ignored if the parameter is not already present."
+                  }
+                },
+                {
+                  "json_types": {
+                    "default": [
+
+                    ],
+                    "type": "array",
+                    "elements": {
+                      "one_of": [
+                        "boolean",
+                        "number",
+                        "string"
+                      ],
+                      "type": "string"
+                    },
+                    "description": "List of JSON type names. Specify the types of the JSON values returned when replacing JSON properties."
+                  }
+                },
+                {
+                  "headers": {
+                    "default": [
+
+                    ],
+                    "type": "array",
+                    "elements": {
+                      "type": "string"
+                    },
+                    "description": "List of `headername:value` pairs. If and only if the header is already set, replace its old value with the new one. Ignored if the header is not already set."
+                  }
+                },
+                {
+                  "if_status": {
+                    "default": [
+
+                    ],
+                    "type": "array",
+                    "elements": {
+                      "type": "string"
+                    },
+                    "description": "List of response status codes or status code ranges to which the transformation will apply. Empty means all response codes."
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "add": {
+              "type": "record",
+              "required": true,
+              "fields": [
+                {
+                  "json": {
+                    "default": [
+
+                    ],
+                    "type": "array",
+                    "elements": {
+                      "type": "string"
+                    },
+                    "description": "List of `name:value` pairs. If and only if the property is not present, add a new property with the given value to the JSON body. Ignored if the property is already present."
+                  }
+                },
+                {
+                  "json_types": {
+                    "default": [
+
+                    ],
+                    "type": "array",
+                    "elements": {
+                      "one_of": [
+                        "boolean",
+                        "number",
+                        "string"
+                      ],
+                      "type": "string"
+                    },
+                    "description": "List of JSON type names. Specify the types of the JSON values returned when adding a new JSON property."
+                  }
+                },
+                {
+                  "headers": {
+                    "default": [
+
+                    ],
+                    "type": "array",
+                    "elements": {
+                      "type": "string"
+                    },
+                    "description": "List of `headername:value` pairs. If and only if the header is not already set, set a new header with the given value. Ignored if the header is already set."
+                  }
+                },
+                {
+                  "if_status": {
+                    "default": [
+
+                    ],
+                    "type": "array",
+                    "elements": {
+                      "type": "string"
+                    },
+                    "description": "List of response status codes or status code ranges to which the transformation will apply. Empty means all response codes."
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "append": {
+              "type": "record",
+              "required": true,
+              "fields": [
+                {
+                  "json": {
+                    "default": [
+
+                    ],
+                    "type": "array",
+                    "elements": {
+                      "type": "string"
+                    },
+                    "description": "List of `name:value` pairs. If the property is not present in the JSON body, add it with the given value. If it is already present, the two values (old and new) will be aggregated in an array."
+                  }
+                },
+                {
+                  "json_types": {
+                    "default": [
+
+                    ],
+                    "type": "array",
+                    "elements": {
+                      "one_of": [
+                        "boolean",
+                        "number",
+                        "string"
+                      ],
+                      "type": "string"
+                    },
+                    "description": "List of JSON type names. Specify the types of the JSON values returned when appending JSON properties."
+                  }
+                },
+                {
+                  "headers": {
+                    "default": [
+
+                    ],
+                    "type": "array",
+                    "elements": {
+                      "type": "string"
+                    },
+                    "description": "List of `headername:value` pairs. If the header is not set, set it with the given value. If it is already set, a new header with the same name and the new value will be set."
+                  }
+                },
+                {
+                  "if_status": {
+                    "default": [
+
+                    ],
+                    "type": "array",
+                    "elements": {
+                      "type": "string"
+                    },
+                    "description": "List of response status codes or status code ranges to which the transformation will apply. Empty means all response codes."
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "allow": {
+              "type": "record",
+              "required": true,
+              "fields": [
+                {
+                  "json": {
+                    "elements": {
+                      "type": "string"
+                    },
+                    "type": "set",
+                    "description": "Set of parameter names. Only allowed parameters are present in the JSON response body."
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "transform": {
+              "type": "record",
+              "required": true,
+              "fields": [
+                {
+                  "functions": {
+                    "default": [
+
+                    ],
+                    "type": "array",
+                    "elements": {
+                      "type": "string"
+                    },
+                    "description": "Set of Lua functions to perform arbitrary transforms in a response JSON body."
+                  }
+                },
+                {
+                  "if_status": {
+                    "default": [
+
+                    ],
+                    "type": "array",
+                    "elements": {
+                      "type": "string"
+                    },
+                    "description": "List of response status codes or ranges to which the arbitrary transformation applies. Leaving empty implies that the transformations apply to all response codes."
+                  }
+                },
+                {
+                  "json": {
+                    "default": [
+
+                    ],
+                    "type": "array",
+                    "elements": {
+                      "type": "string"
+                    },
+                    "description": "Apply Lua functions to a particular list of JSON property `name` or `name:value` pairs."
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "dots_in_keys": {
+              "default": true,
+              "type": "boolean",
+              "description": "Whether dots (for example, `customers.info.phone`) should be treated as part of a property name or used to descend into nested JSON objects. See [Arrays and nested objects](#arrays-and-nested-objects)."
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

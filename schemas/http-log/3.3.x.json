@@ -1,0 +1,216 @@
+{
+  "fields": [
+    {
+      "protocols": {
+        "default": [
+          "grpc",
+          "grpcs",
+          "http",
+          "https"
+        ],
+        "type": "set",
+        "required": true,
+        "elements": {
+          "one_of": [
+            "grpc",
+            "grpcs",
+            "http",
+            "https",
+            "tcp",
+            "tls",
+            "tls_passthrough",
+            "udp",
+            "ws",
+            "wss"
+          ],
+          "type": "string"
+        }
+      }
+    },
+    {
+      "config": {
+        "type": "record",
+        "entity_checks": [
+          {
+            "custom_entity_check": {
+              "field_sources": [
+                "retry_count",
+                "queue_size",
+                "flush_timeout"
+              ]
+            }
+          }
+        ],
+        "required": true,
+        "fields": [
+          {
+            "http_endpoint": {
+              "required": true,
+              "type": "string",
+              "encrypted": true,
+              "referenceable": true,
+              "description": "The HTTP URL endpoint (including the protocol to use) to which the data is sent.\n\nIf the `http_endpoint` contains a username and password (for example,\n`http://bob:password@example.com/logs`), then Kong Gateway automatically includes\na basic-auth `Authorization` header in the log requests."
+            }
+          },
+          {
+            "method": {
+              "default": "POST",
+              "type": "string",
+              "one_of": [
+                "POST",
+                "PUT",
+                "PATCH"
+              ],
+              "description": "An optional method used to send data to the HTTP server. Supported values are\n`POST` (default), `PUT`, and `PATCH`."
+            }
+          },
+          {
+            "content_type": {
+              "default": "application/json",
+              "type": "string",
+              "one_of": [
+                "application/json",
+                "application/json; charset=utf-8"
+              ],
+              "description": "Indicates the type of data sent. The only available option is `application/json`."
+            }
+          },
+          {
+            "timeout": {
+              "default": 10000,
+              "type": "number",
+              "description": "An optional timeout in milliseconds when sending data to the upstream server."
+            }
+          },
+          {
+            "keepalive": {
+              "default": 60000,
+              "type": "number",
+              "description": "An optional value in milliseconds that defines how long an idle connection will live before being closed."
+            }
+          },
+          {
+            "retry_count": {
+              "type": "integer",
+              "description": "Number of times to retry when sending data to the upstream server."
+            }
+          },
+          {
+            "queue_size": {
+              "type": "integer",
+              "description": "Maximum number of log entries to be sent on each message to the upstream server."
+            }
+          },
+          {
+            "flush_timeout": {
+              "type": "number",
+              "description": "Optional time in seconds. If `queue_size` > 1, this is the max idle time before sending a log with less than `queue_size` records."
+            }
+          },
+          {
+            "headers": {
+              "type": "map",
+              "values": {
+                "type": "string",
+                "referenceable": true
+              },
+              "keys": {
+                "match_none": [
+                  {
+                    "pattern": "^[Hh][Oo][Ss][Tt]$",
+                    "err": "cannot contain 'Host' header"
+                  },
+                  {
+                    "pattern": "^[Cc][Oo][Nn][Tt][Ee][Nn][Tt]%-[Ll][Ee][nn][Gg][Tt][Hh]$",
+                    "err": "cannot contain 'Content-Length' header"
+                  },
+                  {
+                    "pattern": "^[Cc][Oo][Nn][Tt][Ee][Nn][Tt]%-[Tt][Yy][Pp][Ee]$",
+                    "err": "cannot contain 'Content-Type' header"
+                  }
+                ],
+                "type": "string"
+              },
+              "description": "An optional table of headers included in the HTTP message to the\nupstream server. Values are indexed by header name, and each header name\naccepts a single string.\n\nThe following headers are not allowed: `Host`, `Content-Length`, `Content-Type`.\n\n> **Note:** Before version 3.0.0, the values were arrays of strings (multiple values per header name)."
+            }
+          },
+          {
+            "queue": {
+              "type": "record",
+              "required": true,
+              "fields": [
+                {
+                  "max_batch_size": {
+                    "default": 1,
+                    "type": "number",
+                    "between": [
+                      1,
+                      1000000
+                    ]
+                  }
+                },
+                {
+                  "max_coalescing_delay": {
+                    "default": 1,
+                    "type": "number",
+                    "between": [
+                      0,
+                      3600
+                    ]
+                  }
+                },
+                {
+                  "max_entries": {
+                    "default": 10000,
+                    "type": "number",
+                    "between": [
+                      1,
+                      1000000
+                    ]
+                  }
+                },
+                {
+                  "max_bytes": {
+                    "type": "number"
+                  }
+                },
+                {
+                  "max_retry_time": {
+                    "default": 60,
+                    "type": "number"
+                  }
+                },
+                {
+                  "initial_retry_delay": {
+                    "default": 0.01,
+                    "type": "number"
+                  }
+                },
+                {
+                  "max_retry_delay": {
+                    "default": 60,
+                    "type": "number"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "custom_fields_by_lua": {
+              "type": "map",
+              "values": {
+                "len_min": 1,
+                "type": "string"
+              },
+              "keys": {
+                "len_min": 1,
+                "type": "string"
+              },
+              "description": "A list of key-value pairs, where the key is the name of a log field and\nthe value is a chunk of Lua code, whose return value sets or replaces\nthe log field value."
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,192 @@
+{
+  "fields": [
+    {
+      "protocols": {
+        "default": [
+          "grpc",
+          "grpcs",
+          "http",
+          "https"
+        ],
+        "type": "set",
+        "required": true,
+        "elements": {
+          "one_of": [
+            "grpc",
+            "grpcs",
+            "http",
+            "https"
+          ],
+          "type": "string"
+        }
+      }
+    },
+    {
+      "config": {
+        "entity_checks": [
+          {
+            "at_least_one_of": [
+              "request_jq_program",
+              "response_jq_program"
+            ]
+          }
+        ],
+        "type": "record",
+        "required": true,
+        "fields": [
+          {
+            "request_jq_program": {
+              "required": false,
+              "type": "string",
+              "description": "The jq program to run on the request body. For example, `.[0] | { \"X-Foo\": .foo }`.\nEither `request_jq_program` or `response_jq_plugin` **must** be included in the configuration."
+            }
+          },
+          {
+            "request_jq_program_options": {
+              "default": [
+
+              ],
+              "type": "record",
+              "required": false,
+              "fields": [
+                {
+                  "compact_output": {
+                    "default": true,
+                    "type": "boolean",
+                    "required": true
+                  }
+                },
+                {
+                  "raw_output": {
+                    "default": false,
+                    "type": "boolean",
+                    "required": true
+                  }
+                },
+                {
+                  "join_output": {
+                    "default": false,
+                    "type": "boolean",
+                    "required": true
+                  }
+                },
+                {
+                  "ascii_output": {
+                    "default": false,
+                    "type": "boolean",
+                    "required": true
+                  }
+                },
+                {
+                  "sort_keys": {
+                    "default": false,
+                    "type": "boolean",
+                    "required": true
+                  }
+                }
+              ],
+              "description": "Boolean option flags to modify the run behavior of the jq program run on the request body.\n- `compact_output`: Returns output in a compact form without additional spacing,\n  and with each JSON object on a single line. Defaults to `true`. Set to `false` for 'pretty' output.\n- `raw_output`: Outputs as raw strings, not JSON quoted. Default is `false`.\n- `join_output`: Similar to `raw_output` but does not output newline separators. Default is `false`.\n- `ascii_output`: jq usually outputs non-ASCII Unicode codepoints as UTF-8, even if the input specified\n   them as escape sequences (like `μ`). Using this option, you can force jq to produce pure ASCII\n   output, replacing every non-ASCII character with the equivalent escape sequence. Default is `false`.\n- `sort_keys`: Outputs the fields of each object with the keys in sorted order. Default is `false`."
+            }
+          },
+          {
+            "request_if_media_type": {
+              "default": [
+                "application/json"
+              ],
+              "type": "array",
+              "required": false,
+              "elements": {
+                "type": "string"
+              },
+              "description": "A list of media type strings. The media type included in the `Content-Type` request header **must**\nmatch one of the media types on this list for the program to run."
+            }
+          },
+          {
+            "response_jq_program": {
+              "required": false,
+              "type": "string",
+              "description": "The jq program to run on the response body. For example, `.[0] | { \"X-Foo\": .foo }`.\nEither `request_jq_program` or `response_jq_plugin` **must** be included in configuration."
+            }
+          },
+          {
+            "response_jq_program_options": {
+              "default": [
+
+              ],
+              "type": "record",
+              "required": false,
+              "fields": [
+                {
+                  "compact_output": {
+                    "default": true,
+                    "type": "boolean",
+                    "required": true
+                  }
+                },
+                {
+                  "raw_output": {
+                    "default": false,
+                    "type": "boolean",
+                    "required": true
+                  }
+                },
+                {
+                  "join_output": {
+                    "default": false,
+                    "type": "boolean",
+                    "required": true
+                  }
+                },
+                {
+                  "ascii_output": {
+                    "default": false,
+                    "type": "boolean",
+                    "required": true
+                  }
+                },
+                {
+                  "sort_keys": {
+                    "default": false,
+                    "type": "boolean",
+                    "required": true
+                  }
+                }
+              ],
+              "description": "Boolean option flags to modify the run behavior of the jq program run on the response body.\n- `compact_output`: Returns output in a compact form without additional spacing,\n  and with each JSON object on a single line. Defaults to `true`. Set to `false` for 'pretty' output.\n- `raw_output`: Outputs as raw strings, not JSON quoted. Default is `false`.\n- `join_output`: Similar to `raw_output` but does not output newline separators. Default is `false`.\n- `ascii_output`: jq usually outputs non-ASCII Unicode codepoints as UTF-8, even if the input specified\n   them as escape sequences (like `μ`). Using this option, you can force jq to produce pure ASCII\n   output, replacing every non-ASCII character with the equivalent escape sequence. Default is `false`.\n- `sort_keys`: Outputs the fields of each object with the keys in sorted order. Default is `false`."
+            }
+          },
+          {
+            "response_if_media_type": {
+              "default": [
+                "application/json"
+              ],
+              "type": "array",
+              "required": false,
+              "elements": {
+                "type": "string"
+              },
+              "description": "A list of media type strings. The media type included in the `Content-Type` response header **must**\nmatch one of the media types on this list for the program to run."
+            }
+          },
+          {
+            "response_if_status_code": {
+              "default": [
+                200
+              ],
+              "type": "array",
+              "required": false,
+              "elements": {
+                "between": [
+                  100,
+                  599
+                ],
+                "type": "integer"
+              },
+              "description": "A list of HTTP response status codes. The response status code **must**\nmatch one of the response status codes on this list for the program to run."
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

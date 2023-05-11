@@ -1,0 +1,86 @@
+{
+  "fields": [
+    {
+      "consumer": {
+        "eq": null,
+        "type": "foreign",
+        "reference": "consumers"
+      }
+    },
+    {
+      "service": {
+        "type": "foreign",
+        "on_delete": "cascade",
+        "ne": null,
+        "reference": "services"
+      }
+    },
+    {
+      "route": {
+        "eq": null,
+        "type": "foreign",
+        "reference": "routes"
+      }
+    },
+    {
+      "protocols": {
+        "default": [
+          "grpc",
+          "grpcs",
+          "http",
+          "https"
+        ],
+        "type": "set",
+        "required": true,
+        "elements": {
+          "one_of": [
+            "grpc",
+            "grpcs",
+            "http",
+            "https"
+          ],
+          "type": "string"
+        }
+      }
+    },
+    {
+      "config": {
+        "type": "record",
+        "required": true,
+        "fields": [
+          {
+            "display_name": {
+              "unique": true,
+              "type": "string",
+              "required": true,
+              "description": "Unique display name used for a Service in the Developer Portal."
+            }
+          },
+          {
+            "description": {
+              "unique": true,
+              "type": "string",
+              "description": "Unique description displayed in information about a Service in the Developer Portal."
+            }
+          },
+          {
+            "auto_approve": {
+              "default": false,
+              "type": "boolean",
+              "required": true,
+              "description": "If enabled, all new Service Contracts requests are automatically\napproved. See [Enable automatic registration approval](#enable-automatic-registration-approval). Otherwise, Dev Portal admins must manually approve requests."
+            }
+          },
+          {
+            "show_issuer": {
+              "default": false,
+              "type": "boolean",
+              "required": true,
+              "description": "Displays the **Issuer URL** in the **Service Details** dialog."
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

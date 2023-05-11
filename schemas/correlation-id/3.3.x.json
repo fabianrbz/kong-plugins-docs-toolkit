@@ -1,0 +1,60 @@
+{
+  "fields": [
+    {
+      "protocols": {
+        "default": [
+          "grpc",
+          "grpcs",
+          "http",
+          "https"
+        ],
+        "type": "set",
+        "required": true,
+        "elements": {
+          "one_of": [
+            "grpc",
+            "grpcs",
+            "http",
+            "https"
+          ],
+          "type": "string"
+        }
+      }
+    },
+    {
+      "config": {
+        "type": "record",
+        "required": true,
+        "fields": [
+          {
+            "header_name": {
+              "default": "Kong-Request-ID",
+              "type": "string",
+              "description": "The HTTP header name to use for the correlation ID."
+            }
+          },
+          {
+            "generator": {
+              "default": "uuid#counter",
+              "type": "string",
+              "one_of": [
+                "uuid",
+                "uuid#counter",
+                "tracker"
+              ],
+              "description": "The generator to use for the correlation ID. Accepted values are `uuid`, `uuid#counter`, and `tracker`. See [Generators](#generators)."
+            }
+          },
+          {
+            "echo_downstream": {
+              "default": false,
+              "type": "boolean",
+              "required": true,
+              "description": "Whether to echo the header back to downstream (the client)."
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

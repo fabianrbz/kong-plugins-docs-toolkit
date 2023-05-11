@@ -1,0 +1,59 @@
+{
+  "fields": [
+    {
+      "protocols": {
+        "default": [
+          "ws",
+          "wss"
+        ],
+        "type": "set",
+        "required": true,
+        "elements": {
+          "one_of": [
+            "ws",
+            "wss"
+          ],
+          "type": "string"
+        }
+      }
+    },
+    {
+      "config": {
+        "entity_checks": [
+          {
+            "at_least_one_of": [
+              "client_max_payload",
+              "upstream_max_payload"
+            ]
+          }
+        ],
+        "type": "record",
+        "required": true,
+        "fields": [
+          {
+            "client_max_payload": {
+              "type": "integer",
+              "required": false,
+              "between": [
+                1,
+                33554432
+              ],
+              "description": "Maximum size (in bytes) of client-originated WebSocket messages. Must\nbe greater than `0` and less than `33554432` (32 MiB)"
+            }
+          },
+          {
+            "upstream_max_payload": {
+              "type": "integer",
+              "required": false,
+              "between": [
+                1,
+                33554432
+              ],
+              "description": "Maximum size (in bytes) of upstream-originated WebSocket messages. Must\nbe greater than `0` and less than `33554432` (32 MiB)"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

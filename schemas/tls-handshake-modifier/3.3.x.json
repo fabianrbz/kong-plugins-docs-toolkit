@@ -1,0 +1,48 @@
+{
+  "fields": [
+    {
+      "consumer": {
+        "eq": null,
+        "type": "foreign",
+        "reference": "consumers"
+      }
+    },
+    {
+      "protocols": {
+        "default": [
+          "https",
+          "grpcs"
+        ],
+        "type": "set",
+        "required": true,
+        "elements": {
+          "one_of": [
+            "https",
+            "grpcs",
+            "tls"
+          ],
+          "type": "string"
+        }
+      }
+    },
+    {
+      "config": {
+        "type": "record",
+        "required": true,
+        "fields": [
+          {
+            "tls_client_certificate": {
+              "default": "REQUEST",
+              "type": "string",
+              "required": false,
+              "one_of": [
+                "REQUEST"
+              ],
+              "description": "Indicates the TLS handshake preference. The only option is `REQUEST`, which\nrequests the client certificate."
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

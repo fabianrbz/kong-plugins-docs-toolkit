@@ -1,0 +1,291 @@
+{
+  "fields": [
+    {
+      "protocols": {
+        "default": [
+          "grpc",
+          "grpcs",
+          "http",
+          "https"
+        ],
+        "type": "set",
+        "required": true,
+        "elements": {
+          "one_of": [
+            "grpc",
+            "grpcs",
+            "http",
+            "https",
+            "tcp",
+            "tls",
+            "tls_passthrough",
+            "udp",
+            "ws",
+            "wss"
+          ],
+          "type": "string"
+        }
+      }
+    },
+    {
+      "config": {
+        "type": "record",
+        "required": true,
+        "fields": [
+          {
+            "http_method": {
+              "match": "^%u+$",
+              "type": "string",
+              "description": "Sets the HTTP method for the upstream request."
+            }
+          },
+          {
+            "remove": {
+              "type": "record",
+              "required": true,
+              "fields": [
+                {
+                  "body": {
+                    "default": [
+
+                    ],
+                    "type": "array",
+                    "required": true,
+                    "elements": {
+                      "type": "string"
+                    },
+                    "description": "List of parameter names. Remove the parameter if and only if content-type is one the following:\n[`application/json`, `multipart/form-data`, `application/x-www-form-urlencoded`] and the parameter is present."
+                  }
+                },
+                {
+                  "headers": {
+                    "default": [
+
+                    ],
+                    "type": "array",
+                    "required": true,
+                    "elements": {
+                      "type": "string"
+                    },
+                    "description": "List of header names. Unset the headers with the given name."
+                  }
+                },
+                {
+                  "querystring": {
+                    "default": [
+
+                    ],
+                    "type": "array",
+                    "required": true,
+                    "elements": {
+                      "type": "string"
+                    },
+                    "description": "List of querystring names. Remove the querystring if it is present."
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "rename": {
+              "type": "record",
+              "required": true,
+              "fields": [
+                {
+                  "body": {
+                    "default": [
+
+                    ],
+                    "type": "array",
+                    "required": true,
+                    "elements": {
+                      "type": "string"
+                    },
+                    "description": "List of `paramname:value` pairs. Rename the parameter name if and only if\ncontent-type is one the following [`application/json`, `multipart/form-data`, `application/x-www-form-urlencoded`]\nand the parameter is present."
+                  }
+                },
+                {
+                  "headers": {
+                    "default": [
+
+                    ],
+                    "type": "array",
+                    "required": true,
+                    "elements": {
+                      "match": "^[^:]+:.*$",
+                      "type": "string"
+                    },
+                    "description": "List of `headername:value` pairs. If and only if the header is already set, rename\nthe header. The value is unchanged. Ignored if the header is not already set."
+                  }
+                },
+                {
+                  "querystring": {
+                    "default": [
+
+                    ],
+                    "type": "array",
+                    "required": true,
+                    "elements": {
+                      "type": "string"
+                    },
+                    "description": "List of queryname:value pairs. If and only if the field name is already set, rename the field name.\nThe value is unchanged. Ignored if the field name is not already set."
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "replace": {
+              "type": "record",
+              "required": true,
+              "fields": [
+                {
+                  "body": {
+                    "default": [
+
+                    ],
+                    "type": "array",
+                    "required": true,
+                    "elements": {
+                      "type": "string"
+                    },
+                    "description": "List of `paramname:value` pairs. If and only if content-type is one the following\n[`application/json`, `multipart/form-data`, `application/x-www-form-urlencoded`] and the\nparameter is already present, replace its old value with the new one. Ignored if\nthe parameter is not already present."
+                  }
+                },
+                {
+                  "headers": {
+                    "default": [
+
+                    ],
+                    "type": "array",
+                    "required": true,
+                    "elements": {
+                      "match": "^[^:]+:.*$",
+                      "type": "string"
+                    },
+                    "description": "List of `headername:value` pairs. If and only if the header is already set, replace\nits old value with the new one. Ignored if the header is not already set."
+                  }
+                },
+                {
+                  "querystring": {
+                    "default": [
+
+                    ],
+                    "type": "array",
+                    "required": true,
+                    "elements": {
+                      "type": "string"
+                    },
+                    "description": "List of `queryname:value pairs`. If and only if the field name is already set,\nreplace its old value with the new one. Ignored if the field name is not already set."
+                  }
+                },
+                {
+                  "uri": {
+                    "type": "string",
+                    "description": "Updates the upstream request URI with a given value. This value can be used to update\nonly the path part of the URI, not the scheme or the hostname."
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "add": {
+              "type": "record",
+              "required": true,
+              "fields": [
+                {
+                  "body": {
+                    "default": [
+
+                    ],
+                    "type": "array",
+                    "required": true,
+                    "elements": {
+                      "type": "string"
+                    },
+                    "description": "List of `paramname:value` pairs. If and only if content-type is one the\nfollowing [`application/json`, `multipart/form-data`, `application/x-www-form-urlencoded`]\nand the parameter is not present, add a new parameter with the given value to the form-encoded\nbody. Ignored if the parameter is already present."
+                  }
+                },
+                {
+                  "headers": {
+                    "default": [
+
+                    ],
+                    "type": "array",
+                    "required": true,
+                    "elements": {
+                      "match": "^[^:]+:.*$",
+                      "type": "string"
+                    },
+                    "description": "List of `headername:value` pairs. If and only if the header is not already set, set a new header\nwith the given value. Ignored if the header is already set."
+                  }
+                },
+                {
+                  "querystring": {
+                    "default": [
+
+                    ],
+                    "type": "array",
+                    "required": true,
+                    "elements": {
+                      "type": "string"
+                    },
+                    "description": "List of `queryname:value` pairs. If and only if the querystring is not already set, set a new\nquerystring with the given value. Ignored if the querystring is already set."
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "append": {
+              "type": "record",
+              "required": true,
+              "fields": [
+                {
+                  "body": {
+                    "default": [
+
+                    ],
+                    "type": "array",
+                    "required": true,
+                    "elements": {
+                      "type": "string"
+                    },
+                    "description": "List of `paramname:value` pairs. If the content-type is one the following\n[`application/json`, `application/x-www-form-urlencoded`], add a new parameter\nwith the given value if the parameter is not present. Otherwise, if it is already present,\naggregate the two values (old and new) in an array."
+                  }
+                },
+                {
+                  "headers": {
+                    "default": [
+
+                    ],
+                    "type": "array",
+                    "required": true,
+                    "elements": {
+                      "match": "^[^:]+:.*$",
+                      "type": "string"
+                    },
+                    "description": "List of `headername:value` pairs. If the header is not set, set it with the given value.\nIf it is already set, an additional new header with the same name and the new value will be appended."
+                  }
+                },
+                {
+                  "querystring": {
+                    "default": [
+
+                    ],
+                    "type": "array",
+                    "required": true,
+                    "elements": {
+                      "type": "string"
+                    },
+                    "description": "List of `queryname:value` pairs. If the querystring is not set, set it with the given value. If it is already set, a new querystring with the same name and the new value will be set."
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "fields": [
+    {
+      "consumer": {
+        "eq": null,
+        "type": "foreign",
+        "reference": "consumers"
+      }
+    },
+    {
+      "protocols": {
+        "default": [
+          "grpc",
+          "grpcs",
+          "http",
+          "https"
+        ],
+        "type": "set",
+        "required": true,
+        "elements": {
+          "one_of": [
+            "grpc",
+            "grpcs",
+            "http",
+            "https"
+          ],
+          "type": "string"
+        }
+      }
+    },
+    {
+      "config": {
+        "type": "record",
+        "required": true,
+        "fields": [
+          {
+            "allow": {
+              "elements": {
+                "type": "string"
+              },
+              "type": "array",
+              "description": "Arbitrary group names that are allowed to consume the Service or Route. One of `config.allow` or `config.deny` must be specified."
+            }
+          },
+          {
+            "deny": {
+              "elements": {
+                "type": "string"
+              },
+              "type": "array",
+              "description": "Arbitrary group names that are not allowed to consume the Service or Route. One of `config.allow` or `config.deny` must be specified."
+            }
+          },
+          {
+            "hide_groups_header": {
+              "default": false,
+              "type": "boolean",
+              "required": true,
+              "description": "Flag that if enabled (`true`), prevents the `X-Consumer-Groups` header to be sent in the request to the Upstream service."
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

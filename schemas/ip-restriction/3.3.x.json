@@ -1,0 +1,65 @@
+{
+  "fields": [
+    {
+      "protocols": {
+        "default": [
+          "grpc",
+          "grpcs",
+          "http",
+          "https"
+        ],
+        "type": "set",
+        "required": true,
+        "elements": {
+          "one_of": [
+            "grpc",
+            "grpcs",
+            "http",
+            "https"
+          ],
+          "type": "string"
+        }
+      }
+    },
+    {
+      "config": {
+        "type": "record",
+        "required": true,
+        "fields": [
+          {
+            "allow": {
+              "elements": {
+                "type": "string"
+              },
+              "type": "array",
+              "description": "List of IPs or CIDR ranges to allow. One of `config.allow` or `config.deny` must be specified."
+            }
+          },
+          {
+            "deny": {
+              "elements": {
+                "type": "string"
+              },
+              "type": "array",
+              "description": "List of IPs or CIDR ranges to deny. One of `config.allow` or `config.deny` must be specified."
+            }
+          },
+          {
+            "status": {
+              "required": false,
+              "type": "number",
+              "description": "The HTTP status of the requests that will be rejected by the plugin."
+            }
+          },
+          {
+            "message": {
+              "required": false,
+              "type": "string",
+              "description": "The message to send as a response body to rejected requests."
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

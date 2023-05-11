@@ -1,0 +1,201 @@
+{
+  "fields": [
+    {
+      "protocols": {
+        "default": [
+          "grpc",
+          "grpcs",
+          "http",
+          "https",
+          "ws",
+          "wss"
+        ],
+        "type": "set",
+        "required": false,
+        "elements": {
+          "one_of": [
+            "grpc",
+            "grpcs",
+            "http",
+            "https",
+            "ws",
+            "wss"
+          ],
+          "type": "string"
+        }
+      }
+    },
+    {
+      "consumer": {
+        "eq": null,
+        "type": "foreign",
+        "reference": "consumers"
+      }
+    },
+    {
+      "protocols": {
+        "default": [
+          "grpc",
+          "grpcs",
+          "http",
+          "https"
+        ],
+        "type": "set",
+        "required": true,
+        "elements": {
+          "one_of": [
+            "grpc",
+            "grpcs",
+            "http",
+            "https",
+            "tcp",
+            "tls",
+            "tls_passthrough",
+            "udp",
+            "ws",
+            "wss"
+          ],
+          "type": "string"
+        }
+      }
+    },
+    {
+      "config": {
+        "type": "record",
+        "required": true,
+        "fields": [
+          {
+            "certificate": {
+              "default": [
+
+              ],
+              "type": "array",
+              "required": true,
+              "elements": {
+                "required": false,
+                "type": "string"
+              }
+            }
+          },
+          {
+            "rewrite": {
+              "default": [
+
+              ],
+              "type": "array",
+              "required": true,
+              "elements": {
+                "required": false,
+                "type": "string"
+              }
+            }
+          },
+          {
+            "access": {
+              "default": [
+
+              ],
+              "type": "array",
+              "required": true,
+              "elements": {
+                "required": false,
+                "type": "string"
+              }
+            }
+          },
+          {
+            "header_filter": {
+              "default": [
+
+              ],
+              "type": "array",
+              "required": true,
+              "elements": {
+                "required": false,
+                "type": "string"
+              }
+            }
+          },
+          {
+            "body_filter": {
+              "default": [
+
+              ],
+              "type": "array",
+              "required": true,
+              "elements": {
+                "required": false,
+                "type": "string"
+              }
+            }
+          },
+          {
+            "log": {
+              "default": [
+
+              ],
+              "type": "array",
+              "required": true,
+              "elements": {
+                "required": false,
+                "type": "string"
+              }
+            }
+          },
+          {
+            "ws_handshake": {
+              "default": [
+
+              ],
+              "type": "array",
+              "required": true,
+              "elements": {
+                "required": false,
+                "type": "string"
+              }
+            }
+          },
+          {
+            "ws_client_frame": {
+              "default": [
+
+              ],
+              "type": "array",
+              "required": true,
+              "elements": {
+                "required": false,
+                "type": "string"
+              }
+            }
+          },
+          {
+            "ws_upstream_frame": {
+              "default": [
+
+              ],
+              "type": "array",
+              "required": true,
+              "elements": {
+                "required": false,
+                "type": "string"
+              }
+            }
+          },
+          {
+            "ws_close": {
+              "default": [
+
+              ],
+              "type": "array",
+              "required": true,
+              "elements": {
+                "required": false,
+                "type": "string"
+              }
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,313 @@
+{
+  "fields": [
+    {
+      "protocols": {
+        "default": [
+          "grpc",
+          "grpcs",
+          "http",
+          "https"
+        ],
+        "type": "set",
+        "required": true,
+        "elements": {
+          "one_of": [
+            "grpc",
+            "grpcs",
+            "http",
+            "https",
+            "tcp",
+            "tls",
+            "tls_passthrough",
+            "udp",
+            "ws",
+            "wss"
+          ],
+          "type": "string"
+        }
+      }
+    },
+    {
+      "config": {
+        "entity_checks": [
+          {
+            "custom_entity_check": {
+              "field_sources": [
+                "retry_count",
+                "queue_size",
+                "flush_timeout"
+              ]
+            }
+          }
+        ],
+        "type": "record",
+        "required": true,
+        "fields": [
+          {
+            "host": {
+              "default": "localhost",
+              "type": "string",
+              "referenceable": true,
+              "description": "The IP address or hostname to send data to."
+            }
+          },
+          {
+            "port": {
+              "default": 8125,
+              "type": "integer",
+              "between": [
+                0,
+                65535
+              ],
+              "description": "The port to send data to on the upstream server."
+            }
+          },
+          {
+            "prefix": {
+              "default": "kong",
+              "type": "string",
+              "description": "String to be attached as a prefix to a metric's name."
+            }
+          },
+          {
+            "service_name_tag": {
+              "default": "name",
+              "type": "string",
+              "description": "String to be attached as the name of the service."
+            }
+          },
+          {
+            "status_tag": {
+              "default": "status",
+              "type": "string",
+              "description": "String to be attached as the tag of the HTTP status."
+            }
+          },
+          {
+            "consumer_tag": {
+              "default": "consumer",
+              "type": "string",
+              "description": "String to be attached as tag of the consumer."
+            }
+          },
+          {
+            "retry_count": {
+              "type": "integer",
+              "description": "Number of times to retry when sending data to the upstream server."
+            }
+          },
+          {
+            "queue_size": {
+              "type": "integer",
+              "description": "Maximum number of log entries to be sent on each message to the upstream server."
+            }
+          },
+          {
+            "flush_timeout": {
+              "type": "number",
+              "description": "Optional time in seconds. If `queue_size` > 1, this is the max idle time before sending a log with less than `queue_size` records."
+            }
+          },
+          {
+            "queue": {
+              "type": "record",
+              "required": true,
+              "fields": [
+                {
+                  "max_batch_size": {
+                    "default": 1,
+                    "type": "number",
+                    "between": [
+                      1,
+                      1000000
+                    ]
+                  }
+                },
+                {
+                  "max_coalescing_delay": {
+                    "default": 1,
+                    "type": "number",
+                    "between": [
+                      0,
+                      3600
+                    ]
+                  }
+                },
+                {
+                  "max_entries": {
+                    "default": 10000,
+                    "type": "number",
+                    "between": [
+                      1,
+                      1000000
+                    ]
+                  }
+                },
+                {
+                  "max_bytes": {
+                    "type": "number"
+                  }
+                },
+                {
+                  "max_retry_time": {
+                    "default": 60,
+                    "type": "number"
+                  }
+                },
+                {
+                  "initial_retry_delay": {
+                    "default": 0.01,
+                    "type": "number"
+                  }
+                },
+                {
+                  "max_retry_delay": {
+                    "default": 60,
+                    "type": "number"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "metrics": {
+              "default": [
+                {
+                  "consumer_identifier": "custom_id",
+                  "sample_rate": 1,
+                  "stat_type": "counter",
+                  "tags": [
+                    "app:kong"
+                  ],
+                  "name": "request_count"
+                },
+                {
+                  "tags": [
+                    "app:kong"
+                  ],
+                  "consumer_identifier": "custom_id",
+                  "stat_type": "timer",
+                  "name": "latency"
+                },
+                {
+                  "tags": [
+                    "app:kong"
+                  ],
+                  "consumer_identifier": "custom_id",
+                  "stat_type": "timer",
+                  "name": "request_size"
+                },
+                {
+                  "tags": [
+                    "app:kong"
+                  ],
+                  "consumer_identifier": "custom_id",
+                  "stat_type": "timer",
+                  "name": "response_size"
+                },
+                {
+                  "tags": [
+                    "app:kong"
+                  ],
+                  "consumer_identifier": "custom_id",
+                  "stat_type": "timer",
+                  "name": "upstream_latency"
+                },
+                {
+                  "tags": [
+                    "app:kong"
+                  ],
+                  "consumer_identifier": "custom_id",
+                  "stat_type": "timer",
+                  "name": "kong_latency"
+                }
+              ],
+              "type": "array",
+              "required": true,
+              "elements": {
+                "type": "record",
+                "entity_checks": [
+                  {
+                    "conditional": {
+                      "if_match": {
+                        "one_of": [
+                          "counter",
+                          "gauge"
+                        ]
+                      },
+                      "then_field": "sample_rate",
+                      "if_field": "stat_type",
+                      "then_match": {
+                        "required": true
+                      }
+                    }
+                  }
+                ],
+                "fields": [
+                  {
+                    "name": {
+                      "type": "string",
+                      "required": true,
+                      "one_of": [
+                        "kong_latency",
+                        "latency",
+                        "request_count",
+                        "request_size",
+                        "response_size",
+                        "upstream_latency"
+                      ]
+                    }
+                  },
+                  {
+                    "stat_type": {
+                      "type": "string",
+                      "required": true,
+                      "one_of": [
+                        "counter",
+                        "gauge",
+                        "histogram",
+                        "meter",
+                        "set",
+                        "timer",
+                        "distribution"
+                      ]
+                    }
+                  },
+                  {
+                    "tags": {
+                      "elements": {
+                        "type": "string",
+                        "match": "^.*[^:]$"
+                      },
+                      "type": "array"
+                    }
+                  },
+                  {
+                    "sample_rate": {
+                      "between": [
+                        0,
+                        1
+                      ],
+                      "type": "number"
+                    }
+                  },
+                  {
+                    "consumer_identifier": {
+                      "one_of": [
+                        "consumer_id",
+                        "custom_id",
+                        "username"
+                      ],
+                      "type": "string"
+                    }
+                  }
+                ]
+              },
+              "description": "List of metrics to be logged. Available values are described at [Metrics](#metrics).\nBy default, the plugin logs all available metrics. If you specify an array of metrics,\nonly the listed metrics are logged."
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

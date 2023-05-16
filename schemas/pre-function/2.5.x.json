@@ -22,7 +22,8 @@
               "elements": {
                 "required": false,
                 "type": "string"
-              }
+              },
+              "description": "*Deprecated*. Use `config.access` instead.\n\nArray of stringified Lua code to be cached and run in sequence during access phase."
             }
           },
           {
@@ -35,7 +36,8 @@
               "elements": {
                 "required": false,
                 "type": "string"
-              }
+              },
+              "description": "Array of stringified Lua code to be cached and run in sequence during the certificate phase.\n\n*Note*: This only runs on global plugins."
             }
           },
           {
@@ -48,7 +50,8 @@
               "elements": {
                 "required": false,
                 "type": "string"
-              }
+              },
+              "description": "Array of stringified Lua code to be cached and run in sequence during the rewrite phase.\n\n *Note*: This only runs on global plugins."
             }
           },
           {
@@ -61,7 +64,8 @@
               "elements": {
                 "required": false,
                 "type": "string"
-              }
+              },
+              "description": "Array of stringified Lua code to be cached and run in sequence during the access phase."
             }
           },
           {
@@ -74,7 +78,8 @@
               "elements": {
                 "required": false,
                 "type": "string"
-              }
+              },
+              "description": "Array of stringified Lua code to be cached and run in sequence during the header_filter phase."
             }
           },
           {
@@ -87,7 +92,8 @@
               "elements": {
                 "required": false,
                 "type": "string"
-              }
+              },
+              "description": "Array of stringified Lua code to be cached and run in sequence during the body_filter phase."
             }
           },
           {
@@ -100,7 +106,8 @@
               "elements": {
                 "required": false,
                 "type": "string"
-              }
+              },
+              "description": "Array of stringified Lua code to be cached and run in sequence during the log phase."
             }
           }
         ]

@@ -72,7 +72,8 @@
               "required": true,
               "default": [
 
-              ]
+              ],
+              "description": "Array of stringified Lua code to be cached and run in sequence during the certificate phase.\n\n*Note*: This only runs on global plugins."
             }
           },
           {
@@ -85,7 +86,8 @@
               "required": true,
               "default": [
 
-              ]
+              ],
+              "description": "Array of stringified Lua code to be cached and run in sequence during the rewrite phase.\n\n *Note*: This only runs on global plugins."
             }
           },
           {
@@ -98,7 +100,8 @@
               "required": true,
               "default": [
 
-              ]
+              ],
+              "description": "Array of stringified Lua code to be cached and run in sequence during the access phase."
             }
           },
           {
@@ -111,7 +114,8 @@
               "required": true,
               "default": [
 
-              ]
+              ],
+              "description": "Array of stringified Lua code to be cached and run in sequence during the header_filter phase."
             }
           },
           {
@@ -124,7 +128,8 @@
               "required": true,
               "default": [
 
-              ]
+              ],
+              "description": "Array of stringified Lua code to be cached and run in sequence during the body_filter phase."
             }
           },
           {
@@ -137,7 +142,8 @@
               "required": true,
               "default": [
 
-              ]
+              ],
+              "description": "Array of stringified Lua code to be cached and run in sequence during the log phase."
             }
           },
           {

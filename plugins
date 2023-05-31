@@ -3,6 +3,7 @@ require 'thor'
 require_relative 'lib/schema_downloader'
 require_relative 'lib/example_validator'
 require_relative 'lib/example_copier'
+require_relative 'lib/referenceable_fields'
 
 class Plugins < Thor
   class_option :verbose, :type => :boolean
@@ -53,6 +54,19 @@ class Plugins < Thor
     options[:plugins].each do |plugin|
       ExampleCopier.run!(plugin:, options:)
     end
+
+    puts 'Done!'
+  end
+
+  desc 'generate_referenceable_fields_list', 'Generates a json object listing all the referenceable fields for each plugin'
+  option :version,     aliases: '-v',    type: :string, required: true,                       desc: 'Kong Version'
+  option :plugins,     aliases: '-p',    type: :array,  required: true,                       desc: 'List containing the name of the plugins'
+  option :source,      aliases: '-s',    type: :string,                 default: './schemas', desc: 'Source folder containing the schemas'
+  option :destination, aliases: '-dest', type: :string,                 default: './data', desc: 'Destination folder where the json object containing the referenceable fields will be written'
+  def generate_referenceable_fields_list
+    puts 'Finding referenceable fields...'
+
+    ReferenceableFields.run!(plugins: options[:plugins], options: options)
 
     puts 'Done!'
   end

@@ -686,7 +686,8 @@
               "required": false,
               "keys": {
                 "type": "string"
-              }
+              },
+              "description": "Add customized claims if they do not present."
             }
           },
           {
@@ -701,7 +702,8 @@
               "required": false,
               "keys": {
                 "type": "string"
-              }
+              },
+              "description": "Set customized claims. If one claim already presents, it will be overwritten."
             }
           }
         ]

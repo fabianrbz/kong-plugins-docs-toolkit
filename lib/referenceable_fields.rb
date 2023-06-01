@@ -32,7 +32,7 @@ class ReferenceableFields
       puts JSON.pretty_generate(@referenceable_fields)
     end
 
-    dest = File.join(@options['destination'], 'referenceable_fields.json')
+    dest = File.join(@options['destination'], 'referenceable_fields', "#{@options['version']}.json")
     File.write(dest, JSON.pretty_generate(@referenceable_fields))
 
     puts "Referenceable fields written to: #{dest}"

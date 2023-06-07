@@ -1,0 +1,84 @@
+{
+  "fields": [
+    {
+      "protocols": {
+        "default": [
+          "grpc",
+          "grpcs",
+          "http",
+          "https"
+        ],
+        "elements": {
+          "one_of": [
+            "grpc",
+            "grpcs",
+            "http",
+            "https"
+          ],
+          "type": "string"
+        },
+        "required": true,
+        "type": "set"
+      }
+    },
+    {
+      "config": {
+        "required": true,
+        "fields": [
+          {
+            "api_specification_filename": {
+              "type": "string",
+              "required": false
+            }
+          },
+          {
+            "api_specification": {
+              "required": false,
+              "type": "string"
+            }
+          },
+          {
+            "random_delay": {
+              "type": "boolean",
+              "default": false
+            }
+          },
+          {
+            "max_delay_time": {
+              "type": "number",
+              "default": 1
+            }
+          },
+          {
+            "min_delay_time": {
+              "type": "number",
+              "default": 0.001
+            }
+          },
+          {
+            "random_examples": {
+              "type": "boolean",
+              "default": false
+            }
+          },
+          {
+            "included_status_codes": {
+              "elements": {
+                "type": "integer"
+              },
+              "type": "array"
+            }
+          },
+          {
+            "random_status_code": {
+              "required": true,
+              "default": false,
+              "type": "boolean"
+            }
+          }
+        ],
+        "type": "record"
+      }
+    }
+  ]
+}

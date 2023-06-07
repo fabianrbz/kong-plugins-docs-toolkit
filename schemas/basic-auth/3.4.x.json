@@ -1,0 +1,56 @@
+{
+  "fields": [
+    {
+      "consumer": {
+        "eq": null,
+        "reference": "consumers",
+        "type": "foreign"
+      }
+    },
+    {
+      "protocols": {
+        "default": [
+          "grpc",
+          "grpcs",
+          "http",
+          "https",
+          "ws",
+          "wss"
+        ],
+        "elements": {
+          "one_of": [
+            "grpc",
+            "grpcs",
+            "http",
+            "https",
+            "ws",
+            "wss"
+          ],
+          "type": "string"
+        },
+        "required": true,
+        "type": "set"
+      }
+    },
+    {
+      "config": {
+        "required": true,
+        "fields": [
+          {
+            "anonymous": {
+              "type": "string"
+            }
+          },
+          {
+            "hide_credentials": {
+              "required": true,
+              "default": false,
+              "type": "boolean"
+            }
+          }
+        ],
+        "type": "record"
+      }
+    }
+  ]
+}

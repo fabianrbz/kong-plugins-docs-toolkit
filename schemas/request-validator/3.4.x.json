@@ -1,0 +1,152 @@
+{
+  "fields": [
+    {
+      "protocols": {
+        "default": [
+          "grpc",
+          "grpcs",
+          "http",
+          "https"
+        ],
+        "elements": {
+          "one_of": [
+            "grpc",
+            "grpcs",
+            "http",
+            "https"
+          ],
+          "type": "string"
+        },
+        "required": true,
+        "type": "set"
+      }
+    },
+    {
+      "config": {
+        "required": true,
+        "entity_checks": [
+          {
+            "at_least_one_of": [
+              "body_schema",
+              "parameter_schema"
+            ]
+          }
+        ],
+        "fields": [
+          {
+            "body_schema": {
+              "required": false,
+              "type": "string"
+            }
+          },
+          {
+            "allowed_content_types": {
+              "type": "set",
+              "default": [
+                "application/json"
+              ],
+              "elements": {
+                "type": "string",
+                "required": true
+              }
+            }
+          },
+          {
+            "version": {
+              "one_of": [
+                "kong",
+                "draft4"
+              ],
+              "default": "kong",
+              "type": "string",
+              "required": true
+            }
+          },
+          {
+            "parameter_schema": {
+              "type": "array",
+              "required": false,
+              "elements": {
+                "entity_checks": [
+                  {
+                    "mutually_required": [
+                      "style",
+                      "explode",
+                      "schema"
+                    ]
+                  },
+                  {
+                    "custom_entity_check": {
+                      "field_sources": [
+                        "style",
+                        "in"
+                      ]
+                    }
+                  }
+                ],
+                "fields": [
+                  {
+                    "in": {
+                      "required": true,
+                      "type": "string",
+                      "one_of": [
+                        "query",
+                        "header",
+                        "path"
+                      ]
+                    }
+                  },
+                  {
+                    "name": {
+                      "required": true,
+                      "type": "string"
+                    }
+                  },
+                  {
+                    "required": {
+                      "required": true,
+                      "type": "boolean"
+                    }
+                  },
+                  {
+                    "style": {
+                      "one_of": [
+                        "label",
+                        "form",
+                        "matrix",
+                        "simple",
+                        "spaceDelimited",
+                        "pipeDelimited",
+                        "deepObject"
+                      ],
+                      "type": "string"
+                    }
+                  },
+                  {
+                    "explode": {
+                      "type": "boolean"
+                    }
+                  },
+                  {
+                    "schema": {
+                      "type": "string"
+                    }
+                  }
+                ],
+                "type": "record"
+              }
+            }
+          },
+          {
+            "verbose_response": {
+              "type": "boolean",
+              "required": true,
+              "default": false
+            }
+          }
+        ],
+        "type": "record"
+      }
+    }
+  ]
+}

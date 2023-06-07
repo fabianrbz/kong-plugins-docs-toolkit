@@ -1,0 +1,47 @@
+{
+  "fields": [
+    {
+      "consumer": {
+        "eq": null,
+        "reference": "consumers",
+        "type": "foreign"
+      }
+    },
+    {
+      "protocols": {
+        "default": [
+          "https",
+          "grpcs"
+        ],
+        "elements": {
+          "one_of": [
+            "https",
+            "grpcs",
+            "tls"
+          ],
+          "type": "string"
+        },
+        "type": "set",
+        "required": true
+      }
+    },
+    {
+      "config": {
+        "required": true,
+        "fields": [
+          {
+            "tls_client_certificate": {
+              "type": "string",
+              "one_of": [
+                "REQUEST"
+              ],
+              "required": false,
+              "default": "REQUEST"
+            }
+          }
+        ],
+        "type": "record"
+      }
+    }
+  ]
+}

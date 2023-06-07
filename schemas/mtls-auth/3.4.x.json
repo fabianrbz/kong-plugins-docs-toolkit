@@ -1,0 +1,176 @@
+{
+  "fields": [
+    {
+      "consumer": {
+        "eq": null,
+        "reference": "consumers",
+        "type": "foreign"
+      }
+    },
+    {
+      "protocols": {
+        "default": [
+          "grpc",
+          "grpcs",
+          "http",
+          "https"
+        ],
+        "elements": {
+          "one_of": [
+            "grpc",
+            "grpcs",
+            "http",
+            "https"
+          ],
+          "type": "string"
+        },
+        "required": true,
+        "type": "set"
+      }
+    },
+    {
+      "config": {
+        "required": true,
+        "entity_checks": [
+          {
+            "mutually_required": [
+              "http_proxy_host",
+              "http_proxy_port"
+            ]
+          },
+          {
+            "mutually_required": [
+              "https_proxy_host",
+              "https_proxy_port"
+            ]
+          }
+        ],
+        "fields": [
+          {
+            "anonymous": {
+              "type": "string"
+            }
+          },
+          {
+            "consumer_by": {
+              "elements": {
+                "one_of": [
+                  "username",
+                  "custom_id"
+                ],
+                "type": "string"
+              },
+              "default": [
+                "username",
+                "custom_id"
+              ],
+              "required": false,
+              "type": "array"
+            }
+          },
+          {
+            "ca_certificates": {
+              "required": true,
+              "type": "array",
+              "elements": {
+                "uuid": true,
+                "type": "string"
+              }
+            }
+          },
+          {
+            "cache_ttl": {
+              "type": "number",
+              "required": true,
+              "default": 60
+            }
+          },
+          {
+            "skip_consumer_lookup": {
+              "type": "boolean",
+              "required": true,
+              "default": false
+            }
+          },
+          {
+            "allow_partial_chain": {
+              "type": "boolean",
+              "required": true,
+              "default": false
+            }
+          },
+          {
+            "authenticated_group_by": {
+              "default": "CN",
+              "one_of": [
+                "CN",
+                "DN"
+              ],
+              "type": "string",
+              "required": false
+            }
+          },
+          {
+            "revocation_check_mode": {
+              "default": "IGNORE_CA_ERROR",
+              "one_of": [
+                "SKIP",
+                "IGNORE_CA_ERROR",
+                "STRICT"
+              ],
+              "type": "string",
+              "required": false
+            }
+          },
+          {
+            "http_timeout": {
+              "default": 30000,
+              "type": "number"
+            }
+          },
+          {
+            "cert_cache_ttl": {
+              "default": 60000,
+              "type": "number"
+            }
+          },
+          {
+            "send_ca_dn": {
+              "default": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "http_proxy_host": {
+              "type": "string"
+            }
+          },
+          {
+            "http_proxy_port": {
+              "between": [
+                0,
+                65535
+              ],
+              "type": "integer"
+            }
+          },
+          {
+            "https_proxy_host": {
+              "type": "string"
+            }
+          },
+          {
+            "https_proxy_port": {
+              "between": [
+                0,
+                65535
+              ],
+              "type": "integer"
+            }
+          }
+        ],
+        "type": "record"
+      }
+    }
+  ]
+}

@@ -1,0 +1,134 @@
+{
+  "fields": [
+    {
+      "consumer": {
+        "eq": null,
+        "reference": "consumers",
+        "type": "foreign"
+      }
+    },
+    {
+      "protocols": {
+        "default": [
+          "grpc",
+          "grpcs",
+          "http",
+          "https"
+        ],
+        "elements": {
+          "one_of": [
+            "grpc",
+            "grpcs",
+            "http",
+            "https"
+          ],
+          "type": "string"
+        },
+        "required": true,
+        "type": "set"
+      }
+    },
+    {
+      "config": {
+        "shorthand_fields": [
+          {
+            "hash": {
+              "type": "string"
+            }
+          }
+        ],
+        "required": true,
+        "fields": [
+          {
+            "start": {
+              "type": "number"
+            }
+          },
+          {
+            "hash": {
+              "type": "string",
+              "default": "consumer",
+              "one_of": [
+                "consumer",
+                "ip",
+                "none",
+                "allow",
+                "deny",
+                "header"
+              ]
+            }
+          },
+          {
+            "hash_header": {
+              "type": "string"
+            }
+          },
+          {
+            "duration": {
+              "default": 3600,
+              "gt": 0,
+              "type": "number"
+            }
+          },
+          {
+            "steps": {
+              "default": 1000,
+              "gt": 1,
+              "type": "number"
+            }
+          },
+          {
+            "percentage": {
+              "between": [
+                0,
+                100
+              ],
+              "type": "number"
+            }
+          },
+          {
+            "upstream_host": {
+              "type": "string"
+            }
+          },
+          {
+            "upstream_port": {
+              "between": [
+                0,
+                65535
+              ],
+              "type": "integer"
+            }
+          },
+          {
+            "upstream_uri": {
+              "len_min": 1,
+              "type": "string"
+            }
+          },
+          {
+            "upstream_fallback": {
+              "type": "boolean",
+              "required": true,
+              "default": false
+            }
+          },
+          {
+            "groups": {
+              "elements": {
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          {
+            "canary_by_header_name": {
+              "type": "string"
+            }
+          }
+        ],
+        "type": "record"
+      }
+    }
+  ]
+}

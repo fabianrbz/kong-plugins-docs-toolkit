@@ -1,0 +1,60 @@
+{
+  "fields": [
+    {
+      "protocols": {
+        "default": [
+          "grpc",
+          "grpcs",
+          "http",
+          "https"
+        ],
+        "elements": {
+          "one_of": [
+            "grpc",
+            "grpcs",
+            "http",
+            "https"
+          ],
+          "type": "string"
+        },
+        "required": true,
+        "type": "set"
+      }
+    },
+    {
+      "config": {
+        "required": true,
+        "fields": [
+          {
+            "read_timeout": {
+              "between": [
+                0,
+                2147483646
+              ],
+              "type": "integer"
+            }
+          },
+          {
+            "send_timeout": {
+              "between": [
+                0,
+                2147483646
+              ],
+              "type": "integer"
+            }
+          },
+          {
+            "connect_timeout": {
+              "between": [
+                0,
+                2147483646
+              ],
+              "type": "integer"
+            }
+          }
+        ],
+        "type": "record"
+      }
+    }
+  ]
+}

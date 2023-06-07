@@ -1,0 +1,139 @@
+{
+  "fields": [
+    {
+      "consumer": {
+        "eq": null,
+        "reference": "consumers",
+        "type": "foreign"
+      }
+    },
+    {
+      "protocols": {
+        "default": [
+          "grpc",
+          "grpcs",
+          "http",
+          "https"
+        ],
+        "elements": {
+          "one_of": [
+            "grpc",
+            "grpcs",
+            "http",
+            "https"
+          ],
+          "type": "string"
+        },
+        "required": true,
+        "type": "set"
+      }
+    },
+    {
+      "config": {
+        "required": true,
+        "fields": [
+          {
+            "introspection_url": {
+              "type": "string",
+              "required": true
+            }
+          },
+          {
+            "ttl": {
+              "type": "number",
+              "default": 30
+            }
+          },
+          {
+            "token_type_hint": {
+              "type": "string"
+            }
+          },
+          {
+            "authorization_value": {
+              "type": "string",
+              "required": true
+            }
+          },
+          {
+            "timeout": {
+              "type": "integer",
+              "default": 10000
+            }
+          },
+          {
+            "keepalive": {
+              "type": "integer",
+              "default": 60000
+            }
+          },
+          {
+            "introspect_request": {
+              "required": true,
+              "default": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "hide_credentials": {
+              "type": "boolean",
+              "default": false
+            }
+          },
+          {
+            "run_on_preflight": {
+              "type": "boolean",
+              "default": true
+            }
+          },
+          {
+            "anonymous": {
+              "len_min": 0,
+              "type": "string",
+              "default": ""
+            }
+          },
+          {
+            "consumer_by": {
+              "default": "username",
+              "one_of": [
+                "username",
+                "client_id"
+              ],
+              "type": "string",
+              "required": true
+            }
+          },
+          {
+            "custom_introspection_headers": {
+              "values": {
+                "type": "string"
+              },
+              "default": [
+
+              ],
+              "keys": {
+                "type": "string"
+              },
+              "required": true,
+              "type": "map"
+            }
+          },
+          {
+            "custom_claims_forward": {
+              "elements": {
+                "type": "string"
+              },
+              "default": [
+
+              ],
+              "type": "set",
+              "required": true
+            }
+          }
+        ],
+        "type": "record"
+      }
+    }
+  ]
+}

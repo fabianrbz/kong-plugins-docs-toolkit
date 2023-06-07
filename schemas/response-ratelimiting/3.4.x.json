@@ -1,0 +1,205 @@
+{
+  "fields": [
+    {
+      "protocols": {
+        "default": [
+          "grpc",
+          "grpcs",
+          "http",
+          "https"
+        ],
+        "elements": {
+          "one_of": [
+            "grpc",
+            "grpcs",
+            "http",
+            "https"
+          ],
+          "type": "string"
+        },
+        "required": true,
+        "type": "set"
+      }
+    },
+    {
+      "config": {
+        "required": true,
+        "fields": [
+          {
+            "header_name": {
+              "type": "string",
+              "default": "x-kong-limit"
+            }
+          },
+          {
+            "limit_by": {
+              "default": "consumer",
+              "type": "string",
+              "one_of": [
+                "consumer",
+                "credential",
+                "ip"
+              ]
+            }
+          },
+          {
+            "policy": {
+              "default": "local",
+              "type": "string",
+              "one_of": [
+                "local",
+                "cluster",
+                "redis"
+              ]
+            }
+          },
+          {
+            "fault_tolerant": {
+              "type": "boolean",
+              "required": true,
+              "default": true
+            }
+          },
+          {
+            "redis_host": {
+              "type": "string"
+            }
+          },
+          {
+            "redis_port": {
+              "between": [
+                0,
+                65535
+              ],
+              "type": "integer",
+              "default": 6379
+            }
+          },
+          {
+            "redis_password": {
+              "len_min": 0,
+              "type": "string",
+              "referenceable": true
+            }
+          },
+          {
+            "redis_username": {
+              "type": "string",
+              "referenceable": true
+            }
+          },
+          {
+            "redis_ssl": {
+              "type": "boolean",
+              "required": true,
+              "default": false
+            }
+          },
+          {
+            "redis_ssl_verify": {
+              "type": "boolean",
+              "required": true,
+              "default": false
+            }
+          },
+          {
+            "redis_server_name": {
+              "type": "string"
+            }
+          },
+          {
+            "redis_timeout": {
+              "type": "number",
+              "default": 2000
+            }
+          },
+          {
+            "redis_database": {
+              "type": "number",
+              "default": 0
+            }
+          },
+          {
+            "block_on_first_violation": {
+              "type": "boolean",
+              "required": true,
+              "default": false
+            }
+          },
+          {
+            "hide_client_headers": {
+              "type": "boolean",
+              "required": true,
+              "default": false
+            }
+          },
+          {
+            "limits": {
+              "len_min": 1,
+              "keys": {
+                "type": "string"
+              },
+              "values": {
+                "type": "record",
+                "entity_checks": [
+                  {
+                    "at_least_one_of": [
+                      "second",
+                      "minute",
+                      "hour",
+                      "day",
+                      "month",
+                      "year"
+                    ]
+                  }
+                ],
+                "fields": [
+                  {
+                    "second": {
+                      "gt": 0,
+                      "type": "number"
+                    }
+                  },
+                  {
+                    "minute": {
+                      "gt": 0,
+                      "type": "number"
+                    }
+                  },
+                  {
+                    "hour": {
+                      "gt": 0,
+                      "type": "number"
+                    }
+                  },
+                  {
+                    "day": {
+                      "gt": 0,
+                      "type": "number"
+                    }
+                  },
+                  {
+                    "month": {
+                      "gt": 0,
+                      "type": "number"
+                    }
+                  },
+                  {
+                    "year": {
+                      "gt": 0,
+                      "type": "number"
+                    }
+                  }
+                ],
+                "required": true
+              },
+              "required": true,
+              "type": "map"
+            }
+          }
+        ],
+        "type": "record"
+      }
+    }
+  ]
+}

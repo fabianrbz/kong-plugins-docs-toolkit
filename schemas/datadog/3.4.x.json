@@ -1,0 +1,303 @@
+{
+  "fields": [
+    {
+      "protocols": {
+        "default": [
+          "grpc",
+          "grpcs",
+          "http",
+          "https"
+        ],
+        "elements": {
+          "one_of": [
+            "grpc",
+            "grpcs",
+            "http",
+            "https",
+            "tcp",
+            "tls",
+            "tls_passthrough",
+            "udp",
+            "ws",
+            "wss"
+          ],
+          "type": "string"
+        },
+        "required": true,
+        "type": "set"
+      }
+    },
+    {
+      "config": {
+        "required": true,
+        "entity_checks": [
+          {
+            "custom_entity_check": {
+              "field_sources": [
+                "retry_count",
+                "queue_size",
+                "flush_timeout"
+              ]
+            }
+          }
+        ],
+        "fields": [
+          {
+            "host": {
+              "type": "string",
+              "referenceable": true,
+              "default": "localhost"
+            }
+          },
+          {
+            "port": {
+              "between": [
+                0,
+                65535
+              ],
+              "type": "integer",
+              "default": 8125
+            }
+          },
+          {
+            "prefix": {
+              "default": "kong",
+              "type": "string"
+            }
+          },
+          {
+            "service_name_tag": {
+              "default": "name",
+              "type": "string"
+            }
+          },
+          {
+            "status_tag": {
+              "default": "status",
+              "type": "string"
+            }
+          },
+          {
+            "consumer_tag": {
+              "default": "consumer",
+              "type": "string"
+            }
+          },
+          {
+            "retry_count": {
+              "type": "integer"
+            }
+          },
+          {
+            "queue_size": {
+              "type": "integer"
+            }
+          },
+          {
+            "flush_timeout": {
+              "type": "number"
+            }
+          },
+          {
+            "queue": {
+              "required": true,
+              "fields": [
+                {
+                  "max_batch_size": {
+                    "between": [
+                      1,
+                      1000000
+                    ],
+                    "type": "number",
+                    "default": 1
+                  }
+                },
+                {
+                  "max_coalescing_delay": {
+                    "between": [
+                      0,
+                      3600
+                    ],
+                    "type": "number",
+                    "default": 1
+                  }
+                },
+                {
+                  "max_entries": {
+                    "between": [
+                      1,
+                      1000000
+                    ],
+                    "type": "number",
+                    "default": 10000
+                  }
+                },
+                {
+                  "max_bytes": {
+                    "type": "number"
+                  }
+                },
+                {
+                  "max_retry_time": {
+                    "default": 60,
+                    "type": "number"
+                  }
+                },
+                {
+                  "initial_retry_delay": {
+                    "default": 0.01,
+                    "type": "number"
+                  }
+                },
+                {
+                  "max_retry_delay": {
+                    "default": 60,
+                    "type": "number"
+                  }
+                }
+              ],
+              "type": "record"
+            }
+          },
+          {
+            "metrics": {
+              "default": [
+                {
+                  "stat_type": "counter",
+                  "tags": [
+                    "app:kong"
+                  ],
+                  "consumer_identifier": "custom_id",
+                  "name": "request_count",
+                  "sample_rate": 1
+                },
+                {
+                  "stat_type": "timer",
+                  "consumer_identifier": "custom_id",
+                  "name": "latency",
+                  "tags": [
+                    "app:kong"
+                  ]
+                },
+                {
+                  "stat_type": "timer",
+                  "consumer_identifier": "custom_id",
+                  "name": "request_size",
+                  "tags": [
+                    "app:kong"
+                  ]
+                },
+                {
+                  "stat_type": "timer",
+                  "consumer_identifier": "custom_id",
+                  "name": "response_size",
+                  "tags": [
+                    "app:kong"
+                  ]
+                },
+                {
+                  "stat_type": "timer",
+                  "consumer_identifier": "custom_id",
+                  "name": "upstream_latency",
+                  "tags": [
+                    "app:kong"
+                  ]
+                },
+                {
+                  "stat_type": "timer",
+                  "consumer_identifier": "custom_id",
+                  "name": "kong_latency",
+                  "tags": [
+                    "app:kong"
+                  ]
+                }
+              ],
+              "elements": {
+                "entity_checks": [
+                  {
+                    "conditional": {
+                      "if_match": {
+                        "one_of": [
+                          "counter",
+                          "gauge"
+                        ]
+                      },
+                      "then_field": "sample_rate",
+                      "if_field": "stat_type",
+                      "then_match": {
+                        "required": true
+                      }
+                    }
+                  }
+                ],
+                "fields": [
+                  {
+                    "name": {
+                      "type": "string",
+                      "required": true,
+                      "one_of": [
+                        "kong_latency",
+                        "latency",
+                        "request_count",
+                        "request_size",
+                        "response_size",
+                        "upstream_latency"
+                      ]
+                    }
+                  },
+                  {
+                    "stat_type": {
+                      "type": "string",
+                      "required": true,
+                      "one_of": [
+                        "counter",
+                        "gauge",
+                        "histogram",
+                        "meter",
+                        "set",
+                        "timer",
+                        "distribution"
+                      ]
+                    }
+                  },
+                  {
+                    "tags": {
+                      "elements": {
+                        "match": "^.*[^:]$",
+                        "type": "string"
+                      },
+                      "type": "array"
+                    }
+                  },
+                  {
+                    "sample_rate": {
+                      "between": [
+                        0,
+                        1
+                      ],
+                      "type": "number"
+                    }
+                  },
+                  {
+                    "consumer_identifier": {
+                      "one_of": [
+                        "consumer_id",
+                        "custom_id",
+                        "username"
+                      ],
+                      "type": "string"
+                    }
+                  }
+                ],
+                "type": "record"
+              },
+              "required": true,
+              "type": "array"
+            }
+          }
+        ],
+        "type": "record"
+      }
+    }
+  ]
+}

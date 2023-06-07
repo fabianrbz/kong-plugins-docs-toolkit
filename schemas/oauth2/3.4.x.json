@@ -1,0 +1,186 @@
+{
+  "fields": [
+    {
+      "consumer": {
+        "eq": null,
+        "reference": "consumers",
+        "type": "foreign"
+      }
+    },
+    {
+      "protocols": {
+        "default": [
+          "grpc",
+          "grpcs",
+          "http",
+          "https",
+          "ws",
+          "wss"
+        ],
+        "elements": {
+          "one_of": [
+            "grpc",
+            "grpcs",
+            "http",
+            "https",
+            "ws",
+            "wss"
+          ],
+          "type": "string"
+        },
+        "required": true,
+        "type": "set"
+      }
+    },
+    {
+      "config": {
+        "type": "record",
+        "entity_checks": [
+          {
+            "conditional": {
+              "if_match": {
+                "eq": true
+              },
+              "then_field": "scopes",
+              "if_field": "mandatory_scope",
+              "then_match": {
+                "required": true
+              }
+            }
+          }
+        ],
+        "fields": [
+          {
+            "scopes": {
+              "elements": {
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          {
+            "mandatory_scope": {
+              "type": "boolean",
+              "default": false,
+              "required": true
+            }
+          },
+          {
+            "provision_key": {
+              "unique": true,
+              "encrypted": true,
+              "required": true,
+              "auto": true,
+              "type": "string"
+            }
+          },
+          {
+            "token_expiration": {
+              "type": "number",
+              "default": 7200,
+              "required": true
+            }
+          },
+          {
+            "enable_authorization_code": {
+              "type": "boolean",
+              "default": false,
+              "required": true
+            }
+          },
+          {
+            "enable_implicit_grant": {
+              "type": "boolean",
+              "default": false,
+              "required": true
+            }
+          },
+          {
+            "enable_client_credentials": {
+              "type": "boolean",
+              "default": false,
+              "required": true
+            }
+          },
+          {
+            "enable_password_grant": {
+              "type": "boolean",
+              "default": false,
+              "required": true
+            }
+          },
+          {
+            "hide_credentials": {
+              "type": "boolean",
+              "default": false,
+              "required": true
+            }
+          },
+          {
+            "accept_http_if_already_terminated": {
+              "type": "boolean",
+              "default": false,
+              "required": true
+            }
+          },
+          {
+            "anonymous": {
+              "type": "string"
+            }
+          },
+          {
+            "global_credentials": {
+              "type": "boolean",
+              "default": false,
+              "required": true
+            }
+          },
+          {
+            "auth_header_name": {
+              "default": "authorization",
+              "type": "string"
+            }
+          },
+          {
+            "refresh_token_ttl": {
+              "type": "number",
+              "between": [
+                0,
+                100000000
+              ],
+              "default": 1209600,
+              "required": true
+            }
+          },
+          {
+            "reuse_refresh_token": {
+              "type": "boolean",
+              "default": false,
+              "required": true
+            }
+          },
+          {
+            "persistent_refresh_token": {
+              "type": "boolean",
+              "default": false,
+              "required": true
+            }
+          },
+          {
+            "pkce": {
+              "required": false,
+              "one_of": [
+                "none",
+                "lax",
+                "strict"
+              ],
+              "default": "lax",
+              "type": "string"
+            }
+          }
+        ],
+        "required": true
+      }
+    }
+  ]
+}

@@ -1,0 +1,196 @@
+{
+  "fields": [
+    {
+      "protocols": {
+        "default": [
+          "grpc",
+          "grpcs",
+          "http",
+          "https"
+        ],
+        "elements": {
+          "one_of": [
+            "grpc",
+            "grpcs",
+            "http",
+            "https"
+          ],
+          "type": "string"
+        },
+        "required": true,
+        "type": "set"
+      }
+    },
+    {
+      "config": {
+        "required": true,
+        "entity_checks": [
+          {
+            "custom_entity_check": {
+              "field_sources": [
+                "batch_span_count",
+                "batch_flush_delay"
+              ]
+            }
+          }
+        ],
+        "fields": [
+          {
+            "endpoint": {
+              "type": "string",
+              "required": true
+            }
+          },
+          {
+            "headers": {
+              "type": "map",
+              "keys": {
+                "type": "string"
+              },
+              "values": {
+                "type": "string",
+                "referenceable": true
+              }
+            }
+          },
+          {
+            "resource_attributes": {
+              "values": {
+                "type": "string",
+                "required": true
+              },
+              "keys": {
+                "type": "string",
+                "required": true
+              },
+              "type": "map"
+            }
+          },
+          {
+            "batch_span_count": {
+              "type": "integer"
+            }
+          },
+          {
+            "batch_flush_delay": {
+              "type": "integer"
+            }
+          },
+          {
+            "queue": {
+              "required": true,
+              "fields": [
+                {
+                  "max_batch_size": {
+                    "between": [
+                      1,
+                      1000000
+                    ],
+                    "type": "number",
+                    "default": 1
+                  }
+                },
+                {
+                  "max_coalescing_delay": {
+                    "between": [
+                      0,
+                      3600
+                    ],
+                    "type": "number",
+                    "default": 1
+                  }
+                },
+                {
+                  "max_entries": {
+                    "between": [
+                      1,
+                      1000000
+                    ],
+                    "type": "number",
+                    "default": 10000
+                  }
+                },
+                {
+                  "max_bytes": {
+                    "type": "number"
+                  }
+                },
+                {
+                  "max_retry_time": {
+                    "default": 60,
+                    "type": "number"
+                  }
+                },
+                {
+                  "initial_retry_delay": {
+                    "default": 0.01,
+                    "type": "number"
+                  }
+                },
+                {
+                  "max_retry_delay": {
+                    "default": 60,
+                    "type": "number"
+                  }
+                }
+              ],
+              "type": "record"
+            }
+          },
+          {
+            "connect_timeout": {
+              "between": [
+                0,
+                2147483646
+              ],
+              "type": "integer",
+              "default": 1000
+            }
+          },
+          {
+            "send_timeout": {
+              "between": [
+                0,
+                2147483646
+              ],
+              "type": "integer",
+              "default": 5000
+            }
+          },
+          {
+            "read_timeout": {
+              "between": [
+                0,
+                2147483646
+              ],
+              "type": "integer",
+              "default": 5000
+            }
+          },
+          {
+            "http_response_header_for_traceid": {
+              "type": "string"
+            }
+          },
+          {
+            "header_type": {
+              "type": "string",
+              "one_of": [
+                "preserve",
+                "ignore",
+                "b3",
+                "b3-single",
+                "w3c",
+                "jaeger",
+                "ot"
+              ],
+              "required": false,
+              "default": "preserve"
+            }
+          }
+        ],
+        "type": "record"
+      }
+    }
+  ]
+}

@@ -1,0 +1,149 @@
+{
+  "fields": [
+    {
+      "protocols": {
+        "default": [
+          "grpc",
+          "grpcs",
+          "http",
+          "https"
+        ],
+        "elements": {
+          "one_of": [
+            "grpc",
+            "grpcs",
+            "http",
+            "https",
+            "tcp",
+            "tls",
+            "tls_passthrough",
+            "udp",
+            "ws",
+            "wss"
+          ],
+          "type": "string"
+        },
+        "required": true,
+        "type": "set"
+      }
+    },
+    {
+      "config": {
+        "required": true,
+        "fields": [
+          {
+            "log_level": {
+              "default": "info",
+              "one_of": [
+                "debug",
+                "info",
+                "notice",
+                "warning",
+                "err",
+                "crit",
+                "alert",
+                "emerg"
+              ],
+              "type": "string",
+              "required": true
+            }
+          },
+          {
+            "successful_severity": {
+              "default": "info",
+              "one_of": [
+                "debug",
+                "info",
+                "notice",
+                "warning",
+                "err",
+                "crit",
+                "alert",
+                "emerg"
+              ],
+              "type": "string",
+              "required": true
+            }
+          },
+          {
+            "client_errors_severity": {
+              "default": "info",
+              "one_of": [
+                "debug",
+                "info",
+                "notice",
+                "warning",
+                "err",
+                "crit",
+                "alert",
+                "emerg"
+              ],
+              "type": "string",
+              "required": true
+            }
+          },
+          {
+            "server_errors_severity": {
+              "default": "info",
+              "one_of": [
+                "debug",
+                "info",
+                "notice",
+                "warning",
+                "err",
+                "crit",
+                "alert",
+                "emerg"
+              ],
+              "type": "string",
+              "required": true
+            }
+          },
+          {
+            "custom_fields_by_lua": {
+              "type": "map",
+              "keys": {
+                "len_min": 1,
+                "type": "string"
+              },
+              "values": {
+                "type": "string",
+                "len_min": 1
+              }
+            }
+          },
+          {
+            "facility": {
+              "default": "user",
+              "one_of": [
+                "auth",
+                "authpriv",
+                "cron",
+                "daemon",
+                "ftp",
+                "kern",
+                "lpr",
+                "mail",
+                "news",
+                "syslog",
+                "user",
+                "uucp",
+                "local0",
+                "local1",
+                "local2",
+                "local3",
+                "local4",
+                "local5",
+                "local6",
+                "local7"
+              ],
+              "type": "string",
+              "required": true
+            }
+          }
+        ],
+        "type": "record"
+      }
+    }
+  ]
+}

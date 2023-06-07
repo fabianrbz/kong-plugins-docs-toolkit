@@ -1,0 +1,390 @@
+{
+  "fields": [
+    {
+      "protocols": {
+        "default": [
+          "grpc",
+          "grpcs",
+          "http",
+          "https"
+        ],
+        "elements": {
+          "one_of": [
+            "grpc",
+            "grpcs",
+            "http",
+            "https"
+          ],
+          "type": "string"
+        },
+        "required": true,
+        "type": "set"
+      }
+    },
+    {
+      "config": {
+        "required": true,
+        "fields": [
+          {
+            "identifier": {
+              "type": "string",
+              "one_of": [
+                "ip",
+                "credential",
+                "consumer",
+                "service",
+                "header",
+                "path"
+              ],
+              "default": "consumer",
+              "required": true
+            }
+          },
+          {
+            "window_size": {
+              "required": true,
+              "type": "array",
+              "elements": {
+                "type": "number"
+              }
+            }
+          },
+          {
+            "window_type": {
+              "default": "sliding",
+              "type": "string",
+              "one_of": [
+                "fixed",
+                "sliding"
+              ]
+            }
+          },
+          {
+            "limit": {
+              "required": true,
+              "type": "array",
+              "elements": {
+                "type": "number"
+              }
+            }
+          },
+          {
+            "sync_rate": {
+              "type": "number"
+            }
+          },
+          {
+            "namespace": {
+              "required": true,
+              "auto": true,
+              "type": "string"
+            }
+          },
+          {
+            "strategy": {
+              "type": "string",
+              "one_of": [
+                "cluster",
+                "redis",
+                "local"
+              ],
+              "default": "local",
+              "required": true
+            }
+          },
+          {
+            "dictionary_name": {
+              "required": true,
+              "default": "kong_rate_limiting_counters",
+              "type": "string"
+            }
+          },
+          {
+            "hide_client_headers": {
+              "type": "boolean",
+              "default": false
+            }
+          },
+          {
+            "retry_after_jitter_max": {
+              "type": "number",
+              "default": 0
+            }
+          },
+          {
+            "header_name": {
+              "type": "string"
+            }
+          },
+          {
+            "path": {
+              "match_none": [
+                {
+                  "err": "must not have empty segments",
+                  "pattern": "//"
+                }
+              ],
+              "starts_with": "/",
+              "type": "string"
+            }
+          },
+          {
+            "redis": {
+              "required": true,
+              "entity_checks": [
+                {
+                  "mutually_exclusive_sets": {
+                    "set1": [
+                      "sentinel_master",
+                      "sentinel_role",
+                      "sentinel_addresses"
+                    ],
+                    "set2": [
+                      "host",
+                      "port"
+                    ]
+                  }
+                },
+                {
+                  "mutually_exclusive_sets": {
+                    "set1": [
+                      "sentinel_master",
+                      "sentinel_role",
+                      "sentinel_addresses"
+                    ],
+                    "set2": [
+                      "cluster_addresses"
+                    ]
+                  }
+                },
+                {
+                  "mutually_exclusive_sets": {
+                    "set1": [
+                      "cluster_addresses"
+                    ],
+                    "set2": [
+                      "host",
+                      "port"
+                    ]
+                  }
+                },
+                {
+                  "mutually_required": [
+                    "sentinel_master",
+                    "sentinel_role",
+                    "sentinel_addresses"
+                  ]
+                },
+                {
+                  "mutually_required": [
+                    "host",
+                    "port"
+                  ]
+                },
+                {
+                  "mutually_required": [
+                    "connect_timeout",
+                    "send_timeout",
+                    "read_timeout"
+                  ]
+                }
+              ],
+              "fields": [
+                {
+                  "host": {
+                    "type": "string"
+                  }
+                },
+                {
+                  "port": {
+                    "between": [
+                      0,
+                      65535
+                    ],
+                    "type": "integer"
+                  }
+                },
+                {
+                  "timeout": {
+                    "between": [
+                      0,
+                      2147483646
+                    ],
+                    "type": "integer",
+                    "default": 2000
+                  }
+                },
+                {
+                  "connect_timeout": {
+                    "between": [
+                      0,
+                      2147483646
+                    ],
+                    "type": "integer"
+                  }
+                },
+                {
+                  "send_timeout": {
+                    "between": [
+                      0,
+                      2147483646
+                    ],
+                    "type": "integer"
+                  }
+                },
+                {
+                  "read_timeout": {
+                    "between": [
+                      0,
+                      2147483646
+                    ],
+                    "type": "integer"
+                  }
+                },
+                {
+                  "username": {
+                    "type": "string",
+                    "referenceable": true
+                  }
+                },
+                {
+                  "password": {
+                    "referenceable": true,
+                    "encrypted": true,
+                    "type": "string"
+                  }
+                },
+                {
+                  "sentinel_username": {
+                    "type": "string",
+                    "referenceable": true
+                  }
+                },
+                {
+                  "sentinel_password": {
+                    "referenceable": true,
+                    "encrypted": true,
+                    "type": "string"
+                  }
+                },
+                {
+                  "database": {
+                    "type": "integer",
+                    "default": 0
+                  }
+                },
+                {
+                  "keepalive_pool_size": {
+                    "between": [
+                      1,
+                      2147483646
+                    ],
+                    "default": 30,
+                    "type": "integer"
+                  }
+                },
+                {
+                  "keepalive_backlog": {
+                    "between": [
+                      0,
+                      2147483646
+                    ],
+                    "type": "integer"
+                  }
+                },
+                {
+                  "sentinel_master": {
+                    "type": "string"
+                  }
+                },
+                {
+                  "sentinel_role": {
+                    "one_of": [
+                      "master",
+                      "slave",
+                      "any"
+                    ],
+                    "type": "string"
+                  }
+                },
+                {
+                  "sentinel_addresses": {
+                    "len_min": 1,
+                    "elements": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  }
+                },
+                {
+                  "cluster_addresses": {
+                    "len_min": 1,
+                    "elements": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  }
+                },
+                {
+                  "ssl": {
+                    "default": false,
+                    "required": false,
+                    "type": "boolean"
+                  }
+                },
+                {
+                  "ssl_verify": {
+                    "default": false,
+                    "required": false,
+                    "type": "boolean"
+                  }
+                },
+                {
+                  "server_name": {
+                    "type": "string",
+                    "required": false
+                  }
+                }
+              ],
+              "type": "record"
+            }
+          },
+          {
+            "enforce_consumer_groups": {
+              "type": "boolean",
+              "default": false
+            }
+          },
+          {
+            "consumer_groups": {
+              "elements": {
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          {
+            "disable_penalty": {
+              "type": "boolean",
+              "default": false
+            }
+          },
+          {
+            "error_code": {
+              "type": "number",
+              "gt": 0,
+              "default": 429
+            }
+          },
+          {
+            "error_message": {
+              "type": "string",
+              "default": "API rate limit exceeded"
+            }
+          }
+        ],
+        "type": "record"
+      }
+    }
+  ]
+}

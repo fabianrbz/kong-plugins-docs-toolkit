@@ -1,0 +1,239 @@
+{
+  "fields": [
+    {
+      "protocols": {
+        "default": [
+          "grpc",
+          "grpcs",
+          "http",
+          "https"
+        ],
+        "elements": {
+          "one_of": [
+            "grpc",
+            "grpcs",
+            "http",
+            "https"
+          ],
+          "type": "string"
+        },
+        "required": true,
+        "type": "set"
+      }
+    },
+    {
+      "config": {
+        "required": true,
+        "fields": [
+          {
+            "remove": {
+              "required": true,
+              "fields": [
+                {
+                  "json": {
+                    "default": [
+
+                    ],
+                    "elements": {
+                      "type": "string"
+                    },
+                    "required": true,
+                    "type": "array"
+                  }
+                },
+                {
+                  "headers": {
+                    "default": [
+
+                    ],
+                    "elements": {
+                      "type": "string"
+                    },
+                    "required": true,
+                    "type": "array"
+                  }
+                }
+              ],
+              "type": "record"
+            }
+          },
+          {
+            "rename": {
+              "required": true,
+              "fields": [
+                {
+                  "headers": {
+                    "default": [
+
+                    ],
+                    "elements": {
+                      "match": "^[^:]+:.*$",
+                      "type": "string"
+                    },
+                    "required": true,
+                    "type": "array"
+                  }
+                }
+              ],
+              "type": "record"
+            }
+          },
+          {
+            "replace": {
+              "required": true,
+              "fields": [
+                {
+                  "json": {
+                    "default": [
+
+                    ],
+                    "elements": {
+                      "match": "^[^:]+:.*$",
+                      "type": "string"
+                    },
+                    "required": true,
+                    "type": "array"
+                  }
+                },
+                {
+                  "json_types": {
+                    "default": [
+
+                    ],
+                    "elements": {
+                      "one_of": [
+                        "boolean",
+                        "number",
+                        "string"
+                      ],
+                      "type": "string"
+                    },
+                    "required": true,
+                    "type": "array"
+                  }
+                },
+                {
+                  "headers": {
+                    "default": [
+
+                    ],
+                    "elements": {
+                      "match": "^[^:]+:.*$",
+                      "type": "string"
+                    },
+                    "required": true,
+                    "type": "array"
+                  }
+                }
+              ],
+              "type": "record"
+            }
+          },
+          {
+            "add": {
+              "required": true,
+              "fields": [
+                {
+                  "json": {
+                    "default": [
+
+                    ],
+                    "elements": {
+                      "match": "^[^:]+:.*$",
+                      "type": "string"
+                    },
+                    "required": true,
+                    "type": "array"
+                  }
+                },
+                {
+                  "json_types": {
+                    "default": [
+
+                    ],
+                    "elements": {
+                      "one_of": [
+                        "boolean",
+                        "number",
+                        "string"
+                      ],
+                      "type": "string"
+                    },
+                    "required": true,
+                    "type": "array"
+                  }
+                },
+                {
+                  "headers": {
+                    "default": [
+
+                    ],
+                    "elements": {
+                      "match": "^[^:]+:.*$",
+                      "type": "string"
+                    },
+                    "required": true,
+                    "type": "array"
+                  }
+                }
+              ],
+              "type": "record"
+            }
+          },
+          {
+            "append": {
+              "required": true,
+              "fields": [
+                {
+                  "json": {
+                    "default": [
+
+                    ],
+                    "elements": {
+                      "match": "^[^:]+:.*$",
+                      "type": "string"
+                    },
+                    "required": true,
+                    "type": "array"
+                  }
+                },
+                {
+                  "json_types": {
+                    "default": [
+
+                    ],
+                    "elements": {
+                      "one_of": [
+                        "boolean",
+                        "number",
+                        "string"
+                      ],
+                      "type": "string"
+                    },
+                    "required": true,
+                    "type": "array"
+                  }
+                },
+                {
+                  "headers": {
+                    "default": [
+
+                    ],
+                    "elements": {
+                      "match": "^[^:]+:.*$",
+                      "type": "string"
+                    },
+                    "required": true,
+                    "type": "array"
+                  }
+                }
+              ],
+              "type": "record"
+            }
+          }
+        ],
+        "type": "record"
+      }
+    }
+  ]
+}

@@ -1,0 +1,278 @@
+{
+  "fields": [
+    {
+      "protocols": {
+        "default": [
+          "grpc",
+          "grpcs",
+          "http",
+          "https"
+        ],
+        "elements": {
+          "one_of": [
+            "grpc",
+            "grpcs",
+            "http",
+            "https",
+            "tcp",
+            "tls",
+            "tls_passthrough",
+            "udp",
+            "ws",
+            "wss"
+          ],
+          "type": "string"
+        },
+        "required": true,
+        "type": "set"
+      }
+    },
+    {
+      "config": {
+        "required": true,
+        "fields": [
+          {
+            "local_service_name": {
+              "default": "kong",
+              "type": "string",
+              "required": true
+            }
+          },
+          {
+            "http_endpoint": {
+              "type": "string"
+            }
+          },
+          {
+            "sample_ratio": {
+              "between": [
+                0,
+                1
+              ],
+              "type": "number",
+              "default": 0.001
+            }
+          },
+          {
+            "default_service_name": {
+              "type": "string"
+            }
+          },
+          {
+            "include_credential": {
+              "default": true,
+              "type": "boolean",
+              "required": true
+            }
+          },
+          {
+            "traceid_byte_count": {
+              "required": true,
+              "one_of": [
+                8,
+                16
+              ],
+              "type": "integer",
+              "default": 16
+            }
+          },
+          {
+            "header_type": {
+              "required": true,
+              "one_of": [
+                "preserve",
+                "ignore",
+                "b3",
+                "b3-single",
+                "w3c",
+                "jaeger",
+                "ot",
+                "datadog"
+              ],
+              "type": "string",
+              "default": "preserve"
+            }
+          },
+          {
+            "default_header_type": {
+              "required": true,
+              "one_of": [
+                "b3",
+                "b3-single",
+                "w3c",
+                "jaeger",
+                "ot",
+                "datadog"
+              ],
+              "type": "string",
+              "default": "b3"
+            }
+          },
+          {
+            "tags_header": {
+              "default": "Zipkin-Tags",
+              "type": "string",
+              "required": true
+            }
+          },
+          {
+            "static_tags": {
+              "type": "array",
+              "elements": {
+                "fields": [
+                  {
+                    "name": {
+                      "not_one_of": [
+                        "error",
+                        "http.method",
+                        "http.path",
+                        "http.status_code",
+                        "kong.balancer.state",
+                        "kong.balancer.try",
+                        "kong.consumer",
+                        "kong.credential",
+                        "kong.node.id",
+                        "kong.route",
+                        "kong.service",
+                        "lc",
+                        "peer.hostname"
+                      ],
+                      "type": "string",
+                      "required": true
+                    }
+                  },
+                  {
+                    "value": {
+                      "type": "string",
+                      "required": true
+                    }
+                  }
+                ],
+                "type": "record"
+              }
+            }
+          },
+          {
+            "http_span_name": {
+              "required": true,
+              "one_of": [
+                "method",
+                "method_path"
+              ],
+              "type": "string",
+              "default": "method"
+            }
+          },
+          {
+            "connect_timeout": {
+              "between": [
+                0,
+                2147483646
+              ],
+              "type": "integer",
+              "default": 2000
+            }
+          },
+          {
+            "send_timeout": {
+              "between": [
+                0,
+                2147483646
+              ],
+              "type": "integer",
+              "default": 5000
+            }
+          },
+          {
+            "read_timeout": {
+              "between": [
+                0,
+                2147483646
+              ],
+              "type": "integer",
+              "default": 5000
+            }
+          },
+          {
+            "http_response_header_for_traceid": {
+              "type": "string"
+            }
+          },
+          {
+            "phase_duration_flavor": {
+              "required": true,
+              "one_of": [
+                "annotations",
+                "tags"
+              ],
+              "type": "string",
+              "default": "annotations"
+            }
+          },
+          {
+            "queue": {
+              "required": true,
+              "fields": [
+                {
+                  "max_batch_size": {
+                    "between": [
+                      1,
+                      1000000
+                    ],
+                    "type": "number",
+                    "default": 1
+                  }
+                },
+                {
+                  "max_coalescing_delay": {
+                    "between": [
+                      0,
+                      3600
+                    ],
+                    "type": "number",
+                    "default": 1
+                  }
+                },
+                {
+                  "max_entries": {
+                    "between": [
+                      1,
+                      1000000
+                    ],
+                    "type": "number",
+                    "default": 10000
+                  }
+                },
+                {
+                  "max_bytes": {
+                    "type": "number"
+                  }
+                },
+                {
+                  "max_retry_time": {
+                    "default": 60,
+                    "type": "number"
+                  }
+                },
+                {
+                  "initial_retry_delay": {
+                    "default": 0.01,
+                    "type": "number"
+                  }
+                },
+                {
+                  "max_retry_delay": {
+                    "default": 60,
+                    "type": "number"
+                  }
+                }
+              ],
+              "type": "record"
+            }
+          }
+        ],
+        "type": "record"
+      }
+    }
+  ]
+}

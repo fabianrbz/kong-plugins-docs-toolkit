@@ -1,0 +1,198 @@
+{
+  "fields": [
+    {
+      "protocols": {
+        "default": [
+          "grpc",
+          "grpcs",
+          "http",
+          "https"
+        ],
+        "elements": {
+          "one_of": [
+            "grpc",
+            "grpcs",
+            "http",
+            "https"
+          ],
+          "type": "string"
+        },
+        "required": true,
+        "type": "set"
+      }
+    },
+    {
+      "config": {
+        "required": true,
+        "fields": [
+          {
+            "second": {
+              "gt": 0,
+              "type": "number"
+            }
+          },
+          {
+            "minute": {
+              "gt": 0,
+              "type": "number"
+            }
+          },
+          {
+            "hour": {
+              "gt": 0,
+              "type": "number"
+            }
+          },
+          {
+            "day": {
+              "gt": 0,
+              "type": "number"
+            }
+          },
+          {
+            "month": {
+              "gt": 0,
+              "type": "number"
+            }
+          },
+          {
+            "year": {
+              "gt": 0,
+              "type": "number"
+            }
+          },
+          {
+            "limit_by": {
+              "default": "consumer",
+              "type": "string",
+              "one_of": [
+                "consumer",
+                "credential",
+                "ip",
+                "service",
+                "header",
+                "path"
+              ]
+            }
+          },
+          {
+            "header_name": {
+              "type": "string"
+            }
+          },
+          {
+            "path": {
+              "match_none": [
+                {
+                  "err": "must not have empty segments",
+                  "pattern": "//"
+                }
+              ],
+              "starts_with": "/",
+              "type": "string"
+            }
+          },
+          {
+            "policy": {
+              "one_of": [
+                "local",
+                "cluster",
+                "redis"
+              ],
+              "len_min": 0,
+              "type": "string",
+              "default": "local"
+            }
+          },
+          {
+            "fault_tolerant": {
+              "default": true,
+              "required": true,
+              "type": "boolean"
+            }
+          },
+          {
+            "redis_host": {
+              "type": "string"
+            }
+          },
+          {
+            "redis_port": {
+              "between": [
+                0,
+                65535
+              ],
+              "type": "integer",
+              "default": 6379
+            }
+          },
+          {
+            "redis_password": {
+              "len_min": 0,
+              "type": "string",
+              "referenceable": true
+            }
+          },
+          {
+            "redis_username": {
+              "type": "string",
+              "referenceable": true
+            }
+          },
+          {
+            "redis_ssl": {
+              "default": false,
+              "required": true,
+              "type": "boolean"
+            }
+          },
+          {
+            "redis_ssl_verify": {
+              "default": false,
+              "required": true,
+              "type": "boolean"
+            }
+          },
+          {
+            "redis_server_name": {
+              "type": "string"
+            }
+          },
+          {
+            "redis_timeout": {
+              "type": "number",
+              "default": 2000
+            }
+          },
+          {
+            "redis_database": {
+              "type": "integer",
+              "default": 0
+            }
+          },
+          {
+            "hide_client_headers": {
+              "default": false,
+              "required": true,
+              "type": "boolean"
+            }
+          },
+          {
+            "error_code": {
+              "type": "number",
+              "gt": 0,
+              "default": 429
+            }
+          },
+          {
+            "error_message": {
+              "type": "string",
+              "default": "API rate limit exceeded"
+            }
+          }
+        ],
+        "type": "record"
+      }
+    }
+  ]
+}

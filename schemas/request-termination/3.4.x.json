@@ -1,0 +1,71 @@
+{
+  "fields": [
+    {
+      "protocols": {
+        "default": [
+          "grpc",
+          "grpcs",
+          "http",
+          "https"
+        ],
+        "elements": {
+          "one_of": [
+            "grpc",
+            "grpcs",
+            "http",
+            "https"
+          ],
+          "type": "string"
+        },
+        "required": true,
+        "type": "set"
+      }
+    },
+    {
+      "config": {
+        "required": true,
+        "fields": [
+          {
+            "status_code": {
+              "type": "integer",
+              "between": [
+                100,
+                599
+              ],
+              "default": 503,
+              "required": true
+            }
+          },
+          {
+            "message": {
+              "type": "string"
+            }
+          },
+          {
+            "content_type": {
+              "type": "string"
+            }
+          },
+          {
+            "body": {
+              "type": "string"
+            }
+          },
+          {
+            "echo": {
+              "default": false,
+              "required": true,
+              "type": "boolean"
+            }
+          },
+          {
+            "trigger": {
+              "type": "string"
+            }
+          }
+        ],
+        "type": "record"
+      }
+    }
+  ]
+}

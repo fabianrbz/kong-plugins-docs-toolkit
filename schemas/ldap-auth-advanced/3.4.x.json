@@ -1,0 +1,196 @@
+{
+  "fields": [
+    {
+      "protocols": {
+        "default": [
+          "grpc",
+          "grpcs",
+          "http",
+          "https",
+          "ws",
+          "wss"
+        ],
+        "elements": {
+          "one_of": [
+            "grpc",
+            "grpcs",
+            "http",
+            "https",
+            "ws",
+            "wss"
+          ],
+          "type": "string"
+        },
+        "required": true,
+        "type": "set"
+      }
+    },
+    {
+      "consumer": {
+        "eq": null,
+        "reference": "consumers",
+        "type": "foreign"
+      }
+    },
+    {
+      "config": {
+        "required": true,
+        "fields": [
+          {
+            "ldap_host": {
+              "type": "string",
+              "required": true
+            }
+          },
+          {
+            "ldap_password": {
+              "encrypted": true,
+              "referenceable": true,
+              "type": "string"
+            }
+          },
+          {
+            "ldap_port": {
+              "type": "number",
+              "default": 389
+            }
+          },
+          {
+            "bind_dn": {
+              "type": "string",
+              "referenceable": true
+            }
+          },
+          {
+            "ldaps": {
+              "default": false,
+              "required": true,
+              "type": "boolean"
+            }
+          },
+          {
+            "start_tls": {
+              "default": false,
+              "required": true,
+              "type": "boolean"
+            }
+          },
+          {
+            "verify_ldap_host": {
+              "default": false,
+              "required": true,
+              "type": "boolean"
+            }
+          },
+          {
+            "base_dn": {
+              "type": "string",
+              "required": true
+            }
+          },
+          {
+            "attribute": {
+              "type": "string",
+              "required": true
+            }
+          },
+          {
+            "cache_ttl": {
+              "default": 60,
+              "required": true,
+              "type": "number"
+            }
+          },
+          {
+            "hide_credentials": {
+              "type": "boolean",
+              "default": false
+            }
+          },
+          {
+            "timeout": {
+              "type": "number",
+              "default": 10000
+            }
+          },
+          {
+            "keepalive": {
+              "type": "number",
+              "default": 60000
+            }
+          },
+          {
+            "anonymous": {
+              "len_min": 0,
+              "type": "string",
+              "default": ""
+            }
+          },
+          {
+            "header_type": {
+              "type": "string",
+              "default": "ldap"
+            }
+          },
+          {
+            "consumer_optional": {
+              "default": false,
+              "required": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "consumer_by": {
+              "elements": {
+                "one_of": [
+                  "username",
+                  "custom_id"
+                ],
+                "type": "string"
+              },
+              "default": [
+                "username",
+                "custom_id"
+              ],
+              "type": "array",
+              "required": false
+            }
+          },
+          {
+            "group_base_dn": {
+              "type": "string"
+            }
+          },
+          {
+            "group_name_attribute": {
+              "type": "string"
+            }
+          },
+          {
+            "group_member_attribute": {
+              "type": "string",
+              "default": "memberOf"
+            }
+          },
+          {
+            "log_search_results": {
+              "default": false,
+              "required": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "groups_required": {
+              "type": "array",
+              "required": false,
+              "elements": {
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "type": "record"
+      }
+    }
+  ]
+}

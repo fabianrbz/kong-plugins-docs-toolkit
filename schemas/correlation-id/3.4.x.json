@@ -1,0 +1,57 @@
+{
+  "fields": [
+    {
+      "protocols": {
+        "default": [
+          "grpc",
+          "grpcs",
+          "http",
+          "https"
+        ],
+        "elements": {
+          "one_of": [
+            "grpc",
+            "grpcs",
+            "http",
+            "https"
+          ],
+          "type": "string"
+        },
+        "required": true,
+        "type": "set"
+      }
+    },
+    {
+      "config": {
+        "required": true,
+        "fields": [
+          {
+            "header_name": {
+              "type": "string",
+              "default": "Kong-Request-ID"
+            }
+          },
+          {
+            "generator": {
+              "default": "uuid#counter",
+              "type": "string",
+              "one_of": [
+                "uuid",
+                "uuid#counter",
+                "tracker"
+              ]
+            }
+          },
+          {
+            "echo_downstream": {
+              "type": "boolean",
+              "required": true,
+              "default": false
+            }
+          }
+        ],
+        "type": "record"
+      }
+    }
+  ]
+}

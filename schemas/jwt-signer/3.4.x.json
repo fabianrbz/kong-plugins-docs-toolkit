@@ -1,0 +1,645 @@
+{
+  "fields": [
+    {
+      "consumer": {
+        "eq": null,
+        "reference": "consumers",
+        "type": "foreign"
+      }
+    },
+    {
+      "protocols": {
+        "default": [
+          "grpc",
+          "grpcs",
+          "http",
+          "https"
+        ],
+        "elements": {
+          "one_of": [
+            "grpc",
+            "grpcs",
+            "http",
+            "https"
+          ],
+          "type": "string"
+        },
+        "required": true,
+        "type": "set"
+      }
+    },
+    {
+      "config": {
+        "required": true,
+        "fields": [
+          {
+            "realm": {
+              "type": "string",
+              "required": false
+            }
+          },
+          {
+            "enable_hs_signatures": {
+              "default": false,
+              "required": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "enable_instrumentation": {
+              "default": false,
+              "required": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "access_token_issuer": {
+              "default": "kong",
+              "required": false,
+              "type": "string"
+            }
+          },
+          {
+            "access_token_keyset": {
+              "default": "kong",
+              "required": false,
+              "type": "string"
+            }
+          },
+          {
+            "access_token_jwks_uri": {
+              "type": "string",
+              "required": false
+            }
+          },
+          {
+            "access_token_request_header": {
+              "default": "Authorization",
+              "required": false,
+              "type": "string"
+            }
+          },
+          {
+            "access_token_leeway": {
+              "default": 0,
+              "required": false,
+              "type": "number"
+            }
+          },
+          {
+            "access_token_scopes_required": {
+              "required": false,
+              "type": "array",
+              "elements": {
+                "type": "string"
+              }
+            }
+          },
+          {
+            "access_token_scopes_claim": {
+              "elements": {
+                "type": "string"
+              },
+              "default": [
+                "scope"
+              ],
+              "type": "array",
+              "required": false
+            }
+          },
+          {
+            "access_token_consumer_claim": {
+              "required": false,
+              "type": "array",
+              "elements": {
+                "type": "string"
+              }
+            }
+          },
+          {
+            "access_token_consumer_by": {
+              "elements": {
+                "one_of": [
+                  "id",
+                  "username",
+                  "custom_id"
+                ],
+                "type": "string"
+              },
+              "default": [
+                "username",
+                "custom_id"
+              ],
+              "type": "array",
+              "required": false
+            }
+          },
+          {
+            "access_token_upstream_header": {
+              "default": "Authorization:Bearer",
+              "required": false,
+              "type": "string"
+            }
+          },
+          {
+            "access_token_upstream_leeway": {
+              "default": 0,
+              "required": false,
+              "type": "number"
+            }
+          },
+          {
+            "access_token_introspection_endpoint": {
+              "type": "string",
+              "required": false
+            }
+          },
+          {
+            "access_token_introspection_authorization": {
+              "type": "string",
+              "required": false
+            }
+          },
+          {
+            "access_token_introspection_body_args": {
+              "type": "string",
+              "required": false
+            }
+          },
+          {
+            "access_token_introspection_hint": {
+              "default": "access_token",
+              "required": false,
+              "type": "string"
+            }
+          },
+          {
+            "access_token_introspection_jwt_claim": {
+              "required": false,
+              "type": "array",
+              "elements": {
+                "type": "string"
+              }
+            }
+          },
+          {
+            "access_token_introspection_scopes_required": {
+              "required": false,
+              "type": "array",
+              "elements": {
+                "type": "string"
+              }
+            }
+          },
+          {
+            "access_token_introspection_scopes_claim": {
+              "elements": {
+                "type": "string"
+              },
+              "default": [
+                "scope"
+              ],
+              "type": "array",
+              "required": true
+            }
+          },
+          {
+            "access_token_introspection_consumer_claim": {
+              "required": false,
+              "type": "array",
+              "elements": {
+                "type": "string"
+              }
+            }
+          },
+          {
+            "access_token_introspection_consumer_by": {
+              "elements": {
+                "one_of": [
+                  "id",
+                  "username",
+                  "custom_id"
+                ],
+                "type": "string"
+              },
+              "default": [
+                "username",
+                "custom_id"
+              ],
+              "type": "array",
+              "required": false
+            }
+          },
+          {
+            "access_token_introspection_leeway": {
+              "default": 0,
+              "required": false,
+              "type": "number"
+            }
+          },
+          {
+            "access_token_introspection_timeout": {
+              "type": "number",
+              "required": false
+            }
+          },
+          {
+            "access_token_signing_algorithm": {
+              "type": "string",
+              "one_of": [
+                "HS256",
+                "HS384",
+                "HS512",
+                "RS256",
+                "RS512",
+                "ES256",
+                "ES384",
+                "ES512",
+                "PS256",
+                "PS384",
+                "PS512",
+                "EdDSA"
+              ],
+              "default": "RS256",
+              "required": true
+            }
+          },
+          {
+            "access_token_optional": {
+              "default": false,
+              "required": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "verify_access_token_signature": {
+              "default": true,
+              "required": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "verify_access_token_expiry": {
+              "default": true,
+              "required": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "verify_access_token_scopes": {
+              "default": true,
+              "required": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "verify_access_token_introspection_expiry": {
+              "default": true,
+              "required": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "verify_access_token_introspection_scopes": {
+              "default": true,
+              "required": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "cache_access_token_introspection": {
+              "default": true,
+              "required": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "trust_access_token_introspection": {
+              "default": true,
+              "required": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "enable_access_token_introspection": {
+              "default": true,
+              "required": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "channel_token_issuer": {
+              "default": "kong",
+              "required": false,
+              "type": "string"
+            }
+          },
+          {
+            "channel_token_keyset": {
+              "default": "kong",
+              "required": false,
+              "type": "string"
+            }
+          },
+          {
+            "channel_token_jwks_uri": {
+              "type": "string",
+              "required": false
+            }
+          },
+          {
+            "channel_token_request_header": {
+              "type": "string",
+              "required": false
+            }
+          },
+          {
+            "channel_token_leeway": {
+              "default": 0,
+              "required": false,
+              "type": "number"
+            }
+          },
+          {
+            "channel_token_scopes_required": {
+              "required": false,
+              "type": "array",
+              "elements": {
+                "type": "string"
+              }
+            }
+          },
+          {
+            "channel_token_scopes_claim": {
+              "elements": {
+                "type": "string"
+              },
+              "default": [
+                "scope"
+              ],
+              "type": "array",
+              "required": false
+            }
+          },
+          {
+            "channel_token_consumer_claim": {
+              "required": false,
+              "type": "array",
+              "elements": {
+                "type": "string"
+              }
+            }
+          },
+          {
+            "channel_token_consumer_by": {
+              "type": "array",
+              "elements": {
+                "one_of": [
+                  "id",
+                  "username",
+                  "custom_id"
+                ],
+                "type": "string"
+              },
+              "default": [
+                "username",
+                "custom_id"
+              ]
+            }
+          },
+          {
+            "channel_token_upstream_header": {
+              "type": "string",
+              "required": false
+            }
+          },
+          {
+            "channel_token_upstream_leeway": {
+              "default": 0,
+              "required": false,
+              "type": "number"
+            }
+          },
+          {
+            "channel_token_introspection_endpoint": {
+              "type": "string",
+              "required": false
+            }
+          },
+          {
+            "channel_token_introspection_authorization": {
+              "required": false,
+              "type": "string",
+              "elements": {
+                "type": "string"
+              }
+            }
+          },
+          {
+            "channel_token_introspection_body_args": {
+              "required": false,
+              "type": "string",
+              "elements": {
+                "type": "string"
+              }
+            }
+          },
+          {
+            "channel_token_introspection_hint": {
+              "required": false,
+              "type": "string",
+              "elements": {
+                "type": "string"
+              }
+            }
+          },
+          {
+            "channel_token_introspection_jwt_claim": {
+              "required": false,
+              "type": "array",
+              "elements": {
+                "type": "string"
+              }
+            }
+          },
+          {
+            "channel_token_introspection_scopes_required": {
+              "required": false,
+              "type": "array",
+              "elements": {
+                "type": "string"
+              }
+            }
+          },
+          {
+            "channel_token_introspection_scopes_claim": {
+              "elements": {
+                "type": "string"
+              },
+              "default": [
+                "scope"
+              ],
+              "type": "array",
+              "required": false
+            }
+          },
+          {
+            "channel_token_introspection_consumer_claim": {
+              "required": false,
+              "type": "array",
+              "elements": {
+                "type": "string"
+              }
+            }
+          },
+          {
+            "channel_token_introspection_consumer_by": {
+              "elements": {
+                "one_of": [
+                  "id",
+                  "username",
+                  "custom_id"
+                ],
+                "type": "string"
+              },
+              "default": [
+                "username",
+                "custom_id"
+              ],
+              "type": "array",
+              "required": false
+            }
+          },
+          {
+            "channel_token_introspection_leeway": {
+              "default": 0,
+              "required": false,
+              "type": "number"
+            }
+          },
+          {
+            "channel_token_introspection_timeout": {
+              "type": "number",
+              "required": false
+            }
+          },
+          {
+            "channel_token_signing_algorithm": {
+              "type": "string",
+              "one_of": [
+                "HS256",
+                "HS384",
+                "HS512",
+                "RS256",
+                "RS512",
+                "ES256",
+                "ES384",
+                "ES512",
+                "PS256",
+                "PS384",
+                "PS512",
+                "EdDSA"
+              ],
+              "default": "RS256",
+              "required": true
+            }
+          },
+          {
+            "channel_token_optional": {
+              "default": false,
+              "required": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "verify_channel_token_signature": {
+              "default": true,
+              "required": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "verify_channel_token_expiry": {
+              "default": true,
+              "required": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "verify_channel_token_scopes": {
+              "default": true,
+              "required": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "verify_channel_token_introspection_expiry": {
+              "default": true,
+              "required": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "verify_channel_token_introspection_scopes": {
+              "default": true,
+              "required": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "cache_channel_token_introspection": {
+              "default": true,
+              "required": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "trust_channel_token_introspection": {
+              "default": true,
+              "required": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "enable_channel_token_introspection": {
+              "default": true,
+              "required": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "add_claims": {
+              "values": {
+                "type": "string"
+              },
+              "default": [
+
+              ],
+              "keys": {
+                "type": "string"
+              },
+              "required": false,
+              "type": "map"
+            }
+          },
+          {
+            "set_claims": {
+              "values": {
+                "type": "string"
+              },
+              "default": [
+
+              ],
+              "keys": {
+                "type": "string"
+              },
+              "required": false,
+              "type": "map"
+            }
+          }
+        ],
+        "type": "record"
+      }
+    }
+  ]
+}

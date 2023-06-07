@@ -1,0 +1,57 @@
+{
+  "fields": [
+    {
+      "protocols": {
+        "default": [
+          "ws",
+          "wss"
+        ],
+        "elements": {
+          "one_of": [
+            "ws",
+            "wss"
+          ],
+          "type": "string"
+        },
+        "required": true,
+        "type": "set"
+      }
+    },
+    {
+      "config": {
+        "required": true,
+        "entity_checks": [
+          {
+            "at_least_one_of": [
+              "client_max_payload",
+              "upstream_max_payload"
+            ]
+          }
+        ],
+        "fields": [
+          {
+            "client_max_payload": {
+              "between": [
+                1,
+                33554432
+              ],
+              "required": false,
+              "type": "integer"
+            }
+          },
+          {
+            "upstream_max_payload": {
+              "between": [
+                1,
+                33554432
+              ],
+              "required": false,
+              "type": "integer"
+            }
+          }
+        ],
+        "type": "record"
+      }
+    }
+  ]
+}

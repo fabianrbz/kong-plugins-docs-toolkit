@@ -1,0 +1,201 @@
+{
+  "fields": [
+    {
+      "protocols": {
+        "default": [
+          "ws",
+          "wss"
+        ],
+        "elements": {
+          "one_of": [
+            "ws",
+            "wss"
+          ],
+          "type": "string"
+        },
+        "required": true,
+        "type": "set"
+      }
+    },
+    {
+      "config": {
+        "required": true,
+        "entity_checks": [
+          {
+            "at_least_one_of": [
+              "client",
+              "upstream"
+            ]
+          }
+        ],
+        "fields": [
+          {
+            "client": {
+              "type": "record",
+              "entity_checks": [
+                {
+                  "at_least_one_of": [
+                    "text",
+                    "binary"
+                  ]
+                }
+              ],
+              "fields": [
+                {
+                  "text": {
+                    "type": "record",
+                    "entity_checks": [
+                      {
+                        "custom_entity_check": {
+                          "field_sources": [
+                            "type",
+                            "schema"
+                          ]
+                        }
+                      }
+                    ],
+                    "fields": [
+                      {
+                        "type": {
+                          "type": "string",
+                          "required": true,
+                          "one_of": [
+                            "draft4"
+                          ]
+                        }
+                      },
+                      {
+                        "schema": {
+                          "required": true,
+                          "type": "string"
+                        }
+                      }
+                    ],
+                    "required": false
+                  }
+                },
+                {
+                  "binary": {
+                    "type": "record",
+                    "entity_checks": [
+                      {
+                        "custom_entity_check": {
+                          "field_sources": [
+                            "type",
+                            "schema"
+                          ]
+                        }
+                      }
+                    ],
+                    "fields": [
+                      {
+                        "type": {
+                          "type": "string",
+                          "required": true,
+                          "one_of": [
+                            "draft4"
+                          ]
+                        }
+                      },
+                      {
+                        "schema": {
+                          "required": true,
+                          "type": "string"
+                        }
+                      }
+                    ],
+                    "required": false
+                  }
+                }
+              ],
+              "required": false
+            }
+          },
+          {
+            "upstream": {
+              "type": "record",
+              "entity_checks": [
+                {
+                  "at_least_one_of": [
+                    "text",
+                    "binary"
+                  ]
+                }
+              ],
+              "fields": [
+                {
+                  "text": {
+                    "type": "record",
+                    "entity_checks": [
+                      {
+                        "custom_entity_check": {
+                          "field_sources": [
+                            "type",
+                            "schema"
+                          ]
+                        }
+                      }
+                    ],
+                    "fields": [
+                      {
+                        "type": {
+                          "type": "string",
+                          "required": true,
+                          "one_of": [
+                            "draft4"
+                          ]
+                        }
+                      },
+                      {
+                        "schema": {
+                          "required": true,
+                          "type": "string"
+                        }
+                      }
+                    ],
+                    "required": false
+                  }
+                },
+                {
+                  "binary": {
+                    "type": "record",
+                    "entity_checks": [
+                      {
+                        "custom_entity_check": {
+                          "field_sources": [
+                            "type",
+                            "schema"
+                          ]
+                        }
+                      }
+                    ],
+                    "fields": [
+                      {
+                        "type": {
+                          "type": "string",
+                          "required": true,
+                          "one_of": [
+                            "draft4"
+                          ]
+                        }
+                      },
+                      {
+                        "schema": {
+                          "required": true,
+                          "type": "string"
+                        }
+                      }
+                    ],
+                    "required": false
+                  }
+                }
+              ],
+              "required": false
+            }
+          }
+        ],
+        "type": "record"
+      }
+    }
+  ]
+}

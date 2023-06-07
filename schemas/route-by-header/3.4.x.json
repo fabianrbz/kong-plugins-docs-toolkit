@@ -1,0 +1,65 @@
+{
+  "fields": [
+    {
+      "protocols": {
+        "default": [
+          "grpc",
+          "grpcs",
+          "http",
+          "https"
+        ],
+        "elements": {
+          "one_of": [
+            "grpc",
+            "grpcs",
+            "http",
+            "https"
+          ],
+          "type": "string"
+        },
+        "required": true,
+        "type": "set"
+      }
+    },
+    {
+      "config": {
+        "required": true,
+        "fields": [
+          {
+            "rules": {
+              "type": "array",
+              "default": [
+
+              ],
+              "elements": {
+                "fields": [
+                  {
+                    "upstream_name": {
+                      "type": "string",
+                      "required": true
+                    }
+                  },
+                  {
+                    "condition": {
+                      "len_min": 1,
+                      "keys": {
+                        "type": "string"
+                      },
+                      "values": {
+                        "type": "string"
+                      },
+                      "required": true,
+                      "type": "map"
+                    }
+                  }
+                ],
+                "type": "record"
+              }
+            }
+          }
+        ],
+        "type": "record"
+      }
+    }
+  ]
+}

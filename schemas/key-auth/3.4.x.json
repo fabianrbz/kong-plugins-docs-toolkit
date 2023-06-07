@@ -1,0 +1,96 @@
+{
+  "fields": [
+    {
+      "consumer": {
+        "eq": null,
+        "reference": "consumers",
+        "type": "foreign"
+      }
+    },
+    {
+      "protocols": {
+        "default": [
+          "grpc",
+          "grpcs",
+          "http",
+          "https",
+          "ws",
+          "wss"
+        ],
+        "elements": {
+          "one_of": [
+            "grpc",
+            "grpcs",
+            "http",
+            "https",
+            "ws",
+            "wss"
+          ],
+          "type": "string"
+        },
+        "required": true,
+        "type": "set"
+      }
+    },
+    {
+      "config": {
+        "required": true,
+        "fields": [
+          {
+            "key_names": {
+              "elements": {
+                "type": "string"
+              },
+              "default": [
+                "apikey"
+              ],
+              "required": true,
+              "type": "array"
+            }
+          },
+          {
+            "hide_credentials": {
+              "type": "boolean",
+              "default": false,
+              "required": true
+            }
+          },
+          {
+            "anonymous": {
+              "type": "string"
+            }
+          },
+          {
+            "key_in_header": {
+              "type": "boolean",
+              "default": true,
+              "required": true
+            }
+          },
+          {
+            "key_in_query": {
+              "type": "boolean",
+              "default": true,
+              "required": true
+            }
+          },
+          {
+            "key_in_body": {
+              "type": "boolean",
+              "default": false,
+              "required": true
+            }
+          },
+          {
+            "run_on_preflight": {
+              "type": "boolean",
+              "default": true,
+              "required": true
+            }
+          }
+        ],
+        "type": "record"
+      }
+    }
+  ]
+}

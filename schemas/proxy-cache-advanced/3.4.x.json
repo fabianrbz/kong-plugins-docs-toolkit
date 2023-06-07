@@ -1,0 +1,379 @@
+{
+  "fields": [
+    {
+      "protocols": {
+        "default": [
+          "grpc",
+          "grpcs",
+          "http",
+          "https"
+        ],
+        "elements": {
+          "one_of": [
+            "grpc",
+            "grpcs",
+            "http",
+            "https"
+          ],
+          "type": "string"
+        },
+        "required": true,
+        "type": "set"
+      }
+    },
+    {
+      "config": {
+        "required": true,
+        "fields": [
+          {
+            "response_code": {
+              "len_min": 1,
+              "default": [
+                200,
+                301,
+                404
+              ],
+              "elements": {
+                "between": [
+                  100,
+                  900
+                ],
+                "type": "integer"
+              },
+              "required": true,
+              "type": "array"
+            }
+          },
+          {
+            "request_method": {
+              "default": [
+                "GET",
+                "HEAD"
+              ],
+              "elements": {
+                "one_of": [
+                  "HEAD",
+                  "GET",
+                  "POST",
+                  "PATCH",
+                  "PUT"
+                ],
+                "type": "string"
+              },
+              "required": true,
+              "type": "array"
+            }
+          },
+          {
+            "content_type": {
+              "default": [
+                "text/plain",
+                "application/json"
+              ],
+              "elements": {
+                "type": "string"
+              },
+              "required": true,
+              "type": "array"
+            }
+          },
+          {
+            "cache_ttl": {
+              "default": 300,
+              "gt": 0,
+              "type": "integer"
+            }
+          },
+          {
+            "strategy": {
+              "required": true,
+              "type": "string",
+              "one_of": [
+                "memory",
+                "redis"
+              ]
+            }
+          },
+          {
+            "cache_control": {
+              "required": true,
+              "type": "boolean",
+              "default": false
+            }
+          },
+          {
+            "ignore_uri_case": {
+              "required": false,
+              "type": "boolean",
+              "default": false
+            }
+          },
+          {
+            "storage_ttl": {
+              "type": "integer"
+            }
+          },
+          {
+            "memory": {
+              "required": true,
+              "fields": [
+                {
+                  "dictionary_name": {
+                    "required": true,
+                    "default": "kong_db_cache",
+                    "type": "string"
+                  }
+                }
+              ],
+              "type": "record"
+            }
+          },
+          {
+            "vary_query_params": {
+              "elements": {
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          {
+            "vary_headers": {
+              "elements": {
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          {
+            "redis": {
+              "required": true,
+              "entity_checks": [
+                {
+                  "mutually_exclusive_sets": {
+                    "set1": [
+                      "sentinel_master",
+                      "sentinel_role",
+                      "sentinel_addresses"
+                    ],
+                    "set2": [
+                      "host",
+                      "port"
+                    ]
+                  }
+                },
+                {
+                  "mutually_exclusive_sets": {
+                    "set1": [
+                      "sentinel_master",
+                      "sentinel_role",
+                      "sentinel_addresses"
+                    ],
+                    "set2": [
+                      "cluster_addresses"
+                    ]
+                  }
+                },
+                {
+                  "mutually_exclusive_sets": {
+                    "set1": [
+                      "cluster_addresses"
+                    ],
+                    "set2": [
+                      "host",
+                      "port"
+                    ]
+                  }
+                },
+                {
+                  "mutually_required": [
+                    "sentinel_master",
+                    "sentinel_role",
+                    "sentinel_addresses"
+                  ]
+                },
+                {
+                  "mutually_required": [
+                    "host",
+                    "port"
+                  ]
+                },
+                {
+                  "mutually_required": [
+                    "connect_timeout",
+                    "send_timeout",
+                    "read_timeout"
+                  ]
+                }
+              ],
+              "fields": [
+                {
+                  "host": {
+                    "type": "string"
+                  }
+                },
+                {
+                  "port": {
+                    "between": [
+                      0,
+                      65535
+                    ],
+                    "type": "integer"
+                  }
+                },
+                {
+                  "timeout": {
+                    "between": [
+                      0,
+                      2147483646
+                    ],
+                    "type": "integer",
+                    "default": 2000
+                  }
+                },
+                {
+                  "connect_timeout": {
+                    "between": [
+                      0,
+                      2147483646
+                    ],
+                    "type": "integer"
+                  }
+                },
+                {
+                  "send_timeout": {
+                    "between": [
+                      0,
+                      2147483646
+                    ],
+                    "type": "integer"
+                  }
+                },
+                {
+                  "read_timeout": {
+                    "between": [
+                      0,
+                      2147483646
+                    ],
+                    "type": "integer"
+                  }
+                },
+                {
+                  "username": {
+                    "type": "string",
+                    "referenceable": true
+                  }
+                },
+                {
+                  "password": {
+                    "referenceable": true,
+                    "encrypted": true,
+                    "type": "string"
+                  }
+                },
+                {
+                  "sentinel_username": {
+                    "type": "string",
+                    "referenceable": true
+                  }
+                },
+                {
+                  "sentinel_password": {
+                    "referenceable": true,
+                    "encrypted": true,
+                    "type": "string"
+                  }
+                },
+                {
+                  "database": {
+                    "type": "integer",
+                    "default": 0
+                  }
+                },
+                {
+                  "keepalive_pool_size": {
+                    "between": [
+                      1,
+                      2147483646
+                    ],
+                    "default": 30,
+                    "type": "integer"
+                  }
+                },
+                {
+                  "keepalive_backlog": {
+                    "between": [
+                      0,
+                      2147483646
+                    ],
+                    "type": "integer"
+                  }
+                },
+                {
+                  "sentinel_master": {
+                    "type": "string"
+                  }
+                },
+                {
+                  "sentinel_role": {
+                    "one_of": [
+                      "master",
+                      "slave",
+                      "any"
+                    ],
+                    "type": "string"
+                  }
+                },
+                {
+                  "sentinel_addresses": {
+                    "len_min": 1,
+                    "elements": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  }
+                },
+                {
+                  "cluster_addresses": {
+                    "len_min": 1,
+                    "elements": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  }
+                },
+                {
+                  "ssl": {
+                    "default": false,
+                    "required": false,
+                    "type": "boolean"
+                  }
+                },
+                {
+                  "ssl_verify": {
+                    "default": false,
+                    "required": false,
+                    "type": "boolean"
+                  }
+                },
+                {
+                  "server_name": {
+                    "type": "string",
+                    "required": false
+                  }
+                }
+              ],
+              "type": "record"
+            }
+          },
+          {
+            "bypass_on_err": {
+              "default": false,
+              "type": "boolean"
+            }
+          }
+        ],
+        "type": "record"
+      }
+    }
+  ]
+}

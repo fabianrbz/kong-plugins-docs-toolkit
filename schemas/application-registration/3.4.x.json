@@ -1,0 +1,82 @@
+{
+  "fields": [
+    {
+      "consumer": {
+        "eq": null,
+        "reference": "consumers",
+        "type": "foreign"
+      }
+    },
+    {
+      "service": {
+        "on_delete": "cascade",
+        "ne": null,
+        "reference": "services",
+        "type": "foreign"
+      }
+    },
+    {
+      "route": {
+        "eq": null,
+        "reference": "routes",
+        "type": "foreign"
+      }
+    },
+    {
+      "protocols": {
+        "default": [
+          "grpc",
+          "grpcs",
+          "http",
+          "https"
+        ],
+        "elements": {
+          "one_of": [
+            "grpc",
+            "grpcs",
+            "http",
+            "https"
+          ],
+          "type": "string"
+        },
+        "required": true,
+        "type": "set"
+      }
+    },
+    {
+      "config": {
+        "required": true,
+        "fields": [
+          {
+            "display_name": {
+              "type": "string",
+              "unique": true,
+              "required": true
+            }
+          },
+          {
+            "description": {
+              "unique": true,
+              "type": "string"
+            }
+          },
+          {
+            "auto_approve": {
+              "required": true,
+              "type": "boolean",
+              "default": false
+            }
+          },
+          {
+            "show_issuer": {
+              "required": true,
+              "type": "boolean",
+              "default": false
+            }
+          }
+        ],
+        "type": "record"
+      }
+    }
+  ]
+}

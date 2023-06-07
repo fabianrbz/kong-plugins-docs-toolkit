@@ -1,0 +1,260 @@
+{
+  "fields": [
+    {
+      "consumer": {
+        "eq": null,
+        "reference": "consumers",
+        "type": "foreign"
+      }
+    },
+    {
+      "protocols": {
+        "default": [
+          "grpc",
+          "grpcs",
+          "http",
+          "https"
+        ],
+        "elements": {
+          "one_of": [
+            "grpc",
+            "grpcs",
+            "http",
+            "https",
+            "tcp",
+            "tls",
+            "tls_passthrough",
+            "udp",
+            "ws",
+            "wss"
+          ],
+          "type": "string"
+        },
+        "required": true,
+        "type": "set"
+      }
+    },
+    {
+      "config": {
+        "shorthand_fields": [
+          {
+            "cookie_lifetime": {
+              "type": "number"
+            }
+          },
+          {
+            "cookie_idletime": {
+              "type": "number"
+            }
+          },
+          {
+            "cookie_renew": {
+              "type": "number"
+            }
+          },
+          {
+            "cookie_discard": {
+              "type": "number"
+            }
+          },
+          {
+            "cookie_samesite": {
+              "type": "string"
+            }
+          },
+          {
+            "cookie_httponly": {
+              "type": "boolean"
+            }
+          },
+          {
+            "cookie_persistent": {
+              "type": "boolean"
+            }
+          }
+        ],
+        "required": true,
+        "fields": [
+          {
+            "secret": {
+              "required": false,
+              "type": "string",
+              "default": "x8iNgCZK6ujBch4SJzrfXTvxciHURzefZYUqZ0PDyIwr",
+              "encrypted": true,
+              "referenceable": true
+            }
+          },
+          {
+            "storage": {
+              "type": "string",
+              "default": "cookie",
+              "one_of": [
+                "cookie",
+                "kong"
+              ]
+            }
+          },
+          {
+            "audience": {
+              "default": "default",
+              "type": "string"
+            }
+          },
+          {
+            "idling_timeout": {
+              "default": 900,
+              "type": "number"
+            }
+          },
+          {
+            "rolling_timeout": {
+              "default": 3600,
+              "type": "number"
+            }
+          },
+          {
+            "absolute_timeout": {
+              "default": 86400,
+              "type": "number"
+            }
+          },
+          {
+            "stale_ttl": {
+              "default": 10,
+              "type": "number"
+            }
+          },
+          {
+            "cookie_name": {
+              "default": "session",
+              "type": "string"
+            }
+          },
+          {
+            "cookie_path": {
+              "default": "/",
+              "type": "string"
+            }
+          },
+          {
+            "cookie_domain": {
+              "type": "string"
+            }
+          },
+          {
+            "cookie_same_site": {
+              "type": "string",
+              "default": "Strict",
+              "one_of": [
+                "Strict",
+                "Lax",
+                "None",
+                "Default"
+              ]
+            }
+          },
+          {
+            "cookie_http_only": {
+              "default": true,
+              "type": "boolean"
+            }
+          },
+          {
+            "cookie_secure": {
+              "default": true,
+              "type": "boolean"
+            }
+          },
+          {
+            "remember": {
+              "default": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "remember_cookie_name": {
+              "default": "remember",
+              "type": "string"
+            }
+          },
+          {
+            "remember_rolling_timeout": {
+              "default": 604800,
+              "type": "number"
+            }
+          },
+          {
+            "remember_absolute_timeout": {
+              "default": 2592000,
+              "type": "number"
+            }
+          },
+          {
+            "response_headers": {
+              "elements": {
+                "one_of": [
+                  "id",
+                  "audience",
+                  "subject",
+                  "timeout",
+                  "idling-timeout",
+                  "rolling-timeout",
+                  "absolute-timeout"
+                ],
+                "type": "string"
+              },
+              "type": "set"
+            }
+          },
+          {
+            "request_headers": {
+              "elements": {
+                "one_of": [
+                  "id",
+                  "audience",
+                  "subject",
+                  "timeout",
+                  "idling-timeout",
+                  "rolling-timeout",
+                  "absolute-timeout"
+                ],
+                "type": "string"
+              },
+              "type": "set"
+            }
+          },
+          {
+            "logout_methods": {
+              "type": "set",
+              "elements": {
+                "one_of": [
+                  "GET",
+                  "POST",
+                  "DELETE"
+                ],
+                "type": "string"
+              },
+              "default": [
+                "POST",
+                "DELETE"
+              ]
+            }
+          },
+          {
+            "logout_query_arg": {
+              "default": "session_logout",
+              "type": "string"
+            }
+          },
+          {
+            "logout_post_arg": {
+              "default": "session_logout",
+              "type": "string"
+            }
+          }
+        ],
+        "type": "record"
+      }
+    }
+  ]
+}

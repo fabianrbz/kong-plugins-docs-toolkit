@@ -1,0 +1,157 @@
+{
+  "fields": [
+    {
+      "protocols": {
+        "default": [
+          "grpc",
+          "grpcs",
+          "http",
+          "https"
+        ],
+        "elements": {
+          "one_of": [
+            "grpc",
+            "grpcs",
+            "http",
+            "https",
+            "tcp",
+            "tls",
+            "tls_passthrough",
+            "udp",
+            "ws",
+            "wss"
+          ],
+          "type": "string"
+        },
+        "required": true,
+        "type": "set"
+      }
+    },
+    {
+      "config": {
+        "required": true,
+        "fields": [
+          {
+            "response_code": {
+              "len_min": 1,
+              "default": [
+                200,
+                301,
+                404
+              ],
+              "elements": {
+                "between": [
+                  100,
+                  900
+                ],
+                "type": "integer"
+              },
+              "required": true,
+              "type": "array"
+            }
+          },
+          {
+            "request_method": {
+              "default": [
+                "GET",
+                "HEAD"
+              ],
+              "elements": {
+                "one_of": [
+                  "HEAD",
+                  "GET",
+                  "POST",
+                  "PATCH",
+                  "PUT"
+                ],
+                "type": "string"
+              },
+              "type": "array",
+              "required": true
+            }
+          },
+          {
+            "content_type": {
+              "default": [
+                "text/plain",
+                "application/json"
+              ],
+              "elements": {
+                "type": "string"
+              },
+              "type": "array",
+              "required": true
+            }
+          },
+          {
+            "cache_ttl": {
+              "default": 300,
+              "gt": 0,
+              "type": "integer"
+            }
+          },
+          {
+            "strategy": {
+              "type": "string",
+              "required": true,
+              "one_of": [
+                "memory"
+              ]
+            }
+          },
+          {
+            "cache_control": {
+              "type": "boolean",
+              "required": true,
+              "default": false
+            }
+          },
+          {
+            "ignore_uri_case": {
+              "type": "boolean",
+              "required": false,
+              "default": false
+            }
+          },
+          {
+            "storage_ttl": {
+              "type": "integer"
+            }
+          },
+          {
+            "memory": {
+              "required": true,
+              "fields": [
+                {
+                  "dictionary_name": {
+                    "required": true,
+                    "type": "string",
+                    "default": "kong_db_cache"
+                  }
+                }
+              ],
+              "type": "record"
+            }
+          },
+          {
+            "vary_query_params": {
+              "elements": {
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          {
+            "vary_headers": {
+              "elements": {
+                "type": "string"
+              },
+              "type": "array"
+            }
+          }
+        ],
+        "type": "record"
+      }
+    }
+  ]
+}

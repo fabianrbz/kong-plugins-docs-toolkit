@@ -1,0 +1,102 @@
+{
+  "fields": [
+    {
+      "protocols": {
+        "default": [
+          "grpc",
+          "grpcs",
+          "http",
+          "https"
+        ],
+        "elements": {
+          "one_of": [
+            "grpc",
+            "grpcs",
+            "http",
+            "https",
+            "tcp",
+            "tls",
+            "tls_passthrough",
+            "udp",
+            "ws",
+            "wss"
+          ],
+          "type": "string"
+        },
+        "required": true,
+        "type": "set"
+      }
+    },
+    {
+      "config": {
+        "required": true,
+        "fields": [
+          {
+            "timeout": {
+              "type": "number",
+              "default": 600000
+            }
+          },
+          {
+            "keepalive": {
+              "type": "number",
+              "default": 60000
+            }
+          },
+          {
+            "https": {
+              "type": "boolean",
+              "default": true
+            }
+          },
+          {
+            "https_verify": {
+              "type": "boolean",
+              "default": false
+            }
+          },
+          {
+            "apikey": {
+              "type": "string",
+              "referenceable": true,
+              "encrypted": true
+            }
+          },
+          {
+            "clientid": {
+              "type": "string",
+              "referenceable": true,
+              "encrypted": true
+            }
+          },
+          {
+            "appname": {
+              "type": "string",
+              "required": true
+            }
+          },
+          {
+            "hostdomain": {
+              "type": "string",
+              "required": true,
+              "default": "azurewebsites.net"
+            }
+          },
+          {
+            "routeprefix": {
+              "type": "string",
+              "default": "api"
+            }
+          },
+          {
+            "functionname": {
+              "type": "string",
+              "required": true
+            }
+          }
+        ],
+        "type": "record"
+      }
+    }
+  ]
+}

@@ -1,0 +1,90 @@
+{
+  "fields": [
+    {
+      "protocols": {
+        "default": [
+          "grpc",
+          "grpcs",
+          "http",
+          "https"
+        ],
+        "elements": {
+          "one_of": [
+            "grpc",
+            "grpcs",
+            "http",
+            "https"
+          ],
+          "type": "string"
+        },
+        "required": true,
+        "type": "set"
+      }
+    },
+    {
+      "consumer": {
+        "eq": null,
+        "reference": "consumers",
+        "type": "foreign"
+      }
+    },
+    {
+      "config": {
+        "required": true,
+        "fields": [
+          {
+            "access_token_name": {
+              "default": "access_token",
+              "elements": {
+                "type": "string"
+              },
+              "required": true,
+              "type": "string"
+            }
+          },
+          {
+            "secret_token_name": {
+              "default": "secret_token",
+              "elements": {
+                "type": "string"
+              },
+              "required": true,
+              "type": "string"
+            }
+          },
+          {
+            "vault": {
+              "type": "foreign",
+              "reference": "vault_auth_vaults",
+              "required": true
+            }
+          },
+          {
+            "hide_credentials": {
+              "default": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "anonymous": {
+              "type": "string"
+            }
+          },
+          {
+            "tokens_in_body": {
+              "default": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "run_on_preflight": {
+              "default": true,
+              "type": "boolean"
+            }
+          }
+        ],
+        "type": "record"
+      }
+    }
+  ]
+}

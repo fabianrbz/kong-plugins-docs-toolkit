@@ -1,0 +1,80 @@
+{
+  "fields": [
+    {
+      "consumer": {
+        "eq": null,
+        "reference": "consumers",
+        "type": "foreign"
+      }
+    },
+    {
+      "route": {
+        "eq": null,
+        "reference": "routes",
+        "type": "foreign"
+      }
+    },
+    {
+      "protocols": {
+        "default": [
+          "grpc",
+          "grpcs",
+          "http",
+          "https"
+        ],
+        "elements": {
+          "one_of": [
+            "grpc",
+            "grpcs",
+            "http",
+            "https"
+          ],
+          "type": "string"
+        },
+        "required": true,
+        "type": "set"
+      }
+    },
+    {
+      "config": {
+        "required": true,
+        "entity_checks": [
+
+        ],
+        "fields": [
+          {
+            "key_names": {
+              "elements": {
+                "type": "string"
+              },
+              "default": [
+                "apikey"
+              ],
+              "required": true,
+              "type": "array"
+            }
+          },
+          {
+            "auth_type": {
+              "default": "openid-connect",
+              "one_of": [
+                "openid-connect",
+                "key-auth"
+              ],
+              "type": "string",
+              "required": true
+            }
+          },
+          {
+            "scope": {
+              "required": true,
+              "unique": true,
+              "type": "string"
+            }
+          }
+        ],
+        "type": "record"
+      }
+    }
+  ]
+}

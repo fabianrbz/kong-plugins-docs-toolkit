@@ -1,0 +1,206 @@
+{
+  "fields": [
+    {
+      "protocols": {
+        "default": [
+          "grpc",
+          "grpcs",
+          "http",
+          "https"
+        ],
+        "elements": {
+          "one_of": [
+            "grpc",
+            "grpcs",
+            "http",
+            "https",
+            "tcp",
+            "tls",
+            "tls_passthrough",
+            "udp",
+            "ws",
+            "wss"
+          ],
+          "type": "string"
+        },
+        "required": true,
+        "type": "set"
+      }
+    },
+    {
+      "config": {
+        "type": "record",
+        "entity_checks": [
+          {
+            "custom_entity_check": {
+              "field_sources": [
+                "retry_count",
+                "queue_size",
+                "flush_timeout"
+              ]
+            }
+          }
+        ],
+        "fields": [
+          {
+            "http_endpoint": {
+              "type": "string",
+              "required": true,
+              "encrypted": true,
+              "referenceable": true
+            }
+          },
+          {
+            "method": {
+              "type": "string",
+              "default": "POST",
+              "one_of": [
+                "POST",
+                "PUT",
+                "PATCH"
+              ]
+            }
+          },
+          {
+            "content_type": {
+              "type": "string",
+              "default": "application/json",
+              "one_of": [
+                "application/json",
+                "application/json; charset=utf-8"
+              ]
+            }
+          },
+          {
+            "timeout": {
+              "default": 10000,
+              "type": "number"
+            }
+          },
+          {
+            "keepalive": {
+              "default": 60000,
+              "type": "number"
+            }
+          },
+          {
+            "retry_count": {
+              "type": "integer"
+            }
+          },
+          {
+            "queue_size": {
+              "type": "integer"
+            }
+          },
+          {
+            "flush_timeout": {
+              "type": "number"
+            }
+          },
+          {
+            "headers": {
+              "type": "map",
+              "keys": {
+                "match_none": [
+                  {
+                    "err": "cannot contain 'Host' header",
+                    "pattern": "^[Hh][Oo][Ss][Tt]$"
+                  },
+                  {
+                    "err": "cannot contain 'Content-Length' header",
+                    "pattern": "^[Cc][Oo][Nn][Tt][Ee][Nn][Tt]%-[Ll][Ee][nn][Gg][Tt][Hh]$"
+                  },
+                  {
+                    "err": "cannot contain 'Content-Type' header",
+                    "pattern": "^[Cc][Oo][Nn][Tt][Ee][Nn][Tt]%-[Tt][Yy][Pp][Ee]$"
+                  }
+                ],
+                "type": "string"
+              },
+              "values": {
+                "referenceable": true,
+                "type": "string"
+              }
+            }
+          },
+          {
+            "queue": {
+              "required": true,
+              "fields": [
+                {
+                  "max_batch_size": {
+                    "between": [
+                      1,
+                      1000000
+                    ],
+                    "type": "number",
+                    "default": 1
+                  }
+                },
+                {
+                  "max_coalescing_delay": {
+                    "between": [
+                      0,
+                      3600
+                    ],
+                    "type": "number",
+                    "default": 1
+                  }
+                },
+                {
+                  "max_entries": {
+                    "between": [
+                      1,
+                      1000000
+                    ],
+                    "type": "number",
+                    "default": 10000
+                  }
+                },
+                {
+                  "max_bytes": {
+                    "type": "number"
+                  }
+                },
+                {
+                  "max_retry_time": {
+                    "default": 60,
+                    "type": "number"
+                  }
+                },
+                {
+                  "initial_retry_delay": {
+                    "default": 0.01,
+                    "type": "number"
+                  }
+                },
+                {
+                  "max_retry_delay": {
+                    "default": 60,
+                    "type": "number"
+                  }
+                }
+              ],
+              "type": "record"
+            }
+          },
+          {
+            "custom_fields_by_lua": {
+              "type": "map",
+              "keys": {
+                "len_min": 1,
+                "type": "string"
+              },
+              "values": {
+                "type": "string",
+                "len_min": 1
+              }
+            }
+          }
+        ],
+        "required": true
+      }
+    }
+  ]
+}

@@ -1,0 +1,124 @@
+{
+  "fields": [
+    {
+      "consumer": {
+        "eq": null,
+        "reference": "consumers",
+        "type": "foreign"
+      }
+    },
+    {
+      "protocols": {
+        "default": [
+          "grpc",
+          "grpcs",
+          "http",
+          "https"
+        ],
+        "elements": {
+          "one_of": [
+            "grpc",
+            "grpcs",
+            "http",
+            "https"
+          ],
+          "type": "string"
+        },
+        "required": true,
+        "type": "set"
+      }
+    },
+    {
+      "config": {
+        "required": true,
+        "fields": [
+          {
+            "opa_protocol": {
+              "type": "string",
+              "default": "http",
+              "one_of": [
+                "http",
+                "https"
+              ]
+            }
+          },
+          {
+            "opa_host": {
+              "type": "string",
+              "required": true,
+              "default": "localhost"
+            }
+          },
+          {
+            "opa_port": {
+              "type": "integer",
+              "between": [
+                0,
+                65535
+              ],
+              "default": 8181,
+              "required": true
+            }
+          },
+          {
+            "opa_path": {
+              "match_none": [
+                {
+                  "err": "must not have empty segments",
+                  "pattern": "//"
+                }
+              ],
+              "type": "string",
+              "starts_with": "/",
+              "required": true
+            }
+          },
+          {
+            "include_service_in_opa_input": {
+              "type": "boolean",
+              "default": false
+            }
+          },
+          {
+            "include_route_in_opa_input": {
+              "type": "boolean",
+              "default": false
+            }
+          },
+          {
+            "include_consumer_in_opa_input": {
+              "type": "boolean",
+              "default": false
+            }
+          },
+          {
+            "include_body_in_opa_input": {
+              "type": "boolean",
+              "default": false
+            }
+          },
+          {
+            "include_parsed_json_body_in_opa_input": {
+              "type": "boolean",
+              "default": false
+            }
+          },
+          {
+            "include_uri_captures_in_opa_input": {
+              "type": "boolean",
+              "default": false
+            }
+          },
+          {
+            "ssl_verify": {
+              "type": "boolean",
+              "required": true,
+              "default": true
+            }
+          }
+        ],
+        "type": "record"
+      }
+    }
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "fields": [
+    {
+      "protocols": {
+        "default": [
+          "grpc",
+          "grpcs",
+          "http",
+          "https"
+        ],
+        "elements": {
+          "one_of": [
+            "grpc",
+            "grpcs",
+            "http",
+            "https"
+          ],
+          "type": "string"
+        },
+        "required": true,
+        "type": "set"
+      }
+    },
+    {
+      "consumer": {
+        "eq": null,
+        "reference": "consumers",
+        "type": "foreign"
+      }
+    },
+    {
+      "config": {
+        "required": true,
+        "fields": [
+          {
+            "lookup_header_name": {
+              "required": true,
+              "default": "Authorization",
+              "type": "string"
+            }
+          },
+          {
+            "forward_header_name": {
+              "required": true,
+              "default": "Authorization",
+              "type": "string"
+            }
+          },
+          {
+            "key_sets": {
+              "required": true,
+              "type": "array",
+              "elements": {
+                "type": "string"
+              }
+            }
+          },
+          {
+            "strict": {
+              "type": "boolean",
+              "default": true
+            }
+          }
+        ],
+        "type": "record"
+      }
+    }
+  ]
+}

@@ -1,0 +1,185 @@
+{
+  "fields": [
+    {
+      "protocols": {
+        "default": [
+          "grpc",
+          "grpcs",
+          "http",
+          "https"
+        ],
+        "elements": {
+          "one_of": [
+            "grpc",
+            "grpcs",
+            "http",
+            "https"
+          ],
+          "type": "string"
+        },
+        "required": true,
+        "type": "set"
+      }
+    },
+    {
+      "config": {
+        "required": true,
+        "entity_checks": [
+          {
+            "at_least_one_of": [
+              "request_jq_program",
+              "response_jq_program"
+            ]
+          }
+        ],
+        "fields": [
+          {
+            "request_jq_program": {
+              "required": false,
+              "type": "string"
+            }
+          },
+          {
+            "request_jq_program_options": {
+              "default": [
+
+              ],
+              "required": false,
+              "fields": [
+                {
+                  "compact_output": {
+                    "required": true,
+                    "type": "boolean",
+                    "default": true
+                  }
+                },
+                {
+                  "raw_output": {
+                    "required": true,
+                    "type": "boolean",
+                    "default": false
+                  }
+                },
+                {
+                  "join_output": {
+                    "required": true,
+                    "type": "boolean",
+                    "default": false
+                  }
+                },
+                {
+                  "ascii_output": {
+                    "required": true,
+                    "type": "boolean",
+                    "default": false
+                  }
+                },
+                {
+                  "sort_keys": {
+                    "required": true,
+                    "type": "boolean",
+                    "default": false
+                  }
+                }
+              ],
+              "type": "record"
+            }
+          },
+          {
+            "request_if_media_type": {
+              "elements": {
+                "type": "string"
+              },
+              "default": [
+                "application/json"
+              ],
+              "required": false,
+              "type": "array"
+            }
+          },
+          {
+            "response_jq_program": {
+              "required": false,
+              "type": "string"
+            }
+          },
+          {
+            "response_jq_program_options": {
+              "default": [
+
+              ],
+              "required": false,
+              "fields": [
+                {
+                  "compact_output": {
+                    "required": true,
+                    "type": "boolean",
+                    "default": true
+                  }
+                },
+                {
+                  "raw_output": {
+                    "required": true,
+                    "type": "boolean",
+                    "default": false
+                  }
+                },
+                {
+                  "join_output": {
+                    "required": true,
+                    "type": "boolean",
+                    "default": false
+                  }
+                },
+                {
+                  "ascii_output": {
+                    "required": true,
+                    "type": "boolean",
+                    "default": false
+                  }
+                },
+                {
+                  "sort_keys": {
+                    "required": true,
+                    "type": "boolean",
+                    "default": false
+                  }
+                }
+              ],
+              "type": "record"
+            }
+          },
+          {
+            "response_if_media_type": {
+              "elements": {
+                "type": "string"
+              },
+              "default": [
+                "application/json"
+              ],
+              "required": false,
+              "type": "array"
+            }
+          },
+          {
+            "response_if_status_code": {
+              "elements": {
+                "between": [
+                  100,
+                  599
+                ],
+                "type": "integer"
+              },
+              "default": [
+                200
+              ],
+              "required": false,
+              "type": "array"
+            }
+          }
+        ],
+        "type": "record"
+      }
+    }
+  ]
+}

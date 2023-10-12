@@ -1,4 +1,7 @@
 {
+  "entity_checks": [
+
+  ],
   "fields": [
     {
       "protocols": {
@@ -17,47 +20,57 @@
           ],
           "type": "string"
         },
-        "required": true,
-        "type": "set"
+        "type": "set",
+        "description": "A set of strings representing HTTP protocols.",
+        "required": true
+      }
+    },
+    {
+      "consumer_group": {
+        "type": "foreign",
+        "description": "Custom type for representing a foreign key with a null value allowed.",
+        "eq": null,
+        "reference": "consumer_groups"
       }
     },
     {
       "config": {
-        "required": true,
         "fields": [
           {
             "rules": {
-              "type": "array",
               "default": [
 
               ],
+              "description": "Route by header rules.",
               "elements": {
                 "fields": [
                   {
                     "upstream_name": {
-                      "type": "string",
-                      "required": true
+                      "required": true,
+                      "type": "string"
                     }
                   },
                   {
                     "condition": {
+                      "values": {
+                        "type": "string"
+                      },
+                      "type": "map",
                       "len_min": 1,
                       "keys": {
                         "type": "string"
                       },
-                      "values": {
-                        "type": "string"
-                      },
-                      "required": true,
-                      "type": "map"
+                      "required": true
                     }
                   }
                 ],
                 "type": "record"
-              }
+              },
+              "type": "array"
             }
           }
         ],
+        "required": true,
         "type": "record"
       }
     }

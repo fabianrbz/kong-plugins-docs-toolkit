@@ -1,10 +1,33 @@
 {
+  "entity_checks": [
+    {
+      "only_one_of": [
+        "config.allow",
+        "config.deny"
+      ]
+    },
+    {
+      "at_least_one_of": [
+        "config.allow",
+        "config.deny"
+      ]
+    }
+  ],
   "fields": [
     {
       "consumer": {
+        "type": "foreign",
+        "description": "Custom type for representing a foreign key with a null value allowed.",
         "eq": null,
-        "reference": "consumers",
-        "type": "foreign"
+        "reference": "consumers"
+      }
+    },
+    {
+      "consumer_group": {
+        "type": "foreign",
+        "description": "Custom type for representing a foreign key with a null value allowed.",
+        "eq": null,
+        "reference": "consumer_groups"
       }
     },
     {
@@ -24,13 +47,13 @@
           ],
           "type": "string"
         },
-        "required": true,
-        "type": "set"
+        "type": "set",
+        "description": "A set of strings representing HTTP protocols.",
+        "required": true
       }
     },
     {
       "config": {
-        "required": true,
         "fields": [
           {
             "allow": {
@@ -51,11 +74,12 @@
           {
             "hide_groups_header": {
               "default": false,
-              "type": "boolean",
-              "required": true
+              "required": true,
+              "type": "boolean"
             }
           }
         ],
+        "required": true,
         "type": "record"
       }
     }

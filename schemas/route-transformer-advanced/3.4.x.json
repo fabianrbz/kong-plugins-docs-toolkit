@@ -1,4 +1,7 @@
 {
+  "entity_checks": [
+
+  ],
   "fields": [
     {
       "protocols": {
@@ -17,22 +20,21 @@
           ],
           "type": "string"
         },
-        "required": true,
-        "type": "set"
+        "type": "set",
+        "description": "A set of strings representing HTTP protocols.",
+        "required": true
+      }
+    },
+    {
+      "consumer_group": {
+        "type": "foreign",
+        "description": "Custom type for representing a foreign key with a null value allowed.",
+        "eq": null,
+        "reference": "consumer_groups"
       }
     },
     {
       "config": {
-        "required": true,
-        "entity_checks": [
-          {
-            "at_least_one_of": [
-              "path",
-              "port",
-              "host"
-            ]
-          }
-        ],
         "fields": [
           {
             "path": {
@@ -51,11 +53,21 @@
           },
           {
             "escape_path": {
-              "default": false,
-              "type": "boolean"
+              "type": "boolean",
+              "default": false
             }
           }
         ],
+        "entity_checks": [
+          {
+            "at_least_one_of": [
+              "path",
+              "port",
+              "host"
+            ]
+          }
+        ],
+        "required": true,
         "type": "record"
       }
     }

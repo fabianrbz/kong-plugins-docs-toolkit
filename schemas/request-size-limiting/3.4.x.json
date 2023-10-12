@@ -1,4 +1,7 @@
 {
+  "entity_checks": [
+
+  ],
   "fields": [
     {
       "protocols": {
@@ -17,40 +20,52 @@
           ],
           "type": "string"
         },
-        "required": true,
-        "type": "set"
+        "type": "set",
+        "description": "A set of strings representing HTTP protocols.",
+        "required": true
+      }
+    },
+    {
+      "consumer_group": {
+        "type": "foreign",
+        "description": "Custom type for representing a foreign key with a null value allowed.",
+        "eq": null,
+        "reference": "consumer_groups"
       }
     },
     {
       "config": {
-        "required": true,
         "fields": [
           {
             "allowed_payload_size": {
               "default": 128,
+              "description": "Allowed request payload size in megabytes. Default is `128` megabytes (128000000 bytes).",
               "type": "integer"
             }
           },
           {
             "size_unit": {
               "default": "megabytes",
+              "type": "string",
+              "description": "Size unit can be set either in `bytes`, `kilobytes`, or `megabytes` (default). This configuration is not available in versions prior to Kong Gateway 1.3 and Kong Gateway (OSS) 2.0.",
+              "required": true,
               "one_of": [
                 "megabytes",
                 "kilobytes",
                 "bytes"
-              ],
-              "required": true,
-              "type": "string"
+              ]
             }
           },
           {
             "require_content_length": {
               "default": false,
-              "type": "boolean",
-              "required": true
+              "description": "Set to `true` to ensure a valid `Content-Length` header exists before reading the request body.",
+              "required": true,
+              "type": "boolean"
             }
           }
         ],
+        "required": true,
         "type": "record"
       }
     }

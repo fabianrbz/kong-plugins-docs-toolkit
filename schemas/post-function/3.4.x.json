@@ -1,7 +1,24 @@
 {
+  "entity_checks": [
+    {
+      "at_least_one_of": [
+        "config.certificate",
+        "config.rewrite",
+        "config.access",
+        "config.header_filter",
+        "config.body_filter",
+        "config.log",
+        "config.ws_handshake",
+        "config.ws_upstream_frame",
+        "config.ws_client_frame",
+        "config.ws_close"
+      ]
+    }
+  ],
   "fields": [
     {
       "protocols": {
+        "required": false,
         "default": [
           "grpc",
           "grpcs",
@@ -10,7 +27,6 @@
           "ws",
           "wss"
         ],
-        "type": "set",
         "elements": {
           "one_of": [
             "grpc",
@@ -22,14 +38,23 @@
           ],
           "type": "string"
         },
-        "required": false
+        "type": "set"
       }
     },
     {
       "consumer": {
+        "type": "foreign",
+        "description": "Custom type for representing a foreign key with a null value allowed.",
         "eq": null,
-        "reference": "consumers",
-        "type": "foreign"
+        "reference": "consumers"
+      }
+    },
+    {
+      "consumer_group": {
+        "type": "foreign",
+        "description": "Custom type for representing a foreign key with a null value allowed.",
+        "eq": null,
+        "reference": "consumer_groups"
       }
     },
     {
@@ -41,6 +66,7 @@
           "https"
         ],
         "elements": {
+          "description": "A string representing a protocol, such as HTTP or HTTPS.",
           "one_of": [
             "grpc",
             "grpcs",
@@ -55,145 +81,146 @@
           ],
           "type": "string"
         },
-        "required": true,
-        "type": "set"
+        "type": "set",
+        "description": "A set of strings representing protocols.",
+        "required": true
       }
     },
     {
       "config": {
-        "required": true,
         "fields": [
           {
             "certificate": {
+              "required": true,
               "default": [
 
               ],
               "elements": {
-                "type": "string",
-                "required": false
+                "required": false,
+                "type": "string"
               },
-              "required": true,
               "type": "array"
             }
           },
           {
             "rewrite": {
+              "required": true,
               "default": [
 
               ],
               "elements": {
-                "type": "string",
-                "required": false
+                "required": false,
+                "type": "string"
               },
-              "required": true,
               "type": "array"
             }
           },
           {
             "access": {
+              "required": true,
               "default": [
 
               ],
               "elements": {
-                "type": "string",
-                "required": false
+                "required": false,
+                "type": "string"
               },
-              "required": true,
               "type": "array"
             }
           },
           {
             "header_filter": {
+              "required": true,
               "default": [
 
               ],
               "elements": {
-                "type": "string",
-                "required": false
+                "required": false,
+                "type": "string"
               },
-              "required": true,
               "type": "array"
             }
           },
           {
             "body_filter": {
+              "required": true,
               "default": [
 
               ],
               "elements": {
-                "type": "string",
-                "required": false
+                "required": false,
+                "type": "string"
               },
-              "required": true,
               "type": "array"
             }
           },
           {
             "log": {
+              "required": true,
               "default": [
 
               ],
               "elements": {
-                "type": "string",
-                "required": false
+                "required": false,
+                "type": "string"
               },
-              "required": true,
               "type": "array"
             }
           },
           {
             "ws_handshake": {
+              "required": true,
               "default": [
 
               ],
               "elements": {
-                "type": "string",
-                "required": false
+                "required": false,
+                "type": "string"
               },
-              "required": true,
               "type": "array"
             }
           },
           {
             "ws_client_frame": {
+              "required": true,
               "default": [
 
               ],
               "elements": {
-                "type": "string",
-                "required": false
+                "required": false,
+                "type": "string"
               },
-              "required": true,
               "type": "array"
             }
           },
           {
             "ws_upstream_frame": {
+              "required": true,
               "default": [
 
               ],
               "elements": {
-                "type": "string",
-                "required": false
+                "required": false,
+                "type": "string"
               },
-              "required": true,
               "type": "array"
             }
           },
           {
             "ws_close": {
+              "required": true,
               "default": [
 
               ],
               "elements": {
-                "type": "string",
-                "required": false
+                "required": false,
+                "type": "string"
               },
-              "required": true,
               "type": "array"
             }
           }
         ],
+        "required": true,
         "type": "record"
       }
     }

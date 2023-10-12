@@ -1,4 +1,7 @@
 {
+  "entity_checks": [
+
+  ],
   "fields": [
     {
       "protocols": {
@@ -17,39 +20,51 @@
           ],
           "type": "string"
         },
-        "required": true,
-        "type": "set"
+        "type": "set",
+        "description": "A set of strings representing HTTP protocols.",
+        "required": true
+      }
+    },
+    {
+      "consumer_group": {
+        "type": "foreign",
+        "description": "Custom type for representing a foreign key with a null value allowed.",
+        "eq": null,
+        "reference": "consumer_groups"
       }
     },
     {
       "config": {
-        "required": true,
         "fields": [
           {
             "header_name": {
-              "type": "string",
-              "default": "Kong-Request-ID"
+              "description": "The HTTP header name to use for the correlation ID.",
+              "default": "Kong-Request-ID",
+              "type": "string"
             }
           },
           {
             "generator": {
+              "description": "The generator to use for the correlation ID. Accepted values are `uuid`, `uuid#counter`, and `tracker`. See [Generators](#generators).",
               "default": "uuid#counter",
-              "type": "string",
               "one_of": [
                 "uuid",
                 "uuid#counter",
                 "tracker"
-              ]
+              ],
+              "type": "string"
             }
           },
           {
             "echo_downstream": {
-              "type": "boolean",
+              "description": "Whether to echo the header back to downstream (the client).",
+              "default": false,
               "required": true,
-              "default": false
+              "type": "boolean"
             }
           }
         ],
+        "required": true,
         "type": "record"
       }
     }

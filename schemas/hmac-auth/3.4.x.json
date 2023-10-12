@@ -1,14 +1,25 @@
 {
+  "entity_checks": [
+    {
+      "custom_entity_check": {
+        "field_sources": [
+          "config.algorithms"
+        ]
+      }
+    }
+  ],
   "fields": [
     {
       "consumer": {
+        "type": "foreign",
+        "description": "Custom type for representing a foreign key with a null value allowed.",
         "eq": null,
-        "reference": "consumers",
-        "type": "foreign"
+        "reference": "consumers"
       }
     },
     {
       "protocols": {
+        "required": true,
         "default": [
           "grpc",
           "grpcs",
@@ -28,54 +39,71 @@
           ],
           "type": "string"
         },
-        "required": true,
         "type": "set"
       }
     },
     {
+      "consumer_group": {
+        "type": "foreign",
+        "description": "Custom type for representing a foreign key with a null value allowed.",
+        "eq": null,
+        "reference": "consumer_groups"
+      }
+    },
+    {
       "config": {
-        "required": true,
         "fields": [
           {
             "hide_credentials": {
+              "default": false,
+              "description": "An optional boolean value telling the plugin to show or hide the credential from the upstream service.",
               "required": true,
-              "type": "boolean",
-              "default": false
+              "type": "boolean"
             }
           },
           {
             "clock_skew": {
-              "type": "number",
               "gt": 0,
-              "default": 300
+              "description": "Clock skew in seconds to prevent replay attacks.",
+              "default": 300,
+              "type": "number"
             }
           },
           {
             "anonymous": {
-              "type": "string"
+              "type": "string",
+              "description": "An optional string (Consumer UUID or username) value to use as an “anonymous” consumer if authentication fails."
             }
           },
           {
             "validate_request_body": {
+              "default": false,
+              "description": "A boolean value telling the plugin to enable body validation.",
               "required": true,
-              "type": "boolean",
-              "default": false
+              "type": "boolean"
             }
           },
           {
             "enforce_headers": {
-              "type": "array",
+              "default": [
+
+              ],
+              "description": "A list of headers that the client should at least use for HTTP signature creation.",
               "elements": {
                 "type": "string"
               },
-              "default": [
-
-              ]
+              "type": "array"
             }
           },
           {
             "algorithms": {
-              "type": "array",
+              "default": [
+                "hmac-sha1",
+                "hmac-sha256",
+                "hmac-sha384",
+                "hmac-sha512"
+              ],
+              "description": "A list of HMAC digest algorithms that the user wants to support. Allowed values are `hmac-sha1`, `hmac-sha256`, `hmac-sha384`, and `hmac-sha512`",
               "elements": {
                 "one_of": [
                   "hmac-sha1",
@@ -85,15 +113,11 @@
                 ],
                 "type": "string"
               },
-              "default": [
-                "hmac-sha1",
-                "hmac-sha256",
-                "hmac-sha384",
-                "hmac-sha512"
-              ]
+              "type": "array"
             }
           }
         ],
+        "required": true,
         "type": "record"
       }
     }

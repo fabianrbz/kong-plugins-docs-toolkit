@@ -1,4 +1,13 @@
 {
+  "entity_checks": [
+    {
+      "custom_entity_check": {
+        "field_sources": [
+          "config"
+        ]
+      }
+    }
+  ],
   "fields": [
     {
       "protocols": {
@@ -17,83 +26,69 @@
           ],
           "type": "string"
         },
-        "required": true,
-        "type": "set"
+        "type": "set",
+        "description": "A set of strings representing HTTP protocols.",
+        "required": true
+      }
+    },
+    {
+      "consumer_group": {
+        "type": "foreign",
+        "description": "Custom type for representing a foreign key with a null value allowed.",
+        "eq": null,
+        "reference": "consumer_groups"
       }
     },
     {
       "config": {
-        "required": true,
-        "entity_checks": [
-          {
-            "at_least_one_of": [
-              "body_schema",
-              "parameter_schema"
-            ]
-          }
-        ],
         "fields": [
           {
             "body_schema": {
+              "description": "The request body schema specification. One of `body_schema` or `parameter_schema` must be specified.",
               "required": false,
               "type": "string"
             }
           },
           {
             "allowed_content_types": {
-              "type": "set",
               "default": [
                 "application/json"
               ],
+              "description": "List of allowed content types. The value can be configured with the `charset` parameter. For example, `application/json; charset=UTF-8`.",
               "elements": {
-                "type": "string",
-                "required": true
-              }
+                "required": true,
+                "type": "string"
+              },
+              "type": "set"
             }
           },
           {
             "version": {
+              "default": "kong",
+              "type": "string",
+              "description": "Which validator to use. Supported values are `kong` (default) for using Kong's own schema validator, or `draft4` for using a JSON Schema Draft 4-compliant validator.",
               "one_of": [
                 "kong",
                 "draft4"
               ],
-              "default": "kong",
-              "type": "string",
               "required": true
             }
           },
           {
             "parameter_schema": {
-              "type": "array",
               "required": false,
+              "description": "Array of parameter validator specification. One of `body_schema` or `parameter_schema` must be specified.",
               "elements": {
-                "entity_checks": [
-                  {
-                    "mutually_required": [
-                      "style",
-                      "explode",
-                      "schema"
-                    ]
-                  },
-                  {
-                    "custom_entity_check": {
-                      "field_sources": [
-                        "style",
-                        "in"
-                      ]
-                    }
-                  }
-                ],
                 "fields": [
                   {
                     "in": {
                       "required": true,
-                      "type": "string",
                       "one_of": [
                         "query",
                         "header",
                         "path"
-                      ]
+                      ],
+                      "type": "string"
                     }
                   },
                   {
@@ -133,18 +128,46 @@
                     }
                   }
                 ],
+                "entity_checks": [
+                  {
+                    "mutually_required": [
+                      "style",
+                      "explode",
+                      "schema"
+                    ]
+                  },
+                  {
+                    "custom_entity_check": {
+                      "field_sources": [
+                        "style",
+                        "in"
+                      ]
+                    }
+                  }
+                ],
                 "type": "record"
-              }
+              },
+              "type": "array"
             }
           },
           {
             "verbose_response": {
-              "type": "boolean",
+              "description": "If enabled, the plugin returns more verbose and detailed validation errors.",
+              "default": false,
               "required": true,
-              "default": false
+              "type": "boolean"
             }
           }
         ],
+        "entity_checks": [
+          {
+            "at_least_one_of": [
+              "body_schema",
+              "parameter_schema"
+            ]
+          }
+        ],
+        "required": true,
         "type": "record"
       }
     }

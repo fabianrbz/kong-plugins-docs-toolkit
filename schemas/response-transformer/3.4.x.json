@@ -1,4 +1,7 @@
 {
+  "entity_checks": [
+
+  ],
   "fields": [
     {
       "protocols": {
@@ -17,52 +20,52 @@
           ],
           "type": "string"
         },
-        "required": true,
-        "type": "set"
+        "type": "set",
+        "description": "A set of strings representing HTTP protocols.",
+        "required": true
       }
     },
     {
       "config": {
-        "required": true,
         "fields": [
           {
             "remove": {
-              "required": true,
               "fields": [
                 {
                   "json": {
+                    "required": true,
                     "default": [
 
                     ],
                     "elements": {
                       "type": "string"
                     },
-                    "required": true,
                     "type": "array"
                   }
                 },
                 {
                   "headers": {
+                    "required": true,
                     "default": [
 
                     ],
                     "elements": {
                       "type": "string"
                     },
-                    "required": true,
                     "type": "array"
                   }
                 }
               ],
+              "required": true,
               "type": "record"
             }
           },
           {
             "rename": {
-              "required": true,
               "fields": [
                 {
                   "headers": {
+                    "required": true,
                     "default": [
 
                     ],
@@ -70,28 +73,27 @@
                       "match": "^[^:]+:.*$",
                       "type": "string"
                     },
-                    "required": true,
                     "type": "array"
                   }
                 }
               ],
+              "required": true,
               "type": "record"
             }
           },
           {
             "replace": {
-              "required": true,
               "fields": [
                 {
                   "json": {
+                    "required": true,
                     "default": [
 
                     ],
                     "elements": {
-                      "match": "^[^:]+:.*$",
-                      "type": "string"
+                      "type": "string",
+                      "match": "^[^:]+:.*$"
                     },
-                    "required": true,
                     "type": "array"
                   }
                 },
@@ -108,41 +110,42 @@
                       ],
                       "type": "string"
                     },
-                    "required": true,
-                    "type": "array"
+                    "type": "array",
+                    "description": "List of JSON type names. Specify the types of the JSON values returned when appending\nJSON properties. Each string element can be one of: boolean, number, or string.",
+                    "required": true
                   }
                 },
                 {
                   "headers": {
+                    "required": true,
                     "default": [
 
                     ],
                     "elements": {
-                      "match": "^[^:]+:.*$",
-                      "type": "string"
+                      "type": "string",
+                      "match": "^[^:]+:.*$"
                     },
-                    "required": true,
                     "type": "array"
                   }
                 }
               ],
+              "required": true,
               "type": "record"
             }
           },
           {
             "add": {
-              "required": true,
               "fields": [
                 {
                   "json": {
+                    "required": true,
                     "default": [
 
                     ],
                     "elements": {
-                      "match": "^[^:]+:.*$",
-                      "type": "string"
+                      "type": "string",
+                      "match": "^[^:]+:.*$"
                     },
-                    "required": true,
                     "type": "array"
                   }
                 },
@@ -159,41 +162,42 @@
                       ],
                       "type": "string"
                     },
-                    "required": true,
-                    "type": "array"
+                    "type": "array",
+                    "description": "List of JSON type names. Specify the types of the JSON values returned when appending\nJSON properties. Each string element can be one of: boolean, number, or string.",
+                    "required": true
                   }
                 },
                 {
                   "headers": {
+                    "required": true,
                     "default": [
 
                     ],
                     "elements": {
-                      "match": "^[^:]+:.*$",
-                      "type": "string"
+                      "type": "string",
+                      "match": "^[^:]+:.*$"
                     },
-                    "required": true,
                     "type": "array"
                   }
                 }
               ],
+              "required": true,
               "type": "record"
             }
           },
           {
             "append": {
-              "required": true,
               "fields": [
                 {
                   "json": {
+                    "required": true,
                     "default": [
 
                     ],
                     "elements": {
-                      "match": "^[^:]+:.*$",
-                      "type": "string"
+                      "type": "string",
+                      "match": "^[^:]+:.*$"
                     },
-                    "required": true,
                     "type": "array"
                   }
                 },
@@ -210,28 +214,31 @@
                       ],
                       "type": "string"
                     },
-                    "required": true,
-                    "type": "array"
+                    "type": "array",
+                    "description": "List of JSON type names. Specify the types of the JSON values returned when appending\nJSON properties. Each string element can be one of: boolean, number, or string.",
+                    "required": true
                   }
                 },
                 {
                   "headers": {
+                    "required": true,
                     "default": [
 
                     ],
                     "elements": {
-                      "match": "^[^:]+:.*$",
-                      "type": "string"
+                      "type": "string",
+                      "match": "^[^:]+:.*$"
                     },
-                    "required": true,
                     "type": "array"
                   }
                 }
               ],
+              "required": true,
               "type": "record"
             }
           }
         ],
+        "required": true,
         "type": "record"
       }
     }

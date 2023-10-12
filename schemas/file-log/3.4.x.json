@@ -1,4 +1,7 @@
 {
+  "entity_checks": [
+
+  ],
   "fields": [
     {
       "protocols": {
@@ -9,6 +12,7 @@
           "https"
         ],
         "elements": {
+          "description": "A string representing a protocol, such as HTTP or HTTPS.",
           "one_of": [
             "grpc",
             "grpcs",
@@ -23,43 +27,55 @@
           ],
           "type": "string"
         },
-        "required": true,
-        "type": "set"
+        "type": "set",
+        "description": "A set of strings representing protocols.",
+        "required": true
+      }
+    },
+    {
+      "consumer_group": {
+        "type": "foreign",
+        "description": "Custom type for representing a foreign key with a null value allowed.",
+        "eq": null,
+        "reference": "consumer_groups"
       }
     },
     {
       "config": {
-        "required": true,
         "fields": [
           {
             "path": {
-              "match": "^[^*&%%\\`]+$",
-              "required": true,
+              "type": "string",
               "err": "not a valid filename",
-              "type": "string"
+              "description": "The file path of the output log file. The plugin creates the log file if it doesn't exist yet.",
+              "required": true,
+              "match": "^[^*&%%\\`]+$"
             }
           },
           {
             "reopen": {
+              "description": "Determines whether the log file is closed and reopened on every request.",
               "default": false,
-              "type": "boolean",
-              "required": true
+              "required": true,
+              "type": "boolean"
             }
           },
           {
             "custom_fields_by_lua": {
-              "type": "map",
               "keys": {
                 "len_min": 1,
                 "type": "string"
               },
+              "description": "Lua code as a key-value map",
               "values": {
-                "type": "string",
-                "len_min": 1
-              }
+                "len_min": 1,
+                "type": "string"
+              },
+              "type": "map"
             }
           }
         ],
+        "required": true,
         "type": "record"
       }
     }

@@ -1,10 +1,14 @@
 {
+  "entity_checks": [
+
+  ],
   "fields": [
     {
       "consumer": {
+        "type": "foreign",
+        "description": "Custom type for representing a foreign key with a null value allowed.",
         "eq": null,
-        "reference": "consumers",
-        "type": "foreign"
+        "reference": "consumers"
       }
     },
     {
@@ -24,29 +28,39 @@
           ],
           "type": "string"
         },
-        "required": true,
-        "type": "set"
+        "type": "set",
+        "description": "A set of strings representing HTTP protocols.",
+        "required": true
+      }
+    },
+    {
+      "consumer_group": {
+        "type": "foreign",
+        "description": "Custom type for representing a foreign key with a null value allowed.",
+        "eq": null,
+        "reference": "consumer_groups"
       }
     },
     {
       "config": {
-        "required": true,
         "fields": [
           {
             "graphql_server_path": {
-              "match_none": [
-                {
-                  "err": "must not have empty segments",
-                  "pattern": "//"
-                }
-              ],
+              "default": "/graphql",
+              "type": "string",
+              "description": "A string representing a URL path, such as /path/to/resource. Must start with a forward slash (/) and must not contain empty segments (i.e., two consecutive forward slashes).",
               "starts_with": "/",
               "required": true,
-              "default": "/graphql",
-              "type": "string"
+              "match_none": [
+                {
+                  "pattern": "//",
+                  "err": "must not have empty segments"
+                }
+              ]
             }
           }
         ],
+        "required": true,
         "type": "record"
       }
     }

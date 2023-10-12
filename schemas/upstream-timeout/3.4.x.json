@@ -1,4 +1,7 @@
 {
+  "entity_checks": [
+
+  ],
   "fields": [
     {
       "protocols": {
@@ -17,13 +20,21 @@
           ],
           "type": "string"
         },
-        "required": true,
-        "type": "set"
+        "type": "set",
+        "description": "A set of strings representing HTTP protocols.",
+        "required": true
+      }
+    },
+    {
+      "consumer_group": {
+        "type": "foreign",
+        "description": "Custom type for representing a foreign key with a null value allowed.",
+        "eq": null,
+        "reference": "consumer_groups"
       }
     },
     {
       "config": {
-        "required": true,
         "fields": [
           {
             "read_timeout": {
@@ -31,6 +42,7 @@
                 0,
                 2147483646
               ],
+              "description": "An integer representing a timeout in milliseconds. Must be between 0 and 2^31-2.",
               "type": "integer"
             }
           },
@@ -40,6 +52,7 @@
                 0,
                 2147483646
               ],
+              "description": "An integer representing a timeout in milliseconds. Must be between 0 and 2^31-2.",
               "type": "integer"
             }
           },
@@ -49,10 +62,12 @@
                 0,
                 2147483646
               ],
+              "description": "An integer representing a timeout in milliseconds. Must be between 0 and 2^31-2.",
               "type": "integer"
             }
           }
         ],
+        "required": true,
         "type": "record"
       }
     }

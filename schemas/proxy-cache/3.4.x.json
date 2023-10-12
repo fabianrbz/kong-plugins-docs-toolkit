@@ -1,4 +1,13 @@
 {
+  "entity_checks": [
+    {
+      "custom_entity_check": {
+        "field_sources": [
+          "config"
+        ]
+      }
+    }
+  ],
   "fields": [
     {
       "protocols": {
@@ -9,6 +18,7 @@
           "https"
         ],
         "elements": {
+          "description": "A string representing a protocol, such as HTTP or HTTPS.",
           "one_of": [
             "grpc",
             "grpcs",
@@ -23,17 +33,24 @@
           ],
           "type": "string"
         },
-        "required": true,
-        "type": "set"
+        "type": "set",
+        "description": "A set of strings representing protocols.",
+        "required": true
+      }
+    },
+    {
+      "consumer_group": {
+        "type": "foreign",
+        "description": "Custom type for representing a foreign key with a null value allowed.",
+        "eq": null,
+        "reference": "consumer_groups"
       }
     },
     {
       "config": {
-        "required": true,
         "fields": [
           {
             "response_code": {
-              "len_min": 1,
               "default": [
                 200,
                 301,
@@ -46,8 +63,10 @@
                 ],
                 "type": "integer"
               },
-              "required": true,
-              "type": "array"
+              "type": "array",
+              "len_min": 1,
+              "description": "Upstream response status code considered cacheable.",
+              "required": true
             }
           },
           {
@@ -67,6 +86,7 @@
                 "type": "string"
               },
               "type": "array",
+              "description": "Downstream request methods considered cacheable.",
               "required": true
             }
           },
@@ -80,61 +100,68 @@
                 "type": "string"
               },
               "type": "array",
+              "description": "Upstream response content types considered cacheable. The plugin performs an **exact match** against each specified value.",
               "required": true
             }
           },
           {
             "cache_ttl": {
-              "default": 300,
               "gt": 0,
+              "description": "TTL, in seconds, of cache entities.",
+              "default": 300,
               "type": "integer"
             }
           },
           {
             "strategy": {
-              "type": "string",
               "required": true,
+              "description": "The backing data store in which to hold cache entities.",
               "one_of": [
                 "memory"
-              ]
+              ],
+              "type": "string"
             }
           },
           {
             "cache_control": {
-              "type": "boolean",
+              "default": false,
+              "description": "When enabled, respect the Cache-Control behaviors defined in RFC7234.",
               "required": true,
-              "default": false
+              "type": "boolean"
             }
           },
           {
             "ignore_uri_case": {
-              "type": "boolean",
+              "default": false,
               "required": false,
-              "default": false
+              "type": "boolean"
             }
           },
           {
             "storage_ttl": {
-              "type": "integer"
+              "type": "integer",
+              "description": "Number of seconds to keep resources in the storage backend. This value is independent of `cache_ttl` or resource TTLs defined by Cache-Control behaviors."
             }
           },
           {
             "memory": {
-              "required": true,
               "fields": [
                 {
                   "dictionary_name": {
+                    "default": "kong_db_cache",
+                    "description": "The name of the shared dictionary in which to hold cache entities when the memory strategy is selected. Note that this dictionary currently must be defined manually in the Kong Nginx template.",
                     "required": true,
-                    "type": "string",
-                    "default": "kong_db_cache"
+                    "type": "string"
                   }
                 }
               ],
+              "required": true,
               "type": "record"
             }
           },
           {
             "vary_query_params": {
+              "description": "Relevant query parameters considered for the cache key. If undefined, all params are taken into consideration.",
               "elements": {
                 "type": "string"
               },
@@ -143,6 +170,7 @@
           },
           {
             "vary_headers": {
+              "description": "Relevant headers considered for the cache key. If undefined, none of the headers are taken into consideration.",
               "elements": {
                 "type": "string"
               },
@@ -150,6 +178,7 @@
             }
           }
         ],
+        "required": true,
         "type": "record"
       }
     }

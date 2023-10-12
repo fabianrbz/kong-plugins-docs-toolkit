@@ -1,4 +1,7 @@
 {
+  "entity_checks": [
+
+  ],
   "fields": [
     {
       "protocols": {
@@ -9,6 +12,7 @@
           "https"
         ],
         "elements": {
+          "description": "A string representing a protocol, such as HTTP or HTTPS.",
           "one_of": [
             "grpc",
             "grpcs",
@@ -23,18 +27,27 @@
           ],
           "type": "string"
         },
-        "required": true,
-        "type": "set"
+        "type": "set",
+        "description": "A set of strings representing protocols.",
+        "required": true
+      }
+    },
+    {
+      "consumer_group": {
+        "type": "foreign",
+        "description": "Custom type for representing a foreign key with a null value allowed.",
+        "eq": null,
+        "reference": "consumer_groups"
       }
     },
     {
       "config": {
-        "required": true,
         "fields": [
           {
             "host": {
-              "type": "string",
-              "required": true
+              "description": "A string representing a host name, such as example.com.",
+              "required": true,
+              "type": "string"
             }
           },
           {
@@ -43,30 +56,34 @@
                 0,
                 65535
               ],
-              "type": "integer",
-              "required": true
+              "description": "An integer representing a port number between 0 and 65535, inclusive.",
+              "required": true,
+              "type": "integer"
             }
           },
           {
             "timeout": {
-              "type": "number",
-              "default": 10000
+              "description": "An optional timeout in milliseconds when sending data to the upstream server.",
+              "default": 10000,
+              "type": "number"
             }
           },
           {
             "custom_fields_by_lua": {
-              "type": "map",
               "keys": {
                 "len_min": 1,
                 "type": "string"
               },
+              "description": "Lua code as a key-value map",
               "values": {
-                "type": "string",
-                "len_min": 1
-              }
+                "len_min": 1,
+                "type": "string"
+              },
+              "type": "map"
             }
           }
         ],
+        "required": true,
         "type": "record"
       }
     }

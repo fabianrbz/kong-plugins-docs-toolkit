@@ -1,4 +1,7 @@
 {
+  "entity_checks": [
+
+  ],
   "fields": [
     {
       "protocols": {
@@ -17,13 +20,202 @@
           ],
           "type": "string"
         },
-        "required": true,
-        "type": "set"
+        "type": "set",
+        "description": "A set of strings representing HTTP protocols.",
+        "required": true
+      }
+    },
+    {
+      "consumer_group": {
+        "type": "foreign",
+        "description": "Custom type for representing a foreign key with a null value allowed.",
+        "eq": null,
+        "reference": "consumer_groups"
       }
     },
     {
       "config": {
-        "required": true,
+        "fields": [
+          {
+            "endpoint": {
+              "referenceable": true,
+              "description": "A string representing a URL, such as https://example.com/path/to/resource?q=search.",
+              "required": true,
+              "type": "string"
+            }
+          },
+          {
+            "headers": {
+              "keys": {
+                "type": "string",
+                "description": "A string representing an HTTP header name."
+              },
+              "description": "The custom headers to be added in the HTTP request sent to the OTLP server. This setting is useful for adding the authentication headers (token) for the APM backend.",
+              "values": {
+                "referenceable": true,
+                "type": "string"
+              },
+              "type": "map"
+            }
+          },
+          {
+            "resource_attributes": {
+              "keys": {
+                "required": true,
+                "type": "string"
+              },
+              "values": {
+                "required": true,
+                "type": "string"
+              },
+              "type": "map"
+            }
+          },
+          {
+            "queue": {
+              "fields": [
+                {
+                  "max_batch_size": {
+                    "between": [
+                      1,
+                      1000000
+                    ],
+                    "default": 1,
+                    "description": "Maximum number of entries that can be processed at a time.",
+                    "type": "integer"
+                  }
+                },
+                {
+                  "max_coalescing_delay": {
+                    "between": [
+                      0,
+                      3600
+                    ],
+                    "default": 1,
+                    "description": "Maximum number of (fractional) seconds to elapse after the first entry was queued before the queue starts calling the handler.",
+                    "type": "number"
+                  }
+                },
+                {
+                  "max_entries": {
+                    "between": [
+                      1,
+                      1000000
+                    ],
+                    "default": 10000,
+                    "description": "Maximum number of entries that can be waiting on the queue.",
+                    "type": "integer"
+                  }
+                },
+                {
+                  "max_bytes": {
+                    "type": "integer",
+                    "description": "Maximum number of bytes that can be waiting on a queue, requires string content."
+                  }
+                },
+                {
+                  "max_retry_time": {
+                    "description": "Time in seconds before the queue gives up calling a failed handler for a batch.",
+                    "default": 60,
+                    "type": "number"
+                  }
+                },
+                {
+                  "initial_retry_delay": {
+                    "between": [
+                      0.001,
+                      1000000
+                    ],
+                    "default": 0.01,
+                    "description": "Time in seconds before the initial retry is made for a failing batch.",
+                    "type": "number"
+                  }
+                },
+                {
+                  "max_retry_delay": {
+                    "between": [
+                      0.001,
+                      1000000
+                    ],
+                    "default": 60,
+                    "description": "Maximum time in seconds between retries, caps exponential backoff.",
+                    "type": "number"
+                  }
+                }
+              ],
+              "required": true,
+              "type": "record"
+            }
+          },
+          {
+            "batch_span_count": {
+              "description": "The number of spans to be sent in a single batch.",
+              "type": "integer"
+            }
+          },
+          {
+            "batch_flush_delay": {
+              "description": "The delay, in seconds, between two consecutive batches.",
+              "type": "integer"
+            }
+          },
+          {
+            "connect_timeout": {
+              "between": [
+                0,
+                2147483646
+              ],
+              "default": 1000,
+              "description": "An integer representing a timeout in milliseconds. Must be between 0 and 2^31-2.",
+              "type": "integer"
+            }
+          },
+          {
+            "send_timeout": {
+              "between": [
+                0,
+                2147483646
+              ],
+              "default": 5000,
+              "description": "An integer representing a timeout in milliseconds. Must be between 0 and 2^31-2.",
+              "type": "integer"
+            }
+          },
+          {
+            "read_timeout": {
+              "between": [
+                0,
+                2147483646
+              ],
+              "default": 5000,
+              "description": "An integer representing a timeout in milliseconds. Must be between 0 and 2^31-2.",
+              "type": "integer"
+            }
+          },
+          {
+            "http_response_header_for_traceid": {
+              "type": "string"
+            }
+          },
+          {
+            "header_type": {
+              "required": false,
+              "default": "preserve",
+              "one_of": [
+                "preserve",
+                "ignore",
+                "b3",
+                "b3-single",
+                "w3c",
+                "jaeger",
+                "ot",
+                "aws",
+                "datadog"
+              ],
+              "type": "string"
+            }
+          }
+        ],
         "entity_checks": [
           {
             "custom_entity_check": {
@@ -34,161 +226,7 @@
             }
           }
         ],
-        "fields": [
-          {
-            "endpoint": {
-              "type": "string",
-              "required": true
-            }
-          },
-          {
-            "headers": {
-              "type": "map",
-              "keys": {
-                "type": "string"
-              },
-              "values": {
-                "type": "string",
-                "referenceable": true
-              }
-            }
-          },
-          {
-            "resource_attributes": {
-              "values": {
-                "type": "string",
-                "required": true
-              },
-              "keys": {
-                "type": "string",
-                "required": true
-              },
-              "type": "map"
-            }
-          },
-          {
-            "batch_span_count": {
-              "type": "integer"
-            }
-          },
-          {
-            "batch_flush_delay": {
-              "type": "integer"
-            }
-          },
-          {
-            "queue": {
-              "required": true,
-              "fields": [
-                {
-                  "max_batch_size": {
-                    "between": [
-                      1,
-                      1000000
-                    ],
-                    "type": "number",
-                    "default": 1
-                  }
-                },
-                {
-                  "max_coalescing_delay": {
-                    "between": [
-                      0,
-                      3600
-                    ],
-                    "type": "number",
-                    "default": 1
-                  }
-                },
-                {
-                  "max_entries": {
-                    "between": [
-                      1,
-                      1000000
-                    ],
-                    "type": "number",
-                    "default": 10000
-                  }
-                },
-                {
-                  "max_bytes": {
-                    "type": "number"
-                  }
-                },
-                {
-                  "max_retry_time": {
-                    "default": 60,
-                    "type": "number"
-                  }
-                },
-                {
-                  "initial_retry_delay": {
-                    "default": 0.01,
-                    "type": "number"
-                  }
-                },
-                {
-                  "max_retry_delay": {
-                    "default": 60,
-                    "type": "number"
-                  }
-                }
-              ],
-              "type": "record"
-            }
-          },
-          {
-            "connect_timeout": {
-              "between": [
-                0,
-                2147483646
-              ],
-              "type": "integer",
-              "default": 1000
-            }
-          },
-          {
-            "send_timeout": {
-              "between": [
-                0,
-                2147483646
-              ],
-              "type": "integer",
-              "default": 5000
-            }
-          },
-          {
-            "read_timeout": {
-              "between": [
-                0,
-                2147483646
-              ],
-              "type": "integer",
-              "default": 5000
-            }
-          },
-          {
-            "http_response_header_for_traceid": {
-              "type": "string"
-            }
-          },
-          {
-            "header_type": {
-              "type": "string",
-              "one_of": [
-                "preserve",
-                "ignore",
-                "b3",
-                "b3-single",
-                "w3c",
-                "jaeger",
-                "ot"
-              ],
-              "required": false,
-              "default": "preserve"
-            }
-          }
-        ],
+        "required": true,
         "type": "record"
       }
     }

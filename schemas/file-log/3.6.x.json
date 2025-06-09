@@ -1,0 +1,83 @@
+{
+  "entity_checks": [
+
+  ],
+  "fields": [
+    {
+      "protocols": {
+        "elements": {
+          "one_of": [
+            "grpc",
+            "grpcs",
+            "http",
+            "https",
+            "tcp",
+            "tls",
+            "tls_passthrough",
+            "udp",
+            "ws",
+            "wss"
+          ],
+          "type": "string",
+          "description": "A string representing a protocol, such as HTTP or HTTPS."
+        },
+        "type": "set",
+        "default": [
+          "grpc",
+          "grpcs",
+          "http",
+          "https"
+        ],
+        "required": true,
+        "description": "A set of strings representing protocols."
+      }
+    },
+    {
+      "consumer_group": {
+        "reference": "consumer_groups",
+        "type": "foreign",
+        "eq": null,
+        "description": "Custom type for representing a foreign key with a null value allowed."
+      }
+    },
+    {
+      "config": {
+        "required": true,
+        "type": "record",
+        "fields": [
+          {
+            "path": {
+              "type": "string",
+              "required": true,
+              "match": "^[^*&%%\\`]+$",
+              "description": "The file path of the output log file. The plugin creates the log file if it doesn't exist yet.",
+              "err": "not a valid filename"
+            }
+          },
+          {
+            "reopen": {
+              "required": true,
+              "type": "boolean",
+              "description": "Determines whether the log file is closed and reopened on every request.",
+              "default": false
+            }
+          },
+          {
+            "custom_fields_by_lua": {
+              "keys": {
+                "type": "string",
+                "len_min": 1
+              },
+              "type": "map",
+              "description": "Lua code as a key-value map",
+              "values": {
+                "len_min": 1,
+                "type": "string"
+              }
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

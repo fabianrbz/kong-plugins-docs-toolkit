@@ -1,0 +1,163 @@
+{
+  "entity_checks": [
+
+  ],
+  "fields": [
+    {
+      "protocols": {
+        "elements": {
+          "one_of": [
+            "grpc",
+            "grpcs",
+            "http",
+            "https"
+          ],
+          "type": "string"
+        },
+        "type": "set",
+        "default": [
+          "grpc",
+          "grpcs",
+          "http",
+          "https"
+        ],
+        "required": true,
+        "description": "A set of strings representing HTTP protocols."
+      }
+    },
+    {
+      "consumer_group": {
+        "reference": "consumer_groups",
+        "type": "foreign",
+        "eq": null,
+        "description": "Custom type for representing a foreign key with a null value allowed."
+      }
+    },
+    {
+      "config": {
+        "entity_checks": [
+          {
+            "at_least_one_of": [
+              "http_proxy_host",
+              "https_proxy_host"
+            ]
+          },
+          {
+            "at_least_one_of": [
+              "http_proxy_port",
+              "https_proxy_port"
+            ]
+          },
+          {
+            "mutually_required": [
+              "http_proxy_host",
+              "http_proxy_port"
+            ]
+          },
+          {
+            "mutually_required": [
+              "https_proxy_host",
+              "https_proxy_port"
+            ]
+          }
+        ],
+        "type": "record",
+        "required": true,
+        "fields": [
+          {
+            "x_headers": {
+              "type": "string",
+              "default": "append",
+              "required": true,
+              "description": "Determines how to handle headers when forwarding the request.",
+              "one_of": [
+                "append",
+                "transparent",
+                "delete"
+              ]
+            }
+          },
+          {
+            "http_proxy_host": {
+              "description": "A string representing a host name, such as example.com.",
+              "type": "string"
+            }
+          },
+          {
+            "http_proxy_port": {
+              "type": "integer",
+              "description": "An integer representing a port number between 0 and 65535, inclusive.",
+              "between": [
+                0,
+                65535
+              ]
+            }
+          },
+          {
+            "https_proxy_host": {
+              "description": "A string representing a host name, such as example.com.",
+              "type": "string"
+            }
+          },
+          {
+            "https_proxy_port": {
+              "type": "integer",
+              "description": "An integer representing a port number between 0 and 65535, inclusive.",
+              "between": [
+                0,
+                65535
+              ]
+            }
+          },
+          {
+            "proxy_scheme": {
+              "type": "string",
+              "default": "http",
+              "required": true,
+              "description": "The proxy scheme to use when connecting. Only `http` is supported.",
+              "one_of": [
+                "http"
+              ]
+            }
+          },
+          {
+            "auth_username": {
+              "referenceable": true,
+              "type": "string",
+              "description": "The username to authenticate with, if the forward proxy is protected\nby basic authentication.",
+              "required": false
+            }
+          },
+          {
+            "auth_password": {
+              "referenceable": true,
+              "type": "string",
+              "description": "The password to authenticate with, if the forward proxy is protected\nby basic authentication.",
+              "required": false
+            }
+          },
+          {
+            "https_verify": {
+              "required": true,
+              "type": "boolean",
+              "default": false,
+              "description": "Whether the server certificate will be verified according to the CA certificates specified in lua_ssl_trusted_certificate."
+            }
+          }
+        ],
+        "shorthand_fields": [
+          {
+            "proxy_host": {
+              "type": "string"
+            }
+          },
+          {
+            "proxy_port": {
+              "type": "integer"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

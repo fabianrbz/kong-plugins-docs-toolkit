@@ -6,6 +6,7 @@
           "ws",
           "wss"
         ],
+        "type": "set",
         "elements": {
           "one_of": [
             "ws",
@@ -13,12 +14,194 @@
           ],
           "type": "string"
         },
-        "required": true,
-        "type": "set"
+        "required": true
+      }
+    },
+    {
+      "consumer_group": {
+        "type": "foreign",
+        "reference": "consumer_groups",
+        "eq": null,
+        "description": "Custom type for representing a foreign key with a null value allowed."
       }
     },
     {
       "config": {
+        "fields": [
+          {
+            "client": {
+              "required": false,
+              "type": "record",
+              "fields": [
+                {
+                  "text": {
+                    "required": false,
+                    "type": "record",
+                    "fields": [
+                      {
+                        "type": {
+                          "one_of": [
+                            "draft4"
+                          ],
+                          "type": "string",
+                          "required": true,
+                          "description": "The corresponding validation library for `config.upstream.binary.schema`. Currently, only `draft4` is supported."
+                        }
+                      },
+                      {
+                        "schema": {
+                          "type": "string",
+                          "required": true,
+                          "description": "Schema used to validate upstream-originated binary frames. The semantics of this field depend on the validation type set by `config.upstream.binary.type`."
+                        }
+                      }
+                    ],
+                    "entity_checks": [
+                      {
+                        "custom_entity_check": {
+                          "field_sources": [
+                            "type",
+                            "schema"
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "binary": {
+                    "required": false,
+                    "type": "record",
+                    "fields": [
+                      {
+                        "type": {
+                          "one_of": [
+                            "draft4"
+                          ],
+                          "type": "string",
+                          "required": true,
+                          "description": "The corresponding validation library for `config.upstream.binary.schema`. Currently, only `draft4` is supported."
+                        }
+                      },
+                      {
+                        "schema": {
+                          "type": "string",
+                          "required": true,
+                          "description": "Schema used to validate upstream-originated binary frames. The semantics of this field depend on the validation type set by `config.upstream.binary.type`."
+                        }
+                      }
+                    ],
+                    "entity_checks": [
+                      {
+                        "custom_entity_check": {
+                          "field_sources": [
+                            "type",
+                            "schema"
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                }
+              ],
+              "entity_checks": [
+                {
+                  "at_least_one_of": [
+                    "text",
+                    "binary"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "upstream": {
+              "required": false,
+              "type": "record",
+              "fields": [
+                {
+                  "text": {
+                    "required": false,
+                    "type": "record",
+                    "fields": [
+                      {
+                        "type": {
+                          "one_of": [
+                            "draft4"
+                          ],
+                          "type": "string",
+                          "required": true,
+                          "description": "The corresponding validation library for `config.upstream.binary.schema`. Currently, only `draft4` is supported."
+                        }
+                      },
+                      {
+                        "schema": {
+                          "type": "string",
+                          "required": true,
+                          "description": "Schema used to validate upstream-originated binary frames. The semantics of this field depend on the validation type set by `config.upstream.binary.type`."
+                        }
+                      }
+                    ],
+                    "entity_checks": [
+                      {
+                        "custom_entity_check": {
+                          "field_sources": [
+                            "type",
+                            "schema"
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "binary": {
+                    "required": false,
+                    "type": "record",
+                    "fields": [
+                      {
+                        "type": {
+                          "one_of": [
+                            "draft4"
+                          ],
+                          "type": "string",
+                          "required": true,
+                          "description": "The corresponding validation library for `config.upstream.binary.schema`. Currently, only `draft4` is supported."
+                        }
+                      },
+                      {
+                        "schema": {
+                          "type": "string",
+                          "required": true,
+                          "description": "Schema used to validate upstream-originated binary frames. The semantics of this field depend on the validation type set by `config.upstream.binary.type`."
+                        }
+                      }
+                    ],
+                    "entity_checks": [
+                      {
+                        "custom_entity_check": {
+                          "field_sources": [
+                            "type",
+                            "schema"
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                }
+              ],
+              "entity_checks": [
+                {
+                  "at_least_one_of": [
+                    "text",
+                    "binary"
+                  ]
+                }
+              ]
+            }
+          }
+        ],
+        "type": "record",
         "required": true,
         "entity_checks": [
           {
@@ -27,175 +210,11 @@
               "upstream"
             ]
           }
-        ],
-        "fields": [
-          {
-            "client": {
-              "type": "record",
-              "entity_checks": [
-                {
-                  "at_least_one_of": [
-                    "text",
-                    "binary"
-                  ]
-                }
-              ],
-              "fields": [
-                {
-                  "text": {
-                    "type": "record",
-                    "entity_checks": [
-                      {
-                        "custom_entity_check": {
-                          "field_sources": [
-                            "type",
-                            "schema"
-                          ]
-                        }
-                      }
-                    ],
-                    "fields": [
-                      {
-                        "type": {
-                          "type": "string",
-                          "required": true,
-                          "one_of": [
-                            "draft4"
-                          ]
-                        }
-                      },
-                      {
-                        "schema": {
-                          "required": true,
-                          "type": "string"
-                        }
-                      }
-                    ],
-                    "required": false
-                  }
-                },
-                {
-                  "binary": {
-                    "type": "record",
-                    "entity_checks": [
-                      {
-                        "custom_entity_check": {
-                          "field_sources": [
-                            "type",
-                            "schema"
-                          ]
-                        }
-                      }
-                    ],
-                    "fields": [
-                      {
-                        "type": {
-                          "type": "string",
-                          "required": true,
-                          "one_of": [
-                            "draft4"
-                          ]
-                        }
-                      },
-                      {
-                        "schema": {
-                          "required": true,
-                          "type": "string"
-                        }
-                      }
-                    ],
-                    "required": false
-                  }
-                }
-              ],
-              "required": false
-            }
-          },
-          {
-            "upstream": {
-              "type": "record",
-              "entity_checks": [
-                {
-                  "at_least_one_of": [
-                    "text",
-                    "binary"
-                  ]
-                }
-              ],
-              "fields": [
-                {
-                  "text": {
-                    "type": "record",
-                    "entity_checks": [
-                      {
-                        "custom_entity_check": {
-                          "field_sources": [
-                            "type",
-                            "schema"
-                          ]
-                        }
-                      }
-                    ],
-                    "fields": [
-                      {
-                        "type": {
-                          "type": "string",
-                          "required": true,
-                          "one_of": [
-                            "draft4"
-                          ]
-                        }
-                      },
-                      {
-                        "schema": {
-                          "required": true,
-                          "type": "string"
-                        }
-                      }
-                    ],
-                    "required": false
-                  }
-                },
-                {
-                  "binary": {
-                    "type": "record",
-                    "entity_checks": [
-                      {
-                        "custom_entity_check": {
-                          "field_sources": [
-                            "type",
-                            "schema"
-                          ]
-                        }
-                      }
-                    ],
-                    "fields": [
-                      {
-                        "type": {
-                          "type": "string",
-                          "required": true,
-                          "one_of": [
-                            "draft4"
-                          ]
-                        }
-                      },
-                      {
-                        "schema": {
-                          "required": true,
-                          "type": "string"
-                        }
-                      }
-                    ],
-                    "required": false
-                  }
-                }
-              ],
-              "required": false
-            }
-          }
-        ],
-        "type": "record"
+        ]
       }
     }
+  ],
+  "entity_checks": [
+
   ]
 }

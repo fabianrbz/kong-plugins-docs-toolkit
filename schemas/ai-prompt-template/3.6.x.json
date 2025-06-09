@@ -1,0 +1,88 @@
+{
+  "entity_checks": [
+
+  ],
+  "fields": [
+    {
+      "protocols": {
+        "elements": {
+          "one_of": [
+            "grpc",
+            "grpcs",
+            "http",
+            "https"
+          ],
+          "type": "string"
+        },
+        "type": "set",
+        "default": [
+          "grpc",
+          "grpcs",
+          "http",
+          "https"
+        ],
+        "required": true,
+        "description": "A set of strings representing HTTP protocols."
+      }
+    },
+    {
+      "consumer": {
+        "reference": "consumers",
+        "type": "foreign",
+        "eq": null,
+        "description": "Custom type for representing a foreign key with a null value allowed."
+      }
+    },
+    {
+      "config": {
+        "required": true,
+        "type": "record",
+        "fields": [
+          {
+            "templates": {
+              "required": true,
+              "type": "array",
+              "description": "Array of templates available to the request context.",
+              "elements": {
+                "required": true,
+                "type": "record",
+                "fields": [
+                  {
+                    "name": {
+                      "required": true,
+                      "type": "string",
+                      "description": "Unique name for the template, can be called with `{template://NAME}`"
+                    }
+                  },
+                  {
+                    "template": {
+                      "required": true,
+                      "type": "string",
+                      "description": "Template string for this request, supports mustache-style `{{placeholders}}`"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "allow_untemplated_requests": {
+              "required": true,
+              "type": "boolean",
+              "default": true,
+              "description": "Set true to allow requests that don't call or match any template."
+            }
+          },
+          {
+            "log_original_request": {
+              "required": true,
+              "type": "boolean",
+              "default": false,
+              "description": "Set true to add the original request to the Kong log plugin(s) output."
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

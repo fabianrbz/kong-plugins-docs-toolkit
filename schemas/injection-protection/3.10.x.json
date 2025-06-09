@@ -1,0 +1,159 @@
+{
+  "entity_checks": [
+
+  ],
+  "fields": [
+    {
+      "consumer": {
+        "reference": "consumers",
+        "description": "Custom type for representing a foreign key with a null value allowed.",
+        "type": "foreign",
+        "eq": null
+      }
+    },
+    {
+      "protocols": {
+        "elements": {
+          "type": "string",
+          "one_of": [
+            "grpc",
+            "grpcs",
+            "http",
+            "https"
+          ]
+        },
+        "description": "A set of strings representing HTTP protocols.",
+        "default": [
+          "grpc",
+          "grpcs",
+          "http",
+          "https"
+        ],
+        "type": "set",
+        "required": true
+      }
+    },
+    {
+      "consumer_group": {
+        "reference": "consumer_groups",
+        "description": "Custom type for representing a foreign key with a null value allowed.",
+        "type": "foreign",
+        "eq": null
+      }
+    },
+    {
+      "config": {
+        "entity_checks": [
+          {
+            "at_least_one_of": [
+              "injection_types",
+              "custom_injections"
+            ]
+          }
+        ],
+        "type": "record",
+        "fields": [
+          {
+            "injection_types": {
+              "type": "set",
+              "description": "The type of injections to check for.",
+              "default": [
+                "sql"
+              ],
+              "elements": {
+                "type": "string",
+                "one_of": [
+                  "sql",
+                  "js",
+                  "ssi",
+                  "xpath_abbreviated",
+                  "xpath_extended",
+                  "java_exception"
+                ]
+              },
+              "required": true
+            }
+          },
+          {
+            "locations": {
+              "type": "set",
+              "description": "The locations to check for injection.",
+              "default": [
+                "path_and_query"
+              ],
+              "elements": {
+                "type": "string",
+                "one_of": [
+                  "headers",
+                  "path_and_query",
+                  "body"
+                ]
+              },
+              "required": true
+            }
+          },
+          {
+            "custom_injections": {
+              "description": "Custom regexes to check for.",
+              "type": "array",
+              "elements": {
+                "type": "record",
+                "fields": [
+                  {
+                    "name": {
+                      "description": "A unique name for this injection.",
+                      "type": "string",
+                      "required": true
+                    }
+                  },
+                  {
+                    "regex": {
+                      "description": "The regex to match against.",
+                      "is_regex": true,
+                      "type": "string",
+                      "required": true
+                    }
+                  }
+                ]
+              },
+              "default": null
+            }
+          },
+          {
+            "enforcement_mode": {
+              "type": "string",
+              "description": "Enforcement mode of the security policy.",
+              "one_of": [
+                "block",
+                "log_only"
+              ],
+              "default": "block",
+              "required": true
+            }
+          },
+          {
+            "error_status_code": {
+              "type": "integer",
+              "description": "The response status code when validation fails.",
+              "default": 400,
+              "between": [
+                400,
+                499
+              ],
+              "required": true
+            }
+          },
+          {
+            "error_message": {
+              "description": "The response message when validation fails",
+              "default": "Bad Request",
+              "type": "string",
+              "required": true
+            }
+          }
+        ],
+        "required": true
+      }
+    }
+  ]
+}

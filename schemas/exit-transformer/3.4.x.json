@@ -8,47 +8,61 @@
           "http",
           "https"
         ],
+        "required": true,
+        "description": "A set of strings representing HTTP protocols.",
+        "type": "set",
         "elements": {
+          "type": "string",
           "one_of": [
             "grpc",
             "grpcs",
             "http",
             "https"
-          ],
-          "type": "string"
-        },
-        "required": true,
-        "type": "set"
+          ]
+        }
+      }
+    },
+    {
+      "consumer_group": {
+        "reference": "consumer_groups",
+        "description": "Custom type for representing a foreign key with a null value allowed.",
+        "eq": null,
+        "type": "foreign"
       }
     },
     {
       "config": {
-        "required": true,
         "fields": [
           {
             "functions": {
-              "required": true,
               "type": "array",
               "elements": {
                 "type": "string"
-              }
+              },
+              "required": true
             }
           },
           {
             "handle_unknown": {
               "default": false,
+              "description": "Determines whether to handle unknown status codes by transforming their responses.",
               "type": "boolean"
             }
           },
           {
             "handle_unexpected": {
               "default": false,
+              "description": "Determines whether to handle unexpected errors by transforming their responses.",
               "type": "boolean"
             }
           }
         ],
-        "type": "record"
+        "type": "record",
+        "required": true
       }
     }
+  ],
+  "entity_checks": [
+
   ]
 }

@@ -1,0 +1,75 @@
+{
+  "entity_checks": [
+
+  ],
+  "fields": [
+    {
+      "protocols": {
+        "elements": {
+          "one_of": [
+            "grpc",
+            "grpcs",
+            "http",
+            "https"
+          ],
+          "type": "string"
+        },
+        "type": "set",
+        "default": [
+          "grpc",
+          "grpcs",
+          "http",
+          "https"
+        ],
+        "required": true,
+        "description": "A set of strings representing HTTP protocols."
+      }
+    },
+    {
+      "consumer_group": {
+        "reference": "consumer_groups",
+        "type": "foreign",
+        "eq": null,
+        "description": "Custom type for representing a foreign key with a null value allowed."
+      }
+    },
+    {
+      "config": {
+        "required": true,
+        "type": "record",
+        "fields": [
+          {
+            "read_timeout": {
+              "type": "integer",
+              "description": "An integer representing a timeout in milliseconds. Must be between 0 and 2^31-2.",
+              "between": [
+                0,
+                2147483646
+              ]
+            }
+          },
+          {
+            "send_timeout": {
+              "type": "integer",
+              "description": "An integer representing a timeout in milliseconds. Must be between 0 and 2^31-2.",
+              "between": [
+                0,
+                2147483646
+              ]
+            }
+          },
+          {
+            "connect_timeout": {
+              "type": "integer",
+              "description": "An integer representing a timeout in milliseconds. Must be between 0 and 2^31-2.",
+              "between": [
+                0,
+                2147483646
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

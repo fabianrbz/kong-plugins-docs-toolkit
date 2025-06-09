@@ -1,0 +1,173 @@
+{
+  "entity_checks": [
+
+  ],
+  "fields": [
+    {
+      "protocols": {
+        "elements": {
+          "one_of": [
+            "grpc",
+            "grpcs",
+            "http",
+            "https",
+            "tcp",
+            "tls",
+            "tls_passthrough",
+            "udp",
+            "ws",
+            "wss"
+          ],
+          "type": "string",
+          "description": "A string representing a protocol, such as HTTP or HTTPS."
+        },
+        "type": "set",
+        "default": [
+          "grpc",
+          "grpcs",
+          "http",
+          "https"
+        ],
+        "required": true,
+        "description": "A set of strings representing protocols."
+      }
+    },
+    {
+      "consumer_group": {
+        "reference": "consumer_groups",
+        "type": "foreign",
+        "eq": null,
+        "description": "Custom type for representing a foreign key with a null value allowed."
+      }
+    },
+    {
+      "config": {
+        "required": true,
+        "type": "record",
+        "fields": [
+          {
+            "host": {
+              "type": "string",
+              "default": "logs-01.loggly.com",
+              "description": "A string representing a host name, such as example.com."
+            }
+          },
+          {
+            "port": {
+              "default": 514,
+              "type": "integer",
+              "description": "An integer representing a port number between 0 and 65535, inclusive.",
+              "between": [
+                0,
+                65535
+              ]
+            }
+          },
+          {
+            "key": {
+              "required": true,
+              "type": "string",
+              "encrypted": true,
+              "referenceable": true
+            }
+          },
+          {
+            "tags": {
+              "elements": {
+                "type": "string"
+              },
+              "type": "set",
+              "default": [
+                "kong"
+              ]
+            }
+          },
+          {
+            "log_level": {
+              "one_of": [
+                "debug",
+                "info",
+                "notice",
+                "warning",
+                "err",
+                "crit",
+                "alert",
+                "emerg"
+              ],
+              "type": "string",
+              "default": "info"
+            }
+          },
+          {
+            "successful_severity": {
+              "one_of": [
+                "debug",
+                "info",
+                "notice",
+                "warning",
+                "err",
+                "crit",
+                "alert",
+                "emerg"
+              ],
+              "type": "string",
+              "default": "info"
+            }
+          },
+          {
+            "client_errors_severity": {
+              "one_of": [
+                "debug",
+                "info",
+                "notice",
+                "warning",
+                "err",
+                "crit",
+                "alert",
+                "emerg"
+              ],
+              "type": "string",
+              "default": "info"
+            }
+          },
+          {
+            "server_errors_severity": {
+              "one_of": [
+                "debug",
+                "info",
+                "notice",
+                "warning",
+                "err",
+                "crit",
+                "alert",
+                "emerg"
+              ],
+              "type": "string",
+              "default": "info"
+            }
+          },
+          {
+            "timeout": {
+              "default": 10000,
+              "type": "number"
+            }
+          },
+          {
+            "custom_fields_by_lua": {
+              "keys": {
+                "type": "string",
+                "len_min": 1
+              },
+              "type": "map",
+              "description": "Lua code as a key-value map",
+              "values": {
+                "len_min": 1,
+                "type": "string"
+              }
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -2,23 +2,32 @@
   "fields": [
     {
       "protocols": {
+        "description": "A set of strings representing HTTP protocols.",
+        "elements": {
+          "type": "string",
+          "one_of": [
+            "grpc",
+            "grpcs",
+            "http",
+            "https"
+          ]
+        },
         "default": [
           "grpc",
           "grpcs",
           "http",
           "https"
         ],
-        "elements": {
-          "one_of": [
-            "grpc",
-            "grpcs",
-            "http",
-            "https"
-          ],
-          "type": "string"
-        },
         "required": true,
         "type": "set"
+      }
+    },
+    {
+      "consumer_group": {
+        "description": "Custom type for representing a foreign key with a null value allowed.",
+        "eq": null,
+        "reference": "consumer_groups",
+        "type": "foreign"
       }
     },
     {
@@ -35,6 +44,90 @@
             }
           }
         ],
+        "fields": [
+          {
+            "x_headers": {
+              "description": "Determines how to handle headers when forwarding the request.",
+              "one_of": [
+                "append",
+                "transparent",
+                "delete"
+              ],
+              "default": "append",
+              "required": true,
+              "type": "string"
+            }
+          },
+          {
+            "http_proxy_host": {
+              "description": "A string representing a host name, such as example.com.",
+              "type": "string"
+            }
+          },
+          {
+            "http_proxy_port": {
+              "between": [
+                0,
+                65535
+              ],
+              "type": "integer",
+              "description": "An integer representing a port number between 0 and 65535, inclusive."
+            }
+          },
+          {
+            "https_proxy_host": {
+              "description": "A string representing a host name, such as example.com.",
+              "type": "string"
+            }
+          },
+          {
+            "https_proxy_port": {
+              "between": [
+                0,
+                65535
+              ],
+              "type": "integer",
+              "description": "An integer representing a port number between 0 and 65535, inclusive."
+            }
+          },
+          {
+            "proxy_scheme": {
+              "description": "The proxy scheme to use when connecting. Only `http` is supported.",
+              "one_of": [
+                "http"
+              ],
+              "default": "http",
+              "required": true,
+              "type": "string"
+            }
+          },
+          {
+            "auth_username": {
+              "description": "The username to authenticate with, if the forward proxy is protected\nby basic authentication.",
+              "required": false,
+              "type": "string",
+              "referenceable": true
+            }
+          },
+          {
+            "auth_password": {
+              "description": "The password to authenticate with, if the forward proxy is protected\nby basic authentication.",
+              "required": false,
+              "type": "string",
+              "referenceable": true
+            }
+          },
+          {
+            "https_verify": {
+              "description": "Whether the server certificate will be verified according to the CA certificates specified in lua_ssl_trusted_certificate.",
+              "required": true,
+              "type": "boolean",
+              "default": false
+            }
+          }
+        ],
+        "required": true,
+        "type": "record",
         "entity_checks": [
           {
             "at_least_one_of": [
@@ -60,83 +153,11 @@
               "https_proxy_port"
             ]
           }
-        ],
-        "fields": [
-          {
-            "x_headers": {
-              "type": "string",
-              "one_of": [
-                "append",
-                "transparent",
-                "delete"
-              ],
-              "required": true,
-              "default": "append"
-            }
-          },
-          {
-            "http_proxy_host": {
-              "type": "string"
-            }
-          },
-          {
-            "http_proxy_port": {
-              "between": [
-                0,
-                65535
-              ],
-              "type": "integer"
-            }
-          },
-          {
-            "https_proxy_host": {
-              "type": "string"
-            }
-          },
-          {
-            "https_proxy_port": {
-              "between": [
-                0,
-                65535
-              ],
-              "type": "integer"
-            }
-          },
-          {
-            "proxy_scheme": {
-              "type": "string",
-              "one_of": [
-                "http"
-              ],
-              "required": true,
-              "default": "http"
-            }
-          },
-          {
-            "auth_username": {
-              "type": "string",
-              "referenceable": true,
-              "required": false
-            }
-          },
-          {
-            "auth_password": {
-              "type": "string",
-              "referenceable": true,
-              "required": false
-            }
-          },
-          {
-            "https_verify": {
-              "type": "boolean",
-              "default": false,
-              "required": true
-            }
-          }
-        ],
-        "required": true,
-        "type": "record"
+        ]
       }
     }
+  ],
+  "entity_checks": [
+
   ]
 }

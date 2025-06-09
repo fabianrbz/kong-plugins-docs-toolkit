@@ -8,50 +8,65 @@
           "http",
           "https"
         ],
+        "required": true,
+        "description": "A set of strings representing HTTP protocols.",
+        "type": "set",
         "elements": {
+          "type": "string",
           "one_of": [
             "grpc",
             "grpcs",
             "http",
             "https"
-          ],
-          "type": "string"
-        },
-        "required": true,
-        "type": "set"
+          ]
+        }
+      }
+    },
+    {
+      "consumer_group": {
+        "reference": "consumer_groups",
+        "description": "Custom type for representing a foreign key with a null value allowed.",
+        "eq": null,
+        "type": "foreign"
       }
     },
     {
       "config": {
-        "required": true,
         "fields": [
           {
             "header_name": {
+              "default": "Kong-Request-ID",
               "type": "string",
-              "default": "Kong-Request-ID"
+              "description": "The HTTP header name to use for the correlation ID."
             }
           },
           {
             "generator": {
               "default": "uuid#counter",
-              "type": "string",
               "one_of": [
                 "uuid",
                 "uuid#counter",
                 "tracker"
-              ]
+              ],
+              "type": "string",
+              "description": "The generator to use for the correlation ID. Accepted values are `uuid`, `uuid#counter`, and `tracker`. See [Generators](#generators)."
             }
           },
           {
             "echo_downstream": {
+              "default": false,
               "type": "boolean",
-              "required": true,
-              "default": false
+              "description": "Whether to echo the header back to downstream (the client).",
+              "required": true
             }
           }
         ],
-        "type": "record"
+        "type": "record",
+        "required": true
       }
     }
+  ],
+  "entity_checks": [
+
   ]
 }

@@ -1,0 +1,9 @@
+name: ai-rate-limiting-advanced
+config:
+  llm_providers:
+    - name: openai
+      limit: [100, 1000]
+      window_size: [60, 3600]
+    - name: mistral
+      limit: [1, 100]
+      window_size: [1, 60]

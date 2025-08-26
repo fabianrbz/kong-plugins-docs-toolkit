@@ -1,0 +1,91 @@
+{
+  "fields": [
+    {
+      "protocols": {
+        "required": true,
+        "description": "A set of strings representing protocols.",
+        "elements": {
+          "one_of": [
+            "grpc",
+            "grpcs",
+            "http",
+            "https",
+            "tcp",
+            "tls",
+            "tls_passthrough",
+            "udp",
+            "ws",
+            "wss"
+          ],
+          "description": "A string representing a protocol, such as HTTP or HTTPS.",
+          "type": "string"
+        },
+        "default": [
+          "grpc",
+          "grpcs",
+          "http",
+          "https"
+        ],
+        "type": "set"
+      }
+    },
+    {
+      "consumer_group": {
+        "description": "Custom type for representing a foreign key with a null value allowed.",
+        "eq": null,
+        "reference": "consumer_groups",
+        "type": "foreign"
+      }
+    },
+    {
+      "config": {
+        "required": true,
+        "fields": [
+          {
+            "host": {
+              "required": true,
+              "description": "A string representing a host name, such as example.com.",
+              "type": "string"
+            }
+          },
+          {
+            "port": {
+              "required": true,
+              "between": [
+                0,
+                65535
+              ],
+              "description": "An integer representing a port number between 0 and 65535, inclusive.",
+              "type": "integer"
+            }
+          },
+          {
+            "timeout": {
+              "default": 10000,
+              "description": "An optional timeout in milliseconds when sending data to the upstream server.",
+              "type": "number"
+            }
+          },
+          {
+            "custom_fields_by_lua": {
+              "values": {
+                "len_min": 1,
+                "type": "string"
+              },
+              "keys": {
+                "len_min": 1,
+                "type": "string"
+              },
+              "description": "Lua code as a key-value map",
+              "type": "map"
+            }
+          }
+        ],
+        "type": "record"
+      }
+    }
+  ],
+  "entity_checks": [
+
+  ]
+}

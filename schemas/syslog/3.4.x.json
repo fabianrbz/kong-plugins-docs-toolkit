@@ -8,6 +8,9 @@
           "http",
           "https"
         ],
+        "required": true,
+        "description": "A set of strings representing protocols.",
+        "type": "set",
         "elements": {
           "one_of": [
             "grpc",
@@ -21,15 +24,21 @@
             "ws",
             "wss"
           ],
-          "type": "string"
-        },
-        "required": true,
-        "type": "set"
+          "type": "string",
+          "description": "A string representing a protocol, such as HTTP or HTTPS."
+        }
+      }
+    },
+    {
+      "consumer_group": {
+        "reference": "consumer_groups",
+        "description": "Custom type for representing a foreign key with a null value allowed.",
+        "eq": null,
+        "type": "foreign"
       }
     },
     {
       "config": {
-        "required": true,
         "fields": [
           {
             "log_level": {
@@ -44,8 +53,8 @@
                 "alert",
                 "emerg"
               ],
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           {
@@ -61,8 +70,8 @@
                 "alert",
                 "emerg"
               ],
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           {
@@ -78,8 +87,8 @@
                 "alert",
                 "emerg"
               ],
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           {
@@ -95,26 +104,28 @@
                 "alert",
                 "emerg"
               ],
-              "type": "string",
-              "required": true
+              "required": true,
+              "type": "string"
             }
           },
           {
             "custom_fields_by_lua": {
-              "type": "map",
+              "values": {
+                "len_min": 1,
+                "type": "string"
+              },
               "keys": {
                 "len_min": 1,
                 "type": "string"
               },
-              "values": {
-                "type": "string",
-                "len_min": 1
-              }
+              "type": "map",
+              "description": "Lua code as a key-value map"
             }
           },
           {
             "facility": {
               "default": "user",
+              "required": true,
               "one_of": [
                 "auth",
                 "authpriv",
@@ -138,12 +149,16 @@
                 "local7"
               ],
               "type": "string",
-              "required": true
+              "description": "The facility is used by the operating system to decide how to handle each log message."
             }
           }
         ],
-        "type": "record"
+        "type": "record",
+        "required": true
       }
     }
+  ],
+  "entity_checks": [
+
   ]
 }

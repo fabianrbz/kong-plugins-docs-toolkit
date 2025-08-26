@@ -1,0 +1,78 @@
+{
+  "entity_checks": [
+
+  ],
+  "fields": [
+    {
+      "protocols": {
+        "elements": {
+          "one_of": [
+            "grpc",
+            "grpcs",
+            "http",
+            "https"
+          ],
+          "type": "string"
+        },
+        "type": "set",
+        "default": [
+          "grpc",
+          "grpcs",
+          "http",
+          "https"
+        ],
+        "required": true,
+        "description": "A set of strings representing HTTP protocols."
+      }
+    },
+    {
+      "consumer_group": {
+        "reference": "consumer_groups",
+        "type": "foreign",
+        "eq": null,
+        "description": "Custom type for representing a foreign key with a null value allowed."
+      }
+    },
+    {
+      "config": {
+        "required": true,
+        "type": "record",
+        "fields": [
+          {
+            "rules": {
+              "elements": {
+                "fields": [
+                  {
+                    "upstream_name": {
+                      "required": true,
+                      "type": "string"
+                    }
+                  },
+                  {
+                    "condition": {
+                      "keys": {
+                        "type": "string"
+                      },
+                      "type": "map",
+                      "len_min": 1,
+                      "required": true,
+                      "values": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                ],
+                "type": "record"
+              },
+              "type": "array",
+              "description": "Route by header rules.",
+              "default": [
+
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

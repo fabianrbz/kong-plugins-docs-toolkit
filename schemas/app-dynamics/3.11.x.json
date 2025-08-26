@@ -1,0 +1,46 @@
+{
+  "fields": [
+    {
+      "protocols": {
+        "required": true,
+        "description": "A set of strings representing HTTP protocols.",
+        "elements": {
+          "one_of": [
+            "grpc",
+            "grpcs",
+            "http",
+            "https"
+          ],
+          "type": "string"
+        },
+        "default": [
+          "grpc",
+          "grpcs",
+          "http",
+          "https"
+        ],
+        "type": "set"
+      }
+    },
+    {
+      "consumer_group": {
+        "description": "Custom type for representing a foreign key with a null value allowed.",
+        "eq": null,
+        "reference": "consumer_groups",
+        "type": "foreign"
+      }
+    },
+    {
+      "config": {
+        "required": true,
+        "fields": [
+
+        ],
+        "type": "record"
+      }
+    }
+  ],
+  "entity_checks": [
+
+  ]
+}

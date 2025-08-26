@@ -1,0 +1,88 @@
+{
+  "entity_checks": [
+
+  ],
+  "fields": [
+    {
+      "protocols": {
+        "elements": {
+          "type": "string",
+          "one_of": [
+            "grpc",
+            "grpcs",
+            "http",
+            "https"
+          ]
+        },
+        "description": "A set of strings representing HTTP protocols.",
+        "default": [
+          "grpc",
+          "grpcs",
+          "http",
+          "https"
+        ],
+        "type": "set",
+        "required": true
+      }
+    },
+    {
+      "config": {
+        "type": "record",
+        "fields": [
+          {
+            "templates": {
+              "description": "Array of templates available to the request context.",
+              "type": "array",
+              "elements": {
+                "type": "record",
+                "required": true,
+                "fields": [
+                  {
+                    "name": {
+                      "description": "Unique name for the template, can be called with `{template://NAME}`",
+                      "type": "string",
+                      "required": true
+                    }
+                  },
+                  {
+                    "template": {
+                      "description": "Template string for this request, supports mustache-style `{{placeholders}}`",
+                      "type": "string",
+                      "required": true
+                    }
+                  }
+                ]
+              },
+              "required": true
+            }
+          },
+          {
+            "allow_untemplated_requests": {
+              "description": "Set true to allow requests that don't call or match any template.",
+              "type": "boolean",
+              "default": true,
+              "required": true
+            }
+          },
+          {
+            "log_original_request": {
+              "description": "Set true to add the original request to the Kong log plugin(s) output.",
+              "type": "boolean",
+              "default": false,
+              "required": true
+            }
+          },
+          {
+            "max_request_body_size": {
+              "gt": 0,
+              "type": "integer",
+              "description": "max allowed body size allowed to be introspected",
+              "default": 8192
+            }
+          }
+        ],
+        "required": true
+      }
+    }
+  ]
+}

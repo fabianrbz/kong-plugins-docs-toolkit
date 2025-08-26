@@ -8,22 +8,30 @@
           "http",
           "https"
         ],
+        "required": true,
+        "description": "A set of strings representing HTTP protocols.",
+        "type": "set",
         "elements": {
+          "type": "string",
           "one_of": [
             "grpc",
             "grpcs",
             "http",
             "https"
-          ],
-          "type": "string"
-        },
-        "required": true,
-        "type": "set"
+          ]
+        }
+      }
+    },
+    {
+      "consumer_group": {
+        "reference": "consumer_groups",
+        "description": "Custom type for representing a foreign key with a null value allowed.",
+        "eq": null,
+        "type": "foreign"
       }
     },
     {
       "config": {
-        "required": true,
         "fields": [
           {
             "read_timeout": {
@@ -31,7 +39,8 @@
                 0,
                 2147483646
               ],
-              "type": "integer"
+              "type": "integer",
+              "description": "An integer representing a timeout in milliseconds. Must be between 0 and 2^31-2."
             }
           },
           {
@@ -40,7 +49,8 @@
                 0,
                 2147483646
               ],
-              "type": "integer"
+              "type": "integer",
+              "description": "An integer representing a timeout in milliseconds. Must be between 0 and 2^31-2."
             }
           },
           {
@@ -49,12 +59,17 @@
                 0,
                 2147483646
               ],
-              "type": "integer"
+              "type": "integer",
+              "description": "An integer representing a timeout in milliseconds. Must be between 0 and 2^31-2."
             }
           }
         ],
-        "type": "record"
+        "type": "record",
+        "required": true
       }
     }
+  ],
+  "entity_checks": [
+
   ]
 }

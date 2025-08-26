@@ -1,0 +1,74 @@
+{
+  "entity_checks": [
+
+  ],
+  "fields": [
+    {
+      "protocols": {
+        "elements": {
+          "description": "A string representing a protocol, such as HTTP or HTTPS.",
+          "one_of": [
+            "grpc",
+            "grpcs",
+            "http",
+            "https",
+            "tcp",
+            "tls",
+            "tls_passthrough",
+            "udp",
+            "ws",
+            "wss"
+          ],
+          "type": "string"
+        },
+        "description": "A set of strings representing protocols.",
+        "default": [
+          "grpc",
+          "grpcs",
+          "http",
+          "https"
+        ],
+        "type": "set",
+        "required": true
+      }
+    },
+    {
+      "consumer_group": {
+        "reference": "consumer_groups",
+        "description": "Custom type for representing a foreign key with a null value allowed.",
+        "type": "foreign",
+        "eq": null
+      }
+    },
+    {
+      "config": {
+        "type": "record",
+        "fields": [
+          {
+            "proto": {
+              "description": "If present, describes the gRPC types and methods. Required to support payload transcoding. When absent, the web client must use application/grpw-web+proto content.",
+              "type": "string",
+              "required": false
+            }
+          },
+          {
+            "pass_stripped_path": {
+              "description": "If set to `true` causes the plugin to pass the stripped request path to the upstream gRPC service.",
+              "type": "boolean",
+              "required": false
+            }
+          },
+          {
+            "allow_origin_header": {
+              "description": "The value of the `Access-Control-Allow-Origin` header in the response to the gRPC-Web client.",
+              "default": "*",
+              "type": "string",
+              "required": false
+            }
+          }
+        ],
+        "required": true
+      }
+    }
+  ]
+}

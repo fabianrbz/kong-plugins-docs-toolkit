@@ -2,8 +2,9 @@
   "fields": [
     {
       "consumer": {
-        "eq": null,
         "reference": "consumers",
+        "description": "Custom type for representing a foreign key with a null value allowed.",
+        "eq": null,
         "type": "foreign"
       }
     },
@@ -17,7 +18,10 @@
           "ws",
           "wss"
         ],
+        "required": true,
+        "type": "set",
         "elements": {
+          "type": "string",
           "one_of": [
             "grpc",
             "grpcs",
@@ -25,72 +29,88 @@
             "https",
             "ws",
             "wss"
-          ],
-          "type": "string"
-        },
-        "required": true,
-        "type": "set"
+          ]
+        }
+      }
+    },
+    {
+      "consumer_group": {
+        "reference": "consumer_groups",
+        "description": "Custom type for representing a foreign key with a null value allowed.",
+        "eq": null,
+        "type": "foreign"
       }
     },
     {
       "config": {
-        "required": true,
         "fields": [
           {
             "key_names": {
-              "elements": {
-                "type": "string"
-              },
               "default": [
                 "apikey"
               ],
+              "type": "array",
+              "description": "Describes an array of parameter names where the plugin will look for a key. The key names may only contain [a-z], [A-Z], [0-9], [_] underscore, and [-] hyphen.",
               "required": true,
-              "type": "array"
+              "elements": {
+                "type": "string",
+                "description": "A string representing an HTTP header name."
+              }
             }
           },
           {
             "hide_credentials": {
-              "type": "boolean",
               "default": false,
-              "required": true
+              "description": "An optional boolean value telling the plugin to show or hide the credential from the upstream service. If `true`, the plugin strips the credential from the request.",
+              "required": true,
+              "type": "boolean"
             }
           },
           {
             "anonymous": {
+              "description": "An optional string (consumer UUID or username) value to use as an “anonymous” consumer if authentication fails. If empty (default null), the request will fail with an authentication failure `4xx`.",
               "type": "string"
             }
           },
           {
             "key_in_header": {
-              "type": "boolean",
               "default": true,
-              "required": true
+              "description": "If enabled (default), the plugin reads the request header and tries to find the key in it.",
+              "required": true,
+              "type": "boolean"
             }
           },
           {
             "key_in_query": {
-              "type": "boolean",
               "default": true,
-              "required": true
+              "description": "If enabled (default), the plugin reads the query parameter in the request and tries to find the key in it.",
+              "required": true,
+              "type": "boolean"
             }
           },
           {
             "key_in_body": {
-              "type": "boolean",
               "default": false,
-              "required": true
+              "description": "If enabled, the plugin reads the request body. Supported MIME types: `application/www-form-urlencoded`, `application/json`, and `multipart/form-data`.",
+              "required": true,
+              "type": "boolean"
             }
           },
           {
             "run_on_preflight": {
-              "type": "boolean",
               "default": true,
-              "required": true
+              "description": "A boolean value that indicates whether the plugin should run (and try to authenticate) on `OPTIONS` preflight requests. If set to `false`, then `OPTIONS` requests are always allowed.",
+              "required": true,
+              "type": "boolean"
             }
           }
         ],
-        "type": "record"
+        "type": "record",
+        "required": true
       }
     }
+  ],
+  "entity_checks": [
+
   ]
 }

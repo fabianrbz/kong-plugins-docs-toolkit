@@ -1,0 +1,73 @@
+{
+  "fields": [
+    {
+      "protocols": {
+        "required": true,
+        "description": "A set of strings representing HTTP protocols.",
+        "elements": {
+          "one_of": [
+            "grpc",
+            "grpcs",
+            "http",
+            "https"
+          ],
+          "type": "string"
+        },
+        "default": [
+          "grpc",
+          "grpcs",
+          "http",
+          "https"
+        ],
+        "type": "set"
+      }
+    },
+    {
+      "consumer_group": {
+        "description": "Custom type for representing a foreign key with a null value allowed.",
+        "eq": null,
+        "reference": "consumer_groups",
+        "type": "foreign"
+      }
+    },
+    {
+      "config": {
+        "required": true,
+        "fields": [
+          {
+            "header_name": {
+              "default": "Kong-Request-ID",
+              "description": "The HTTP header name to use for the correlation ID.",
+              "type": "string"
+            }
+          },
+          {
+            "generator": {
+              "required": true,
+              "description": "The generator to use for the correlation ID. Accepted values are `uuid`, `uuid#counter`, and `tracker`. See [Generators](#generators).",
+              "one_of": [
+                "uuid",
+                "uuid#counter",
+                "tracker"
+              ],
+              "default": "uuid#counter",
+              "type": "string"
+            }
+          },
+          {
+            "echo_downstream": {
+              "default": false,
+              "required": true,
+              "description": "Whether to echo the header back to downstream (the client).",
+              "type": "boolean"
+            }
+          }
+        ],
+        "type": "record"
+      }
+    }
+  ],
+  "entity_checks": [
+
+  ]
+}

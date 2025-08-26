@@ -1,0 +1,203 @@
+{
+  "entity_checks": [
+    {
+      "at_least_one_of": [
+        "config.certificate",
+        "config.rewrite",
+        "config.access",
+        "config.header_filter",
+        "config.body_filter",
+        "config.log",
+        "config.ws_handshake",
+        "config.ws_upstream_frame",
+        "config.ws_client_frame",
+        "config.ws_close"
+      ]
+    }
+  ],
+  "fields": [
+    {
+      "consumer": {
+        "reference": "consumers",
+        "description": "Custom type for representing a foreign key with a null value allowed.",
+        "type": "foreign",
+        "eq": null
+      }
+    },
+    {
+      "consumer_group": {
+        "reference": "consumer_groups",
+        "description": "Custom type for representing a foreign key with a null value allowed.",
+        "type": "foreign",
+        "eq": null
+      }
+    },
+    {
+      "protocols": {
+        "elements": {
+          "description": "A string representing a protocol, such as HTTP or HTTPS.",
+          "one_of": [
+            "grpc",
+            "grpcs",
+            "http",
+            "https",
+            "tcp",
+            "tls",
+            "tls_passthrough",
+            "udp",
+            "ws",
+            "wss"
+          ],
+          "type": "string"
+        },
+        "description": "A set of strings representing protocols.",
+        "default": [
+          "grpc",
+          "grpcs",
+          "http",
+          "https"
+        ],
+        "type": "set",
+        "required": true
+      }
+    },
+    {
+      "config": {
+        "type": "record",
+        "fields": [
+          {
+            "certificate": {
+              "default": [
+
+              ],
+              "type": "array",
+              "elements": {
+                "required": false,
+                "type": "string"
+              },
+              "required": true
+            }
+          },
+          {
+            "rewrite": {
+              "default": [
+
+              ],
+              "type": "array",
+              "elements": {
+                "required": false,
+                "type": "string"
+              },
+              "required": true
+            }
+          },
+          {
+            "access": {
+              "default": [
+
+              ],
+              "type": "array",
+              "elements": {
+                "required": false,
+                "type": "string"
+              },
+              "required": true
+            }
+          },
+          {
+            "header_filter": {
+              "default": [
+
+              ],
+              "type": "array",
+              "elements": {
+                "required": false,
+                "type": "string"
+              },
+              "required": true
+            }
+          },
+          {
+            "body_filter": {
+              "default": [
+
+              ],
+              "type": "array",
+              "elements": {
+                "required": false,
+                "type": "string"
+              },
+              "required": true
+            }
+          },
+          {
+            "log": {
+              "default": [
+
+              ],
+              "type": "array",
+              "elements": {
+                "required": false,
+                "type": "string"
+              },
+              "required": true
+            }
+          },
+          {
+            "ws_handshake": {
+              "default": [
+
+              ],
+              "type": "array",
+              "elements": {
+                "required": false,
+                "type": "string"
+              },
+              "required": true
+            }
+          },
+          {
+            "ws_client_frame": {
+              "default": [
+
+              ],
+              "type": "array",
+              "elements": {
+                "required": false,
+                "type": "string"
+              },
+              "required": true
+            }
+          },
+          {
+            "ws_upstream_frame": {
+              "default": [
+
+              ],
+              "type": "array",
+              "elements": {
+                "required": false,
+                "type": "string"
+              },
+              "required": true
+            }
+          },
+          {
+            "ws_close": {
+              "default": [
+
+              ],
+              "type": "array",
+              "elements": {
+                "required": false,
+                "type": "string"
+              },
+              "required": true
+            }
+          }
+        ],
+        "required": true
+      }
+    }
+  ]
+}

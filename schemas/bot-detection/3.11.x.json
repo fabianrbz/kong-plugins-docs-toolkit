@@ -1,0 +1,79 @@
+{
+  "fields": [
+    {
+      "consumer": {
+        "description": "Custom type for representing a foreign key with a null value allowed.",
+        "eq": null,
+        "reference": "consumers",
+        "type": "foreign"
+      }
+    },
+    {
+      "protocols": {
+        "required": true,
+        "description": "A set of strings representing HTTP protocols.",
+        "elements": {
+          "one_of": [
+            "grpc",
+            "grpcs",
+            "http",
+            "https"
+          ],
+          "type": "string"
+        },
+        "default": [
+          "grpc",
+          "grpcs",
+          "http",
+          "https"
+        ],
+        "type": "set"
+      }
+    },
+    {
+      "consumer_group": {
+        "description": "Custom type for representing a foreign key with a null value allowed.",
+        "eq": null,
+        "reference": "consumer_groups",
+        "type": "foreign"
+      }
+    },
+    {
+      "config": {
+        "required": true,
+        "fields": [
+          {
+            "allow": {
+              "type": "array",
+              "description": "An array of regular expressions that should be allowed. The regular expressions will be checked against the `User-Agent` header.",
+              "default": [
+
+              ],
+              "elements": {
+                "is_regex": true,
+                "type": "string"
+              }
+            }
+          },
+          {
+            "deny": {
+              "type": "array",
+              "description": "An array of regular expressions that should be denied. The regular expressions will be checked against the `User-Agent` header.",
+              "default": [
+
+              ],
+              "elements": {
+                "is_regex": true,
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "type": "record"
+      }
+    }
+  ],
+  "entity_checks": [
+
+  ]
+}

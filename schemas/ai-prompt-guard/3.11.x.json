@@ -1,0 +1,136 @@
+{
+  "fields": [
+    {
+      "protocols": {
+        "required": true,
+        "description": "A set of strings representing HTTP protocols.",
+        "elements": {
+          "one_of": [
+            "grpc",
+            "grpcs",
+            "http",
+            "https"
+          ],
+          "type": "string"
+        },
+        "default": [
+          "grpc",
+          "grpcs",
+          "http",
+          "https"
+        ],
+        "type": "set"
+      }
+    },
+    {
+      "config": {
+        "required": true,
+        "fields": [
+          {
+            "allow_patterns": {
+              "required": false,
+              "description": "Array of valid regex patterns, or valid questions from the 'user' role in chat.",
+              "len_max": 10,
+              "type": "array",
+              "elements": {
+                "len_min": 1,
+                "len_max": 500,
+                "type": "string"
+              }
+            }
+          },
+          {
+            "deny_patterns": {
+              "required": false,
+              "description": "Array of invalid regex patterns, or invalid questions from the 'user' role in chat.",
+              "len_max": 10,
+              "type": "array",
+              "elements": {
+                "len_min": 1,
+                "len_max": 500,
+                "type": "string"
+              }
+            }
+          },
+          {
+            "allow_all_conversation_history": {
+              "default": false,
+              "required": true,
+              "description": "If true, will ignore all previous chat prompts from the conversation history.",
+              "type": "boolean"
+            }
+          },
+          {
+            "max_request_body_size": {
+              "default": 8192,
+              "gt": 0,
+              "description": "max allowed body size allowed to be introspected. 0 means unlimited, but the size of this body will still be limited by Nginx's client_max_body_size.",
+              "type": "integer"
+            }
+          },
+          {
+            "match_all_roles": {
+              "default": false,
+              "required": true,
+              "description": "If true, will match all roles in addition to 'user' role in conversation history.",
+              "type": "boolean"
+            }
+          },
+          {
+            "llm_format": {
+              "required": false,
+              "description": "LLM input and output format and schema to use",
+              "one_of": [
+                "openai",
+                "bedrock",
+                "gemini",
+                "cohere",
+                "huggingface"
+              ],
+              "default": "openai",
+              "type": "string"
+            }
+          },
+          {
+            "genai_category": {
+              "required": false,
+              "description": "Generative AI category of the request",
+              "one_of": [
+                "text/generation",
+                "text/embeddings",
+                "audio/transcription",
+                "audio/speech",
+                "image/generation",
+                "video/generation",
+                "realtime/generation"
+              ],
+              "default": "text/generation",
+              "type": "string"
+            }
+          }
+        ],
+        "type": "record"
+      }
+    }
+  ],
+  "entity_checks": [
+    {
+      "at_least_one_of": [
+        "config.allow_patterns",
+        "config.deny_patterns"
+      ]
+    },
+    {
+      "conditional": {
+        "if_match": {
+          "eq": true
+        },
+        "then_field": "config.allow_all_conversation_history",
+        "if_field": "config.match_all_roles",
+        "then_match": {
+          "eq": false
+        }
+      }
+    }
+  ]
+}

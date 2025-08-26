@@ -1,0 +1,68 @@
+{
+  "entity_checks": [
+
+  ],
+  "fields": [
+    {
+      "protocols": {
+        "elements": {
+          "type": "string",
+          "one_of": [
+            "grpc",
+            "grpcs",
+            "http",
+            "https"
+          ]
+        },
+        "description": "A set of strings representing HTTP protocols.",
+        "default": [
+          "grpc",
+          "grpcs",
+          "http",
+          "https"
+        ],
+        "type": "set",
+        "required": true
+      }
+    },
+    {
+      "consumer_group": {
+        "reference": "consumer_groups",
+        "description": "Custom type for representing a foreign key with a null value allowed.",
+        "type": "foreign",
+        "eq": null
+      }
+    },
+    {
+      "config": {
+        "type": "record",
+        "fields": [
+          {
+            "functions": {
+              "elements": {
+                "type": "string"
+              },
+              "type": "array",
+              "required": true
+            }
+          },
+          {
+            "handle_unknown": {
+              "description": "Determines whether to handle unknown status codes by transforming their responses.",
+              "default": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "handle_unexpected": {
+              "description": "Determines whether to handle unexpected errors by transforming their responses.",
+              "default": false,
+              "type": "boolean"
+            }
+          }
+        ],
+        "required": true
+      }
+    }
+  ]
+}

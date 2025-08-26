@@ -1,0 +1,83 @@
+{
+  "fields": [
+    {
+      "protocols": {
+        "required": true,
+        "description": "A set of strings representing protocols.",
+        "elements": {
+          "one_of": [
+            "grpc",
+            "grpcs",
+            "http",
+            "https",
+            "tcp",
+            "tls",
+            "tls_passthrough",
+            "udp",
+            "ws",
+            "wss"
+          ],
+          "description": "A string representing a protocol, such as HTTP or HTTPS.",
+          "type": "string"
+        },
+        "default": [
+          "grpc",
+          "grpcs",
+          "http",
+          "https"
+        ],
+        "type": "set"
+      }
+    },
+    {
+      "consumer_group": {
+        "description": "Custom type for representing a foreign key with a null value allowed.",
+        "eq": null,
+        "reference": "consumer_groups",
+        "type": "foreign"
+      }
+    },
+    {
+      "config": {
+        "required": true,
+        "fields": [
+          {
+            "path": {
+              "match": "^[^%s*&%%\\`][^*&%%\\`]*[^%s*&%%\\`]$",
+              "required": true,
+              "err": "not a valid filename",
+              "description": "The file path of the output log file. The plugin creates the log file if it doesn't exist yet.",
+              "type": "string"
+            }
+          },
+          {
+            "reopen": {
+              "description": "Determines whether the log file is closed and reopened on every request.",
+              "required": true,
+              "default": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "custom_fields_by_lua": {
+              "values": {
+                "len_min": 1,
+                "type": "string"
+              },
+              "keys": {
+                "len_min": 1,
+                "type": "string"
+              },
+              "description": "Lua code as a key-value map",
+              "type": "map"
+            }
+          }
+        ],
+        "type": "record"
+      }
+    }
+  ],
+  "entity_checks": [
+
+  ]
+}

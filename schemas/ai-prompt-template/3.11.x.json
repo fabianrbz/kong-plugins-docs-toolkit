@@ -1,0 +1,88 @@
+{
+  "fields": [
+    {
+      "protocols": {
+        "required": true,
+        "description": "A set of strings representing HTTP protocols.",
+        "elements": {
+          "one_of": [
+            "grpc",
+            "grpcs",
+            "http",
+            "https"
+          ],
+          "type": "string"
+        },
+        "default": [
+          "grpc",
+          "grpcs",
+          "http",
+          "https"
+        ],
+        "type": "set"
+      }
+    },
+    {
+      "config": {
+        "required": true,
+        "fields": [
+          {
+            "templates": {
+              "type": "array",
+              "required": true,
+              "description": "Array of templates available to the request context.",
+              "elements": {
+                "required": true,
+                "fields": [
+                  {
+                    "name": {
+                      "required": true,
+                      "description": "Unique name for the template, can be called with `{template://NAME}`",
+                      "type": "string"
+                    }
+                  },
+                  {
+                    "template": {
+                      "required": true,
+                      "description": "Template string for this request, supports mustache-style `{{placeholders}}`",
+                      "type": "string"
+                    }
+                  }
+                ],
+                "type": "record"
+              }
+            }
+          },
+          {
+            "allow_untemplated_requests": {
+              "description": "Set true to allow requests that don't call or match any template.",
+              "required": true,
+              "default": true,
+              "type": "boolean"
+            }
+          },
+          {
+            "log_original_request": {
+              "description": "Set true to add the original request to the Kong log plugin(s) output.",
+              "required": true,
+              "default": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "max_request_body_size": {
+              "description": "max allowed body size allowed to be introspected. 0 means unlimited, but the size of this body will still be limited by Nginx's client_max_body_size.",
+              "gt": 0,
+              "default": 8192,
+              "type": "integer"
+            }
+          }
+        ],
+        "type": "record"
+      }
+    }
+  ],
+  "entity_checks": [
+
+  ]
+}

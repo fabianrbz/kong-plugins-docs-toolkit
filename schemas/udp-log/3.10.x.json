@@ -1,0 +1,91 @@
+{
+  "entity_checks": [
+
+  ],
+  "fields": [
+    {
+      "protocols": {
+        "elements": {
+          "description": "A string representing a protocol, such as HTTP or HTTPS.",
+          "one_of": [
+            "grpc",
+            "grpcs",
+            "http",
+            "https",
+            "tcp",
+            "tls",
+            "tls_passthrough",
+            "udp",
+            "ws",
+            "wss"
+          ],
+          "type": "string"
+        },
+        "description": "A set of strings representing protocols.",
+        "default": [
+          "grpc",
+          "grpcs",
+          "http",
+          "https"
+        ],
+        "type": "set",
+        "required": true
+      }
+    },
+    {
+      "consumer_group": {
+        "reference": "consumer_groups",
+        "description": "Custom type for representing a foreign key with a null value allowed.",
+        "type": "foreign",
+        "eq": null
+      }
+    },
+    {
+      "config": {
+        "type": "record",
+        "fields": [
+          {
+            "host": {
+              "description": "A string representing a host name, such as example.com.",
+              "type": "string",
+              "required": true
+            }
+          },
+          {
+            "port": {
+              "between": [
+                0,
+                65535
+              ],
+              "type": "integer",
+              "description": "An integer representing a port number between 0 and 65535, inclusive.",
+              "required": true
+            }
+          },
+          {
+            "timeout": {
+              "description": "An optional timeout in milliseconds when sending data to the upstream server.",
+              "type": "number",
+              "default": 10000
+            }
+          },
+          {
+            "custom_fields_by_lua": {
+              "description": "Lua code as a key-value map",
+              "type": "map",
+              "values": {
+                "len_min": 1,
+                "type": "string"
+              },
+              "keys": {
+                "type": "string",
+                "len_min": 1
+              }
+            }
+          }
+        ],
+        "required": true
+      }
+    }
+  ]
+}

@@ -2,23 +2,25 @@
   "fields": [
     {
       "consumer": {
-        "eq": null,
         "reference": "consumers",
+        "description": "Custom type for representing a foreign key with a null value allowed.",
+        "eq": null,
         "type": "foreign"
       }
     },
     {
       "service": {
         "on_delete": "cascade",
-        "ne": null,
         "reference": "services",
-        "type": "foreign"
+        "type": "foreign",
+        "ne": null
       }
     },
     {
       "route": {
-        "eq": null,
         "reference": "routes",
+        "description": "A reference to the 'routes' table with a null value allowed.",
+        "eq": null,
         "type": "foreign"
       }
     },
@@ -30,53 +32,69 @@
           "http",
           "https"
         ],
+        "required": true,
+        "description": "A set of strings representing HTTP protocols.",
+        "type": "set",
         "elements": {
+          "type": "string",
           "one_of": [
             "grpc",
             "grpcs",
             "http",
             "https"
-          ],
-          "type": "string"
-        },
-        "required": true,
-        "type": "set"
+          ]
+        }
+      }
+    },
+    {
+      "consumer_group": {
+        "reference": "consumer_groups",
+        "description": "Custom type for representing a foreign key with a null value allowed.",
+        "eq": null,
+        "type": "foreign"
       }
     },
     {
       "config": {
-        "required": true,
         "fields": [
           {
             "display_name": {
               "type": "string",
+              "required": true,
               "unique": true,
-              "required": true
+              "description": "Unique display name used for a Service in the Developer Portal."
             }
           },
           {
             "description": {
+              "type": "string",
               "unique": true,
-              "type": "string"
+              "description": "Unique description displayed in information about a Service in the Developer Portal."
             }
           },
           {
             "auto_approve": {
-              "required": true,
+              "default": false,
               "type": "boolean",
-              "default": false
+              "description": "If enabled, all new Service Contracts requests are automatically approved.",
+              "required": true
             }
           },
           {
             "show_issuer": {
-              "required": true,
+              "default": false,
               "type": "boolean",
-              "default": false
+              "description": "Displays the **Issuer URL** in the **Service Details** dialog.",
+              "required": true
             }
           }
         ],
-        "type": "record"
+        "type": "record",
+        "required": true
       }
     }
+  ],
+  "entity_checks": [
+
   ]
 }

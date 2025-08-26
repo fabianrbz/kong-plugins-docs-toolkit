@@ -1,0 +1,86 @@
+{
+  "entity_checks": [
+
+  ],
+  "fields": [
+    {
+      "protocols": {
+        "elements": {
+          "one_of": [
+            "grpc",
+            "grpcs",
+            "http",
+            "https"
+          ],
+          "type": "string"
+        },
+        "type": "set",
+        "default": [
+          "grpc",
+          "grpcs",
+          "http",
+          "https"
+        ],
+        "required": true,
+        "description": "A set of strings representing HTTP protocols."
+      }
+    },
+    {
+      "consumer_group": {
+        "reference": "consumer_groups",
+        "type": "foreign",
+        "eq": null,
+        "description": "Custom type for representing a foreign key with a null value allowed."
+      }
+    },
+    {
+      "consumer": {
+        "reference": "consumers",
+        "type": "foreign",
+        "eq": null,
+        "description": "Custom type for representing a foreign key with a null value allowed."
+      }
+    },
+    {
+      "config": {
+        "required": true,
+        "type": "record",
+        "fields": [
+          {
+            "lookup_header_name": {
+              "required": true,
+              "type": "string",
+              "description": "The name of the header to look for the JWE token.",
+              "default": "Authorization"
+            }
+          },
+          {
+            "forward_header_name": {
+              "required": true,
+              "type": "string",
+              "description": "The name of the header that is used to set the decrypted value.",
+              "default": "Authorization"
+            }
+          },
+          {
+            "key_sets": {
+              "required": true,
+              "type": "array",
+              "description": "Denote the name or names of all Key Sets that should be inspected when trying to find a suitable key to decrypt the JWE token.",
+              "elements": {
+                "type": "string"
+              }
+            }
+          },
+          {
+            "strict": {
+              "type": "boolean",
+              "description": "Defines how the plugin behaves in cases where no token was found in the request. When using `strict` mode, the request requires a token to be present and subsequently raise an error if none could be found.",
+              "default": true
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,197 @@
+{
+  "fields": [
+    {
+      "consumer_group": {
+        "description": "Custom type for representing a foreign key with a null value allowed.",
+        "eq": null,
+        "reference": "consumer_groups",
+        "type": "foreign"
+      }
+    },
+    {
+      "protocols": {
+        "required": true,
+        "description": "A set of strings representing HTTP protocols.",
+        "elements": {
+          "one_of": [
+            "grpc",
+            "grpcs",
+            "http",
+            "https"
+          ],
+          "type": "string"
+        },
+        "default": [
+          "grpc",
+          "grpcs",
+          "http",
+          "https"
+        ],
+        "type": "set"
+      }
+    },
+    {
+      "config": {
+        "required": true,
+        "entity_checks": [
+          {
+            "at_least_one_of": [
+              "request_jq_program",
+              "response_jq_program"
+            ]
+          }
+        ],
+        "fields": [
+          {
+            "request_jq_program": {
+              "type": "string",
+              "required": false
+            }
+          },
+          {
+            "request_jq_program_options": {
+              "default": [
+
+              ],
+              "required": false,
+              "fields": [
+                {
+                  "compact_output": {
+                    "required": true,
+                    "default": true,
+                    "type": "boolean"
+                  }
+                },
+                {
+                  "raw_output": {
+                    "required": true,
+                    "default": false,
+                    "type": "boolean"
+                  }
+                },
+                {
+                  "join_output": {
+                    "required": true,
+                    "default": false,
+                    "type": "boolean"
+                  }
+                },
+                {
+                  "ascii_output": {
+                    "required": true,
+                    "default": false,
+                    "type": "boolean"
+                  }
+                },
+                {
+                  "sort_keys": {
+                    "required": true,
+                    "default": false,
+                    "type": "boolean"
+                  }
+                }
+              ],
+              "type": "record"
+            }
+          },
+          {
+            "request_if_media_type": {
+              "type": "array",
+              "required": false,
+              "default": [
+                "application/json"
+              ],
+              "elements": {
+                "type": "string"
+              }
+            }
+          },
+          {
+            "response_jq_program": {
+              "type": "string",
+              "required": false
+            }
+          },
+          {
+            "response_jq_program_options": {
+              "default": [
+
+              ],
+              "required": false,
+              "fields": [
+                {
+                  "compact_output": {
+                    "required": true,
+                    "default": true,
+                    "type": "boolean"
+                  }
+                },
+                {
+                  "raw_output": {
+                    "required": true,
+                    "default": false,
+                    "type": "boolean"
+                  }
+                },
+                {
+                  "join_output": {
+                    "required": true,
+                    "default": false,
+                    "type": "boolean"
+                  }
+                },
+                {
+                  "ascii_output": {
+                    "required": true,
+                    "default": false,
+                    "type": "boolean"
+                  }
+                },
+                {
+                  "sort_keys": {
+                    "required": true,
+                    "default": false,
+                    "type": "boolean"
+                  }
+                }
+              ],
+              "type": "record"
+            }
+          },
+          {
+            "response_if_media_type": {
+              "type": "array",
+              "required": false,
+              "default": [
+                "application/json"
+              ],
+              "elements": {
+                "type": "string"
+              }
+            }
+          },
+          {
+            "response_if_status_code": {
+              "type": "array",
+              "required": false,
+              "default": [
+                200
+              ],
+              "elements": {
+                "type": "integer",
+                "between": [
+                  100,
+                  599
+                ]
+              }
+            }
+          }
+        ],
+        "type": "record"
+      }
+    }
+  ],
+  "entity_checks": [
+
+  ]
+}
